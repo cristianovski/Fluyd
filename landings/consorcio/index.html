@@ -49,7 +49,11 @@
                 Prazo: <span id="res-prazo" style="color: white;">180 meses</span> <br>
                 Crédito Total: <span id="res-total" style="color: white;">--</span>
             </div>
-            <a href="https://wa.me/5511999999999" class="btn-neon" style="background: #25D366;">Contratar pelo WhatsApp</a>
+            
+            <a id="btn-whatsapp" href="https://wa.me/5577998633429?text=Ol%C3%A1%21+Fiz+uma+simula%C3%A7%C3%A3o+no+site+e+gostei+da+parcela.+Podemos+falar%3F" class="btn-neon" style="background: #25D366; box-shadow: 0 0 15px rgba(37,211,102,0.4);">
+                Contratar pelo WhatsApp
+            </a>
+            
             <br><br>
             <button onclick="location.reload()" style="background:none; border:none; color: #555; cursor: pointer; text-decoration: underline;">Nova simulação</button>
         </div>
@@ -65,6 +69,8 @@
 
     <footer><div class="container"><p>Fluyd - Inteligência Financeira.</p></div></footer>
 
+    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+preciso+de+ajuda+com+o+consorcio." class="whatsapp-float">Falar com Humano</a>
+
     <script>
         async function enviarSimulacao() {
             const tipo = document.getElementById('tipo_bem').value;
@@ -73,26 +79,24 @@
 
             if (!valorInput) { alert("Digite o valor!"); return; }
 
-            // Lógica Matemática Local (Sem depender do Make)
             const valor = parseFloat(valorInput);
             const prazo = tipo === 'imovel' ? 180 : 80;
-            const taxaTotal = 1.23; // 23% de taxa adm total no período
+            const taxaTotal = 1.23; 
             const parcela = (valor * taxaTotal) / prazo;
 
-            // Formatação de Dinheiro (R$)
             const formatarDinheiro = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
             btn.innerText = "Processando..."; btn.style.opacity = "0.7"; btn.disabled = true;
 
             try {
-                // Envia para o Make APENAS para salvar no CRM (Google Sheets)
+                // Envia para o CRM (Make)
                 await fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString() })
                 });
 
-                // Exibe o resultado calculado AQUI mesmo
+                // Exibe Resultado
                 document.getElementById('box-formulario').style.display = 'none';
                 document.getElementById('box-resultado').style.display = 'block';
                 
@@ -100,8 +104,17 @@
                 document.getElementById('res-prazo').innerText = prazo + " meses";
                 document.getElementById('res-total').innerText = formatarDinheiro(valor);
 
+                // (Opcional) Atualiza o link do WhatsApp com o valor simulado para facilitar a venda
+                const linkZap = `https://wa.me/5577998633429?text=Ol%C3%A1%21+Simulei+um+${tipo}+de+${formatarDinheiro(valor)}+e+gostei+da+parcela.+Podemos+avançar%3F`;
+                document.getElementById('btn-whatsapp').href = linkZap;
+
             } catch (error) {
-                console.error(error); alert("Erro de conexão.");
+                console.error(error); 
+                // Mesmo se der erro no Make, mostra o resultado para o cliente não ficar travado
+                document.getElementById('box-formulario').style.display = 'none';
+                document.getElementById('box-resultado').style.display = 'block';
+                document.getElementById('res-parcela').innerText = formatarDinheiro(parcela);
+                document.getElementById('res-total').innerText = formatarDinheiro(valor);
             } finally {
                 btn.style.opacity = "1"; btn.disabled = false;
             }
