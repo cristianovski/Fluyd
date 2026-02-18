@@ -3,174 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | Nação</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+    <title>Glid | Império</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- ESTILO NAÇÃO CLEAN --- */
+        /* --- ESTILO IMPÉRIO CLEAN --- */
         :root {
-            --primary: #047857;       /* Verde Esmeralda (Sério) */
-            --accent: #BEF264;        /* Lima Neon (Tech/Digital) */
+            --primary: #1E40AF;       /* Azul Royal Nobre */
+            --accent: #CUA368;        /* Dourado Champagne (Metálico) */
             --bg-white: #FFFFFF;      /* Branco Puro */
-            --text-dark: #022C22;     /* Verde Quase Preto */
+            --text-dark: #172554;     /* Azul Marinho Profundo */
+            --gray-light: #F8FAFC;    /* Cinza Gelo para fundos sutis */
         }
 
         body {
             background-color: var(--bg-white);
             color: var(--text-dark);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Outfit', sans-serif;
         }
 
-        h1, h2, h3 { font-weight: 900; letter-spacing: -1px; color: var(--primary); }
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; color: var(--primary); }
 
-        /* Botão Nação Tech */
+        /* Botão Império Metálico */
         .btn-neon {
-            background-color: var(--primary) !important;
-            color: var(--accent) !important; /* Texto Lima no Fundo Verde */
-            font-weight: 800 !important;
-            border-radius: 8px !important;
-            padding: 20px 45px !important;
+            background: linear-gradient(135deg, #D4AF37 0%, #CUA368 100%) !important; /* Gradiente Dourado */
+            color: white !important;
+            font-weight: 700 !important;
+            border-radius: 50px !important;
+            padding: 20px 50px !important;
             text-transform: uppercase;
-            box-shadow: 0 8px 20px rgba(4, 120, 87, 0.3) !important;
-            border: 2px solid var(--primary) !important;
-            transition: all 0.2s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3) !important;
+            border: none !important;
+            transition: all 0.3s ease;
             font-size: 1rem;
+            letter-spacing: 1px;
         }
         .btn-neon:hover { 
-            background-color: var(--bg-white) !important;
-            color: var(--primary) !important;
             transform: translateY(-3px); 
-            box-shadow: 0 12px 25px rgba(4, 120, 87, 0.4) !important;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4) !important;
+            filter: brightness(1.1);
         }
 
-        /* Cards Brancos com Borda Verde */
+        /* Cards Brancos de Luxo */
         .simulator-box, .feature-card {
             background: var(--bg-white) !important;
-            border: 2px solid #E5E7EB !important;
-            border-radius: 16px;
-            box-shadow: none !important;
+            border: 1px solid #E2E8F0 !important;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px -20px rgba(30, 64, 175, 0.1) !important; /* Sombra Azul Real Suave */
             transition: all 0.3s;
         }
-        .feature-card:hover, .simulator-box:hover {
-            border-color: var(--primary) !important;
-            box-shadow: 0 10px 30px -10px rgba(4, 120, 87, 0.2) !important;
-        }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--accent) !important; }
 
         input, select {
-            background: #F9FAFB !important;
-            border: 2px solid #E5E7EB !important;
-            border-radius: 10px !important;
+            background: var(--gray-light) !important;
+            border: 1px solid #E2E8F0 !important;
+            border-radius: 16px !important;
             padding: 18px !important;
             color: var(--primary) !important;
             font-weight: 700;
+            font-family: 'Outfit', sans-serif;
             transition: all 0.3s;
         }
         input:focus, select:focus { 
-            border-color: var(--accent) !important; /* Borda Lima ao focar */
+            border-color: var(--accent) !important; 
             background: var(--bg-white) !important;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(190, 242, 100, 0.3);
+            outline: none; 
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
         }
 
         .feature-icon i { 
-            color: var(--primary); 
             font-size: 3rem; 
-            margin-bottom: 20px; 
+            margin-bottom: 25px; 
+            color: var(--primary);
             display: inline-block;
-            padding: 15px;
-            border-radius: 12px;
-            background: #ECFDF5; /* Fundo verde muito claro apenas no ícone */
         }
         
-        /* Highlight Lima */
-        span.highlight {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 2px 8px;
-            border-radius: 6px;
-        }
-
-        /* FAQ Clean */
-        .faq-item { background: var(--bg-white) !important; border: 1px solid #E5E7EB !important; margin-bottom: 10px; border-radius: 12px; }
-        .faq-question { width: 100%; text-align: left; padding: 25px; background: none; border: none; font-weight: 800; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; font-size: 1.1rem; }
-        .faq-answer { padding: 0 25px 25px; display: none; color: #555; line-height: 1.6; }
+        /* FAQ Clean Luxury */
+        .faq-item { background: var(--bg-white) !important; border-radius: 16px; margin-bottom: 10px; border: 1px solid #E2E8F0 !important; }
+        .faq-question { width: 100%; text-align: left; padding: 25px; background: none; border: none; font-weight: 700; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; font-size: 1.1rem; }
+        .faq-answer { padding: 0 25px 25px; display: none; color: #64748B; line-height: 1.6; }
         
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
-            background-color: var(--primary); color: var(--accent);
-            width: 65px; height: 65px; border-radius: 12px; /* Quadrado arredondado tech */
+            background: var(--primary);
+            color: white; width: 65px; height: 65px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 2rem; text-decoration: none;
-            box-shadow: 0 10px 25px rgba(4, 120, 87, 0.3);
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
             z-index: 100; transition: transform 0.2s;
-            border: 2px solid var(--accent);
+            border: 2px solid white;
         }
-        .whatsapp-float:hover { transform: scale(1.05); background-color: var(--accent); color: var(--primary); border-color: var(--primary); }
+        .whatsapp-float:hover { transform: scale(1.05); background: var(--accent); }
     </style>
 </head>
 <body>
     <header class="hero" style="padding: 120px 20px 80px; text-align: center; background: white;">
-        <i class="ph-duotone ph-trend-up" style="font-size: 5rem; color: var(--primary); margin-bottom: 25px;"></i>
+        <i class="ph-duotone ph-crown-simple" style="font-size: 5rem; color: var(--primary); margin-bottom: 25px;"></i>
         <h1 style="font-size: 4rem; margin-bottom: 20px;">GLID</h1>
-        <p style="font-size: 1.3rem; color: var(--text-dark); margin-bottom: 50px; max-width: 600px; margin: 0 auto 50px;">
-            O crédito digital que <span class="highlight">acelera</span> suas conquistas.
+        <p style="font-size: 1.3rem; color: #64748B; margin-bottom: 50px; max-width: 600px; margin: 0 auto 50px;">
+            Liderança financeira. Construa seu legado com solidez.
         </p>
         <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
-            Simular Agora <i class="ph-bold ph-arrow-right"></i>
+            Iniciar Conquista <i class="ph-bold ph-arrow-right"></i>
         </a>
     </header>
 
     <section class="container" id="simulador" style="max-width: 500px; margin: -50px auto 0; padding: 0 20px; position: relative; z-index: 10;">
         <div class="simulator-box" id="box-formulario" style="padding: 50px 40px;">
             <div style="text-align: center; margin-bottom: 30px;">
-                <h3 style="font-size: 1.5rem;">Calculadora de Crédito</h3>
+                <h3 style="font-size: 1.5rem;">Planejamento Patrimonial</h3>
             </div>
             <div style="margin-bottom: 25px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--primary);">Objetivo</label>
-                <select id="tipo_bem" style="width: 100%;"><option value="imovel">Imóvel</option><option value="veiculo">Veículo</option></select>
+                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--primary);">Ativo Desejado</label>
+                <select id="tipo_bem" style="width: 100%;"><option value="imovel">Imóvel (180x)</option><option value="veiculo">Veículo (80x)</option></select>
             </div>
             <div style="margin-bottom: 35px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--primary);">Valor (R$)</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 150.000" style="width: 100%;">
+                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--primary);">Valor do Aporte (R$)</label>
+                <input type="number" id="valor_credito" placeholder="Ex: 300.000" style="width: 100%;">
             </div>
-            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">Calcular Parcela</button>
+            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">Simular Cenário</button>
         </div>
 
         <div class="simulator-box" id="box-resultado" style="display: none; padding: 50px 40px; text-align: center;">
-            <h2 style="font-size: 1.8rem;">Resultado da Simulação</h2>
-            <div style="font-size: 3.5rem; font-weight: 900; color: var(--primary); margin: 25px 0;" id="res-parcela">R$ 0,00</div>
+            <h2 style="font-size: 1.8rem;">Viabilidade Confirmada</h2>
+            <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 25px 0;" id="res-parcela">R$ 0,00</div>
             
-            <div style="background: #ECFDF5; border-radius: 12px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-between; border: 1px solid var(--accent);">
-                <div><small style="color:var(--primary); font-weight:700;">PRAZO</small><br><b id="res-prazo" style="color:var(--text-dark); font-size:1.1rem;">--</b></div>
-                <div><small style="color:var(--primary); font-weight:700;">TOTAL</small><br><b id="res-total" style="color:var(--text-dark); font-size:1.1rem;">--</b></div>
+            <div style="background: var(--gray-light); border-radius: 15px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-between;">
+                <div><small style="color:#64748B; font-weight:700;">PRAZO</small><br><b id="res-prazo" style="color:var(--text-dark); font-size:1.1rem;">--</b></div>
+                <div><small style="color:#64748B; font-weight:700;">TOTAL</small><br><b id="res-total" style="color:var(--text-dark); font-size:1.1rem;">--</b></div>
             </div>
 
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; background: #25D366 !important; color: white !important; border-color: #25D366 !important; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4) !important;">
-                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Atendimento WhatsApp
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; background: #25D366 !important; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4) !important;">
+                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Falar com Banker
             </a>
-             <button onclick="location.reload()" style="background:none; border:none; color: #999; margin-top: 25px; cursor: pointer; text-decoration: underline;">Nova Simulação</button>
+             <button onclick="location.reload()" style="background:none; border:none; color: #999; margin-top: 25px; cursor: pointer; text-decoration: underline;">Novo Cenário</button>
         </div>
     </section>
 
     <section style="padding: 100px 20px; background: white; margin-top: 80px;">
         <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-             <h2 style="margin-bottom: 60px; font-size: 2.5rem;">A Escolha Inteligente</h2>
+             <h2 style="margin-bottom: 60px; font-size: 2.5rem;">Excelência em Crédito</h2>
              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
                 <div class="feature-card" style="padding: 40px;">
-                    <div class="feature-icon"><i class="ph-duotone ph-money"></i></div>
-                    <h3>Economia Real</h3>
-                    <p style="color: #6B7280;">Sem juros abusivos. Você paga apenas uma taxa administrativa justa e fixa.</p>
+                    <div class="feature-icon"><i class="ph-duotone ph-gem"></i></div>
+                    <h3>Valor Real</h3>
+                    <p style="color: #64748B;">Maximize seu capital. Sem juros, seu dinheiro rende mais na aquisição do bem.</p>
                 </div>
                 <div class="feature-card" style="padding: 40px;">
-                    <div class="feature-icon"><i class="ph-duotone ph-device-mobile-camera"></i></div>
-                    <h3>100% Digital</h3>
-                    <p style="color: #6B7280;">Simule, contrate e gerencie tudo pelo seu celular, sem burocracia de banco tradicional.</p>
+                    <div class="feature-icon"><i class="ph-duotone ph-strategy"></i></div>
+                    <h3>Estratégia</h3>
+                    <p style="color: #64748B;">Utilize lances para acelerar sua contemplação de forma inteligente e planejada.</p>
                 </div>
                 <div class="feature-card" style="padding: 40px;">
-                    <div class="feature-icon"><i class="ph-duotone ph-shield-check"></i></div>
-                    <h3>Segurança BC</h3>
-                    <p style="color: #6B7280;">Instituição regulada e fiscalizada pelo Banco Central do Brasil.</p>
+                    <div class="feature-icon"><i class="ph-duotone ph-bank"></i></div>
+                    <h3>Segurança</h3>
+                    <p style="color: #64748B;">Regulação total pelo Banco Central. Solidez e transparência em cada etapa.</p>
                 </div>
              </div>
         </div>
@@ -188,8 +176,8 @@
             document.getElementById('res-parcela').innerText = formatar(parcela);
             document.getElementById('res-prazo').innerText = prazo + " meses";
             document.getElementById('res-total').innerText = formatar(valor);
-            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+Nação.`;
-             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Nacao Clean'}) }); } catch(e){}
+            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+Império.`;
+             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Imperio Clean'}) }); } catch(e){}
         }
         function toggleFaq(el) { el.nextElementSibling.style.display = el.nextElementSibling.style.display==='block'?'none':'block'; }
     </script>
