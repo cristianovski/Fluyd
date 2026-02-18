@@ -7,13 +7,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
+        /* Estilos Extras para a Nova Estrutura */
         .result-card { display: none; text-align: center; animation: fadeIn 0.5s; }
         .result-value { font-size: 2.5rem; font-weight: 800; color: #00ff88; text-shadow: 0 0 20px rgba(0,255,136,0.3); margin: 10px 0; }
         .result-details { color: #aaa; font-size: 0.9rem; margin-bottom: 20px; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Sessão de Vantagens (Grid) */
+        .features-section { padding: 80px 20px; background: #1a1a1a; text-align: center; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1100px; margin: 40px auto 0; }
+        .feature-card { background: #222; padding: 30px; border-radius: 15px; border: 1px solid #333; transition: 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .feature-icon { font-size: 2rem; margin-bottom: 15px; display: block; }
+        
+        /* Sessão Como Funciona */
+        .steps-section { padding: 80px 20px; text-align: center; }
+        .steps-container { display: flex; justify-content: space-around; flex-wrap: wrap; max-width: 1100px; margin: 40px auto 0; gap: 20px; }
+        .step-item { flex: 1; min-width: 200px; position: relative; }
+        .step-number { font-size: 4rem; font-weight: 800; color: #333; opacity: 0.5; position: absolute; top: -20px; left: 50%; transform: translateX(-50%); z-index: 0; }
+        .step-content { position: relative; z-index: 1; padding-top: 20px; }
     </style>
 </head>
 <body>
+
     <header class="hero">
         <div class="container">
             <h1>Conquiste seu patrimônio com <br><span>Fluidez</span>.</h1>
@@ -22,7 +38,7 @@
         </div>
     </header>
 
-    <section class="container" id="simulador">
+    <section class="container" id="simulador" style="margin-top: -50px; position: relative; z-index: 10;">
         <div class="simulator-box" id="box-formulario">
             <div class="input-group">
                 <label>O que você quer conquistar?</label>
@@ -49,20 +65,65 @@
                 Prazo: <span id="res-prazo" style="color: white;">180 meses</span> <br>
                 Crédito Total: <span id="res-total" style="color: white;">--</span>
             </div>
-            
-            <a id="btn-whatsapp" href="https://wa.me/5577998633429?text=Ol%C3%A1%21+Fiz+uma+simula%C3%A7%C3%A3o+no+site+e+gostei+da+parcela.+Podemos+falar%3F" class="btn-neon" style="background: #25D366; box-shadow: 0 0 15px rgba(37,211,102,0.4);">
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="background: #25D366; box-shadow: 0 0 15px rgba(37,211,102,0.4);">
                 Contratar pelo WhatsApp
             </a>
-            
             <br><br>
             <button onclick="location.reload()" style="background:none; border:none; color: #555; cursor: pointer; text-decoration: underline;">Nova simulação</button>
         </div>
-        <p style="text-align: center; margin-top: 20px; color: #555; font-size: 0.9rem;">*Cálculo base inclui taxa administrativa média. Sujeito a análise.</p>
+    </section>
+
+    <section class="features-section">
+        <h2 style="font-size: 2rem;">Por que escolher a <span style="color: var(--primary);">Fluyd</span>?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🚫</span>
+                <h3>Zero Juros</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Fuja das taxas abusivas dos financiamentos. Pague apenas uma taxa administrativa justa.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📈</span>
+                <h3>Poder de Compra</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Sua carta de crédito equivale a dinheiro à vista, garantindo o melhor poder de negociação.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🔒</span>
+                <h3>Segurança Total</h3>
+                <p style="color: #aaa; font-size: 0.9rem;">Somos autorizados e fiscalizados pelo Banco Central. Seu dinheiro está protegido.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps-section">
+        <h2 style="font-size: 2rem; margin-bottom: 40px;">Como funciona?</h2>
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Simulação</h3>
+                    <p style="color: #aaa;">Escolha o valor e o plano que cabe no seu bolso.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Assembleia</h3>
+                    <p style="color: #aaa;">Participe dos sorteios mensais ou oferte um lance.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Conquista</h3>
+                    <p style="color: #aaa;">Use sua carta para comprar seu bem à vista!</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="authority-bar">
         <div class="container">
-            <p style="text-transform: uppercase; font-size: 0.9rem;">Segurança Integrada</p>
+            <p style="text-transform: uppercase; font-size: 0.9rem;">Parceiros Oficiais</p>
             <div style="opacity: 0.7; font-weight: bold;">Teddy Open Finance • Cotafácil • Banco Central</div>
         </div>
     </section>
@@ -83,18 +144,17 @@
             const prazo = tipo === 'imovel' ? 180 : 80;
             const taxaTotal = 1.23; 
             const parcela = (valor * taxaTotal) / prazo;
-
             const formatarDinheiro = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
             btn.innerText = "Processando..."; btn.style.opacity = "0.7"; btn.disabled = true;
 
             try {
-                // Envia para o CRM (Make)
-                await fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
+                // Envia para o CRM
+                fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString() })
-                });
+                }); // Sem await para ser mais rápido visualmente
 
                 // Exibe Resultado
                 document.getElementById('box-formulario').style.display = 'none';
@@ -104,17 +164,11 @@
                 document.getElementById('res-prazo').innerText = prazo + " meses";
                 document.getElementById('res-total').innerText = formatarDinheiro(valor);
 
-                // (Opcional) Atualiza o link do WhatsApp com o valor simulado para facilitar a venda
                 const linkZap = `https://wa.me/5577998633429?text=Ol%C3%A1%21+Simulei+um+${tipo}+de+${formatarDinheiro(valor)}+e+gostei+da+parcela.+Podemos+avançar%3F`;
                 document.getElementById('btn-whatsapp').href = linkZap;
 
             } catch (error) {
-                console.error(error); 
-                // Mesmo se der erro no Make, mostra o resultado para o cliente não ficar travado
-                document.getElementById('box-formulario').style.display = 'none';
-                document.getElementById('box-resultado').style.display = 'block';
-                document.getElementById('res-parcela').innerText = formatarDinheiro(parcela);
-                document.getElementById('res-total').innerText = formatarDinheiro(valor);
+                console.error(error);
             } finally {
                 btn.style.opacity = "1"; btn.disabled = false;
             }
