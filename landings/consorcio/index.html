@@ -3,162 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | Horizonte</title>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Glid | Nação</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- ESTILO HORIZONTE CLEAN --- */
+        /* --- ESTILO NAÇÃO CLEAN --- */
         :root {
-            --primary-gradient: linear-gradient(135deg, #FB923C 0%, #EA580C 100%); /* Laranja Sunset */
-            --primary-solid: #EA580C;
-            --secondary: #0E3A4A;     /* Petróleo Profundo (Texto) */
+            --primary: #047857;       /* Verde Esmeralda (Sério) */
+            --accent: #BEF264;        /* Lima Neon (Tech/Digital) */
             --bg-white: #FFFFFF;      /* Branco Puro */
-            --gray-light: #F3F4F6;    /* Cinza muito claro para inputs */
+            --text-dark: #022C22;     /* Verde Quase Preto */
         }
 
         body {
             background-color: var(--bg-white);
-            color: var(--secondary);
-            font-family: 'Urbanist', sans-serif;
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
         }
 
-        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; color: var(--secondary); }
+        h1, h2, h3 { font-weight: 900; letter-spacing: -1px; color: var(--primary); }
 
-        /* Botão Horizonte Vibrante */
+        /* Botão Nação Tech */
         .btn-neon {
-            background: var(--primary-gradient) !important;
-            color: white !important;
-            font-weight: 700 !important;
-            border-radius: 12px !important;
+            background-color: var(--primary) !important;
+            color: var(--accent) !important; /* Texto Lima no Fundo Verde */
+            font-weight: 800 !important;
+            border-radius: 8px !important;
             padding: 20px 45px !important;
             text-transform: uppercase;
-            box-shadow: 0 10px 30px rgba(234, 88, 12, 0.3) !important;
-            border: none !important;
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(4, 120, 87, 0.3) !important;
+            border: 2px solid var(--primary) !important;
+            transition: all 0.2s ease;
             font-size: 1rem;
         }
         .btn-neon:hover { 
+            background-color: var(--bg-white) !important;
+            color: var(--primary) !important;
             transform: translateY(-3px); 
-            box-shadow: 0 15px 40px rgba(234, 88, 12, 0.4) !important;
-            filter: brightness(1.05);
+            box-shadow: 0 12px 25px rgba(4, 120, 87, 0.4) !important;
         }
 
-        /* Cards Brancos Limpos */
+        /* Cards Brancos com Borda Verde */
         .simulator-box, .feature-card {
             background: var(--bg-white) !important;
-            border: 1px solid #E5E7EB !important;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px -20px rgba(14, 58, 74, 0.1) !important;
-            transition: transform 0.3s;
+            border: 2px solid #E5E7EB !important;
+            border-radius: 16px;
+            box-shadow: none !important;
+            transition: all 0.3s;
         }
-        .feature-card:hover { transform: translateY(-5px); border-color: var(--primary-solid) !important; }
+        .feature-card:hover, .simulator-box:hover {
+            border-color: var(--primary) !important;
+            box-shadow: 0 10px 30px -10px rgba(4, 120, 87, 0.2) !important;
+        }
 
         input, select {
-            background: var(--gray-light) !important;
-            border: 2px solid transparent !important;
-            border-radius: 12px !important;
+            background: #F9FAFB !important;
+            border: 2px solid #E5E7EB !important;
+            border-radius: 10px !important;
             padding: 18px !important;
-            color: var(--secondary) !important;
+            color: var(--primary) !important;
             font-weight: 700;
-            font-family: 'Urbanist', sans-serif;
             transition: all 0.3s;
         }
         input:focus, select:focus { 
-            border-color: var(--primary-solid) !important; 
+            border-color: var(--accent) !important; /* Borda Lima ao focar */
             background: var(--bg-white) !important;
-            outline: none; 
-            box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.1);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(190, 242, 100, 0.3);
         }
 
         .feature-icon i { 
+            color: var(--primary); 
             font-size: 3rem; 
-            margin-bottom: 25px; 
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px; 
             display: inline-block;
+            padding: 15px;
+            border-radius: 12px;
+            background: #ECFDF5; /* Fundo verde muito claro apenas no ícone */
+        }
+        
+        /* Highlight Lima */
+        span.highlight {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: 6px;
         }
 
         /* FAQ Clean */
-        .faq-item { background: var(--bg-white) !important; border-radius: 16px; margin-bottom: 10px; border: 1px solid #E5E7EB !important; }
-        .faq-question { width: 100%; text-align: left; padding: 25px; background: none; border: none; font-weight: 700; color: var(--secondary); cursor: pointer; display: flex; justify-content: space-between; font-size: 1.1rem; }
+        .faq-item { background: var(--bg-white) !important; border: 1px solid #E5E7EB !important; margin-bottom: 10px; border-radius: 12px; }
+        .faq-question { width: 100%; text-align: left; padding: 25px; background: none; border: none; font-weight: 800; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; font-size: 1.1rem; }
         .faq-answer { padding: 0 25px 25px; display: none; color: #555; line-height: 1.6; }
         
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
-            background: var(--primary-gradient); color: white;
-            width: 65px; height: 65px; border-radius: 50%;
+            background-color: var(--primary); color: var(--accent);
+            width: 65px; height: 65px; border-radius: 12px; /* Quadrado arredondado tech */
             display: flex; align-items: center; justify-content: center;
             font-size: 2rem; text-decoration: none;
-            box-shadow: 0 10px 30px rgba(234, 88, 12, 0.4);
+            box-shadow: 0 10px 25px rgba(4, 120, 87, 0.3);
             z-index: 100; transition: transform 0.2s;
+            border: 2px solid var(--accent);
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float:hover { transform: scale(1.05); background-color: var(--accent); color: var(--primary); border-color: var(--primary); }
     </style>
 </head>
 <body>
     <header class="hero" style="padding: 120px 20px 80px; text-align: center; background: white;">
-        <i class="ph-duotone ph-sun-horizon" style="font-size: 5rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px;"></i>
+        <i class="ph-duotone ph-trend-up" style="font-size: 5rem; color: var(--primary); margin-bottom: 25px;"></i>
         <h1 style="font-size: 4rem; margin-bottom: 20px;">GLID</h1>
-        <p style="font-size: 1.3rem; color: #6B7280; margin-bottom: 50px; max-width: 600px; margin: 0 auto 50px;">
-            O amanhecer do seu patrimônio. Crédito inteligente e claro.
+        <p style="font-size: 1.3rem; color: var(--text-dark); margin-bottom: 50px; max-width: 600px; margin: 0 auto 50px;">
+            O crédito digital que <span class="highlight">acelera</span> suas conquistas.
         </p>
         <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
-            Simular Meu Futuro <i class="ph-bold ph-arrow-right"></i>
+            Simular Agora <i class="ph-bold ph-arrow-right"></i>
         </a>
     </header>
 
     <section class="container" id="simulador" style="max-width: 500px; margin: -50px auto 0; padding: 0 20px; position: relative; z-index: 10;">
         <div class="simulator-box" id="box-formulario" style="padding: 50px 40px;">
             <div style="text-align: center; margin-bottom: 30px;">
-                <h3 style="font-size: 1.5rem;">Configure sua Conquista</h3>
+                <h3 style="font-size: 1.5rem;">Calculadora de Crédito</h3>
             </div>
             <div style="margin-bottom: 25px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--secondary);">Objetivo</label>
-                <select id="tipo_bem" style="width: 100%;"><option value="imovel">Casa Própria (180x)</option><option value="veiculo">Carro Novo (80x)</option></select>
+                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--primary);">Objetivo</label>
+                <select id="tipo_bem" style="width: 100%;"><option value="imovel">Imóvel</option><option value="veiculo">Veículo</option></select>
             </div>
             <div style="margin-bottom: 35px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--secondary);">Valor Desejado (R$)</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 200.000" style="width: 100%;">
+                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--primary);">Valor (R$)</label>
+                <input type="number" id="valor_credito" placeholder="Ex: 150.000" style="width: 100%;">
             </div>
-            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">Ver Parcelas</button>
+            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">Calcular Parcela</button>
         </div>
 
         <div class="simulator-box" id="box-resultado" style="display: none; padding: 50px 40px; text-align: center;">
-            <h2 style="font-size: 1.8rem;">Caminho Aberto!</h2>
-            <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary-solid); margin: 25px 0;" id="res-parcela">R$ 0,00</div>
+            <h2 style="font-size: 1.8rem;">Resultado da Simulação</h2>
+            <div style="font-size: 3.5rem; font-weight: 900; color: var(--primary); margin: 25px 0;" id="res-parcela">R$ 0,00</div>
             
-            <div style="background: var(--gray-light); border-radius: 15px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-between;">
-                <div><small style="color:#6B7280; font-weight:700;">PRAZO</small><br><b id="res-prazo" style="color:var(--secondary); font-size:1.1rem;">--</b></div>
-                <div><small style="color:#6B7280; font-weight:700;">CRÉDITO</small><br><b id="res-total" style="color:var(--secondary); font-size:1.1rem;">--</b></div>
+            <div style="background: #ECFDF5; border-radius: 12px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-between; border: 1px solid var(--accent);">
+                <div><small style="color:var(--primary); font-weight:700;">PRAZO</small><br><b id="res-prazo" style="color:var(--text-dark); font-size:1.1rem;">--</b></div>
+                <div><small style="color:var(--primary); font-weight:700;">TOTAL</small><br><b id="res-total" style="color:var(--text-dark); font-size:1.1rem;">--</b></div>
             </div>
 
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; background: #25D366 !important; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4) !important;">
-                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Falar no WhatsApp
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; background: #25D366 !important; color: white !important; border-color: #25D366 !important; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4) !important;">
+                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Atendimento WhatsApp
             </a>
-             <button onclick="location.reload()" style="background:none; border:none; color: #999; margin-top: 25px; cursor: pointer; text-decoration: underline;">Recalcular</button>
+             <button onclick="location.reload()" style="background:none; border:none; color: #999; margin-top: 25px; cursor: pointer; text-decoration: underline;">Nova Simulação</button>
         </div>
     </section>
 
     <section style="padding: 100px 20px; background: white; margin-top: 80px;">
         <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-             <h2 style="margin-bottom: 60px; font-size: 2.5rem;">Clareza em Cada Etapa</h2>
+             <h2 style="margin-bottom: 60px; font-size: 2.5rem;">A Escolha Inteligente</h2>
              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
                 <div class="feature-card" style="padding: 40px;">
-                    <div class="feature-icon"><i class="ph-duotone ph-sun"></i></div>
-                    <h3>Sem Juros</h3>
-                    <p style="color: #6B7280;">Fuja das taxas abusivas dos bancos. Aqui você paga apenas uma taxa de administração justa.</p>
+                    <div class="feature-icon"><i class="ph-duotone ph-money"></i></div>
+                    <h3>Economia Real</h3>
+                    <p style="color: #6B7280;">Sem juros abusivos. Você paga apenas uma taxa administrativa justa e fixa.</p>
                 </div>
                 <div class="feature-card" style="padding: 40px;">
-                    <div class="feature-icon"><i class="ph-duotone ph-path"></i></div>
-                    <h3>Planejamento</h3>
-                    <p style="color: #6B7280;">Parcelas que cabem no seu bolso, sem surpresas, para você construir seu futuro com segurança.</p>
+                    <div class="feature-icon"><i class="ph-duotone ph-device-mobile-camera"></i></div>
+                    <h3>100% Digital</h3>
+                    <p style="color: #6B7280;">Simule, contrate e gerencie tudo pelo seu celular, sem burocracia de banco tradicional.</p>
                 </div>
                 <div class="feature-card" style="padding: 40px;">
-                    <div class="feature-icon"><i class="ph-duotone ph-handshake"></i></div>
-                    <h3>Parceria</h3>
-                    <p style="color: #6B7280;">Estamos do seu lado. Processo transparente e regulado pelo Banco Central.</p>
+                    <div class="feature-icon"><i class="ph-duotone ph-shield-check"></i></div>
+                    <h3>Segurança BC</h3>
+                    <p style="color: #6B7280;">Instituição regulada e fiscalizada pelo Banco Central do Brasil.</p>
                 </div>
              </div>
         </div>
@@ -176,8 +188,8 @@
             document.getElementById('res-parcela').innerText = formatar(parcela);
             document.getElementById('res-prazo').innerText = prazo + " meses";
             document.getElementById('res-total').innerText = formatar(valor);
-            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+Horizonte.`;
-             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Horizonte Clean'}) }); } catch(e){}
+            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+Nação.`;
+             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Nacao Clean'}) }); } catch(e){}
         }
         function toggleFaq(el) { el.nextElementSibling.style.display = el.nextElementSibling.style.display==='block'?'none':'block'; }
     </script>
