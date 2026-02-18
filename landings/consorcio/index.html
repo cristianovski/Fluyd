@@ -3,183 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | Império</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Glid | A Gente Topa Realizar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- ESTILO IMPÉRIO CLEAN --- */
+        /* --- ESTILO TOPACRED (LARANJA VAREJO + AZUL FORTE) --- */
         :root {
-            --primary: #1E40AF;       /* Azul Royal Nobre */
-            --accent: #CUA368;        /* Dourado Champagne (Metálico) */
-            --bg-white: #FFFFFF;      /* Branco Puro */
-            --text-dark: #172554;     /* Azul Marinho Profundo */
-            --gray-light: #F8FAFC;    /* Cinza Gelo para fundos sutis */
+            --topa-laranja: #FF6600;  /* Laranja "Ação Imediata" */
+            --topa-azul: #003399;     /* Azul "Institucional/Seguro" */
+            --bg-white: #FFFFFF;
+            --gray-bg: #F5F5F5;       /* Fundo cinza bem clarinho pra destacar o branco */
+            --text-dark: #333333;
         }
 
         body {
             background-color: var(--bg-white);
             color: var(--text-dark);
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
-        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; color: var(--primary); }
+        h1, h2, h3 { 
+            font-weight: 900; 
+            letter-spacing: -0.5px; 
+            color: var(--topa-azul); 
+            text-transform: uppercase; /* Varejo usa muito caixa alta */
+        }
 
-        /* Botão Império Metálico */
+        /* Botão "Quero Agora" (Estilo Varejo) */
         .btn-neon {
-            background: linear-gradient(135deg, #D4AF37 0%, #CUA368 100%) !important; /* Gradiente Dourado */
+            background-color: var(--topa-laranja) !important;
             color: white !important;
-            font-weight: 700 !important;
-            border-radius: 50px !important;
-            padding: 20px 50px !important;
+            font-weight: 900 !important;
+            border-radius: 6px !important; /* Cantos levemente arredondados */
+            padding: 18px 40px !important;
             text-transform: uppercase;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3) !important;
+            box-shadow: 0 4px 0 #CC5200 !important; /* Sombra sólida 3D (botão físico) */
             border: none !important;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            letter-spacing: 1px;
+            transition: all 0.1s;
+            font-size: 1.1rem;
         }
         .btn-neon:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4) !important;
+            transform: translateY(2px); 
+            box-shadow: 0 2px 0 #CC5200 !important; /* Efeito de clique */
             filter: brightness(1.1);
         }
 
-        /* Cards Brancos de Luxo */
+        /* Cards "Caixa de Produto" */
         .simulator-box, .feature-card {
             background: var(--bg-white) !important;
-            border: 1px solid #E2E8F0 !important;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px -20px rgba(30, 64, 175, 0.1) !important; /* Sombra Azul Real Suave */
-            transition: all 0.3s;
+            border: 2px solid #E0E0E0 !important;
+            border-top: 5px solid var(--topa-azul) !important; /* Identidade visual no topo */
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
         }
-        .feature-card:hover { transform: translateY(-5px); border-color: var(--accent) !important; }
+        .feature-card:hover { border-top-color: var(--topa-laranja) !important; }
 
+        /* Inputs Grandes e Fáceis */
         input, select {
-            background: var(--gray-light) !important;
-            border: 1px solid #E2E8F0 !important;
-            border-radius: 16px !important;
-            padding: 18px !important;
-            color: var(--primary) !important;
+            background: #F9F9F9 !important;
+            border: 2px solid #CCC !important;
+            border-radius: 6px !important;
+            padding: 16px !important;
+            color: #333 !important;
             font-weight: 700;
-            font-family: 'Outfit', sans-serif;
-            transition: all 0.3s;
+            font-size: 1rem;
         }
         input:focus, select:focus { 
-            border-color: var(--accent) !important; 
-            background: var(--bg-white) !important;
+            border-color: var(--topa-laranja) !important; 
+            background: #FFF !important;
             outline: none; 
-            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
         }
 
         .feature-icon i { 
-            font-size: 3rem; 
-            margin-bottom: 25px; 
-            color: var(--primary);
+            color: var(--topa-laranja); 
+            font-size: 3.5rem; 
+            margin-bottom: 15px; 
             display: inline-block;
         }
         
-        /* FAQ Clean Luxury */
-        .faq-item { background: var(--bg-white) !important; border-radius: 16px; margin-bottom: 10px; border: 1px solid #E2E8F0 !important; }
-        .faq-question { width: 100%; text-align: left; padding: 25px; background: none; border: none; font-weight: 700; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; font-size: 1.1rem; }
-        .faq-answer { padding: 0 25px 25px; display: none; color: #64748B; line-height: 1.6; }
-        
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--primary);
-            color: white; width: 65px; height: 65px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2rem; text-decoration: none;
-            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
-            z-index: 100; transition: transform 0.2s;
-            border: 2px solid white;
+        /* Highlight Estilo "Marca Texto" */
+        span.highlight { 
+            background-color: var(--topa-laranja); 
+            color: white; 
+            padding: 2px 8px;
+            border-radius: 4px;
         }
-        .whatsapp-float:hover { transform: scale(1.05); background: var(--accent); }
+
+        /* FAQ Simples */
+        .faq-item { background: #F9F9F9 !important; border: 1px solid #EEE !important; margin-bottom: 10px; border-radius: 6px; }
+        .faq-question { width: 100%; text-align: left; padding: 20px; background: none; border: none; font-weight: 700; color: var(--topa-azul); cursor: pointer; display: flex; justify-content: space-between; font-size: 1.1rem; }
+        .faq-answer { padding: 0 20px 20px; display: none; color: #555; line-height: 1.5; }
+        
+        /* WhatsApp Botão Zap */
+        .whatsapp-float {
+            position: fixed; bottom: 20px; right: 20px;
+            background-color: #25D366; color: white;
+            padding: 12px 24px; border-radius: 50px;
+            font-weight: 900; text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100; border: 2px solid white;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .whatsapp-float:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
-    <header class="hero" style="padding: 120px 20px 80px; text-align: center; background: white;">
-        <i class="ph-duotone ph-crown-simple" style="font-size: 5rem; color: var(--primary); margin-bottom: 25px;"></i>
-        <h1 style="font-size: 4rem; margin-bottom: 20px;">GLID</h1>
-        <p style="font-size: 1.3rem; color: #64748B; margin-bottom: 50px; max-width: 600px; margin: 0 auto 50px;">
-            Liderança financeira. Construa seu legado com solidez.
+    <header class="hero" style="padding: 100px 20px 60px; text-align: center; background: white;">
+        <i class="ph-fill ph-check-fat" style="font-size: 5rem; color: var(--topa-azul); margin-bottom: 20px;"></i>
+        <h1 style="font-size: 3.8rem; margin-bottom: 15px; color: var(--topa-azul);">GLID</h1>
+        <p style="font-size: 1.4rem; color: #555; margin-bottom: 40px; font-weight: 400;">
+            Crédito Rápido? <span class="highlight">A GENTE TOPA!</span><br>
+            Sem burocracia e 100% Online.
         </p>
         <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
-            Iniciar Conquista <i class="ph-bold ph-arrow-right"></i>
+            FAZER SIMULAÇÃO AGORA <i class="ph-bold ph-caret-right"></i>
         </a>
     </header>
 
-    <section class="container" id="simulador" style="max-width: 500px; margin: -50px auto 0; padding: 0 20px; position: relative; z-index: 10;">
-        <div class="simulator-box" id="box-formulario" style="padding: 50px 40px;">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h3 style="font-size: 1.5rem;">Planejamento Patrimonial</h3>
+    <section class="container" id="simulador" style="max-width: 500px; margin: -20px auto 0; padding: 0 20px; position: relative; z-index: 10;">
+        <div class="simulator-box" id="box-formulario" style="padding: 30px;">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h3 style="font-size: 1.4rem; color: var(--topa-laranja);">O QUE VOCÊ PRECISA?</h3>
             </div>
-            <div style="margin-bottom: 25px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--primary);">Ativo Desejado</label>
-                <select id="tipo_bem" style="width: 100%;"><option value="imovel">Imóvel (180x)</option><option value="veiculo">Veículo (80x)</option></select>
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 700; color: #555;">SEU OBJETIVO:</label>
+                <select id="tipo_bem" style="width: 100%;">
+                    <option value="imovel">🏡 Comprar Casa ou Reformar (180x)</option>
+                    <option value="veiculo">🚗 Comprar Carro ou Moto (80x)</option>
+                </select>
             </div>
-            <div style="margin-bottom: 35px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--primary);">Valor do Aporte (R$)</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 300.000" style="width: 100%;">
+            <div style="margin-bottom: 30px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 700; color: #555;">VALOR DO CRÉDITO (R$):</label>
+                <input type="number" id="valor_credito" placeholder="Digite aqui o valor..." style="width: 100%;">
             </div>
-            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">Simular Cenário</button>
+            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">CALCULAR PARCELA</button>
         </div>
 
-        <div class="simulator-box" id="box-resultado" style="display: none; padding: 50px 40px; text-align: center;">
-            <h2 style="font-size: 1.8rem;">Viabilidade Confirmada</h2>
-            <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 25px 0;" id="res-parcela">R$ 0,00</div>
+        <div class="simulator-box" id="box-resultado" style="display: none; padding: 30px; text-align: center;">
+            <h2 style="font-size: 1.8rem; color: var(--topa-azul);">PRÉ-APROVADO!</h2>
+            <p style="color: #666; font-size: 1.1rem;">Sua parcela ficou em:</p>
+            <div class="result-value" style="font-size: 3.5rem; font-weight: 900; color: var(--topa-laranja); margin: 15px 0;" id="res-parcela">R$ 0,00</div>
             
-            <div style="background: var(--gray-light); border-radius: 15px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-between;">
-                <div><small style="color:#64748B; font-weight:700;">PRAZO</small><br><b id="res-prazo" style="color:var(--text-dark); font-size:1.1rem;">--</b></div>
-                <div><small style="color:#64748B; font-weight:700;">TOTAL</small><br><b id="res-total" style="color:var(--text-dark); font-size:1.1rem;">--</b></div>
+            <div style="background: #EAF4FF; border-radius: 8px; padding: 15px; margin: 20px 0; color: var(--topa-azul); border: 1px solid #CCE4FF;">
+                <p style="margin: 5px 0;"><strong>PRAZO TOTAL:</strong> <span id="res-prazo">--</span></p>
+                <p style="margin: 5px 0;"><strong>CRÉDITO NA MÃO:</strong> <span id="res-total">--</span></p>
             </div>
 
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; background: #25D366 !important; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4) !important;">
-                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Falar com Banker
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; background: #25D366 !important; box-shadow: 0 4px 0 #15803D !important;">
+                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> CHAMAR NO ZAP
             </a>
-             <button onclick="location.reload()" style="background:none; border:none; color: #999; margin-top: 25px; cursor: pointer; text-decoration: underline;">Novo Cenário</button>
+             <button onclick="location.reload()" style="background:none; border:none; color: #999; margin-top: 15px; cursor: pointer; text-decoration: underline; font-weight: bold;">Simular Outro Valor</button>
         </div>
     </section>
 
-    <section style="padding: 100px 20px; background: white; margin-top: 80px;">
+    <section style="padding: 80px 20px; background: #F5F5F5; margin-top: 60px;">
         <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-             <h2 style="margin-bottom: 60px; font-size: 2.5rem;">Excelência em Crédito</h2>
-             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
-                <div class="feature-card" style="padding: 40px;">
-                    <div class="feature-icon"><i class="ph-duotone ph-gem"></i></div>
-                    <h3>Valor Real</h3>
-                    <p style="color: #64748B;">Maximize seu capital. Sem juros, seu dinheiro rende mais na aquisição do bem.</p>
+             <h2 style="margin-bottom: 40px; font-size: 2.2rem; color: var(--topa-azul);">POR QUE ESCOLHER A GLID?</h2>
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div class="feature-card" style="padding: 30px;">
+                    <div class="feature-icon"><i class="ph-fill ph-lightning"></i></div>
+                    <h3>RÁPIDO</h3>
+                    <p style="color: #666;">Sem filas e sem papelada. Tudo pelo celular, do jeito que você precisa.</p>
                 </div>
-                <div class="feature-card" style="padding: 40px;">
-                    <div class="feature-icon"><i class="ph-duotone ph-strategy"></i></div>
-                    <h3>Estratégia</h3>
-                    <p style="color: #64748B;">Utilize lances para acelerar sua contemplação de forma inteligente e planejada.</p>
+                <div class="feature-card" style="padding: 30px;">
+                    <div class="feature-icon"><i class="ph-fill ph-piggy-bank"></i></div>
+                    <h3>BARATO</h3>
+                    <p style="color: #666;">Muito mais barato que banco. Fuja dos juros e pague uma parcela justa.</p>
                 </div>
-                <div class="feature-card" style="padding: 40px;">
-                    <div class="feature-icon"><i class="ph-duotone ph-bank"></i></div>
-                    <h3>Segurança</h3>
-                    <p style="color: #64748B;">Regulação total pelo Banco Central. Solidez e transparência em cada etapa.</p>
+                <div class="feature-card" style="padding: 30px;">
+                    <div class="feature-icon"><i class="ph-fill ph-shield-check"></i></div>
+                    <h3>SEGURO</h3>
+                    <p style="color: #666;">Empresa séria, fiscalizada pelo Banco Central. Seu dinheiro está protegido.</p>
                 </div>
              </div>
         </div>
     </section>
 
+    <footer style="text-align: center; padding: 40px 20px; background: var(--topa-azul); color: white;">
+        <p><strong>GLID SERVIÇOS FINANCEIROS</strong></p>
+        <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Vitória da Conquista/BA • Parceiro Autorizado</p>
+    </footer>
+
+    <a href="https://wa.me/5577998633429?text=Oi%2C+quero+saber+mais+sobre+a+Glid." class="whatsapp-float">
+        <i class="ph-bold ph-whatsapp-logo"></i> Dúvidas?
+    </a>
+
     <script>
         async function enviarSimulacao() {
-            const valor = parseFloat(document.getElementById('valor_credito').value);
-            if(!valor) return alert('Digite o valor desejado');
+            const valorInput = document.getElementById('valor_credito').value;
+            if(!valorInput) return alert('Digite o valor que você precisa!');
+            
+            const valor = parseFloat(valorInput);
             const prazo = document.getElementById('tipo_bem').value === 'imovel' ? 180 : 80;
             const parcela = (valor * 1.23) / prazo;
             const formatar = (n) => n.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            
             document.getElementById('box-formulario').style.display = 'none';
             document.getElementById('box-resultado').style.display = 'block';
+            
             document.getElementById('res-parcela').innerText = formatar(parcela);
             document.getElementById('res-prazo').innerText = prazo + " meses";
             document.getElementById('res-total').innerText = formatar(valor);
-            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+Império.`;
-             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Imperio Clean'}) }); } catch(e){}
+            
+            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Oi%2C+fiz+uma+simula%C3%A7%C3%A3o+de+${formatar(valor)}+na+Glid+e+gostei.`;
+            
+             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Topacred'}) }); } catch(e){}
         }
-        function toggleFaq(el) { el.nextElementSibling.style.display = el.nextElementSibling.style.display==='block'?'none':'block'; }
     </script>
 </body>
 </html>
