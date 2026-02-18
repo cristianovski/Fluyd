@@ -3,261 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid Cerne | Preservação de Legado</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <title>Glid Aequa | Equilíbrio Patrimonial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- ESTILO CERNE (VERDE MUSGO + DOURADO ENVELHECIDO) --- */
+        /* --- ESTILO AEQUA (MARFIM + PETRÓLEO) --- */
         :root {
-            --musgo-bg: #142119;      /* Verde Floresta Profundo */
-            --musgo-card: #1B2A22;    /* Verde Musgo Suave */
-            --ouro-antigo: #C5A059;   /* Dourado Fosco/Bronze */
-            --ouro-light: #E6C88B;    /* Dourado Claro (Texto) */
-            --creme: #F3F0E6;         /* Off-white para leitura (não branco puro) */
+            --marfim-bg: #FDFBF7;     /* Fundo Creme/Papel */
+            --marfim-card: #FFFFFF;   /* Branco Puro para Cards */
+            --petroleo: #0E4D64;      /* Azul Petróleo Profundo */
+            --petroleo-light: #2C6E85; /* Petróleo Suave */
+            --areia: #E5E2D9;         /* Tom de transição */
             
-            --bg-color: #0E1611;
-            --text-color: #E0E0E0;
-            --border-color: #2F3E34;
+            --bg-color: #FDFBF7;
+            --text-color: #1A282E;    /* Quase preto, levemente azulado */
+            --border-color: #DCD9CE;
         }
 
         body {
             background-color: var(--bg-color);
-            color: var(--creme);
-            font-family: 'Inter', sans-serif; /* Texto corrido moderno */
+            color: var(--text-color);
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
         }
 
-        /* Títulos Clássicos (Lora) */
+        /* Títulos Serifados (Editorial) */
         h1, h2, h3 { 
-            font-family: 'Lora', serif;
-            font-weight: 400; 
-            letter-spacing: 0.02em; 
-            color: var(--ouro-light);
-            text-transform: none; /* Mais elegante em caixa baixa/alta misturado */
+            font-family: 'Playfair Display', serif;
+            font-weight: 600; 
+            color: var(--petroleo);
+            letter-spacing: -0.02em;
         }
 
-        /* Destaque Sutil */
+        /* Destaque Elegante */
         span.highlight { 
-            color: var(--ouro-antigo);
+            color: var(--petroleo-light);
             font-style: italic;
-            border-bottom: 1px solid var(--ouro-antigo);
+            position: relative;
+        }
+        span.highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--petroleo-light);
+            opacity: 0.3;
         }
 
-        /* Botões "Clube Exclusivo" */
+        /* Botões "Aequa" (Minimalistas e Sólidos) */
         .btn-neon {
-            background-color: var(--ouro-antigo) !important;
-            color: #0E1611 !important; /* Texto Verde Escuro no Fundo Dourado */
-            font-family: 'Lora', serif;
-            font-weight: 600 !important;
-            border: 1px solid #8A7035 !important;
-            border-radius: 4px !important;
+            background-color: var(--petroleo) !important;
+            color: #FFFFFF !important;
+            font-family: 'Lato', sans-serif;
+            font-weight: 400 !important;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 16px 36px !important;
-            font-size: 0.95rem;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            padding: 18px 45px !important;
+            border-radius: 2px !important; /* Reto e elegante */
+            border: 1px solid var(--petroleo) !important;
             transition: all 0.4s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+            box-shadow: 0 10px 30px rgba(14, 77, 100, 0.15) !important;
         }
         .btn-neon:hover {
-            background-color: var(--ouro-light) !important;
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.2) !important;
+            background-color: var(--petroleo-light) !important;
+            border-color: var(--petroleo-light) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(14, 77, 100, 0.25) !important;
         }
 
-        /* Cards Elegantes (Borda Fina) */
+        /* Cards Limpos (Clean Luxury) */
         .simulator-box, .feature-card, .faq-item {
-            background-color: var(--musgo-card) !important;
+            background-color: var(--marfim-card) !important;
             border: 1px solid var(--border-color) !important;
-            border-radius: 6px;
+            border-radius: 0px; /* Cantos retos = Sofisticação */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03) !important;
         }
 
-        /* Inputs Sobrios */
+        /* Inputs de Design */
         input, select {
-            background: #111C15 !important;
-            border: 1px solid var(--border-color) !important;
-            color: var(--creme) !important; 
-            border-radius: 4px !important; 
+            background: #FAFAF8 !important;
+            border: 1px solid #DCD9CE !important;
+            color: var(--petroleo) !important; 
+            border-radius: 0px !important; 
             padding: 18px !important;
-            font-family: 'Lora', serif;
+            font-family: 'Lato', sans-serif;
             font-size: 1rem;
+            font-weight: 300;
         }
         input:focus, select:focus {
-            border-color: var(--ouro-antigo) !important; 
+            border-color: var(--petroleo) !important; 
+            background: #FFFFFF !important;
             outline: none;
-            background: #16241B !important;
-            box-shadow: 0 0 0 1px rgba(197, 160, 89, 0.2);
+            box-shadow: 0 0 0 1px rgba(14, 77, 100, 0.1);
         }
 
         /* --- ÍCONES --- */
-        .feature-card { padding: 50px 40px; text-align: left; transition: all 0.5s; border-top: 3px solid transparent !important; }
-        .feature-card:hover { border-top: 3px solid var(--ouro-antigo) !important; background: #1F3028 !important; }
+        .feature-card { padding: 60px 40px; text-align: center; transition: all 0.5s; }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--petroleo-light) !important; }
         .feature-icon i {
-            font-size: 2.2rem; 
-            color: var(--ouro-antigo);
-            margin-bottom: 25px; display: block;
-            opacity: 0.9;
+            font-size: 2.5rem; color: var(--petroleo);
+            margin-bottom: 30px; display: block;
+            opacity: 1;
         }
 
         /* --- RESULTADO --- */
         .result-value { 
-            font-family: 'Lora', serif;
-            font-size: 3.2rem; 
-            color: var(--ouro-light); 
-            margin: 25px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem; 
+            color: var(--petroleo); 
+            margin: 20px 0;
             font-weight: 400;
         }
         
-        /* FAQ Tradicional */
-        .faq-section { padding: 100px 20px; max-width: 900px; margin: 0 auto; }
-        .faq-item { margin-bottom: 15px; border: 1px solid var(--border-color) !important; background: transparent !important; }
+        /* FAQ Editorial */
+        .faq-section { padding: 100px 20px; max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 0; border: none !important; border-bottom: 1px solid var(--border-color) !important; background: transparent !important; box-shadow: none !important; }
         .faq-question {
-            width: 100%; text-align: left; padding: 25px;
-            background: none; border: none; color: var(--creme); 
-            font-family: 'Lora', serif; font-size: 1.1rem; cursor: pointer;
+            width: 100%; text-align: left; padding: 30px 0;
+            background: none; border: none; color: var(--petroleo); 
+            font-family: 'Playfair Display', serif; font-size: 1.2rem; cursor: pointer;
             display: flex; justify-content: space-between; align-items: center;
         }
         .faq-answer {
-            padding: 0 25px 30px 25px; display: none; color: #A3B8AD; line-height: 1.8; font-weight: 300; font-size: 0.95rem;
-            border-top: 1px solid var(--border-color);
+            padding: 0 0 30px 0; display: none; color: #555; line-height: 1.8; font-weight: 300; font-size: 1rem;
         }
 
-        /* Botão Flutuante Discreto */
+        /* Botão Flutuante (Minimalista) */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
-            background-color: var(--musgo-card); 
-            border: 1px solid var(--ouro-antigo);
-            color: var(--ouro-antigo);
+            background-color: var(--petroleo); color: white;
             width: 55px; height: 55px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 1.5rem; text-decoration: none;
             transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(14, 77, 100, 0.3);
         }
-        .whatsapp-float:hover { background: var(--ouro-antigo); color: var(--musgo-bg); }
+        .whatsapp-float:hover { background-color: var(--petroleo-light); transform: scale(1.05); }
     </style>
 </head>
 <body>
 
-    <header class="hero" style="padding: 140px 20px 100px; text-align: center; background: radial-gradient(circle at center top, #1B2A22 0%, #0E1611 80%);">
+    <header class="hero" style="padding: 140px 20px 100px; text-align: center; background: radial-gradient(circle at center, #FDFBF7 0%, #F5F2E9 100%);">
         <div class="container">
-            <i class="ph-thin ph-tree" style="font-size: 4rem; color: var(--ouro-antigo); margin-bottom: 30px; opacity: 0.8;"></i>
+            <i class="ph-light ph-scales" style="font-size: 4rem; color: var(--petroleo); margin-bottom: 30px;"></i>
             
-            <h1 style="font-size: 3.5rem; margin-bottom: 20px; font-style: italic;">Glid Cerne</h1>
-            <p style="font-size: 1.1rem; color: #A3B8AD; margin-bottom: 60px; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 300;">
-                A proteção da essência do seu patrimônio. <br>
-                Estruturas sólidas para <span class="highlight">perpetuar o legado</span> da sua família.
+            <h1 style="font-size: 3.8rem; margin-bottom: 20px;">Glid Aequa</h1>
+            <p style="font-size: 1.1rem; color: #5C6B73; margin-bottom: 60px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8; font-weight: 300;">
+                Inteligência financeira para quem busca equilíbrio. <br>
+                Alavancagem patrimonial com <span class="highlight">custo racional</span> e preservação de liquidez.
             </p>
             <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 15px;">
-                Consultar Viabilidade <i class="ph-light ph-arrow-right"></i>
+                Simular Estrutura <i class="ph-light ph-arrow-right"></i>
             </a>
         </div>
     </header>
 
-    <section class="container" id="simulador" style="max-width: 650px; margin: -60px auto 0; position: relative; z-index: 10; padding: 0 20px;">
-        <div class="simulator-box" id="box-formulario" style="padding: 60px 50px; box-shadow: 0 30px 60px rgba(0,0,0,0.6);">
+    <section class="container" id="simulador" style="max-width: 700px; margin: -60px auto 0; position: relative; z-index: 10; padding: 0 20px;">
+        <div class="simulator-box" id="box-formulario" style="padding: 70px 60px; box-shadow: 0 30px 60px rgba(14, 77, 100, 0.08) !important;">
             <div style="text-align: center; margin-bottom: 50px;">
-                <h3 style="font-size: 1.3rem; margin: 0; color: var(--ouro-light);">Planejamento de Capital</h3>
-                <div style="width: 40px; height: 1px; background: var(--ouro-antigo); margin: 15px auto;"></div>
+                <h3 style="font-size: 1.2rem; margin: 0; color: var(--petroleo); letter-spacing: 2px; text-transform: uppercase; font-family: 'Lato', sans-serif;">Configuração de Ativo</h3>
             </div>
 
-            <div style="margin-bottom: 30px;">
-                <label style="display: block; margin-bottom: 12px; color: #8F9E94; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Destinação do Recurso</label>
-                <select id="tipo_bem" style="width: 100%;">
-                    <option value="imovel">Aquisição Imobiliária (180 meses)</option>
-                    <option value="veiculo">Renovação de Frota Premium (80 meses)</option>
-                </select>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
+                <div>
+                    <label style="display: block; margin-bottom: 12px; color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">Tipo de Ativo</label>
+                    <select id="tipo_bem" style="width: 100%;">
+                        <option value="imovel">Imóvel High-End (180x)</option>
+                        <option value="veiculo">Veículo Premium (80x)</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="display: block; margin-bottom: 12px; color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">Aporte Desejado</label>
+                    <input type="number" id="valor_credito" placeholder="Ex: 800.000" style="width: 100%;">
+                </div>
             </div>
-            <div style="margin-bottom: 40px;">
-                <label style="display: block; margin-bottom: 12px; color: #8F9E94; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Volume de Aporte (BRL)</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 500.000" style="width: 100%;">
-            </div>
+            
             <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;" id="btn-simular">
                 Calcular Custo Efetivo
             </button>
         </div>
 
-        <div class="simulator-box result-card" id="box-resultado" style="display: none; padding: 60px 50px; text-align: center;">
-            <i class="ph-thin ph-shield-check" style="font-size: 3rem; color: var(--ouro-antigo); margin-bottom: 30px; opacity: 0.8;"></i>
-            <h2 style="margin-bottom: 10px; font-size: 1.6rem;">Viabilidade Confirmada</h2>
-            <p style="color: #8F9E94; font-size: 0.9rem; letter-spacing: 1px;">Fluxo mensal estimado para estruturação:</p>
+        <div class="simulator-box result-card" id="box-resultado" style="display: none; padding: 70px 60px; text-align: center; box-shadow: 0 30px 60px rgba(14, 77, 100, 0.08) !important;">
+            <i class="ph-light ph-check-circle" style="font-size: 3rem; color: var(--petroleo); margin-bottom: 30px;"></i>
+            <h2 style="margin-bottom: 10px; font-size: 1.8rem;">Smart Allocation</h2>
+            <p style="color: #666; font-size: 0.9rem; letter-spacing: 1px; font-family: 'Lato', sans-serif;">FLUXO MENSAL OTIMIZADO</p>
             <div class="result-value" id="res-parcela">R$ 0,00</div>
             
-            <div style="border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 25px 0; margin: 40px 0; display: flex; justify-content: space-between;">
+            <div style="display: flex; justify-content: space-between; margin: 50px 0; border-top: 1px solid var(--border-color); padding-top: 30px;">
                 <div style="text-align: left;">
-                    <span style="color: #6C8578; font-size: 0.75rem; text-transform: uppercase; display: block; margin-bottom: 5px;">Horizonte de Tempo</span>
-                    <b id="res-prazo" style="color: var(--creme); font-family: 'Lora', serif; font-size: 1.1rem;">--</b>
+                    <span style="color: #888; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 5px;">Prazo Total</span>
+                    <b id="res-prazo" style="color: var(--petroleo); font-family: 'Playfair Display', serif; font-size: 1.2rem;">--</b>
                 </div>
                 <div style="text-align: right;">
-                    <span style="color: #6C8578; font-size: 0.75rem; text-transform: uppercase; display: block; margin-bottom: 5px;">Capital Preservado</span>
-                    <b id="res-total" style="color: var(--creme); font-family: 'Lora', serif; font-size: 1.1rem;">--</b>
+                    <span style="color: #888; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 5px;">Capital Alavancado</span>
+                    <b id="res-total" style="color: var(--petroleo); font-family: 'Playfair Display', serif; font-size: 1.2rem;">--</b>
                 </div>
             </div>
             
             <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 20px;">
-                Agendar com Especialista
+                Falar com Banker
             </a>
             
-            <button onclick="location.reload()" style="background:none; border:none; color: #6C8578; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; margin-top: 10px;">
-                Nova Simulação
+            <button onclick="location.reload()" style="background:none; border:none; color: #888; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 0.7rem; margin-top: 10px;">
+                Recalcular
             </button>
         </div>
     </section>
 
-    <section style="padding: 120px 20px; background: #0E1611; margin-top: 80px;">
+    <section style="padding: 120px 20px; background: #FFF; margin-top: 80px;">
         <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 80px; color: var(--ouro-light);">Pilares da Perenidade</h2>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px;">
                 <div class="feature-card">
-                    <span class="feature-icon"><i class="ph-thin ph-hourglass"></i></span>
-                    <h3>Longo Prazo</h3>
-                    <p style="color: #A3B8AD; font-weight: 300; font-size: 0.9rem; line-height: 1.8;">Visão geracional. O crédito estruturado permite aquisição de bens duráveis sem comprometer a liquidez imediata da família.</p>
+                    <span class="feature-icon"><i class="ph-light ph-trend-up"></i></span>
+                    <h3>Alavancagem Pura</h3>
+                    <p style="color: #666; font-weight: 300; font-size: 0.95rem; line-height: 1.8;">Expanda seu patrimônio imobiliário utilizando capital de terceiros a um custo inferior aos rendimentos do seu portfólio.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon"><i class="ph-thin ph-scales"></i></span>
-                    <h3>Equilíbrio</h3>
-                    <p style="color: #A3B8AD; font-weight: 300; font-size: 0.9rem; line-height: 1.8;">Custo de capital racional. Sem juros compostos, a matemática joga a favor da preservação do seu patrimônio.</p>
+                    <span class="feature-icon"><i class="ph-light ph-lock-key-open"></i></span>
+                    <h3>Liquidez Preservada</h3>
+                    <p style="color: #666; font-weight: 300; font-size: 0.95rem; line-height: 1.8;">Não descapitalize. Mantenha seus investimentos atuais rendendo enquanto adquire novos bens de alto valor.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon"><i class="ph-thin ph-users-four"></i></span>
-                    <h3>Sucessão</h3>
-                    <p style="color: #A3B8AD; font-weight: 300; font-size: 0.9rem; line-height: 1.8;">Ferramenta ideal para planejamento sucessório e construção de portfólio imobiliário sólido para as próximas gerações.</p>
+                    <span class="feature-icon"><i class="ph-light ph-strategy"></i></span>
+                    <h3>Planejamento Fiscal</h3>
+                    <p style="color: #666; font-weight: 300; font-size: 0.95rem; line-height: 1.8;">Estrutura eficiente que permite planejamento sucessório e elisão fiscal inteligente, tudo dentro das normas do Banco Central.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="faq-section">
-        <h2 style="text-align: center; margin-bottom: 60px; color: var(--ouro-light);">Diretrizes (FAQ)</h2>
+        <h2 style="text-align: left; margin-bottom: 60px; color: var(--petroleo);">Insights (FAQ)</h2>
         
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                Qual a vantagem sobre o financiamento bancário?
-                <i class="ph-light ph-caret-down" style="color: var(--ouro-antigo)"></i>
+                Custo de Oportunidade vs. Pagamento à Vista
+                <i class="ph-light ph-caret-down"></i>
             </button>
             <div class="faq-answer">
-                A ausência de juros sobre o saldo devedor. No longo prazo, isso representa uma economia brutal de capital, que pode permanecer investido em suas aplicações rendendo juros a seu favor.
+                Ao optar pela Glid Aequa, você evita o desembolso imediato de caixa. Isso permite que seu dinheiro continue aplicado, gerando um spread positivo entre o rendimento da aplicação e o custo administrativo da carta.
             </div>
         </div>
 
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                Blindagem contra inflação
-                <i class="ph-light ph-caret-down" style="color: var(--ouro-antigo)"></i>
+                Estratégia de Lance Embutido
+                <i class="ph-light ph-caret-down"></i>
             </button>
             <div class="faq-answer">
-                O crédito é atualizado anualmente (INCC ou IPCA), garantindo que seu poder de compra seja mantido até o momento da aquisição, protegendo o valor real do patrimônio.
+                Utilize parte da própria carta para ofertar lances. Isso aumenta a probabilidade de contemplação a curto prazo sem necessidade de aporte extra de capital próprio.
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 80px 20px; background: #0B110D; color: #58695F; border-top: 1px solid #1A2F23; font-weight: 300; font-size: 0.8rem; letter-spacing: 1px;">
-        <i class="ph-thin ph-tree" style="font-size: 2rem; color: #2F3E34; margin-bottom: 20px;"></i>
-        <p style="margin-bottom: 10px;">GLID CERNE • GESTÃO DE PATRIMÔNIO</p>
-        <p>Regulado pelo Banco Central do Brasil</p>
+    <footer style="text-align: center; padding: 80px 20px; background: var(--bg-color); color: #888; border-top: 1px solid var(--border-color); font-weight: 300; font-size: 0.8rem; letter-spacing: 1px;">
+        <i class="ph-light ph-scales" style="font-size: 2rem; color: var(--petroleo-light); margin-bottom: 20px;"></i>
+        <p style="margin-bottom: 10px;">GLID AEQUA • SMART CAPITAL</p>
+        <p>Regulated by Banco Central do Brasil</p>
     </footer>
 
-    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+desejo+consultar+viabilidade+Cerne." class="whatsapp-float" title="Consultor">
-        <i class="ph-light ph-whatsapp-logo"></i>
+    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+tenho+interesse+na+Glid+Aequa." class="whatsapp-float" title="Banker">
+        <i class="ph-bold ph-whatsapp-logo"></i>
     </a>
 
     <script>
@@ -276,7 +286,7 @@
             const btn = document.getElementById('btn-simular');
             const originalText = btn.innerHTML;
 
-            if (!valorInput) { alert("Por favor, informe o valor."); return; }
+            if (!valorInput) { alert("Informe o valor."); return; }
 
             const valor = parseFloat(valorInput);
             const prazo = tipo === 'imovel' ? 180 : 80;
@@ -284,13 +294,13 @@
             const parcela = (valor * taxaTotal) / prazo;
             const formatarDinheiro = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-            btn.innerHTML = 'ANALISANDO...'; btn.style.opacity = "0.7"; btn.disabled = true;
+            btn.innerHTML = 'CALCULANDO...'; btn.style.opacity = "0.7"; btn.disabled = true;
 
             try {
                 fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString(), origem: "Glid Cerne" })
+                    body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString(), origem: "Glid Aequa" })
                 });
 
                 document.getElementById('box-formulario').style.display = 'none';
@@ -300,7 +310,7 @@
                 document.getElementById('res-prazo').innerText = prazo + " meses";
                 document.getElementById('res-total').innerText = formatarDinheiro(valor);
 
-                const linkZap = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+tenho+interesse+na+categoria+Cerne+Glid.+Valor+de+aporte%3A+${formatarDinheiro(valor)}.`;
+                const linkZap = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+uma+estrutura+Aequa+de+${formatarDinheiro(valor)}.`;
                 document.getElementById('btn-whatsapp').href = linkZap;
 
             } catch (error) { console.error(error); } 
