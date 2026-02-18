@@ -65,7 +65,7 @@
         .trust-badges { display: flex; gap: 20px; margin-top: 40px; opacity: 0.7; }
         .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--text-gray); }
 
-        /* --- CARROSSEL INFINITO (LOGOS VIA API) --- */
+        /* --- CARROSSEL INFINITO --- */
         .partners-section { 
             padding: 40px 0; background: #020617; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b; 
             overflow: hidden; white-space: nowrap; position: relative;
@@ -86,19 +86,19 @@
             position: relative;
         }
 
-        /* O TRUQUE: Deixa o logo Branco e Transparente */
+        /* FILTRO: Deixa o logo Branco e Transparente */
         .partner-logo img { 
             height: 45px; 
             width: auto; 
             display: block; 
-            filter: grayscale(100%) brightness(200%) contrast(0%); /* Força Branco */
+            filter: grayscale(100%) brightness(200%) contrast(0%); 
             opacity: 0.5;
             transition: all 0.3s ease;
         }
 
         /* Hover: Revela as cores originais */
         .partner-logo:hover img { 
-            filter: none; /* Remove filtros */
+            filter: none; 
             opacity: 1; 
             transform: scale(1.1);
         }
@@ -242,40 +242,39 @@
             <div style="width:100%; overflow:hidden;">
                 <div class="marquee-track">
                     
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/itau.com.br" alt="Itaú" title="Itaú"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/bradesco.com.br" alt="Bradesco" title="Bradesco"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/bb.com.br" alt="BB" title="Banco do Brasil"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/santander.com.br" alt="Santander" title="Santander"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/caixa.gov.br" alt="Caixa" title="Caixa"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/itau.jpg.png" alt="Itaú"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bradesco.jpg.png" alt="Bradesco"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bb.jpg.png" alt="BB"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/santander.jpg.png" alt="Santander"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/caixa.jpg.png" alt="Caixa"></div>
                     
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/chevrolet.com.br" alt="Chevrolet" title="Chevrolet"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/yamaha-motor.com.br" alt="Yamaha" title="Yamaha"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/portoseguro.com.br" alt="Porto" title="Porto Bank"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/ademicon.com.br" alt="Ademicon" title="Ademicon"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/cnp.com.br" alt="CNP" title="CNP Seguros"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/embracon.com.br" alt="Embracon" title="Embracon"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/chevrolet.jpg.png" alt="Chevrolet"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/yamaha.jpg.png" alt="Yamaha"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/ademicon.jpg.png" alt="Ademicon"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/cnp.jpg.png" alt="CNP Seguros"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/mapfre.jpg.png" alt="Mapfre"></div>
                     
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/rodobens.com.br" alt="Rodobens" title="Rodobens"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/disalconsorcio.com.br" alt="Disal" title="Disal"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/racon.com.br" alt="Racon" title="Racon"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/consorciocanopus.com.br" alt="Canopus" title="Canopus"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/rodobens.jpg.png" alt="Rodobens"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/disal.jpg.png" alt="Disal"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/servopa.jpg.png" alt="Servopa"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/gazin.jpg.png" alt="Gazin"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/canopus.png.png" alt="Canopus"></div>
 
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/itau.com.br" alt="Itaú"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/bradesco.com.br" alt="Bradesco"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/bb.com.br" alt="BB"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/santander.com.br" alt="Santander"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/caixa.gov.br" alt="Caixa"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/chevrolet.com.br" alt="Chevrolet"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/yamaha-motor.com.br" alt="Yamaha"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/portoseguro.com.br" alt="Porto"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/ademicon.com.br" alt="Ademicon"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/cnp.com.br" alt="CNP"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/embracon.com.br" alt="Embracon"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/rodobens.com.br" alt="Rodobens"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/disalconsorcio.com.br" alt="Disal"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/racon.com.br" alt="Racon"></div>
-                    <div class="partner-logo"><img src="https://logo.clearbit.com/consorciocanopus.com.br" alt="Canopus"></div>
-
+                    <div class="partner-logo"><img src="../assets/img/logos/itau.jpg.png" alt="Itaú"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bradesco.jpg.png" alt="Bradesco"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bb.jpg.png" alt="BB"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/santander.jpg.png" alt="Santander"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/caixa.jpg.png" alt="Caixa"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/chevrolet.jpg.png" alt="Chevrolet"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/yamaha.jpg.png" alt="Yamaha"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/ademicon.jpg.png" alt="Ademicon"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/cnp.jpg.png" alt="CNP Seguros"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/mapfre.jpg.png" alt="Mapfre"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/rodobens.jpg.png" alt="Rodobens"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/disal.jpg.png" alt="Disal"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/servopa.jpg.png" alt="Servopa"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/gazin.jpg.png" alt="Gazin"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/canopus.png.png" alt="Canopus"></div>
                 </div>
             </div>
         </div>
