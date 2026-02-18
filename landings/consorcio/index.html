@@ -3,119 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid Império | Liderança Absoluta</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Glid | Horizonte</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- ESTILO IMPÉRIO (ROYAL BLUE + CHAMPAGNE) --- */
+        /* --- ESTILO HORIZONTE CLEAN --- */
         :root {
-            --primary: #2563EB;       /* Azul Royal Elétrico */
-            --accent: #F59E0B;        /* Dourado Âmbar */
-            --bg-body: #FFFFFF;
-            --text: #1E3A8A;
+            --primary-gradient: linear-gradient(135deg, #FB923C 0%, #EA580C 100%); /* Laranja Sunset */
+            --primary-solid: #EA580C;
+            --secondary: #0E3A4A;     /* Petróleo Profundo (Texto) */
+            --bg-white: #FFFFFF;      /* Branco Puro */
+            --gray-light: #F3F4F6;    /* Cinza muito claro para inputs */
         }
 
         body {
-            background-color: var(--bg-body);
-            color: var(--text);
-            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-white);
+            color: var(--secondary);
+            font-family: 'Urbanist', sans-serif;
         }
 
-        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; color: var(--primary); }
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; color: var(--secondary); }
 
-        /* Botão Império */
+        /* Botão Horizonte Vibrante */
         .btn-neon {
-            background-color: var(--accent) !important;
+            background: var(--primary-gradient) !important;
             color: white !important;
             font-weight: 700 !important;
-            border-radius: 50px !important;
-            padding: 20px 50px !important;
+            border-radius: 12px !important;
+            padding: 20px 45px !important;
             text-transform: uppercase;
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3) !important;
+            box-shadow: 0 10px 30px rgba(234, 88, 12, 0.3) !important;
             border: none !important;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            font-size: 1rem;
         }
-        .btn-neon:hover { transform: translateY(-3px); }
+        .btn-neon:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 40px rgba(234, 88, 12, 0.4) !important;
+            filter: brightness(1.05);
+        }
 
+        /* Cards Brancos Limpos */
         .simulator-box, .feature-card {
-            background: #F8FAFC !important;
-            border: 1px solid #E2E8F0 !important;
+            background: var(--bg-white) !important;
+            border: 1px solid #E5E7EB !important;
             border-radius: 20px;
-            box-shadow: 0 15px 40px -5px rgba(37, 99, 235, 0.1) !important;
+            box-shadow: 0 20px 40px -20px rgba(14, 58, 74, 0.1) !important;
+            transition: transform 0.3s;
         }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--primary-solid) !important; }
 
         input, select {
-            background: white !important;
-            border: 2px solid #BFDBFE !important;
+            background: var(--gray-light) !important;
+            border: 2px solid transparent !important;
             border-radius: 12px !important;
-            padding: 16px !important;
-            color: var(--primary) !important;
-            font-weight: 600;
+            padding: 18px !important;
+            color: var(--secondary) !important;
+            font-weight: 700;
+            font-family: 'Urbanist', sans-serif;
+            transition: all 0.3s;
         }
-        input:focus { border-color: var(--primary) !important; outline: none; }
+        input:focus, select:focus { 
+            border-color: var(--primary-solid) !important; 
+            background: var(--bg-white) !important;
+            outline: none; 
+            box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.1);
+        }
 
-        .feature-icon i { color: white; font-size: 2.8rem; margin-bottom: 20px; background: var(--primary); padding: 15px; border-radius: 50%; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3); }
-        
-        /* FAQ */
-        .faq-item { background: #F8FAFC !important; border-radius: 12px; margin-bottom: 10px; border: none !important; }
-        .faq-question { width: 100%; text-align: left; padding: 20px; background: none; border: none; font-weight: 700; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; }
-        .faq-answer { padding: 0 20px 20px; display: none; color: #555; }
+        .feature-icon i { 
+            font-size: 3rem; 
+            margin-bottom: 25px; 
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* FAQ Clean */
+        .faq-item { background: var(--bg-white) !important; border-radius: 16px; margin-bottom: 10px; border: 1px solid #E5E7EB !important; }
+        .faq-question { width: 100%; text-align: left; padding: 25px; background: none; border: none; font-weight: 700; color: var(--secondary); cursor: pointer; display: flex; justify-content: space-between; font-size: 1.1rem; }
+        .faq-answer { padding: 0 25px 25px; display: none; color: #555; line-height: 1.6; }
         
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
-            background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
-            color: white; width: 60px; height: 60px; border-radius: 50%;
+            background: var(--primary-gradient); color: white;
+            width: 65px; height: 65px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             font-size: 2rem; text-decoration: none;
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 10px 30px rgba(234, 88, 12, 0.4);
             z-index: 100; transition: transform 0.2s;
         }
+        .whatsapp-float:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
-    <header class="hero" style="padding: 100px 20px; text-align: center;">
-        <i class="ph-duotone ph-crown-simple" style="font-size: 4.5rem; color: var(--accent); margin-bottom: 20px;"></i>
-        <h1 style="font-size: 4rem; margin-bottom: 15px;">GLID IMPÉRIO</h1>
-        <p style="font-size: 1.2rem; color: #64748B; margin-bottom: 40px;">Construa seu patrimônio com solidez.</p>
-        <a href="#simulador" class="btn-neon" style="text-decoration: none;">Iniciar Conquista</a>
+    <header class="hero" style="padding: 120px 20px 80px; text-align: center; background: white;">
+        <i class="ph-duotone ph-sun-horizon" style="font-size: 5rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px;"></i>
+        <h1 style="font-size: 4rem; margin-bottom: 20px;">GLID</h1>
+        <p style="font-size: 1.3rem; color: #6B7280; margin-bottom: 50px; max-width: 600px; margin: 0 auto 50px;">
+            O amanhecer do seu patrimônio. Crédito inteligente e claro.
+        </p>
+        <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
+            Simular Meu Futuro <i class="ph-bold ph-arrow-right"></i>
+        </a>
     </header>
 
-    <section class="container" id="simulador" style="max-width: 500px; margin: -40px auto 0; padding: 0 20px;">
-        <div class="simulator-box" id="box-formulario" style="padding: 40px;">
-            <div style="margin-bottom: 20px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 700;">Seu Plano</label>
-                <select id="tipo_bem" style="width: 100%;"><option value="imovel">Imóvel</option><option value="veiculo">Veículo</option></select>
+    <section class="container" id="simulador" style="max-width: 500px; margin: -50px auto 0; padding: 0 20px; position: relative; z-index: 10;">
+        <div class="simulator-box" id="box-formulario" style="padding: 50px 40px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3 style="font-size: 1.5rem;">Configure sua Conquista</h3>
             </div>
-            <div style="margin-bottom: 30px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 700;">Valor (R$)</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 250.000" style="width: 100%;">
+            <div style="margin-bottom: 25px;">
+                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--secondary);">Objetivo</label>
+                <select id="tipo_bem" style="width: 100%;"><option value="imovel">Casa Própria (180x)</option><option value="veiculo">Carro Novo (80x)</option></select>
             </div>
-            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">Ver Resultado</button>
+            <div style="margin-bottom: 35px;">
+                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: var(--secondary);">Valor Desejado (R$)</label>
+                <input type="number" id="valor_credito" placeholder="Ex: 200.000" style="width: 100%;">
+            </div>
+            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">Ver Parcelas</button>
         </div>
-        <div class="simulator-box" id="box-resultado" style="display: none; padding: 40px; text-align: center;">
-            <h2 style="font-size: 1.5rem;">Aprovado</h2>
-            <div style="font-size: 3rem; font-weight: 800; color: var(--primary); margin: 20px 0;" id="res-parcela">R$ 0,00</div>
-            <p id="res-prazo" style="font-weight: 700;">--</p>
-            <p id="res-total">--</p>
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: block; text-decoration: none; background: #25D366 !important; margin-top: 20px;">WhatsApp</a>
-             <button onclick="location.reload()" style="background:none; border:none; color: #64748B; margin-top: 20px; cursor: pointer; text-decoration: underline;">Voltar</button>
+
+        <div class="simulator-box" id="box-resultado" style="display: none; padding: 50px 40px; text-align: center;">
+            <h2 style="font-size: 1.8rem;">Caminho Aberto!</h2>
+            <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary-solid); margin: 25px 0;" id="res-parcela">R$ 0,00</div>
+            
+            <div style="background: var(--gray-light); border-radius: 15px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-between;">
+                <div><small style="color:#6B7280; font-weight:700;">PRAZO</small><br><b id="res-prazo" style="color:var(--secondary); font-size:1.1rem;">--</b></div>
+                <div><small style="color:#6B7280; font-weight:700;">CRÉDITO</small><br><b id="res-total" style="color:var(--secondary); font-size:1.1rem;">--</b></div>
+            </div>
+
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; background: #25D366 !important; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4) !important;">
+                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Falar no WhatsApp
+            </a>
+             <button onclick="location.reload()" style="background:none; border:none; color: #999; margin-top: 25px; cursor: pointer; text-decoration: underline;">Recalcular</button>
+        </div>
+    </section>
+
+    <section style="padding: 100px 20px; background: white; margin-top: 80px;">
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+             <h2 style="margin-bottom: 60px; font-size: 2.5rem;">Clareza em Cada Etapa</h2>
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+                <div class="feature-card" style="padding: 40px;">
+                    <div class="feature-icon"><i class="ph-duotone ph-sun"></i></div>
+                    <h3>Sem Juros</h3>
+                    <p style="color: #6B7280;">Fuja das taxas abusivas dos bancos. Aqui você paga apenas uma taxa de administração justa.</p>
+                </div>
+                <div class="feature-card" style="padding: 40px;">
+                    <div class="feature-icon"><i class="ph-duotone ph-path"></i></div>
+                    <h3>Planejamento</h3>
+                    <p style="color: #6B7280;">Parcelas que cabem no seu bolso, sem surpresas, para você construir seu futuro com segurança.</p>
+                </div>
+                <div class="feature-card" style="padding: 40px;">
+                    <div class="feature-icon"><i class="ph-duotone ph-handshake"></i></div>
+                    <h3>Parceria</h3>
+                    <p style="color: #6B7280;">Estamos do seu lado. Processo transparente e regulado pelo Banco Central.</p>
+                </div>
+             </div>
         </div>
     </section>
 
     <script>
         async function enviarSimulacao() {
             const valor = parseFloat(document.getElementById('valor_credito').value);
-            if(!valor) return alert('Digite o valor');
+            if(!valor) return alert('Digite o valor desejado');
             const prazo = document.getElementById('tipo_bem').value === 'imovel' ? 180 : 80;
             const parcela = (valor * 1.23) / prazo;
+            const formatar = (n) => n.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
             document.getElementById('box-formulario').style.display = 'none';
             document.getElementById('box-resultado').style.display = 'block';
-            document.getElementById('res-parcela').innerText = parcela.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            document.getElementById('res-parcela').innerText = formatar(parcela);
             document.getElementById('res-prazo').innerText = prazo + " meses";
-            document.getElementById('res-total').innerText = "Total: " + valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=ImperioSim`;
-             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Imperio'}) }); } catch(e){}
+            document.getElementById('res-total').innerText = formatar(valor);
+            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+Horizonte.`;
+             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Horizonte Clean'}) }); } catch(e){}
         }
         function toggleFaq(el) { el.nextElementSibling.style.display = el.nextElementSibling.style.display==='block'?'none':'block'; }
     </script>
