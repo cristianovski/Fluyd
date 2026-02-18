@@ -6,6 +6,13 @@
     <title>Fluyd | Consórcio Inteligente</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
+    <style>
+        /* Estilos Extras para o Resultado */
+        .result-card { display: none; text-align: center; animation: fadeIn 0.5s; }
+        .result-value { font-size: 2.5rem; font-weight: 800; color: #00ff88; text-shadow: 0 0 20px rgba(0,255,136,0.3); margin: 10px 0; }
+        .result-details { color: #aaa; font-size: 0.9rem; margin-bottom: 20px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
 <body>
     <header class="hero">
@@ -17,25 +24,40 @@
     </header>
 
     <section class="container" id="simulador">
-        <div class="simulator-box">
+        <div class="simulator-box" id="box-formulario">
             <div class="input-group">
                 <label>O que você quer conquistar?</label>
                 <select id="tipo_bem">
-                    <option value="imovel">Imóvel</option>
-                    <option value="veiculo">Veículo</option>
-                    <option value="servico">Serviços</option>
+                    <option value="imovel">Imóvel (Até 180x)</option>
+                    <option value="veiculo">Veículo (Até 80x)</option>
                 </select>
             </div>
             <div class="input-group">
                 <label>Valor do Crédito (R$)</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 200000">
+                <input type="number" id="valor_credito" placeholder="Ex: 300000">
             </div>
             <div class="input-group">
                 <label>&nbsp;</label>
                 <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%;" id="btn-simular">Ver Parcelas</button>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 20px; color: #555; font-size: 0.9rem;">*Simulação via Make & Teddy Open Finance.</p>
+
+        <div class="simulator-box result-card" id="box-resultado">
+            <h2>Simulação Aprovada! 🚀</h2>
+            <p style="color: #ccc;">Parcela estimada:</p>
+            <div class="result-value" id="res-parcela">R$ 0,00</div>
+            <div class="result-details">
+                Prazo: <span id="res-prazo" style="color: white;">--</span> <br>
+                Crédito Total: <span id="res-total" style="color: white;">--</span>
+            </div>
+            <a href="https://wa.me/5511999999999?text=Quero%20avançar%20com%20essa%20simulação" class="btn-neon" style="background: #25D366; box-shadow: 0 0 15px rgba(37,211,102,0.4);">
+                Contratar pelo WhatsApp
+            </a>
+            <br><br>
+            <button onclick="location.reload()" style="background:none; border:none; color: #555; cursor: pointer; text-decoration: underline;">Fazer nova simulação</button>
+        </div>
+
+        <p style="text-align: center; margin-top: 20px; color: #555; font-size: 0.9rem;">*Cálculo base inclui taxa administrativa média de mercado. Sujeito a análise.</p>
     </section>
 
     <section class="authority-bar">
@@ -47,11 +69,9 @@
 
     <footer>
         <div class="container">
-            <p><strong>Fluyd - Inteligência Financeira.</strong><br>Correspondente bancário digital em conformidade com a Resolução CMN 4.935/2021.</p>
+            <p><strong>Fluyd - Inteligência Financeira.</strong><br>Correspondente bancário digital.</p>
         </div>
     </footer>
-
-    <a href="#" class="whatsapp-float">Falar com Humano</a>
 
     <script>
         async function enviarSimulacao() {
@@ -59,23 +79,38 @@
             const valor = document.getElementById('valor_credito').value;
             const btn = document.getElementById('btn-simular');
 
-            if (!valor) { alert("Por favor, digite o valor que deseja conquistar."); return; }
+            if (!valor) { alert("Por favor, digite o valor."); return; }
 
-            btn.innerText = "Conectando ao GEM..."; btn.style.opacity = "0.7"; btn.disabled = true;
+            // Animação de Carregamento
+            btn.innerText = "Calculando com IA...";
+            btn.style.opacity = "0.7";
+            btn.disabled = true;
 
             try {
-                // SEU WEBHOOK AQUI
-                await fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
+                // SEU WEBHOOK ATUALIZADO
+                const response = await fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString() })
                 });
-                alert("✅ Simulação enviada! O GEM está processando.");
-                btn.innerText = "Ver Parcelas";
+
+                const json = await response.json();
+
+                // Esconde formulário, Mostra Resultado
+                document.getElementById('box-formulario').style.display = 'none';
+                document.getElementById('box-resultado').style.display = 'block';
+
+                // Preenche os dados que vieram do Make
+                document.getElementById('res-parcela').innerText = json.parcela;
+                document.getElementById('res-prazo').innerText = json.prazo;
+                document.getElementById('res-total').innerText = "Crédito de R$ " + valor;
+
             } catch (error) {
-                console.error(error); alert("Erro de conexão. O GEM já foi notificado.");
-            } finally {
-                btn.style.opacity = "1"; btn.disabled = false;
+                console.error(error);
+                alert("Erro ao conectar. Tente novamente.");
+                btn.innerText = "Ver Parcelas";
+                btn.style.opacity = "1";
+                btn.disabled = false;
             }
         }
     </script>

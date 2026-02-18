@@ -1,0 +1,127 @@
+=== ESTRUTURA DE PASTAS ===
+.:
+assets
+fluyd_debug.txt
+index.html
+landings
+
+./assets:
+css
+
+./assets/css:
+style-dark-neon.css
+
+./landings:
+consorcio
+
+./landings/consorcio:
+index.html
+
+
+=== ARQUIVO: landings/consorcio/index.html ===
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluyd | Consórcio Inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>Conquiste seu patrimônio com <br><span>Fluidez</span>.</h1>
+            <p>Planejamento inteligente sem juros abusivos. Autorizado pelo Banco Central.</p>
+            <a href="#simulador" class="btn-neon">Iniciar Simulação</a>
+        </div>
+    </header>
+
+    <section class="container" id="simulador">
+        <div class="simulator-box">
+            <div class="input-group">
+                <label>O que você quer conquistar?</label>
+                <select id="tipo_bem">
+                    <option value="imovel">Imóvel</option>
+                    <option value="veiculo">Veículo</option>
+                    <option value="servico">Serviços</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Valor do Crédito (R$)</label>
+                <input type="number" id="valor_credito" placeholder="Ex: 200000">
+            </div>
+            <div class="input-group">
+                <label>&nbsp;</label>
+                <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%;" id="btn-simular">Ver Parcelas</button>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 20px; color: #555; font-size: 0.9rem;">*Simulação via Make & Teddy Open Finance.</p>
+    </section>
+
+    <section class="authority-bar">
+        <div class="container">
+            <p style="color: #666; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Segurança Integrada</p>
+            <div style="opacity: 0.7; font-weight: bold;">Teddy Open Finance • Cotafácil • Banco Central</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>Fluyd - Inteligência Financeira.</strong><br>Correspondente bancário digital em conformidade com a Resolução CMN 4.935/2021.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="whatsapp-float">Falar com Humano</a>
+
+    <script>
+        async function enviarSimulacao() {
+            const tipo = document.getElementById('tipo_bem').value;
+            const valor = document.getElementById('valor_credito').value;
+            const btn = document.getElementById('btn-simular');
+
+            if (!valor) { alert("Por favor, digite o valor que deseja conquistar."); return; }
+
+            btn.innerText = "Conectando ao GEM..."; btn.style.opacity = "0.7"; btn.disabled = true;
+
+            try {
+                // SEU WEBHOOK AQUI
+                await fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString() })
+                });
+                alert("✅ Simulação enviada! O GEM está processando.");
+                btn.innerText = "Ver Parcelas";
+            } catch (error) {
+                console.error(error); alert("Erro de conexão. O GEM já foi notificado.");
+            } finally {
+                btn.style.opacity = "1"; btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+=== ARQUIVO: assets/css/style-dark-neon.css ===
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: #121212; color: #FFFFFF; line-height: 1.6; }
+:root { --primary: #7F00FF; --primary-glow: rgba(127, 0, 255, 0.4); --bg-card: #1E1E1E; --text-muted: #A0A0A0; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.hero { height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at center, #1a0b2e 0%, #121212 70%); }
+.hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; }
+.hero span { color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); }
+.btn-neon { background-color: var(--primary); color: #fff; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 0 15px var(--primary-glow); transition: 0.3s; border: none; cursor: pointer; font-size: 1.1rem; }
+.btn-neon:hover { transform: scale(1.05); box-shadow: 0 0 30px var(--primary-glow); }
+.simulator-box { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid #333; margin-top: -100px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); display: flex; gap: 20px; flex-wrap: wrap; }
+.input-group { flex: 1; min-width: 250px; text-align: left; }
+.input-group label { display: block; margin-bottom: 10px; color: var(--text-muted); }
+.input-group input, .input-group select { width: 100%; padding: 15px; background: #000; border: 1px solid #333; border-radius: 10px; color: #fff; }
+.authority-bar { padding: 80px 0 40px; text-align: center; border-bottom: 1px solid #222; }
+footer { padding: 60px 0; text-align: center; font-size: 0.8rem; color: #555; }
+.whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; padding: 15px 25px; border-radius: 50px; font-weight: bold; text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 1000; }
+
+
+=== ARQUIVO: index.html (Raiz) ===
+<meta http-equiv="refresh" content="0; url=landings/consorcio/">
