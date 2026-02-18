@@ -16,21 +16,7 @@
       gtag('js', new Date());
       gtag('config', 'G-placeholder'); 
     </script>
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '0000000000'); 
-    fbq('track', 'PageView');
-    </script>
-
     <style>
-        /* --- DESIGN SYSTEM DARK --- */
         :root {
             --bg-dark: #020617;
             --bg-card: #0f172a;
@@ -40,18 +26,11 @@
             --text-gray: #94a3b8;
             --success: #10b981;
         }
-
-        body { 
-            background-color: var(--bg-dark); color: var(--text-white); 
-            font-family: 'Outfit', sans-serif; margin: 0; padding: 0; 
-            overflow-x: hidden;
-        }
-
+        body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .highlight { color: var(--primary); }
-
-        /* HEADER */
+        
         header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid #1e293b; }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; text-decoration: none; color: white; }
@@ -59,94 +38,49 @@
         .btn-header { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px; text-decoration: none; color: white; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
         .btn-header:hover { background: var(--primary); }
 
-        /* HERO */
         .hero-section { padding: 140px 0 60px; }
         .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
         .trust-badges { display: flex; gap: 20px; margin-top: 40px; opacity: 0.7; }
         .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--text-gray); }
 
-        /* --- CARROSSEL INFINITO --- */
-        .partners-section { 
-            padding: 40px 0; background: #020617; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b; 
-            overflow: hidden; white-space: nowrap; position: relative;
-        }
-        
-        .marquee-track {
-            display: inline-block;
-            animation: scroll 40s linear infinite;
-        }
-        
+        /* --- CARROSSEL --- */
+        .partners-section { padding: 40px 0; background: #020617; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b; overflow: hidden; white-space: nowrap; position: relative; }
+        .marquee-track { display: inline-block; animation: scroll 40s linear infinite; }
         .partners-section:hover .marquee-track { animation-play-state: paused; }
-
         .partner-logo {
-            display: inline-block;
-            margin: 0 30px;
-            vertical-align: middle;
-            transition: all 0.3s ease;
-            position: relative;
+            display: inline-block; margin: 0 20px; vertical-align: middle; transition: all 0.3s ease;
+            background: white; padding: 12px 25px; border-radius: 12px; opacity: 0.9;
         }
+        .partner-logo:hover { opacity: 1; transform: scale(1.05); box-shadow: 0 0 15px rgba(255,255,255,0.3); }
+        .partner-logo img { height: 32px; width: auto; display: block; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* FILTRO: Deixa o logo Branco e Transparente */
-        .partner-logo img { 
-            height: 45px; 
-            width: auto; 
-            display: block; 
-            filter: grayscale(100%) brightness(200%) contrast(0%); 
-            opacity: 0.5;
-            transition: all 0.3s ease;
-        }
-
-        /* Hover: Revela as cores originais */
-        .partner-logo:hover img { 
-            filter: none; 
-            opacity: 1; 
-            transform: scale(1.1);
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* SIMULADOR */
+        /* --- SIMULADOR --- */
         .simulator-wrapper { background: var(--bg-card); border: 1px solid #1e293b; border-radius: 24px; padding: 30px; box-shadow: 0 20px 50px -10px rgba(59, 130, 246, 0.15); }
         .step-screen { display: none; animation: fadeIn 0.4s ease; }
         .step-screen.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
         .selection-card { background: #1e293b; padding: 15px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; display: flex; align-items: center; gap: 15px; border: 2px solid transparent; }
         .selection-card:hover, .selection-card.selected { border-color: var(--primary); background: #25334d; }
         .icon-box { font-size: 1.5rem; color: var(--primary); }
-        
-        input, select { width: 100%; background: #020617; border: 1px solid #334155; color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; box-sizing: border-box; font-family: inherit; font-size: 1rem; }
+        input, select { width: 100%; background: #020617; border: 1px solid #334155; color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px; box-sizing: border-box; font-size: 1rem; }
         label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 700; margin-bottom: 5px; display: block; }
-
-        .btn-action { width: 100%; background: var(--primary); color: white; border: none; padding: 16px; border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; margin-top: 10px; }
+        .btn-action { width: 100%; background: var(--primary); color: white; border: none; padding: 16px; border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; }
         .btn-outline { background: transparent; border: 1px solid #334155; color: var(--text-gray); }
-
         .result-display { text-align: center; background: #020617; padding: 20px; border-radius: 16px; margin-bottom: 20px; border: 1px solid #334155; }
         .big-number { font-size: 2.2rem; font-weight: 800; color: white; }
         .economy-pill { background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 10px; }
 
-        /* FEATURES & FOOTER */
         .features-section { padding: 80px 0; }
         .feature-card { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid #1e293b; }
         .f-icon { width: 60px; height: 60px; background: rgba(59, 130, 246, 0.1); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; }
-        
         footer { padding: 60px 0; text-align: center; color: var(--text-gray); font-size: 0.9rem; border-top: 1px solid #1e293b; }
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; text-decoration: none; transition: transform 0.2s; }
         .whatsapp-float:hover { transform: scale(1.1); }
-
-        @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
-            .hero-section { padding: 100px 0 60px; text-align: center; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .partner-logo img { height: 35px; }
-        }
+        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; gap: 40px; } .hero-section { padding: 100px 0 60px; text-align: center; } .hero-text h1 { font-size: 2.5rem; } .partner-logo img { height: 30px; } }
     </style>
 </head>
 <body>
-
     <header>
         <div class="container nav-content">
             <a href="/" class="logo">Glid<span>.</span></a>
@@ -157,13 +91,9 @@
     <section class="hero-section">
         <div class="container grid-2">
             <div class="hero-text">
-                <div style="background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; font-weight: 600; font-size: 0.9rem;">
-                    🚀 Fintech de Crédito Inteligente
-                </div>
+                <div style="background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; font-weight: 600; font-size: 0.9rem;">🚀 Fintech de Crédito Inteligente</div>
                 <h1>Pare de alugar dinheiro do <span class="highlight">banco.</span></h1>
-                <p style="color:var(--text-gray); font-size:1.1rem; line-height:1.6; margin-bottom:30px;">
-                    Acesso direto às maiores administradoras do país. Use a matemática a seu favor para conquistar Imóveis e Veículos sem juros abusivos.
-                </p>
+                <p style="color:var(--text-gray); font-size:1.1rem; line-height:1.6; margin-bottom:30px;">Acesso direto às maiores administradoras do país. Use a matemática a seu favor para conquistar Imóveis e Veículos sem juros abusivos.</p>
                 <div class="trust-badges">
                     <div class="trust-item"><i class="ph-fill ph-shield-check" style="color:var(--success); font-size:1.4rem;"></i> Autorizado pelo Bacen</div>
                     <div class="trust-item"><i class="ph-fill ph-lock-key" style="color:var(--success); font-size:1.4rem;"></i> Dados Seguros</div>
@@ -183,38 +113,24 @@
                         <div><div style="font-weight:700;">Construção de Patrimônio</div><div style="font-size:0.8rem; color:var(--text-gray);">Foco no menor custo total.</div></div>
                     </div>
                 </div>
-
                 <div class="step-screen" id="step-2">
                     <h3>O que você busca?</h3>
                     <label>Tipo de Bem</label>
-                    <select id="tipo_bem">
-                        <option value="imovel">🏡 Imóvel</option>
-                        <option value="veiculo">🚗 Veículo</option>
-                    </select>
+                    <select id="tipo_bem"><option value="imovel">🏡 Imóvel</option><option value="veiculo">🚗 Veículo</option></select>
                     <label>Valor do Crédito (R$)</label>
                     <input type="number" id="valor_credito" placeholder="Ex: 200000">
                     <button class="btn-action" onclick="nextStep(3)">Continuar</button>
                     <button class="btn-action btn-outline" onclick="nextStep(1)">Voltar</button>
                 </div>
-
                 <div class="step-screen" id="step-3">
                     <h3>Recursos</h3>
                     <label>Tem entrada/lance?</label>
-                    <select id="tem_lance" onchange="toggleLance()">
-                        <option value="nao">Não, 100% do crédito</option>
-                        <option value="sim">Sim, tenho recurso</option>
-                    </select>
-                    <div id="box-lance" style="display:none;">
-                        <label>Valor (R$)</label>
-                        <input type="number" id="valor_lance" placeholder="Ex: 50000">
-                    </div>
-                    <div id="aviso-pressa" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 10px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 15px; display: none;">
-                        <i class="ph-bold ph-warning"></i> <b>Estratégia:</b> Usaremos o <b>Lance Embutido</b> para acelerar sua contemplação sem tirar dinheiro do bolso.
-                    </div>
+                    <select id="tem_lance" onchange="toggleLance()"><option value="nao">Não, 100% do crédito</option><option value="sim">Sim, tenho recurso</option></select>
+                    <div id="box-lance" style="display:none;"><label>Valor (R$)</label><input type="number" id="valor_lance" placeholder="Ex: 50000"></div>
+                    <div id="aviso-pressa" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 10px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 15px; display: none;"><i class="ph-bold ph-warning"></i> <b>Estratégia:</b> Usaremos o <b>Lance Embutido</b> para acelerar.</div>
                     <button class="btn-action" onclick="calcular()">Simular Agora ⚡</button>
                     <button class="btn-action btn-outline" onclick="nextStep(2)">Voltar</button>
                 </div>
-
                 <div class="step-screen" id="step-result">
                     <div style="text-align:center;"><div class="economy-pill">💰 Economia: R$ <span id="res-economia">--</span></div></div>
                     <div class="result-display">
@@ -235,46 +151,38 @@
 
     <section class="partners-section">
         <div class="container">
-            <p style="text-align:center; color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px;">
-                Parceiros Oficiais & Bancos
-            </p>
-            
+            <p style="text-align:center; color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px;">Parceiros Oficiais & Bancos</p>
             <div style="width:100%; overflow:hidden;">
                 <div class="marquee-track">
-                    
-                    <div class="partner-logo"><img src="../assets/img/logos/itau.jpg.png" alt="Itaú"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/bradesco.jpg.png" alt="Bradesco"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/bb.jpg.png" alt="BB"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/santander.jpg.png" alt="Santander"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/caixa.jpg.png" alt="Caixa"></div>
-                    
-                    <div class="partner-logo"><img src="../assets/img/logos/chevrolet.jpg.png" alt="Chevrolet"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/yamaha.jpg.png" alt="Yamaha"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/ademicon.jpg.png" alt="Ademicon"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/cnp.jpg.png" alt="CNP Seguros"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/mapfre.jpg.png" alt="Mapfre"></div>
-                    
-                    <div class="partner-logo"><img src="../assets/img/logos/rodobens.jpg.png" alt="Rodobens"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/disal.jpg.png" alt="Disal"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/servopa.jpg.png" alt="Servopa"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/gazin.jpg.png" alt="Gazin"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/canopus.png.png" alt="Canopus"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/itau.png" alt="Itaú"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bradesco.png" alt="Bradesco"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bb.png" alt="BB"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/santander.png" alt="Santander"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/caixa.png" alt="Caixa"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/chevrolet.png" alt="Chevrolet"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/yamaha.png" alt="Yamaha"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/ademicon.png" alt="Ademicon"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/mapfre.png" alt="Mapfre"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/rodobens.png" alt="Rodobens"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/disal.png" alt="Disal"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/embracon.png" alt="Embracon"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/gazin.png" alt="Gazin"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/canopus.png" alt="Canopus"></div>
 
-                    <div class="partner-logo"><img src="../assets/img/logos/itau.jpg.png" alt="Itaú"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/bradesco.jpg.png" alt="Bradesco"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/bb.jpg.png" alt="BB"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/santander.jpg.png" alt="Santander"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/caixa.jpg.png" alt="Caixa"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/chevrolet.jpg.png" alt="Chevrolet"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/yamaha.jpg.png" alt="Yamaha"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/ademicon.jpg.png" alt="Ademicon"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/cnp.jpg.png" alt="CNP Seguros"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/mapfre.jpg.png" alt="Mapfre"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/rodobens.jpg.png" alt="Rodobens"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/disal.jpg.png" alt="Disal"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/servopa.jpg.png" alt="Servopa"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/gazin.jpg.png" alt="Gazin"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/canopus.png.png" alt="Canopus"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/itau.png" alt="Itaú"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bradesco.png" alt="Bradesco"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bb.png" alt="BB"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/santander.png" alt="Santander"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/caixa.png" alt="Caixa"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/chevrolet.png" alt="Chevrolet"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/yamaha.png" alt="Yamaha"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/ademicon.png" alt="Ademicon"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/mapfre.png" alt="Mapfre"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/rodobens.png" alt="Rodobens"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/disal.png" alt="Disal"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/embracon.png" alt="Embracon"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/gazin.png" alt="Gazin"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/canopus.png" alt="Canopus"></div>
                 </div>
             </div>
         </div>
@@ -336,64 +244,19 @@
     <script>
         const MARKET = { imovel: { taxa: 0.18, prazo: 180 }, veiculo: { taxa: 0.15, prazo: 80 } };
         let user = { momento: '', tipo: 'imovel', credito: 0, lance: 0 };
-
-        function selectOption(key, val) {
-            user[key] = val;
-            document.querySelectorAll('.selection-card').forEach(e => e.classList.remove('selected'));
-            event.currentTarget.classList.add('selected');
-        }
-
-        function nextStep(n) {
-            document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
-            document.getElementById('step-'+n).classList.add('active');
-            if(n===3) checkAviso();
-        }
-
-        function toggleLance() {
-            const tem = document.getElementById('tem_lance').value === 'sim';
-            document.getElementById('box-lance').style.display = tem ? 'block' : 'none';
-            if(!tem) document.getElementById('valor_lance').value = '';
-            checkAviso();
-        }
-
-        function checkAviso() {
-            const temLance = document.getElementById('tem_lance').value === 'sim';
-            const aviso = document.getElementById('aviso-pressa');
-            if(user.momento === 'pressa' && !temLance) aviso.style.display = 'block';
-            else aviso.style.display = 'none';
-        }
-
+        function selectOption(key, val) { user[key] = val; document.querySelectorAll('.selection-card').forEach(e => e.classList.remove('selected')); event.currentTarget.classList.add('selected'); }
+        function nextStep(n) { document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active')); document.getElementById('step-'+n).classList.add('active'); if(n===3) checkAviso(); }
+        function toggleLance() { const tem = document.getElementById('tem_lance').value === 'sim'; document.getElementById('box-lance').style.display = tem ? 'block' : 'none'; if(!tem) document.getElementById('valor_lance').value = ''; checkAviso(); }
+        function checkAviso() { const temLance = document.getElementById('tem_lance').value === 'sim'; const aviso = document.getElementById('aviso-pressa'); if(user.momento === 'pressa' && !temLance) aviso.style.display = 'block'; else aviso.style.display = 'none'; }
         function calcular() {
-            user.tipo = document.getElementById('tipo_bem').value;
-            user.credito = parseFloat(document.getElementById('valor_credito').value);
+            user.tipo = document.getElementById('tipo_bem').value; user.credito = parseFloat(document.getElementById('valor_credito').value);
             if(document.getElementById('tem_lance').value === 'sim') user.lance = parseFloat(document.getElementById('valor_lance').value) || 0;
             if(!user.credito) return alert("Digite o valor do crédito!");
-
-            const dados = MARKET[user.tipo];
-            const totalGlid = user.credito * (1 + dados.taxa);
-            const parcela = totalGlid / dados.prazo;
-            const totalBanco = user.credito * 2.15;
-            const economia = totalBanco - totalGlid;
-            
-            const fmt = (v) => v.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            const toK = (v) => 'R$ ' + (v/1000).toFixed(0) + 'k';
-
-            document.getElementById('res-parcela').innerText = fmt(parcela).replace('R$', '').trim();
-            document.getElementById('res-prazo').innerText = dados.prazo;
-            document.getElementById('custo-banco').innerText = toK(totalBanco);
-            document.getElementById('custo-glid').innerText = toK(totalGlid);
-            document.getElementById('res-economia').innerText = (economia/1000).toFixed(0) + ' mil';
-
-            let text = `Olá! Vim pelo site Glid.%0A`;
-            text += `🎯 *Objetivo:* ${user.tipo.toUpperCase()}%0A`;
-            text += `💰 *Crédito:* ${fmt(user.credito)}%0A`;
-            text += `🚀 *Momento:* ${user.momento === 'pressa' ? 'Tenho Pressa' : 'Patrimônio'}%0A`;
-            text += `💸 *Lance:* ${fmt(user.lance)}%0A`;
-            text += `Economia estimada: *${toK(economia)}*.`;
-
-            document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${text}`;
-            nextStep('result');
-            if(typeof fbq === 'function') fbq('track', 'Lead');
+            const dados = MARKET[user.tipo]; const totalGlid = user.credito * (1 + dados.taxa); const parcela = totalGlid / dados.prazo; const totalBanco = user.credito * 2.15; const economia = totalBanco - totalGlid;
+            const fmt = (v) => v.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'}); const toK = (v) => 'R$ ' + (v/1000).toFixed(0) + 'k';
+            document.getElementById('res-parcela').innerText = fmt(parcela).replace('R$', '').trim(); document.getElementById('res-prazo').innerText = dados.prazo; document.getElementById('custo-banco').innerText = toK(totalBanco); document.getElementById('custo-glid').innerText = toK(totalGlid); document.getElementById('res-economia').innerText = (economia/1000).toFixed(0) + ' mil';
+            let text = `Olá! Vim pelo site Glid.%0A🎯 *Objetivo:* ${user.tipo.toUpperCase()}%0A💰 *Crédito:* ${fmt(user.credito)}%0A🚀 *Momento:* ${user.momento === 'pressa' ? 'Tenho Pressa' : 'Patrimônio'}%0A💸 *Lance:* ${fmt(user.lance)}%0AEconomia estimada: *${toK(economia)}*.`;
+            document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${text}`; nextStep('result');
         }
     </script>
 </body>
