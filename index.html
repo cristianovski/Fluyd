@@ -5,135 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glid | Ecossistema Financeiro</title>
     <meta name="description" content="Tecnologia financeira para alavancar seu patrimônio. Consórcios, Seguros e Crédito Inteligente.">
-    
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
     <style>
-        /* --- DESIGN SYSTEM GLID (OFFICIAL) --- */
-        :root {
-            --bg-dark: #020617;
-            --bg-card: #0f172a;
-            --primary: #3b82f6;       /* Azul Glid */
-            --accent: #f59e0b;        /* Ouro Glid */
-            --text-white: #f8fafc;
-            --text-gray: #94a3b8;
-        }
-
-        body { 
-            background-color: var(--bg-dark); color: var(--text-white); 
-            font-family: 'Outfit', sans-serif; margin: 0; padding: 0; 
-            display: flex; flex-direction: column; min-height: 100vh;
-        }
-
+        :root { --bg-dark: #020617; --bg-card: #0f172a; --primary: #3b82f6; --accent: #f59e0b; --text-white: #f8fafc; --text-gray: #94a3b8; }
+        body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; text-align: center; }
-        
         header { padding: 40px 0; }
         .logo { font-size: 2.5rem; font-weight: 800; letter-spacing: -2px; color: white; }
         .logo span { color: var(--primary); }
-
         .hero { padding: 60px 0 40px; }
         h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.1; }
-        p.subtitle { font-size: 1.2rem; color: var(--text-gray); max-width: 600px; margin: 0 auto 60px; }
-
-        /* GRID DE PRODUTOS */
-        .product-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 30px; margin-bottom: 80px; 
-        }
-
-        .product-card {
-            background: var(--bg-card); border: 1px solid #1e293b; padding: 40px 30px; 
-            border-radius: 24px; transition: 0.3s; text-decoration: none; color: white;
-            position: relative; overflow: hidden; display: block;
-        }
-        
-        /* Efeito Hover Apenas nos Ativos */
-        .product-card.active:hover { 
-            transform: translateY(-10px); 
-            border-color: var(--primary); 
-            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.2);
-        }
-
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .product-card { background: var(--bg-card); border: 1px solid #1e293b; padding: 40px 30px; border-radius: 24px; transition: 0.3s; text-decoration: none; color: white; position: relative; display: block; }
+        .product-card.active:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.2); }
         .product-card.coming-soon { opacity: 0.6; cursor: default; }
-
-        .icon { 
-            font-size: 3rem; color: var(--primary); margin-bottom: 20px; 
-            background: rgba(59, 130, 246, 0.1); width: 80px; height: 80px; 
-            display: flex; align-items: center; justify-content: center; 
-            border-radius: 20px; margin-left: auto; margin-right: auto;
-        }
-
+        .icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; background: rgba(59, 130, 246, 0.1); width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 20px; margin: 0 auto 20px; }
         h3 { font-size: 1.5rem; margin-bottom: 10px; }
         p.desc { color: var(--text-gray); font-size: 0.95rem; }
-
-        .badge {
-            position: absolute; top: 20px; right: 20px; 
-            padding: 5px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-        }
+        .badge { position: absolute; top: 20px; right: 20px; padding: 5px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
         .badge.new { background: var(--primary); color: white; }
         .badge.soon { background: #334155; color: #94a3b8; }
-
-        .cta-button {
-            display: inline-block; margin-top: 20px; color: var(--accent); font-weight: 700; font-size: 0.9rem;
-        }
-
+        .cta-button { display: inline-block; margin-top: 20px; color: var(--accent); font-weight: 700; font-size: 0.9rem; }
         footer { margin-top: auto; padding: 40px 0; border-top: 1px solid #1e293b; color: var(--text-gray); font-size: 0.9rem; }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-        }
     </style>
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <div class="logo">Glid<span>.</span></div>
-        </div>
-    </header>
-
+    <header><div class="container"><div class="logo">Glid<span>.</span></div></div></header>
     <section class="hero">
         <div class="container">
             <h1>O futuro do seu <br><span style="color: var(--accent);">patrimônio.</span></h1>
-            <p class="subtitle">Um ecossistema de soluções financeiras desenhado para quem não quer perder dinheiro para o banco.</p>
-            
+            <p style="font-size: 1.2rem; color: var(--text-gray); max-width: 600px; margin: 0 auto 60px;">Ecossistema de soluções financeiras.</p>
             <div class="product-grid">
-                
                 <a href="/consorcios/" class="product-card active">
                     <span class="badge new">Disponível</span>
                     <div class="icon"><i class="ph-fill ph-rocket-launch"></i></div>
                     <h3>Consórcio Inteligente</h3>
-                    <p class="desc">Estratégias de alavancagem para Imóveis e Veículos com IA.</p>
+                    <p class="desc">Estratégias de alavancagem para Imóveis e Veículos.</p>
                     <span class="cta-button">Simular Agora <i class="ph-bold ph-arrow-right"></i></span>
                 </a>
-
                 <div class="product-card coming-soon">
                     <span class="badge soon">Em Breve</span>
                     <div class="icon" style="color: var(--text-gray); background: #1e293b;"><i class="ph-fill ph-shield-check"></i></div>
                     <h3>Seguros & Proteção</h3>
-                    <p class="desc">Vida, Auto e Residencial com apólices personalizadas.</p>
+                    <p class="desc">Vida, Auto e Residencial.</p>
                 </div>
-
                 <div class="product-card coming-soon">
                     <span class="badge soon">Em Breve</span>
                     <div class="icon" style="color: var(--text-gray); background: #1e293b;"><i class="ph-fill ph-house-line"></i></div>
                     <h3>Home Equity</h3>
-                    <p class="desc">Crédito com garantia de imóvel. Taxas menores que o mercado.</p>
+                    <p class="desc">Crédito com garantia de imóvel.</p>
                 </div>
-
             </div>
         </div>
     </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Glid Tecnologia Financeira.</p>
-            <p>Vitória da Conquista - BA</p>
-        </div>
-    </footer>
-
+    <footer><div class="container"><p>&copy; 2025 Glid Tecnologia Financeira.</p></div></footer>
 </body>
 </html>
