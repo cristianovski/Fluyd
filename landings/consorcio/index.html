@@ -3,28 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Glid | Crédito Inteligente</title>
-    <meta name="description" content="Simule seu crédito imobiliário ou automotivo sem juros abusivos. Aprovado pelo Banco Central.">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.glid.com.br/">
-    <meta property="og:title" content="Glid | Crédito Inteligente e Sem Juros">
-    <meta property="og:description" content="Pare de pagar juros. Simule agora sua casa ou carro com parcelas que cabem no bolso.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=1200&q=80"> <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Glid | Crédito Inteligente">
-    <meta property="twitter:description" content="Simule seu crédito imobiliário ou automotivo sem juros.">
-    
+    <meta property="og:title" content="Glid | Crédito Inteligente">
+    <meta property="og:description" content="Simule seu crédito imobiliário ou automotivo sem juros.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=1200&q=80">
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-placeholder"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-placeholder'); 
+    </script>
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '0000000000'); 
+    fbq('track', 'PageView');
+    </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     
     <style>
-        /* --- ESTILO GLID FINTECH (CLEAN + TOPACRED COLORS) --- */
+        /* --- ESTILO GLID FINTECH --- */
         :root {
-            --brand-blue: #0F172A;    /* Navy Profundo */
-            --brand-orange: #F97316;  /* Laranja Topacred */
+            --brand-blue: #0F172A;
+            --brand-orange: #F97316;
             --brand-orange-hover: #EA580C;
             --bg-white: #FFFFFF;
             --bg-surface: #F8FAFC;
@@ -32,10 +49,9 @@
             --text-main: #334155;
         }
 
-        body { background-color: var(--bg-white); color: var(--text-main); font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; }
+        body { background-color: var(--bg-white); color: var(--text-main); font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
         h1, h2, h3 { color: var(--brand-blue); font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
 
-        /* Botão */
         .btn-neon {
             background-color: var(--brand-orange) !important; color: white !important; font-weight: 700 !important;
             border-radius: 12px !important; padding: 18px 32px !important; font-size: 1rem; border: none !important;
@@ -44,7 +60,6 @@
         }
         .btn-neon:hover { background-color: var(--brand-orange-hover) !important; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4) !important; }
 
-        /* Cards */
         .simulator-box, .feature-card {
             background: var(--bg-white) !important; border: 1px solid var(--border-light) !important;
             border-radius: 24px; box-shadow: 0 10px 40px -15px rgba(15, 23, 42, 0.08) !important;
@@ -52,7 +67,6 @@
         }
         .feature-card:hover { transform: translateY(-5px); border-color: var(--brand-orange) !important; }
 
-        /* Inputs */
         input, select {
             background: var(--bg-surface) !important; border: 1px solid var(--border-light) !important;
             border-radius: 12px !important; padding: 18px !important; color: var(--brand-blue) !important;
@@ -60,22 +74,18 @@
         }
         input:focus, select:focus { border-color: var(--brand-orange) !important; background: var(--bg-white) !important; outline: none; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1); }
 
-        /* Ícones */
         .feature-icon { width: 60px; height: 60px; background: #FFEDD5; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
         .feature-icon i { color: var(--brand-orange); font-size: 2rem; }
         
         span.highlight { color: var(--brand-orange); }
 
-        /* FAQ */
         .faq-item { background: var(--bg-surface) !important; border-radius: 16px; margin-bottom: 12px; border: 1px solid transparent !important; transition: all 0.2s; }
         .faq-item:hover { border-color: var(--border-light) !important; background: white !important; }
         .faq-question { width: 100%; text-align: left; padding: 24px; background: none; border: none; font-weight: 700; color: var(--brand-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
         .faq-answer { padding: 0 24px 24px; display: none; color: #64748B; line-height: 1.6; }
         
-        /* Resultado */
         .result-value { font-size: 3.5rem; font-weight: 800; color: var(--brand-blue); margin: 15px 0; letter-spacing: -1px; }
 
-        /* WhatsApp Float */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white;
             padding: 12px 24px; border-radius: 50px; font-weight: 700; text-decoration: none;
@@ -83,29 +93,45 @@
             display: flex; align-items: center; gap: 8px; font-size: 1rem;
         }
         .whatsapp-float:hover { transform: translateY(-3px); }
+
+        /* --- CORREÇÃO MOBILE FORÇADA (OVERLAP FIX) --- */
+        /* Desktop */
+        header.hero { padding: 120px 20px 100px; text-align: center; background: white; }
+        #simulador { margin: -60px auto 0; position: relative; z-index: 10; padding: 0 20px; max-width: 480px; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            header.hero { 
+                padding: 100px 20px 60px !important; /* Mais espaço embaixo */
+            }
+            #simulador { 
+                margin: 20px auto 0 !important; /* Margem positiva para empurrar pra baixo */
+                padding: 0 15px !important; 
+            }
+            h1 { font-size: 2.2rem !important; }
+        }
     </style>
 </head>
 <body>
 
-    <header class="hero" style="padding: 120px 20px 80px; text-align: center; background: white;">
+    <header class="hero">
         <div class="container" style="max-width: 800px; margin: 0 auto;">
             <div style="width: 80px; height: 80px; background: var(--brand-blue); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px;">
                 <i class="ph-bold ph-aperture" style="font-size: 3rem; color: white;"></i>
             </div>
-            
-            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">
+            <h1 style="margin-bottom: 20px;">
                 O crédito inteligente <br>que a gente <span class="highlight">topa</span>.
             </h1>
-            <p style="font-size: 1.25rem; color: #64748B; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+            <p style="font-size: 1.25rem; color: #64748B; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
                 Sem juros abusivos. A tecnologia da Glid com a facilidade que você precisa.
             </p>
-            <a href="#simulador" class="btn-neon">
+            <a href="#simulador" class="btn-neon" style="display: inline-flex;">
                 Simular Agora <i class="ph-bold ph-arrow-right"></i>
             </a>
         </div>
     </header>
 
-    <section class="container" id="simulador" style="max-width: 480px; margin: -40px auto 0; padding: 0 20px; position: relative; z-index: 10;">
+    <section class="container" id="simulador">
         <div class="simulator-box" id="box-formulario" style="padding: 40px;">
             <div style="text-align: center; margin-bottom: 30px;">
                 <h3 style="font-size: 1.5rem;">Simulador Rápido</h3>
@@ -132,7 +158,6 @@
             </div>
             <h2 style="font-size: 1.6rem; margin-bottom: 10px;">Pré-Aprovado!</h2>
             <p style="color: #64748B;">Investimento mensal estimado:</p>
-            
             <div class="result-value" id="res-parcela">R$ 0,00</div>
             
             <div style="background: var(--bg-surface); border-radius: 16px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-between; border: 1px solid var(--border-light);">
@@ -147,7 +172,7 @@
             </div>
 
             <a id="btn-whatsapp" href="#" class="btn-neon" style="width: 100%; background-color: #25D366 !important; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3) !important;">
-                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Receber Proposta no Zap
+                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Falar no WhatsApp Oficial
             </a>
             
             <button onclick="location.reload()" style="background:none; border:none; color: #94A3B8; margin-top: 20px; cursor: pointer; text-decoration: underline; font-size: 0.9rem;">
@@ -156,86 +181,70 @@
         </div>
     </section>
 
-    <section style="padding: 100px 20px; background: white; margin-top: 80px;">
+    <section style="padding: 100px 20px; background: white; margin-top: 40px;">
         <div style="max-width: 1000px; margin: 0 auto;">
              <div style="text-align: center; margin-bottom: 60px;">
                  <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Por que a Glid?</h2>
-                 <p style="color: #64748B; font-size: 1.1rem;">Segurança, agilidade e inteligência para seu bolso.</p>
+                 <p style="color: #64748B; font-size: 1.1rem;">Segurança, agilidade e inteligência.</p>
              </div>
              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
                 <div class="feature-card" style="padding: 40px 30px;">
                     <div class="feature-icon"><i class="ph-bold ph-lightning"></i></div>
                     <h3>Sem Burocracia</h3>
-                    <p style="color: #64748B; line-height: 1.6;">Esqueça a papelada. Análise inteligente e 100% digital.</p>
+                    <p style="color: #64748B; line-height: 1.6;">100% digital.</p>
                 </div>
                 <div class="feature-card" style="padding: 40px 30px;">
                     <div class="feature-icon"><i class="ph-bold ph-percent"></i></div>
                     <h3>Economia Real</h3>
-                    <p style="color: #64748B; line-height: 1.6;">Juros zero. Apenas taxa administrativa fixa e justa.</p>
+                    <p style="color: #64748B; line-height: 1.6;">Juros zero. Apenas taxa adm.</p>
                 </div>
                 <div class="feature-card" style="padding: 40px 30px;">
                     <div class="feature-icon"><i class="ph-bold ph-shield-check"></i></div>
                     <h3>Segurança Total</h3>
-                    <p style="color: #64748B; line-height: 1.6;">Regulado pelo Banco Central. Seu patrimônio protegido.</p>
+                    <p style="color: #64748B; line-height: 1.6;">Regulado pelo Banco Central.</p>
                 </div>
              </div>
         </div>
     </section>
 
-    <section class="faq-section" style="padding: 80px 20px; max-width: 800px; margin: 0 auto;">
-        <h3 style="text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--brand-blue);">Dúvidas Frequentes</h3>
-        <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">Como funciona o lance? <i class="ph-bold ph-caret-down"></i></button>
-            <div class="faq-answer">Você pode ofertar um valor para tentar antecipar sua contemplação e pegar o crédito antes.</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">Posso usar FGTS? <i class="ph-bold ph-caret-down"></i></button>
-            <div class="faq-answer">Sim! Para imóveis, use seu saldo FGTS para dar lances ou amortizar parcelas.</div>
-        </div>
-    </section>
-
     <footer style="text-align: center; padding: 60px 20px; background: var(--bg-surface); color: #94A3B8; border-top: 1px solid var(--border-light); margin-top: 60px;">
-        <i class="ph-bold ph-aperture" style="font-size: 2rem; color: var(--brand-blue); margin-bottom: 20px;"></i>
-        <p style="font-weight: 600; color: var(--brand-blue); margin-bottom: 10px;">GLID TECNOLOGIA FINANCEIRA</p>
+        <p style="font-weight: 600; color: var(--brand-blue);">GLID TECNOLOGIA FINANCEIRA</p>
         <p style="font-size: 0.9rem;">CNPJ: 56.406.402/0001-35</p>
     </footer>
 
-    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+preciso+de+ajuda+na+Glid." class="whatsapp-float">
+    <a href="https://wa.me/557731420005?text=Ol%C3%A1%2C+Glid+Oficial." class="whatsapp-float">
         <i class="ph-bold ph-whatsapp-logo"></i>
     </a>
 
     <script>
-        function toggleFaq(element) { 
-            const answer = element.nextElementSibling;
-            if (answer.style.display === "block") { answer.style.display = "none"; } else { answer.style.display = "block"; }
-        }
-
         async function enviarSimulacao() {
             const valorInput = document.getElementById('valor_credito').value;
             if(!valorInput) return alert('Por favor, digite o valor que você precisa.');
-            
             const valor = parseFloat(valorInput);
             const prazo = document.getElementById('tipo_bem').value === 'imovel' ? 180 : 80;
             const parcela = (valor * 1.23) / prazo;
             const formatar = (n) => n.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            
             const btn = document.querySelector('button.btn-neon');
             const originalText = btn.innerHTML;
             btn.innerHTML = 'Calculando...'; btn.style.opacity = '0.7';
 
-            // Simulação de delay para "pensar"
             setTimeout(() => {
                 document.getElementById('box-formulario').style.display = 'none';
                 document.getElementById('box-resultado').style.display = 'block';
-                
                 document.getElementById('res-parcela').innerText = formatar(parcela);
                 document.getElementById('res-prazo').innerText = prazo + " meses";
                 document.getElementById('res-total').innerText = formatar(valor);
+                if(typeof fbq === 'function') fbq('track', 'Lead');
                 
-                document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+e+gostaria+de+saber+mais.`;
+                // LINK NOVO AQUI
+                document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+Oficial.`;
                 btn.innerHTML = originalText; btn.style.opacity = '1';
             }, 800);
         }
     </script>
 </body>
 </html>
+
+git add .
+git commit -m "Fix: Hard Mobile Layout & New WhatsApp Link"
+git push origin main
