@@ -3,239 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid Monarca | Liderança Financeira</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Glid Horizonte | Seu Novo Começo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- ESTILO MONARCA (SAFIRA + SOLAR) --- */
+        /* --- ESTILO HORIZONTE (SUNSET ORANGE + PETROL BLUE) --- */
         :root {
-            --primary: #1E3A8A;       /* Azul Safira Profundo (Confiança) */
-            --primary-light: #2563EB; /* Azul Royal */
-            --accent: #FFB703;        /* Amarelo Solar (Vitória/Ouro) */
-            --accent-hover: #FB8500;
-            --bg-body: #FFFFFF;
-            --bg-light: #EFF6FF;      /* Azul Bebê muito claro */
-            --text: #1F2937;
+            --primary: #EA580C;       /* Laranja Queimado (Sunset) */
+            --secondary: #164E63;     /* Azul Petróleo Escuro (Base) */
+            --bg-body: #FFF7ED;       /* Creme muito suave (Luz da manhã) */
+            --card-bg: #FFFFFF;
         }
 
         body {
             background-color: var(--bg-body);
-            color: var(--text);
-            font-family: 'DM Sans', sans-serif;
+            color: var(--secondary);
+            font-family: 'Urbanist', sans-serif;
         }
 
-        h1, h2, h3 { font-weight: 700; letter-spacing: -0.5px; color: var(--primary); }
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; }
 
-        /* Botão Solar (Redondo e Vibrante) */
+        /* Botão Horizonte (Gradiente Suave) */
         .btn-neon {
-            background-color: var(--accent) !important;
-            color: #000 !important;
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
+            color: white !important;
             font-weight: 700 !important;
-            border-radius: 50px !important;
-            padding: 20px 50px !important;
+            border-radius: 12px !important;
+            padding: 18px 40px !important;
             text-transform: uppercase;
-            box-shadow: 0 10px 25px rgba(255, 183, 3, 0.4) !important;
+            box-shadow: 0 10px 25px rgba(234, 88, 12, 0.3) !important;
             border: none !important;
             transition: transform 0.2s;
-            font-size: 1rem;
         }
-        .btn-neon:hover { 
-            transform: translateY(-3px); 
-            background-color: var(--accent-hover) !important;
-            color: white !important;
-        }
+        .btn-neon:hover { transform: translateY(-3px); filter: brightness(1.1); }
 
-        /* Cards Elegantes */
         .simulator-box, .feature-card {
-            background: white !important;
-            border: 2px solid var(--bg-light) !important;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px -10px rgba(30, 58, 138, 0.1) !important;
-            transition: transform 0.3s;
+            background: var(--card-bg) !important;
+            border: 1px solid #FFEDD5 !important;
+            border-bottom: 4px solid var(--primary) !important; /* Base Laranja */
+            border-radius: 16px;
+            box-shadow: 0 10px 30px -10px rgba(22, 78, 99, 0.1) !important;
         }
-        .feature-card:hover { transform: translateY(-5px); border-color: var(--accent) !important; }
 
-        /* Inputs Amigáveis */
         input, select {
-            background: var(--bg-light) !important;
-            border: 2px solid #BFDBFE !important;
-            border-radius: 12px !important;
-            padding: 18px !important;
-            color: var(--primary) !important;
-            font-weight: 700;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
+            background: #FFF !important;
+            border: 2px solid #CFFAFE !important;
+            border-radius: 8px !important;
+            padding: 16px !important;
+            color: var(--secondary) !important;
+            font-weight: 600;
+            font-family: 'Urbanist', sans-serif;
         }
-        input:focus { border-color: var(--primary) !important; outline: none; background: white !important; }
+        input:focus { border-color: var(--primary) !important; outline: none; }
 
-        /* Ícones */
         .feature-icon i { 
-            color: var(--accent); 
-            font-size: 3rem; 
-            background: var(--primary); 
-            padding: 18px; 
+            color: var(--primary); 
+            font-size: 2.8rem; 
+            margin-bottom: 20px; 
+            background: #FFEDD5; 
+            padding: 15px; 
             border-radius: 50%; 
-            margin-bottom: 25px; 
-            display: inline-block;
-            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.2);
         }
-        
-        span.highlight { color: var(--primary); background: #FEF3C7; padding: 2px 10px; border-radius: 20px; }
 
-        /* FAQ Clean */
-        .faq-section { padding: 80px 20px; max-width: 800px; margin: 0 auto; }
-        .faq-item { background: var(--bg-light) !important; border-radius: 16px; margin-bottom: 15px; border: none !important; }
-        .faq-question { 
-            width: 100%; text-align: left; padding: 25px; 
-            background: none; border: none; font-weight: 700; 
-            color: var(--primary); cursor: pointer; display: flex; 
-            justify-content: space-between; font-size: 1.1rem;
-        }
-        .faq-answer { padding: 0 25px 25px; display: none; color: #4B5563; line-height: 1.6; }
+        /* FAQ */
+        .faq-item { background: white !important; border-radius: 12px; margin-bottom: 10px; border: 1px solid #E0F2FE !important; }
+        .faq-question { width: 100%; text-align: left; padding: 20px; background: none; border: none; font-weight: 700; color: var(--secondary); cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-answer { padding: 0 20px 20px; display: none; color: #555; }
         
-        /* Resultado */
-        .result-value { font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 20px 0; }
-
-        /* WhatsApp */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            width: 65px; height: 65px; border-radius: 50%;
+            background-color: var(--primary); color: white;
+            width: 60px; height: 60px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 2.2rem; text-decoration: none;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            font-size: 2rem; text-decoration: none;
+            box-shadow: 0 5px 20px rgba(234, 88, 12, 0.4);
             z-index: 100; transition: transform 0.2s;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
-    <header class="hero" style="padding: 120px 20px 80px; text-align: center;">
-        <div class="container">
-            <i class="ph-fill ph-crown" style="font-size: 4.5rem; color: var(--accent); margin-bottom: 20px; filter: drop-shadow(0 4px 10px rgba(255,183,3,0.3));"></i>
-            <h1 style="font-size: 4rem; margin-bottom: 20px;">GLID MONARCA</h1>
-            <p style="font-size: 1.3rem; color: #666; margin-bottom: 50px; max-width: 600px; margin: 0 auto 50px;">
-                Assuma o controle do seu futuro.<br>Crédito inteligente para quem <span class="highlight">nasceu para vencer</span>.
-            </p>
-            <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
-                Iniciar Minha Conquista <i class="ph-bold ph-arrow-right"></i>
-            </a>
-        </div>
+    <header class="hero" style="padding: 100px 20px; text-align: center;">
+        <i class="ph-duotone ph-sun-horizon" style="font-size: 4.5rem; color: var(--primary); margin-bottom: 20px;"></i>
+        <h1 style="font-size: 3.5rem; margin-bottom: 15px;">GLID HORIZONTE</h1>
+        <p style="font-size: 1.2rem; color: #555; margin-bottom: 40px;">O sol nasceu para o seu patrimônio.</p>
+        <a href="#simulador" class="btn-neon" style="text-decoration: none;">Ver Novo Caminho</a>
     </header>
 
-    <section class="container" id="simulador" style="max-width: 500px; margin: -50px auto 0; position: relative; z-index: 10; padding: 0 20px;">
-        <div class="simulator-box" id="box-formulario" style="padding: 50px 40px;">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h3 style="font-size: 1.5rem; color: var(--primary);">Configure seu Plano</h3>
+    <section class="container" id="simulador" style="max-width: 500px; margin: -40px auto 0; padding: 0 20px;">
+        <div class="simulator-box" id="box-formulario" style="padding: 40px;">
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 10px; font-weight: 700;">O que você vai conquistar?</label>
+                <select id="tipo_bem" style="width: 100%;"><option value="imovel">Casa Própria</option><option value="veiculo">Carro Novo</option></select>
             </div>
-            <div style="margin-bottom: 25px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: #666;">Qual é o seu sonho?</label>
-                <select id="tipo_bem" style="width: 100%;">
-                    <option value="imovel">Casa Própria (180x)</option>
-                    <option value="veiculo">Carro Novo (80x)</option>
-                </select>
+            <div style="margin-bottom: 30px;">
+                <label style="display: block; margin-bottom: 10px; font-weight: 700;">Valor (R$)</label>
+                <input type="number" id="valor_credito" placeholder="Ex: 150.000" style="width: 100%;">
             </div>
-            <div style="margin-bottom: 40px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 700; color: #666;">Valor da Conquista (R$)</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 200.000" style="width: 100%;">
-            </div>
-            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">Ver Parcelas</button>
+            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">Simular Futuro</button>
         </div>
-
-        <div class="simulator-box" id="box-resultado" style="display: none; padding: 50px 40px; text-align: center;">
-            <i class="ph-fill ph-medal" style="font-size: 3.5rem; color: var(--accent); margin-bottom: 20px;"></i>
-            <h2 style="font-size: 1.8rem;">Vitória!</h2>
-            <p style="color: #666;">Seu plano cabe no orçamento:</p>
-            <div class="result-value" id="res-parcela">R$ 0,00</div>
-            
-            <div style="background: var(--bg-light); border-radius: 12px; padding: 20px; margin: 30px 0; color: var(--primary);">
-                <p style="margin: 5px 0;"><strong>Prazo:</strong> <span id="res-prazo">--</span></p>
-                <p style="margin: 5px 0;"><strong>Crédito Total:</strong> <span id="res-total">--</span></p>
-            </div>
-
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; background: #25D366 !important; color: white !important; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3) !important;">
-                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Garantir no WhatsApp
-            </a>
-             <button onclick="location.reload()" style="background:none; border:none; color: #999; margin-top: 25px; cursor: pointer; text-decoration: underline;">Simular Outro Valor</button>
+        <div class="simulator-box" id="box-resultado" style="display: none; padding: 40px; text-align: center;">
+            <h2 style="font-size: 1.5rem; color: var(--secondary);">Caminho Aberto</h2>
+            <div style="font-size: 3rem; font-weight: 800; color: var(--primary); margin: 20px 0;" id="res-parcela">R$ 0,00</div>
+            <p id="res-prazo" style="font-weight: 700;">--</p>
+            <p id="res-total">--</p>
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: block; text-decoration: none; background: #25D366 !important; color: white !important; margin-top: 20px;">Falar no Zap</a>
+             <button onclick="location.reload()" style="background:none; border:none; color: #999; margin-top: 20px; cursor: pointer; text-decoration: underline;">Recalcular</button>
         </div>
     </section>
-
-    <section style="padding: 100px 20px; background: white; margin-top: 80px;">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 style="text-align: center; margin-bottom: 60px; font-size: 2.5rem;">Por que ser Monarca?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
-                <div class="feature-card">
-                    <div style="text-align: center;"><div class="feature-icon"><i class="ph-duotone ph-currency-dollar-simple"></i></div></div>
-                    <h3 style="text-align: center;">Poder de Compra</h3>
-                    <p style="color: #666; text-align: center;">Com a carta de crédito, você compra à vista. Negocie descontos e faça seu dinheiro valer mais.</p>
-                </div>
-                <div class="feature-card">
-                    <div style="text-align: center;"><div class="feature-icon"><i class="ph-duotone ph-rocket-launch"></i></div></div>
-                    <h3 style="text-align: center;">Lance Estratégico</h3>
-                    <p style="color: #666; text-align: center;">Use o lance para acelerar sua conquista. Você define a velocidade do seu sucesso.</p>
-                </div>
-                <div class="feature-card">
-                    <div style="text-align: center;"><div class="feature-icon"><i class="ph-duotone ph-bank"></i></div></div>
-                    <h3 style="text-align: center;">Solidez Garantida</h3>
-                    <p style="color: #666; text-align: center;">Segurança de banco, com atendimento de parceiro. Fiscalizado e garantido pelo Banco Central.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-section">
-        <h3 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Central de Dúvidas</h3>
-        <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
-                Vale a pena sair do aluguel assim? <i class="ph-bold ph-caret-down"></i>
-            </button>
-            <div class="faq-answer">Com certeza. Em vez de jogar dinheiro fora no aluguel, você paga por algo que é seu, construindo patrimônio real.</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
-                Preciso dar entrada? <i class="ph-bold ph-caret-down"></i>
-            </button>
-            <div class="faq-answer">Não! Essa é a grande vantagem. Você começa pagando apenas a primeira parcela, sem precisar descapitalizar.</div>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 60px 20px; background: var(--bg-light); color: var(--primary);">
-        <i class="ph-fill ph-crown" style="font-size: 2rem; margin-bottom: 15px;"></i>
-        <p><strong>GLID MONARCA</strong> • Liderança em Crédito</p>
-    </footer>
-
-    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+Monarca." class="whatsapp-float">
-        <i class="ph-bold ph-whatsapp-logo"></i>
-    </a>
 
     <script>
-        function toggleFaq(element) { 
-            const answer = element.nextElementSibling;
-            if (answer.style.display === "block") { answer.style.display = "none"; } else { answer.style.display = "block"; }
-        }
-
         async function enviarSimulacao() {
-            const valorInput = document.getElementById('valor_credito').value;
-            if(!valorInput) return alert('Por favor, informe o valor.');
-            
-            const valor = parseFloat(valorInput);
+            const valor = parseFloat(document.getElementById('valor_credito').value);
+            if(!valor) return alert('Digite o valor');
             const prazo = document.getElementById('tipo_bem').value === 'imovel' ? 180 : 80;
             const parcela = (valor * 1.23) / prazo;
-            const formatar = (n) => n.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            
             document.getElementById('box-formulario').style.display = 'none';
             document.getElementById('box-resultado').style.display = 'block';
-            
-            document.getElementById('res-parcela').innerText = formatar(parcela);
+            document.getElementById('res-parcela').innerText = parcela.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
             document.getElementById('res-prazo').innerText = prazo + " meses";
-            document.getElementById('res-total').innerText = "Crédito: " + formatar(valor);
-            
-            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+Monarca.`;
-            
-             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Monarca'}) }); } catch(e){}
+            document.getElementById('res-total').innerText = "Total: " + valor.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=HorizonteSim`;
+             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Horizonte'}) }); } catch(e){}
         }
+        function toggleFaq(el) { el.nextElementSibling.style.display = el.nextElementSibling.style.display==='block'?'none':'block'; }
     </script>
 </body>
 </html>
