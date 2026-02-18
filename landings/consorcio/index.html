@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* Estilos Extras para o Resultado */
         .result-card { display: none; text-align: center; animation: fadeIn 0.5s; }
         .result-value { font-size: 2.5rem; font-weight: 800; color: #00ff88; text-shadow: 0 0 20px rgba(0,255,136,0.3); margin: 10px 0; }
         .result-details { color: #aaa; font-size: 0.9rem; margin-bottom: 20px; }
@@ -47,70 +46,64 @@
             <p style="color: #ccc;">Parcela estimada:</p>
             <div class="result-value" id="res-parcela">R$ 0,00</div>
             <div class="result-details">
-                Prazo: <span id="res-prazo" style="color: white;">--</span> <br>
+                Prazo: <span id="res-prazo" style="color: white;">180 meses</span> <br>
                 Crédito Total: <span id="res-total" style="color: white;">--</span>
             </div>
-            <a href="https://wa.me/5511999999999?text=Quero%20avançar%20com%20essa%20simulação" class="btn-neon" style="background: #25D366; box-shadow: 0 0 15px rgba(37,211,102,0.4);">
-                Contratar pelo WhatsApp
-            </a>
+            <a href="https://wa.me/5511999999999" class="btn-neon" style="background: #25D366;">Contratar pelo WhatsApp</a>
             <br><br>
-            <button onclick="location.reload()" style="background:none; border:none; color: #555; cursor: pointer; text-decoration: underline;">Fazer nova simulação</button>
+            <button onclick="location.reload()" style="background:none; border:none; color: #555; cursor: pointer; text-decoration: underline;">Nova simulação</button>
         </div>
-
-        <p style="text-align: center; margin-top: 20px; color: #555; font-size: 0.9rem;">*Cálculo base inclui taxa administrativa média de mercado. Sujeito a análise.</p>
+        <p style="text-align: center; margin-top: 20px; color: #555; font-size: 0.9rem;">*Cálculo base inclui taxa administrativa média. Sujeito a análise.</p>
     </section>
 
     <section class="authority-bar">
         <div class="container">
-            <p style="color: #666; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;">Segurança Integrada</p>
+            <p style="text-transform: uppercase; font-size: 0.9rem;">Segurança Integrada</p>
             <div style="opacity: 0.7; font-weight: bold;">Teddy Open Finance • Cotafácil • Banco Central</div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p><strong>Fluyd - Inteligência Financeira.</strong><br>Correspondente bancário digital.</p>
-        </div>
-    </footer>
+    <footer><div class="container"><p>Fluyd - Inteligência Financeira.</p></div></footer>
 
     <script>
         async function enviarSimulacao() {
             const tipo = document.getElementById('tipo_bem').value;
-            const valor = document.getElementById('valor_credito').value;
+            const valorInput = document.getElementById('valor_credito').value;
             const btn = document.getElementById('btn-simular');
 
-            if (!valor) { alert("Por favor, digite o valor."); return; }
+            if (!valorInput) { alert("Digite o valor!"); return; }
 
-            // Animação de Carregamento
-            btn.innerText = "Calculando com IA...";
-            btn.style.opacity = "0.7";
-            btn.disabled = true;
+            // Lógica Matemática Local (Sem depender do Make)
+            const valor = parseFloat(valorInput);
+            const prazo = tipo === 'imovel' ? 180 : 80;
+            const taxaTotal = 1.23; // 23% de taxa adm total no período
+            const parcela = (valor * taxaTotal) / prazo;
+
+            // Formatação de Dinheiro (R$)
+            const formatarDinheiro = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+            btn.innerText = "Processando..."; btn.style.opacity = "0.7"; btn.disabled = true;
 
             try {
-                // SEU WEBHOOK ATUALIZADO
-                const response = await fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
+                // Envia para o Make APENAS para salvar no CRM (Google Sheets)
+                await fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString() })
                 });
 
-                const json = await response.json();
-
-                // Esconde formulário, Mostra Resultado
+                // Exibe o resultado calculado AQUI mesmo
                 document.getElementById('box-formulario').style.display = 'none';
                 document.getElementById('box-resultado').style.display = 'block';
-
-                // Preenche os dados que vieram do Make
-                document.getElementById('res-parcela').innerText = json.parcela;
-                document.getElementById('res-prazo').innerText = json.prazo;
-                document.getElementById('res-total').innerText = "Crédito de R$ " + valor;
+                
+                document.getElementById('res-parcela').innerText = formatarDinheiro(parcela);
+                document.getElementById('res-prazo').innerText = prazo + " meses";
+                document.getElementById('res-total').innerText = formatarDinheiro(valor);
 
             } catch (error) {
-                console.error(error);
-                alert("Erro ao conectar. Tente novamente.");
-                btn.innerText = "Ver Parcelas";
-                btn.style.opacity = "1";
-                btn.disabled = false;
+                console.error(error); alert("Erro de conexão.");
+            } finally {
+                btn.style.opacity = "1"; btn.disabled = false;
             }
         }
     </script>
