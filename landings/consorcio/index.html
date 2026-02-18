@@ -3,241 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid Aurora | Inteligência Financeira</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Glid Titan | Precision Engineering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- ESTILO AURORA (ROXO + MENTA) --- */
+        /* --- ESTILO TITÂNIO (CHUMBO + LARANJA SAFETY) --- */
         :root {
-            --primary: #5B21B6;       /* Roxo Profundo (Sabedoria/Wealth) */
-            --primary-light: #7C3AED; /* Roxo Vibrante */
-            --accent: #10B981;        /* Verde Menta (Growth/Dinheiro) */
-            --accent-hover: #059669;
-            --bg-body: #F3F4F6;       /* Cinza Gelo */
-            --bg-card: #FFFFFF;
-            --text-main: #1F2937;
-            --text-light: #6B7280;
+            --primary: #FF4500;       /* Laranja Internacional (Ação/Alerta) */
+            --dark: #1F2937;          /* Chumbo Azulado (Estrutura) */
+            --bg-body: #F3F4F6;       /* Branco Tecnológico */
+            --border: #374151;        /* Bordas Escuras */
         }
 
         body {
             background-color: var(--bg-body);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif; /* Fonte Tech e Amigável */
+            color: var(--dark);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        h1, h2, h3 { color: var(--primary); font-weight: 800; letter-spacing: -0.5px; }
+        h1, h2, h3 { 
+            text-transform: uppercase; 
+            letter-spacing: -1px; 
+            font-weight: 700; 
+            color: var(--dark);
+        }
 
-        /* Botão Menta (Alta Conversão) */
+        /* Destaque Industrial */
+        span.highlight { 
+            background: var(--primary); 
+            color: white; 
+            padding: 2px 8px; 
+        }
+
+        /* Botão Industrial (Quadrado e Bruto) */
         .btn-neon {
-            background-color: var(--accent) !important;
-            color: #FFFFFF !important; 
-            font-weight: 800 !important;
-            border-radius: 12px !important;
-            padding: 18px 40px !important;
+            background-color: var(--primary) !important;
+            color: white !important;
+            font-weight: 700 !important;
+            border-radius: 0px !important; /* Sem curvas */
+            padding: 22px 40px !important;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4) !important;
-            border: none !important;
-            transition: all 0.2s ease;
-            letter-spacing: 0.5px;
+            letter-spacing: 2px;
+            border: 2px solid var(--primary) !important;
+            box-shadow: 6px 6px 0px var(--dark) !important; /* Sombra Sólida */
+            transition: all 0.2s;
         }
         .btn-neon:hover { 
-            background-color: var(--accent-hover) !important;
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5) !important;
+            transform: translate(2px, 2px);
+            box-shadow: 4px 4px 0px var(--dark) !important;
         }
 
-        /* Cards Limpos com Glow Roxo */
+        /* Cards Brutalistas */
         .simulator-box, .feature-card {
-            background: var(--bg-card) !important;
-            border: 1px solid #E5E7EB !important;
-            border-radius: 24px;
-            box-shadow: 0 10px 40px -10px rgba(91, 33, 182, 0.15) !important;
-            transition: transform 0.3s;
+            background: white !important;
+            border: 2px solid var(--dark) !important;
+            border-radius: 0px;
+            box-shadow: 8px 8px 0px var(--dark) !important; /* Sombra Sólida */
+            margin-bottom: 20px;
         }
 
-        /* Inputs Modernos */
+        /* Inputs Técnicos */
         input, select {
-            background: #F9FAFB !important;
-            border: 2px solid #E5E7EB !important;
-            border-radius: 12px !important;
-            padding: 16px !important;
-            color: var(--primary) !important;
-            font-weight: 700;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #FFF !important;
+            border: 2px solid #9CA3AF !important;
+            border-radius: 0px !important;
+            padding: 18px !important;
+            color: var(--dark) !important;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
         }
         input:focus, select:focus { 
             border-color: var(--primary) !important; 
             outline: none; 
-            background: white !important;
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+            background: #FFF7ED !important;
         }
 
         /* Ícones */
-        .feature-card:hover { transform: translateY(-5px); border-color: var(--primary-light) !important; }
         .feature-icon i { 
             color: var(--primary); 
-            font-size: 2.5rem; 
-            background: #EDE9FE; /* Roxo bem clarinho */
-            padding: 15px; 
-            border-radius: 16px; 
-            margin-bottom: 20px; 
-            display: inline-block;
-        }
-        
-        /* Highlight Texto */
-        span.highlight { 
-            color: var(--accent); 
-            background: #DBEAFE; 
-            padding: 2px 10px; 
-            border-radius: 8px; 
+            font-size: 3rem; 
+            margin-bottom: 15px; 
+            display: block;
         }
 
-        /* FAQ Clean */
+        /* FAQ Brutalista */
         .faq-section { padding: 80px 20px; max-width: 800px; margin: 0 auto; }
-        .faq-item { background: white !important; border: 1px solid #E5E7EB !important; margin-bottom: 15px; border-radius: 16px; overflow: hidden; }
+        .faq-item { 
+            border: 2px solid var(--dark); 
+            background: white; 
+            margin-bottom: 15px; 
+            box-shadow: 4px 4px 0px #999;
+        }
         .faq-question { 
             width: 100%; text-align: left; padding: 25px; 
             background: none; border: none; font-weight: 700; 
-            color: var(--primary); cursor: pointer; 
-            display: flex; justify-content: space-between; align-items: center;
-            font-size: 1.1rem;
+            color: var(--dark); cursor: pointer; text-transform: uppercase; 
+            display: flex; justify-content: space-between;
         }
-        .faq-answer { padding: 0 25px 25px; display: none; color: var(--text-light); line-height: 1.6; }
-        
+        .faq-answer { padding: 0 25px 25px; display: none; color: #555; line-height: 1.5; }
+
         /* Resultado */
-        .result-value { font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 20px 0; }
-        
-        /* WhatsApp Float */
+        .result-value { font-size: 4rem; font-weight: 700; color: var(--primary); margin: 20px 0; letter-spacing: -2px; }
+
+        /* WhatsApp Float (Quadrado) */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
-            background-color: #25D366; color: white;
-            width: 60px; height: 60px; border-radius: 50%;
+            background-color: var(--dark); color: white;
+            width: 60px; height: 60px; border-radius: 0px;
             display: flex; align-items: center; justify-content: center;
             font-size: 2rem; text-decoration: none;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 100; transition: transform 0.2s;
+            border: 2px solid white;
+            box-shadow: 5px 5px 0px var(--primary);
+            z-index: 100;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
-    <header class="hero" style="padding: 120px 20px 80px; text-align: center; background: radial-gradient(circle at top, #FFFFFF 0%, #F3F4F6 100%);">
-        <i class="ph-duotone ph-sparkle" style="font-size: 4.5rem; color: var(--primary); margin-bottom: 25px;"></i>
-        <h1 style="font-size: 4rem; margin-bottom: 20px;">GLID AURORA</h1>
-        <p style="font-size: 1.3rem; color: var(--text-light); margin-bottom: 40px; max-width: 600px; margin: 0 auto 50px;">
-            Inteligência financeira que multiplica seu patrimônio.<br>
-            Crédito estratégico, <span class="highlight">sem juros</span>.
+    <header class="hero" style="padding: 120px 20px 80px; text-align: center;">
+        <i class="ph-bold ph-aperture" style="font-size: 5rem; color: var(--dark); margin-bottom: 20px;"></i>
+        <h1 style="font-size: 4.5rem; margin-bottom: 10px; line-height: 1;">GLID<span style="color:var(--primary)">.TITAN</span></h1>
+        <p style="font-size: 1.2rem; color: #555; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px; font-weight: 500;">
+            Precision Financial Engineering.
         </p>
         <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
-            Iniciar Simulação <i class="ph-bold ph-arrow-down"></i>
+            INICIAR SISTEMA <i class="ph-bold ph-caret-right"></i>
         </a>
     </header>
 
     <section class="container" id="simulador" style="max-width: 500px; margin: -50px auto 0; position: relative; z-index: 10; padding: 0 20px;">
         <div class="simulator-box" id="box-formulario" style="padding: 40px;">
-            <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary);">Configure sua Conquista</h3>
             <div style="margin-bottom: 20px;">
-                <label style="display: block; margin-bottom: 10px; color: var(--text-light); font-weight: 700; font-size: 0.9rem;">Seu Objetivo</label>
+                <label style="display: block; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem;">Ativo Alvo</label>
                 <select id="tipo_bem" style="width: 100%;">
-                    <option value="imovel">Imóvel (Até 180 meses)</option>
-                    <option value="veiculo">Veículo (Até 80 meses)</option>
+                    <option value="imovel">IMÓVEL (180X)</option>
+                    <option value="veiculo">VEÍCULO (80X)</option>
                 </select>
             </div>
             <div style="margin-bottom: 30px;">
-                <label style="display: block; margin-bottom: 10px; color: var(--text-light); font-weight: 700; font-size: 0.9rem;">Valor do Crédito (R$)</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 300.000" style="width: 100%;">
+                <label style="display: block; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem;">Capital Requerido (BRL)</label>
+                <input type="number" id="valor_credito" placeholder="EX: 300000" style="width: 100%;">
             </div>
-            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">Calcular Investimento</button>
+            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">PROCESSAR DADOS</button>
         </div>
 
         <div class="simulator-box" id="box-resultado" style="display: none; padding: 40px; text-align: center;">
-            <i class="ph-fill ph-check-circle" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
-            <h2 style="font-size: 1.8rem;">Viabilidade Aprovada</h2>
-            <p style="color: var(--text-light);">Aporte mensal estimado:</p>
+            <h2 style="font-size: 1.5rem;">STATUS: APROVADO</h2>
             <div class="result-value" id="res-parcela">R$ 0,00</div>
             
-            <div style="background: #F3F4F6; border-radius: 12px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-between;">
-                <div><small style="color:#6B7280; font-weight:700;">PRAZO</small><br><b id="res-prazo" style="color:var(--primary); font-size:1.1rem;">--</b></div>
-                <div><small style="color:#6B7280; font-weight:700;">TOTAL</small><br><b id="res-total" style="color:var(--primary); font-size:1.1rem;">--</b></div>
+            <div style="border-top: 2px solid var(--dark); border-bottom: 2px solid var(--dark); padding: 20px 0; margin: 30px 0; display: flex; justify-content: space-between;">
+                <div><small>PRAZO</small><br><b id="res-prazo" style="font-size: 1.2rem;">--</b></div>
+                <div><small>TOTAL</small><br><b id="res-total" style="font-size: 1.2rem;">--</b></div>
             </div>
 
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; background: #25D366 !important; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3) !important;">
-                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Finalizar no WhatsApp
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: block; text-decoration: none; margin-top: 20px; background: #25D366 !important; border-color: #25D366 !important; box-shadow: 6px 6px 0px #064E3B !important;">
+                EXECUTE VIA WHATSAPP
             </a>
-             <button onclick="location.reload()" style="background:none; border:none; color: var(--text-light); margin-top: 20px; cursor: pointer; text-decoration: underline;">Nova Simulação</button>
+             <button onclick="location.reload()" style="background:none; border:none; text-decoration: underline; margin-top: 20px; cursor: pointer; text-transform: uppercase; font-weight: bold;">[ REINICIAR ]</button>
         </div>
     </section>
-
-    <section style="padding: 100px 20px; background: white; margin-top: 80px;">
-        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-             <h2 style="margin-bottom: 60px; font-size: 2.5rem;">Tecnologia Financeira</h2>
-             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="ph-duotone ph-chart-line-up"></i></div>
-                    <h3>Alavancagem</h3>
-                    <p style="color: var(--text-light);">Multiplique seu poder de compra sem descapitalizar seus investimentos atuais.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="ph-duotone ph-shield-check"></i></div>
-                    <h3>Segurança</h3>
-                    <p style="color: var(--text-light);">Fiscalizado pelo Banco Central. Toda a segurança de um banco, com a agilidade de uma fintech.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="ph-duotone ph-lightning"></i></div>
-                    <h3>Agilidade</h3>
-                    <p style="color: var(--text-light);">Processo 100% digital. Menos burocracia, mais resultados para o seu bolso.</p>
-                </div>
-             </div>
-        </div>
-    </section>
-
+    
     <section class="faq-section">
-        <h3 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">Perguntas Frequentes</h3>
+        <h3 style="text-align: left; margin-bottom: 30px; text-transform: uppercase; font-weight: 700;">ESPECIFICAÇÕES TÉCNICAS</h3>
         <div class="faq-item">
-            <button class="faq-question" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">
-                Como funciona a taxa administrativa? <i class="ph-bold ph-caret-down"></i>
-            </button>
-            <div class="faq-answer">É uma taxa fixa diluída no prazo do plano. Diferente dos juros bancários, ela não incide sobre o saldo devedor, tornando o custo final muito menor.</div>
+            <button class="faq-question" onclick="toggleFaq(this)">TAXA ADMINISTRATIVA <i class="ph-bold ph-plus"></i></button>
+            <div class="faq-answer">Taxa fixa diluída linearmente no prazo. Custo final inferior a financiamentos bancários indexados.</div>
         </div>
         <div class="faq-item">
-            <button class="faq-question" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">
-                Posso usar FGTS? <i class="ph-bold ph-caret-down"></i>
-            </button>
-            <div class="faq-answer">Sim! Para imóveis residenciais, você pode usar seu FGTS para ofertar lances (acelerar a contemplação) ou amortizar parcelas.</div>
+            <button class="faq-question" onclick="toggleFaq(this)">PROTOCOLO FGTS <i class="ph-bold ph-plus"></i></button>
+            <div class="faq-answer">Habilitado para oferta de lances e amortização de saldo devedor em imóveis residenciais.</div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 60px 20px; background: #F3F4F6; color: var(--text-light);">
-        <i class="ph-duotone ph-sparkle" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
-        <p><strong>GLID AURORA</strong> • Inteligência Financeira</p>
+    <footer style="text-align: center; padding: 60px 20px; background: var(--dark); color: white;">
+        <i class="ph-bold ph-aperture" style="font-size: 2rem; margin-bottom: 15px;"></i>
+        <p style="font-size: 0.8rem; letter-spacing: 2px;">GLID TITAN • SYSTEM ONLINE</p>
     </footer>
 
-    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+tenho+interesse+na+Glid." class="whatsapp-float">
+    <a href="https://wa.me/5577998633429?text=Titan+Support" class="whatsapp-float">
         <i class="ph-bold ph-whatsapp-logo"></i>
     </a>
 
     <script>
+        function toggleFaq(element) { 
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+                icon.classList.remove('ph-minus'); icon.classList.add('ph-plus');
+            } else {
+                answer.style.display = "block";
+                icon.classList.remove('ph-plus'); icon.classList.add('ph-minus');
+            }
+        }
+
         async function enviarSimulacao() {
-            const valorInput = document.getElementById('valor_credito').value;
-            if(!valorInput) return alert('Por favor, digite o valor desejado.');
+            const valor = parseFloat(document.getElementById('valor_credito').value);
+            if(!valor) return alert('INPUT REQUIRED');
             
-            const valor = parseFloat(valorInput);
             const prazo = document.getElementById('tipo_bem').value === 'imovel' ? 180 : 80;
             const parcela = (valor * 1.23) / prazo;
             const formatar = (n) => n.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            
+
+            const btn = document.querySelector('button.btn-neon');
+            btn.innerText = "CALCULATING...";
+
             document.getElementById('box-formulario').style.display = 'none';
             document.getElementById('box-resultado').style.display = 'block';
             
             document.getElementById('res-parcela').innerText = formatar(parcela);
-            document.getElementById('res-prazo').innerText = prazo + " meses";
-            document.getElementById('res-total').innerText = "Crédito Total: " + formatar(valor);
+            document.getElementById('res-prazo').innerText = prazo + " MO";
+            document.getElementById('res-total').innerText = formatar(valor);
             
-            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+Aurora.`;
+            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=TITAN+PROTOCOL%3A+${formatar(valor)}`;
             
-            // CRM Ping
-             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Aurora'}) }); } catch(e){}
+             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Titan'}) }); } catch(e){}
         }
     </script>
 </body>
