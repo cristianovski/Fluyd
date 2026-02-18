@@ -9,8 +9,7 @@
     
     <meta property="og:title" content="Glid | Pare de alugar dinheiro do banco">
     <meta property="og:description" content="Matemática a seu favor. Simule agora e descubra seu poder de compra.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80">
-
+    
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -69,26 +68,18 @@
         .btn-header { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px; text-decoration: none; color: white; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
         .btn-header:hover { background: var(--primary); }
 
-        /* --- HERO SECTION (Simulador + Texto) --- */
+        /* --- HERO SECTION --- */
         .hero-section { padding: 140px 0 80px; position: relative; overflow: hidden; }
-        
         .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
         .hero-text p { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px; max-width: 500px; }
-        
         .trust-badges { display: flex; gap: 20px; margin-top: 40px; opacity: 0.7; }
         .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--text-gray); }
 
-        /* --- SIMULATOR CARD (O "App" Embutido) --- */
+        /* --- SIMULATOR CARD --- */
         .simulator-wrapper {
-            background: var(--bg-card);
-            border: 1px solid #1e293b;
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 20px 50px -10px rgba(59, 130, 246, 0.15);
-            position: relative;
+            background: var(--bg-card); border: 1px solid #1e293b; border-radius: 24px; padding: 30px;
+            box-shadow: 0 20px 50px -10px rgba(59, 130, 246, 0.15); position: relative;
         }
-        
-        /* Estilos Internos do Simulador (Mini App) */
         .step-screen { display: none; animation: fadeIn 0.4s ease; }
         .step-screen.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -117,28 +108,32 @@
         .big-number { font-size: 2.2rem; font-weight: 800; color: white; line-height: 1; margin: 10px 0; }
         .economy-pill { background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; }
 
-        /* --- PARTNERS SECTION --- */
-        .partners-section { padding: 40px 0; background: #020617; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b; }
-        .partners-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; opacity: 0.5; align-items: center; }
-        .partner-logo { font-size: 1.2rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 8px; }
+        /* --- PARTNERS SECTION (UPDATED) --- */
+        .partners-section { padding: 60px 0; background: #020617; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b; }
+        .partners-grid { 
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; opacity: 0.6; align-items: center; margin-top: 30px;
+        }
+        .partner-logo { 
+            font-size: 1.1rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 10px; 
+            transition: opacity 0.3s;
+        }
+        .partner-logo:hover { opacity: 1; color: var(--primary); }
+        .partner-logo i { font-size: 1.5rem; }
 
-        /* --- FEATURES SECTION --- */
+        /* --- FEATURES & COMPARISON --- */
         .features-section { padding: 100px 0; }
         .feature-card { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid #1e293b; transition: 0.3s; }
         .feature-card:hover { transform: translateY(-5px); border-color: var(--primary); }
         .f-icon { width: 60px; height: 60px; background: rgba(59, 130, 246, 0.1); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; }
 
-        /* --- COMPARISON TABLE --- */
         .comparison-section { padding: 80px 0; background: #0f172a; }
         .comp-table { width: 100%; max-width: 800px; margin: 50px auto 0; border-collapse: collapse; }
         .comp-table th, .comp-table td { padding: 20px; text-align: left; border-bottom: 1px solid #334155; }
         .comp-table th { color: var(--text-gray); font-size: 0.9rem; text-transform: uppercase; }
         .comp-table td { font-size: 1.1rem; font-weight: 600; }
-        .vs-badge { background: #334155; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; }
 
-        /* --- FOOTER --- */
-        footer { padding: 60px 0; text-align: center; color: var(--text-gray); font-size: 0.9rem; border-top: 1px solid #1e293b; }
-        
+        /* --- FOOTER & WHATSAPP --- */
+        footer { padding: 60px 0; text-align: center; color: var(--text-gray); font-size: 0.9rem; border-top: 1px solid #1e293b; margin-top: 60px; }
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white;
             width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
@@ -147,15 +142,14 @@
         }
         .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* --- MOBILE RESPONSIVE --- */
+        /* --- MOBILE --- */
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; gap: 40px; }
             .hero-section { padding: 100px 0 60px; text-align: center; }
             .hero-text h1 { font-size: 2.5rem; }
             .hero-text p { margin: 0 auto 30px; }
             .trust-badges { justify-content: center; flex-wrap: wrap; }
-            .partners-grid { justify-content: center; gap: 20px; }
-            .partner-logo { font-size: 1rem; }
+            .partners-grid { gap: 20px; }
         }
     </style>
 </head>
@@ -163,14 +157,13 @@
 
     <header>
         <div class="container nav-content">
-            <a href="#" class="logo">Glid<span>.</span></a>
+            <a href="/" class="logo">Glid<span>.</span></a>
             <a href="https://wa.me/557731420005" class="btn-header">Falar com Consultor</a>
         </div>
     </header>
 
     <section class="hero-section">
         <div class="container grid-2">
-            
             <div class="hero-text">
                 <div style="background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; font-weight: 600; font-size: 0.9rem;">
                     🚀 Fintech de Crédito Inteligente
@@ -185,7 +178,6 @@
             </div>
 
             <div class="simulator-wrapper">
-                
                 <div class="step-screen active" id="step-1">
                     <h3 style="margin-top:0;">Qual seu momento atual?</h3>
                     <p style="font-size:0.9rem; color:var(--text-gray); margin-bottom:20px;">Isso define nossa estratégia de alavancagem.</p>
@@ -209,38 +201,31 @@
 
                 <div class="step-screen" id="step-2">
                     <h3 style="margin-top:0;">O que você busca?</h3>
-                    
                     <label>Tipo de Bem</label>
                     <select id="tipo_bem">
                         <option value="imovel">🏡 Imóvel (Casa, Terreno, Reforma)</option>
                         <option value="veiculo">🚗 Veículo (Carro, Moto)</option>
                     </select>
-
                     <label>Valor do Crédito (R$)</label>
                     <input type="number" id="valor_credito" placeholder="Ex: 200000">
-
                     <button class="btn-action" onclick="nextStep(3)">Continuar <i class="ph-bold ph-arrow-right"></i></button>
                     <button class="btn-action" style="background:transparent; border:1px solid #334155;" onclick="nextStep(1)">Voltar</button>
                 </div>
 
                 <div class="step-screen" id="step-3">
                     <h3 style="margin-top:0;">Recursos Disponíveis</h3>
-                    
                     <label>Você tem valor para Entrada/Lance?</label>
                     <select id="tem_lance" onchange="toggleLance()">
                         <option value="nao">Não, quero usar 100% do crédito</option>
                         <option value="sim">Sim, tenho recurso próprio/FGTS</option>
                     </select>
-
                     <div id="box-lance" style="display:none;">
                         <label>Valor disponível (R$)</label>
                         <input type="number" id="valor_lance" placeholder="Ex: 50000">
                     </div>
-
                     <div id="aviso-pressa" style="background: rgba(245, 158, 11, 0.1); color: var(--accent); padding: 10px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 15px; display: none;">
                         <i class="ph-bold ph-warning"></i> <b>Estratégia:</b> Sem lance livre, usaremos o <b>Lance Embutido</b> (da própria carta) para acelerar.
                     </div>
-
                     <button class="btn-action" onclick="calcular()">Gerar Estratégia <i class="ph-bold ph-lightning"></i></button>
                     <button class="btn-action" style="background:transparent; border:1px solid #334155;" onclick="nextStep(2)">Voltar</button>
                 </div>
@@ -249,18 +234,15 @@
                     <div style="text-align:center; margin-bottom:20px;">
                         <div class="economy-pill">💰 Economia: R$ <span id="res-economia">--</span></div>
                     </div>
-                    
                     <div class="result-display">
                         <span style="color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:1px;">Investimento Mensal</span>
                         <div class="big-number">R$ <span id="res-parcela">0,00</span></div>
                         <div style="font-size:0.9rem; color:var(--text-gray);">Prazo estimado: <span id="res-prazo" style="color:white; font-weight:700;">--</span> meses</div>
                     </div>
-
                     <div style="display:flex; justify-content:space-between; font-size:0.9rem; margin-bottom:20px; padding:0 10px;">
                         <div>🏦 Banco: <span style="color:#f87171; font-weight:700;" id="custo-banco">--</span></div>
                         <div>🚀 Glid: <span style="color:var(--success); font-weight:700;" id="custo-glid">--</span></div>
                     </div>
-
                     <a id="btn-whatsapp" href="#" class="btn-action" style="background:#25D366;">
                         <i class="ph-bold ph-whatsapp-logo"></i> Validar no WhatsApp Oficial
                     </a>
@@ -272,12 +254,17 @@
 
     <section class="partners-section">
         <div class="container">
-            <p style="text-align:center; color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:20px;">Parceiros Oficiais</p>
+            <p style="text-align:center; color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:20px;">Parceiros Oficiais & Bancos</p>
             <div class="partners-grid">
                 <div class="partner-logo"><i class="ph-fill ph-bank"></i> ADEMICON</div>
                 <div class="partner-logo"><i class="ph-fill ph-car-profile"></i> PORTO BANK</div>
                 <div class="partner-logo"><i class="ph-fill ph-engine"></i> YAMAHA</div>
-                <div class="partner-logo"><i class="ph-fill ph-shield-check"></i> CNP SEGUROS</div>
+                
+                <div class="partner-logo"><i class="ph-bold ph-bank"></i> ITAÚ</div>
+                <div class="partner-logo"><i class="ph-bold ph-bank"></i> BRADESCO</div>
+                <div class="partner-logo"><i class="ph-bold ph-bank"></i> SANTANDER</div>
+                <div class="partner-logo"><i class="ph-bold ph-bank"></i> BANCO DO BRASIL</div>
+                <div class="partner-logo"><i class="ph-bold ph-bank"></i> CAIXA</div>
             </div>
         </div>
     </section>
@@ -288,22 +275,21 @@
                 <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Não é sorte. É <span class="highlight">Estatística.</span></h2>
                 <p style="color: var(--text-gray);">Diferente do consórcio tradicional de "gerente de banco", nós usamos dados de milhares de grupos para encontrar o caminho de menor resistência.</p>
             </div>
-
             <div class="grid-2" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                 <div class="feature-card">
                     <div class="f-icon"><i class="ph-bold ph-chart-line-up"></i></div>
                     <h3>Análise de Grupos</h3>
-                    <p style="color: var(--text-gray);">Nossos algoritmos varrem o mercado para encontrar grupos com alta saúde financeira e média de lances compatível com seu bolso.</p>
+                    <p style="color: var(--text-gray);">Nossos algoritmos varrem o mercado para encontrar grupos com alta saúde financeira e média de lances compatível.</p>
                 </div>
                 <div class="feature-card">
                     <div class="f-icon"><i class="ph-bold ph-coins"></i></div>
                     <h3>Lance Embutido</h3>
-                    <p style="color: var(--text-gray);">Não tem dinheiro para o lance? Use até 30% da própria carta de crédito para antecipar sua contemplação.</p>
+                    <p style="color: var(--text-gray);">Não tem dinheiro para o lance? Use até 30% da própria carta de crédito para antecipar.</p>
                 </div>
                 <div class="feature-card">
                     <div class="f-icon"><i class="ph-bold ph-percent"></i></div>
                     <h3>Meia Parcela</h3>
-                    <p style="color: var(--text-gray);">Opções onde você paga 50% da parcela até a contemplação. Ideal para quem paga aluguel e quer construir.</p>
+                    <p style="color: var(--text-gray);">Opções onde você paga 50% da parcela até a contemplação. Ideal para quem paga aluguel.</p>
                 </div>
             </div>
         </div>
@@ -313,7 +299,6 @@
         <div class="container text-center">
             <h2 style="font-size: 2.5rem;">A Matemática não mente.</h2>
             <p style="color: var(--text-gray);">Comparativo para um Crédito de R$ 500.000,00 (Imóvel)</p>
-
             <table class="comp-table">
                 <thead>
                     <tr>
@@ -340,7 +325,6 @@
                     </tr>
                 </tbody>
             </table>
-            
             <div style="margin-top: 50px;">
                 <a href="#step-1" class="btn-action" style="max-width: 300px; margin: 0 auto; background: var(--accent);">Simular Minha Economia</a>
             </div>
@@ -427,6 +411,9 @@
             if(typeof fbq === 'function') fbq('track', 'Lead');
         }
     </script>
-
 </body>
 </html>
+
+git add .
+git commit -m "Update: Add Banking Partners (Itau, Bradesco, BB, Santander)"
+git push origin main
