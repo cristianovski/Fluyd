@@ -3,101 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | Crédito Acessível para Você</title>
+    <title>Glid | O Crédito do Brasileiro</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- ESTILO DEGRAU (LARANJA + COBALTO) --- */
+        /* --- ESTILO PROSPERIDADE (VERDE BANDEIRA + AMARELO GIRASSOL) --- */
         :root {
-            --primary: #F97316;       /* Laranja Solar (Otimismo/Ação) */
-            --primary-dark: #EA580C;  /* Laranja Escuro (Hover) */
-            --secondary: #1E3A8A;     /* Azul Cobalto (Segurança/Institucional) */
-            --bg-color: #FFFFFF;      /* Branco Puro (Sem segredos) */
-            --card-bg: #F8FAFC;       /* Cinza Muito Suave (Separação) */
-            --border-color: #E2E8F0;  /* Bordas Leves */
-            --text-color: #1F2937;    /* Cinza Chumbo (Leitura Fácil) */
-            --text-muted: #4B5563;    /* Cinza Médio */
+            --verde-bandeira: #15803D; /* Verde Forte e Sério */
+            --verde-claro: #DCFCE7;    /* Fundo suave */
+            --amarelo-girassol: #FACC15; /* Amarelo Rico */
+            --amarelo-hover: #EAB308;    /* Amarelo Ouro */
+            
+            --bg-color: #FFFFFF;
+            --text-color: #1F2937;
+            --text-muted: #4B5563;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Open Sans', sans-serif; /* Fonte mais "aberta" e amigável */
+            font-family: 'Open Sans', sans-serif;
         }
 
-        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; color: var(--secondary); }
-        span.highlight { color: var(--primary); }
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; color: var(--verde-bandeira); }
+        
+        /* Destaque Amarelo (marca texto) */
+        span.highlight { 
+            background: linear-gradient(120deg, transparent 0%, var(--amarelo-girassol) 100%);
+            padding: 0 5px;
+            color: var(--verde-bandeira);
+        }
 
-        /* Botões Acolhedores (Redondos e Quentes) */
+        /* Botões "Girassol" (Amarelo com texto Verde Escuro) */
         .btn-neon {
-            background-color: var(--primary) !important;
-            color: #FFFFFF !important;
-            font-weight: 700 !important;
+            background-color: var(--amarelo-girassol) !important;
+            color: #064E3B !important; /* Verde bem escuro para ler bem no amarelo */
+            font-weight: 800 !important;
             border: none !important;
-            border-radius: 50px !important; /* Pílula redonda = Amigável */
-            text-transform: uppercase; letter-spacing: 0.5px;
+            border-radius: 12px !important;
+            text-transform: uppercase;
             padding: 18px 36px !important;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 6px rgba(249, 115, 22, 0.3) !important;
+            box-shadow: 0 4px 0 #CA8A04 !important; /* Efeito 3D sutil */
         }
         .btn-neon:hover {
-            background-color: var(--primary-dark) !important;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(249, 115, 22, 0.5) !important;
+            background-color: var(--amarelo-hover) !important;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #CA8A04 !important; /* Botão sendo apertado */
         }
 
-        /* Cards Amigáveis */
+        /* Cards Limpos com Borda Verde Suave */
         .simulator-box, .feature-card, .faq-item {
-            background-color: var(--card-bg) !important;
-            border: 1px solid var(--border-color) !important;
-            border-radius: 20px; /* Cantos bem arredondados */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+            background-color: #FFFFFF !important;
+            border: 2px solid var(--verde-claro) !important;
+            border-radius: 20px;
         }
 
-        /* Inputs Grandes e Claros */
+        /* Inputs Fáceis */
         input, select {
-            background: #FFFFFF !important;
-            border: 2px solid #CBD5E1 !important; /* Borda mais grossa para ver bem */
+            background: #F0FDF4 !important; /* Fundo verdinho bem claro */
+            border: 2px solid var(--verde-claro) !important;
             color: var(--text-color) !important; 
-            border-radius: 12px !important; 
+            border-radius: 10px !important; 
             padding: 16px !important;
             font-family: 'Open Sans', sans-serif;
             font-size: 1rem;
+            font-weight: 600;
         }
         input:focus, select:focus {
-            border-color: var(--primary) !important; 
+            border-color: var(--verde-bandeira) !important; 
+            background: #FFFFFF !important;
             outline: none;
         }
 
         /* --- ÍCONES --- */
-        .feature-card { padding: 30px; text-align: center; transition: all 0.3s; }
-        .feature-card:hover { transform: translateY(-5px); }
+        .feature-card { padding: 30px; text-align: center; }
+        .feature-card:hover { border-color: var(--verde-bandeira) !important; }
         .feature-icon i {
-            font-size: 3rem; color: var(--secondary); /* Ícones Azuis (Confiança) */
+            font-size: 3rem; color: var(--verde-bandeira);
             margin-bottom: 15px; display: block;
+            background: var(--verde-claro);
+            width: 80px; height: 80px; line-height: 80px; border-radius: 50%; margin: 0 auto 15px;
         }
 
-        /* --- FAQ --- */
+        /* --- RESULTADO --- */
+        .result-value { font-size: 3.5rem; font-weight: 800; color: var(--verde-bandeira); margin: 10px 0; }
+        
+        /* FAQ */
         .faq-section { padding: 60px 20px; max-width: 800px; margin: 0 auto; }
-        .faq-item { margin-bottom: 15px; border: 1px solid #E2E8F0 !important; background: white !important; }
+        .faq-item { margin-bottom: 15px; background: #F9FAFB !important; }
         .faq-question {
             width: 100%; text-align: left; padding: 20px;
-            background: none; border: none; color: var(--secondary); 
-            font-weight: 700; font-size: 1.1rem;
-            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            background: none; border: none; color: var(--verde-bandeira); 
+            font-weight: 700; font-size: 1.1rem; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .faq-icon { color: var(--primary); font-size: 1.5rem; }
-        .faq-answer {
-            padding: 0 20px 20px 20px; display: none; color: var(--text-muted); line-height: 1.6;
-            border-top: 1px solid #F1F5F9;
-        }
-        .faq-active .faq-answer { display: block; }
 
-        /* Resultado */
-        .result-value { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 10px 0; }
-        
         /* Botão Flutuante */
         .whatsapp-float {
             position: fixed; bottom: 20px; right: 20px;
@@ -105,126 +108,135 @@
             padding: 15px 25px; border-radius: 50px;
             text-decoration: none; font-weight: bold;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 100;
-            display: flex; align-items: center; gap: 10px;
+            display: flex; align-items: center; gap: 10px; border: 2px solid white;
         }
     </style>
 </head>
 <body>
 
-    <header class="hero" style="padding: 100px 20px 60px; text-align: center; background: linear-gradient(180deg, #EFF6FF 0%, #FFFFFF 100%);">
+    <header class="hero" style="padding: 80px 20px 60px; text-align: center; background: radial-gradient(circle at center, #F0FDF4 0%, #FFFFFF 100%);">
         <div class="container">
-            <i class="ph-fill ph-handshake" style="font-size: 4rem; color: var(--secondary); margin-bottom: 20px;"></i>
+            <i class="ph-duotone ph-plant" style="font-size: 4.5rem; color: var(--verde-bandeira); margin-bottom: 20px;"></i>
             
-            <h1 style="font-size: 3rem; margin-bottom: 15px; color: var(--secondary);">GLID</h1>
+            <h1 style="font-size: 3rem; margin-bottom: 15px; color: #111;">GLID</h1>
             <p style="font-size: 1.3rem; color: var(--text-muted); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5;">
-                O empurrãozinho que faltava para você conquistar sua <span class="highlight">Casa</span> ou <span class="highlight">Carro</span> novo. Sem complicação.
+                Vamos desatar os nós da sua vida financeira? <br>
+                Conquiste sua casa ou carro com a <span class="highlight">força do seu trabalho</span>.
             </p>
             <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
-                Fazer Simulação Grátis <i class="ph-bold ph-arrow-down"></i>
+                Fazer minha simulação <i class="ph-bold ph-arrow-down"></i>
             </a>
         </div>
     </header>
 
     <section class="container" id="simulador" style="max-width: 500px; margin: -40px auto 0; position: relative; z-index: 10; padding: 0 20px;">
-        <div class="simulator-box" id="box-formulario" style="padding: 30px; box-shadow: 0 10px 40px rgba(30, 58, 138, 0.1) !important;">
-            <h3 style="text-align: center; margin-bottom: 20px; font-size: 1.4rem; color: var(--secondary);">Qual é o seu sonho?</h3>
+        <div class="simulator-box" id="box-formulario" style="padding: 30px; box-shadow: 0 20px 40px -10px rgba(21, 128, 61, 0.15) !important;">
+            <h3 style="text-align: center; margin-bottom: 20px; font-size: 1.4rem;">O que você quer conquistar?</h3>
 
             <div style="margin-bottom: 20px;">
-                <label style="display: block; margin-bottom: 8px; color: var(--text-muted); font-weight: 600;">Eu quero conquistar um:</label>
+                <label style="display: block; margin-bottom: 8px; color: var(--text-muted); font-weight: 600;">Meu sonho é:</label>
                 <select id="tipo_bem" style="width: 100%;">
-                    <option value="imovel">Imóvel (Casa, Terreno ou Reforma)</option>
-                    <option value="veiculo">Veículo (Carro ou Moto)</option>
+                    <option value="imovel">Ter minha Casa Própria (180x)</option>
+                    <option value="veiculo">Comprar meu Carro (80x)</option>
                 </select>
             </div>
             <div style="margin-bottom: 30px;">
-                <label style="display: block; margin-bottom: 8px; color: var(--text-muted); font-weight: 600;">Valor que eu preciso (R$):</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 50.000" style="width: 100%;">
+                <label style="display: block; margin-bottom: 8px; color: var(--text-muted); font-weight: 600;">Valor do crédito (R$):</label>
+                <input type="number" id="valor_credito" placeholder="Ex: 80.000" style="width: 100%;">
             </div>
             <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;" id="btn-simular">
-                Ver Valor da Parcela
+                Ver se cabe no bolso
             </button>
         </div>
 
-        <div class="simulator-box result-card" id="box-resultado" style="display: none; padding: 40px 30px; text-align: center; box-shadow: 0 10px 40px rgba(30, 58, 138, 0.1) !important;">
-            <i class="ph-fill ph-thumbs-up" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 15px;"></i>
-            <h2 style="margin-bottom: 5px; font-size: 1.6rem; color: var(--secondary);">Simulação Pronta!</h2>
-            <p style="color: var(--text-muted);">Sua parcela cabe no bolso:</p>
+        <div class="simulator-box result-card" id="box-resultado" style="display: none; padding: 40px 30px; text-align: center; box-shadow: 0 20px 40px -10px rgba(21, 128, 61, 0.15) !important;">
+            <i class="ph-fill ph-hands-clapping" style="font-size: 4rem; color: var(--amarelo-girassol); margin-bottom: 15px;"></i>
+            <h2 style="margin-bottom: 5px; font-size: 1.8rem; color: var(--verde-bandeira);">Boa Notícia!</h2>
+            <p style="color: var(--text-muted);">Dá pra fazer. Olha o valor da parcela:</p>
             <div class="result-value" id="res-parcela">R$ 0,00</div>
             
-            <div style="background: #EFF6FF; border-radius: 15px; padding: 15px; margin: 25px 0; color: var(--secondary);">
-                <p style="margin: 5px 0;"><strong>Prazo para pagar:</strong> <span id="res-prazo">--</span></p>
-                <p style="margin: 5px 0;"><strong>Crédito total:</strong> <span id="res-total">--</span></p>
+            <div style="background: #F0FDF4; border: 1px solid var(--verde-claro); border-radius: 15px; padding: 15px; margin: 25px 0; color: #064E3B;">
+                <p style="margin: 5px 0;"><strong>Tempo para pagar:</strong> <span id="res-prazo">--</span></p>
+                <p style="margin: 5px 0;"><strong>Valor total na mão:</strong> <span id="res-total">--</span></p>
             </div>
             
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="background: #25D366 !important; color: white !important; display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 20px;">
-                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Chamar no WhatsApp
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="background-color: #25D366 !important; color: white !important; display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 20px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">
+                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Quero Garantir Essa Parcela
             </a>
             
             <button onclick="location.reload()" style="background:none; border:none; color: var(--text-muted); cursor: pointer; text-decoration: underline; font-size: 0.9rem;">
-                Simular outro valor
+                Calcular outro valor
             </button>
         </div>
     </section>
 
     <section style="padding: 80px 20px; background: white; margin-top: 60px;">
         <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 40px; color: var(--secondary);">Por que a Glid é para você?</h2>
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 40px;">Por que a Glid é parceira?</h2>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
                 <div class="feature-card">
-                    <span class="feature-icon"><i class="ph-fill ph-piggy-bank"></i></span>
-                    <h3 style="color: var(--secondary);">Mais Barato que Banco</h3>
-                    <p style="color: var(--text-muted);">Esqueça os juros altos do financiamento. Aqui você paga uma taxa justa e economiza muito dinheiro.</p>
+                    <span class="feature-icon"><i class="ph-duotone ph-prohibit"></i></span>
+                    <h3>Sem Juros Abusivos</h3>
+                    <p style="color: var(--text-muted);">Chega de trabalhar só para pagar banco. Aqui a taxa é justa e fixa do começo ao fim.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon"><i class="ph-fill ph-house-line"></i></span>
-                    <h3 style="color: var(--secondary);">Poder de Compra</h3>
-                    <p style="color: var(--text-muted);">Com sua carta de crédito na mão, é como se você tivesse dinheiro vivo. Dá pra pedir desconto!</p>
+                    <span class="feature-icon"><i class="ph-duotone ph-handshake"></i></span>
+                    <h3>Compra à Vista</h3>
+                    <p style="color: var(--text-muted);">Com a carta na mão, você negocia o preço do carro ou da casa como se tivesse dinheiro vivo.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon"><i class="ph-fill ph-shield-check"></i></span>
-                    <h3 style="color: var(--secondary);">Segurança Total</h3>
-                    <p style="color: var(--text-muted);">Pode confiar. Somos fiscalizados pelo Banco Central. Seu dinheiro está seguro com a gente.</p>
+                    <span class="feature-icon"><i class="ph-duotone ph-check-circle"></i></span>
+                    <h3>Garantido por Lei</h3>
+                    <p style="color: var(--text-muted);">Somos fiscalizados pelo Banco Central. Seu dinheiro e seu sonho estão protegidos.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="faq-section">
-        <h2 style="text-align: center; margin-bottom: 40px; color: var(--secondary);">Tire suas dúvidas</h2>
+        <h2 style="text-align: center; margin-bottom: 40px;">Dúvidas Comuns</h2>
         
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                Preciso dar entrada?
-                <i class="ph-bold ph-caret-down faq-icon"></i>
+                O que é Taxa de Administração?
+                <i class="ph-bold ph-caret-down" style="color: var(--amarelo-hover)"></i>
             </button>
             <div class="faq-answer">
-                Não precisa! Diferente do financiamento, aqui você não precisa ter dinheiro guardado para começar. É só pagar a primeira parcela.
+                É o valor que cobramos para organizar o grupo. É muito mais barato que os juros do financiamento bancário.
             </div>
         </div>
 
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                O que é ser contemplado?
-                <i class="ph-bold ph-caret-down faq-icon"></i>
+                Posso usar meu FGTS?
+                <i class="ph-bold ph-caret-down" style="color: var(--amarelo-hover)"></i>
             </button>
             <div class="faq-answer">
-                É quando chega a sua vez de pegar o dinheiro. Todo mês tem sorteio, e se você tiver um dinheirinho extra (lance), pode tentar pegar mais rápido.
+                Sim! Se for pra comprar imóvel residencial, você pode usar o FGTS pra dar lance ou pagar parcelas.
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 40px 20px; background: #F1F5F9; color: #64748B; border-top: 1px solid #E2E8F0;">
-        <p style="margin-bottom: 10px; font-weight: bold; color: var(--secondary);">GLID • Crédito Inteligente</p>
-        <p style="font-size: 0.8rem;">Parceiros Oficiais: Teddy Open Finance • Cotafácil • Banco Central</p>
+    <footer style="text-align: center; padding: 40px 20px; background: #F0FDF4; color: #064E3B; border-top: 2px solid var(--verde-claro);">
+        <i class="ph-duotone ph-plant" style="font-size: 2rem; margin-bottom: 10px;"></i>
+        <p style="margin-bottom: 10px; font-weight: bold;">GLID • O Crédito do Brasileiro</p>
+        <p style="font-size: 0.8rem;">Parceiros: Teddy Open Finance • Cotafácil • Banco Central</p>
     </footer>
 
-    <a href="https://wa.me/5577998633429?text=Oi%2C+queria+ajuda+para+simular+na+Glid." class="whatsapp-float">
-        <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Falar com Atendente
+    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+vi+o+site+da+Glid+e+quero+simular." class="whatsapp-float">
+        <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Ajuda no Zap
     </a>
 
     <script>
-        function toggleFaq(element) { element.parentElement.classList.toggle('faq-active'); }
+        function toggleFaq(element) { 
+            const answer = element.nextElementSibling;
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
+        }
 
         async function enviarSimulacao() {
             const tipo = document.getElementById('tipo_bem').value;
@@ -232,7 +244,7 @@
             const btn = document.getElementById('btn-simular');
             const originalText = btn.innerHTML;
 
-            if (!valorInput) { alert("Digite o valor que você precisa."); return; }
+            if (!valorInput) { alert("Digite o valor para simular."); return; }
 
             const valor = parseFloat(valorInput);
             const prazo = tipo === 'imovel' ? 180 : 80;
@@ -246,7 +258,7 @@
                 fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString(), origem: "Glid Degrau" })
+                    body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString(), origem: "Glid Prosperidade" })
                 });
 
                 document.getElementById('box-formulario').style.display = 'none';
@@ -256,7 +268,7 @@
                 document.getElementById('res-prazo').innerText = prazo + " meses";
                 document.getElementById('res-total').innerText = formatarDinheiro(valor);
 
-                const linkZap = `https://wa.me/5577998633429?text=Oi%2C+simulei+um+credito+de+${formatarDinheiro(valor)}+na+Glid+e+gostei+da+parcela.`;
+                const linkZap = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+simulei+${formatarDinheiro(valor)}+na+Glid+e+gostei+da+parcela.+Podemos+conversar%3F`;
                 document.getElementById('btn-whatsapp').href = linkZap;
 
             } catch (error) { console.error(error); } 
