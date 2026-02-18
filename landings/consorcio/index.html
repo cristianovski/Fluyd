@@ -3,202 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | A Gente Topa Realizar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Glid | Inteligência em Crédito</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- ESTILO TOPACRED (LARANJA VAREJO + AZUL FORTE) --- */
+        /* --- ESTILO GLID FINTECH (TOPACRED COLORS REFINED) --- */
         :root {
-            --topa-laranja: #FF6600;  /* Laranja "Ação Imediata" */
-            --topa-azul: #003399;     /* Azul "Institucional/Seguro" */
+            /* Cores Topacred Refinadas para Fintech */
+            --brand-blue: #0F172A;    /* Azul Navy Profundo (Tech & Trust) */
+            --brand-orange: #F97316;  /* Laranja Vibrante (Action & Energy) */
+            --brand-orange-hover: #EA580C;
+            
             --bg-white: #FFFFFF;
-            --gray-bg: #F5F5F5;       /* Fundo cinza bem clarinho pra destacar o branco */
-            --text-dark: #333333;
+            --bg-surface: #F8FAFC;    /* Cinza Gelo para fundos sutis */
+            --border-light: #E2E8F0;
+            --text-main: #334155;
         }
 
         body {
             background-color: var(--bg-white);
-            color: var(--text-dark);
-            font-family: 'Roboto', sans-serif;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         h1, h2, h3 { 
-            font-weight: 900; 
+            color: var(--brand-blue); 
+            font-weight: 800; 
             letter-spacing: -0.5px; 
-            color: var(--topa-azul); 
-            text-transform: uppercase; /* Varejo usa muito caixa alta */
+            line-height: 1.1;
         }
 
-        /* Botão "Quero Agora" (Estilo Varejo) */
+        /* Botão Fintech (Laranja Topacred Modernizado) */
         .btn-neon {
-            background-color: var(--topa-laranja) !important;
+            background-color: var(--brand-orange) !important;
             color: white !important;
-            font-weight: 900 !important;
-            border-radius: 6px !important; /* Cantos levemente arredondados */
-            padding: 18px 40px !important;
-            text-transform: uppercase;
-            box-shadow: 0 4px 0 #CC5200 !important; /* Sombra sólida 3D (botão físico) */
+            font-weight: 700 !important;
+            border-radius: 12px !important; /* Curva suave moderna */
+            padding: 18px 32px !important;
+            font-size: 1rem;
+            text-transform: none; /* Caixa alta/baixa é mais chique que TUDO MAIÚSCULO */
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3) !important;
             border: none !important;
-            transition: all 0.1s;
-            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
         }
         .btn-neon:hover { 
-            transform: translateY(2px); 
-            box-shadow: 0 2px 0 #CC5200 !important; /* Efeito de clique */
-            filter: brightness(1.1);
+            background-color: var(--brand-orange-hover) !important;
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4) !important;
         }
 
-        /* Cards "Caixa de Produto" */
+        /* Cards Limpos e Estruturados */
         .simulator-box, .feature-card {
             background: var(--bg-white) !important;
-            border: 2px solid #E0E0E0 !important;
-            border-top: 5px solid var(--topa-azul) !important; /* Identidade visual no topo */
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+            border: 1px solid var(--border-light) !important;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px -15px rgba(15, 23, 42, 0.08) !important;
+            transition: transform 0.3s ease, border-color 0.3s;
         }
-        .feature-card:hover { border-top-color: var(--topa-laranja) !important; }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand-orange) !important;
+        }
 
-        /* Inputs Grandes e Fáceis */
+        /* Inputs Modernos */
         input, select {
-            background: #F9F9F9 !important;
-            border: 2px solid #CCC !important;
-            border-radius: 6px !important;
-            padding: 16px !important;
-            color: #333 !important;
-            font-weight: 700;
+            background: var(--bg-surface) !important;
+            border: 1px solid var(--border-light) !important;
+            border-radius: 12px !important;
+            padding: 18px !important;
+            color: var(--brand-blue) !important;
+            font-weight: 600;
+            font-family: 'Outfit', sans-serif;
             font-size: 1rem;
+            transition: all 0.2s;
         }
         input:focus, select:focus { 
-            border-color: var(--topa-laranja) !important; 
-            background: #FFF !important;
+            border-color: var(--brand-orange) !important; 
+            background: var(--bg-white) !important;
             outline: none; 
+            box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
         }
 
+        /* Ícones com a Alma da Marca */
+        .feature-icon {
+            width: 60px; height: 60px;
+            background: #FFEDD5; /* Laranja bem clarinho */
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
+        }
         .feature-icon i { 
-            color: var(--topa-laranja); 
-            font-size: 3.5rem; 
-            margin-bottom: 15px; 
-            display: inline-block;
+            color: var(--brand-orange); 
+            font-size: 2rem; 
         }
         
-        /* Highlight Estilo "Marca Texto" */
+        /* Highlight de Texto */
         span.highlight { 
-            background-color: var(--topa-laranja); 
-            color: white; 
-            padding: 2px 8px;
-            border-radius: 4px;
+            color: var(--brand-orange); 
+            position: relative;
         }
 
-        /* FAQ Simples */
-        .faq-item { background: #F9F9F9 !important; border: 1px solid #EEE !important; margin-bottom: 10px; border-radius: 6px; }
-        .faq-question { width: 100%; text-align: left; padding: 20px; background: none; border: none; font-weight: 700; color: var(--topa-azul); cursor: pointer; display: flex; justify-content: space-between; font-size: 1.1rem; }
-        .faq-answer { padding: 0 20px 20px; display: none; color: #555; line-height: 1.5; }
-        
-        /* WhatsApp Botão Zap */
-        .whatsapp-float {
-            position: fixed; bottom: 20px; right: 20px;
-            background-color: #25D366; color: white;
-            padding: 12px 24px; border-radius: 50px;
-            font-weight: 900; text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 100; border: 2px solid white;
-            display: flex; align-items: center; gap: 8px;
+        /* FAQ Estilo Accordion Clean */
+        .faq-item { 
+            background: var(--bg-surface) !important; 
+            border-radius: 16px; 
+            margin-bottom: 12px; 
+            border: 1px solid transparent !important;
+            transition: all 0.2s;
         }
-        .whatsapp-float:hover { transform: scale(1.05); }
+        .faq-item:hover { border-color: var(--border-light) !important; background: white !important; }
+        .faq-question { 
+            width: 100%; text-align: left; padding: 24px; 
+            background: none; border: none; font-weight: 700; 
+            color: var(--brand-blue); cursor: pointer; 
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 1.1rem;
+        }
+        .faq-answer { padding: 0 24px 24px; display: none; color: #64748B; line-height: 1.6; }
+        
+        /* Resultado Numérico */
+        .result-value { 
+            font-size: 3.5rem; 
+            font-weight: 800; 
+            color: var(--brand-blue); 
+            margin: 15px 0; 
+            letter-spacing: -1px;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #25D366; 
+            color: white;
+            padding: 12px 24px; border-radius: 50px;
+            font-weight: 700; text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+            z-index: 100; transition: transform 0.2s;
+            display: flex; align-items: center; gap: 8px; font-size: 1rem;
+        }
+        .whatsapp-float:hover { transform: translateY(-3px); }
     </style>
 </head>
 <body>
-    <header class="hero" style="padding: 100px 20px 60px; text-align: center; background: white;">
-        <i class="ph-fill ph-check-fat" style="font-size: 5rem; color: var(--topa-azul); margin-bottom: 20px;"></i>
-        <h1 style="font-size: 3.8rem; margin-bottom: 15px; color: var(--topa-azul);">GLID</h1>
-        <p style="font-size: 1.4rem; color: #555; margin-bottom: 40px; font-weight: 400;">
-            Crédito Rápido? <span class="highlight">A GENTE TOPA!</span><br>
-            Sem burocracia e 100% Online.
-        </p>
-        <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
-            FAZER SIMULAÇÃO AGORA <i class="ph-bold ph-caret-right"></i>
-        </a>
+
+    <header class="hero" style="padding: 120px 20px 80px; text-align: center; background: white;">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+            <div style="width: 80px; height: 80px; background: var(--brand-blue); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px;">
+                <i class="ph-bold ph-aperture" style="font-size: 3rem; color: white;"></i>
+            </div>
+            
+            <h1 style="font-size: 3.5rem; margin-bottom: 20px;">
+                O crédito inteligente <br>que a gente <span class="highlight">topa</span>.
+            </h1>
+            <p style="font-size: 1.25rem; color: #64748B; margin-bottom: 50px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                Sem juros abusivos, sem letras miúdas. A tecnologia da Glid unida à facilidade que você já conhece.
+            </p>
+            <a href="#simulador" class="btn-neon">
+                Simular Agora <i class="ph-bold ph-arrow-right"></i>
+            </a>
+        </div>
     </header>
 
-    <section class="container" id="simulador" style="max-width: 500px; margin: -20px auto 0; padding: 0 20px; position: relative; z-index: 10;">
-        <div class="simulator-box" id="box-formulario" style="padding: 30px;">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <h3 style="font-size: 1.4rem; color: var(--topa-laranja);">O QUE VOCÊ PRECISA?</h3>
+    <section class="container" id="simulador" style="max-width: 480px; margin: -40px auto 0; padding: 0 20px; position: relative; z-index: 10;">
+        <div class="simulator-box" id="box-formulario" style="padding: 40px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3 style="font-size: 1.5rem;">Simulador Rápido</h3>
             </div>
             <div style="margin-bottom: 20px;">
-                <label style="display: block; margin-bottom: 8px; font-weight: 700; color: #555;">SEU OBJETIVO:</label>
+                <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--text-main); font-size: 0.9rem;">Qual o seu objetivo?</label>
                 <select id="tipo_bem" style="width: 100%;">
-                    <option value="imovel">🏡 Comprar Casa ou Reformar (180x)</option>
-                    <option value="veiculo">🚗 Comprar Carro ou Moto (80x)</option>
+                    <option value="imovel">🏡 Imóvel (Até 180x)</option>
+                    <option value="veiculo">🚗 Veículo (Até 80x)</option>
                 </select>
             </div>
             <div style="margin-bottom: 30px;">
-                <label style="display: block; margin-bottom: 8px; font-weight: 700; color: #555;">VALOR DO CRÉDITO (R$):</label>
-                <input type="number" id="valor_credito" placeholder="Digite aqui o valor..." style="width: 100%;">
+                <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--text-main); font-size: 0.9rem;">Valor do crédito (R$)</label>
+                <input type="number" id="valor_credito" placeholder="Ex: 200.000" style="width: 100%;">
             </div>
-            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;">CALCULAR PARCELA</button>
+            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%;">
+                Ver Parcelas Disponíveis
+            </button>
         </div>
 
-        <div class="simulator-box" id="box-resultado" style="display: none; padding: 30px; text-align: center;">
-            <h2 style="font-size: 1.8rem; color: var(--topa-azul);">PRÉ-APROVADO!</h2>
-            <p style="color: #666; font-size: 1.1rem;">Sua parcela ficou em:</p>
-            <div class="result-value" style="font-size: 3.5rem; font-weight: 900; color: var(--topa-laranja); margin: 15px 0;" id="res-parcela">R$ 0,00</div>
+        <div class="simulator-box" id="box-resultado" style="display: none; padding: 40px; text-align: center;">
+            <div style="width: 60px; height: 60px; background: #DCFCE7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                <i class="ph-bold ph-check" style="font-size: 2rem; color: #16A34A;"></i>
+            </div>
+            <h2 style="font-size: 1.6rem; margin-bottom: 10px;">Pré-Aprovado!</h2>
+            <p style="color: #64748B;">Investimento mensal estimado:</p>
             
-            <div style="background: #EAF4FF; border-radius: 8px; padding: 15px; margin: 20px 0; color: var(--topa-azul); border: 1px solid #CCE4FF;">
-                <p style="margin: 5px 0;"><strong>PRAZO TOTAL:</strong> <span id="res-prazo">--</span></p>
-                <p style="margin: 5px 0;"><strong>CRÉDITO NA MÃO:</strong> <span id="res-total">--</span></p>
+            <div class="result-value" id="res-parcela">R$ 0,00</div>
+            
+            <div style="background: var(--bg-surface); border-radius: 16px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-between; border: 1px solid var(--border-light);">
+                <div style="text-align: left;">
+                    <span style="color: #64748B; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Prazo</span>
+                    <b id="res-prazo" style="color: var(--brand-blue); font-size: 1.1rem; display: block;">--</b>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: #64748B; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Crédito</span>
+                    <b id="res-total" style="color: var(--brand-blue); font-size: 1.1rem; display: block;">--</b>
+                </div>
             </div>
 
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; background: #25D366 !important; box-shadow: 0 4px 0 #15803D !important;">
-                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> CHAMAR NO ZAP
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="width: 100%; background-color: #25D366 !important; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3) !important;">
+                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Receber Proposta no Zap
             </a>
-             <button onclick="location.reload()" style="background:none; border:none; color: #999; margin-top: 15px; cursor: pointer; text-decoration: underline; font-weight: bold;">Simular Outro Valor</button>
+            
+            <button onclick="location.reload()" style="background:none; border:none; color: #94A3B8; margin-top: 20px; cursor: pointer; text-decoration: underline; font-size: 0.9rem;">
+                Fazer nova simulação
+            </button>
         </div>
     </section>
 
-    <section style="padding: 80px 20px; background: #F5F5F5; margin-top: 60px;">
-        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-             <h2 style="margin-bottom: 40px; font-size: 2.2rem; color: var(--topa-azul);">POR QUE ESCOLHER A GLID?</h2>
-             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                <div class="feature-card" style="padding: 30px;">
-                    <div class="feature-icon"><i class="ph-fill ph-lightning"></i></div>
-                    <h3>RÁPIDO</h3>
-                    <p style="color: #666;">Sem filas e sem papelada. Tudo pelo celular, do jeito que você precisa.</p>
+    <section style="padding: 100px 20px; background: white; margin-top: 80px;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+             <div style="text-align: center; margin-bottom: 60px;">
+                 <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Por que a Glid?</h2>
+                 <p style="color: #64748B; font-size: 1.1rem;">A segurança de um banco com a agilidade que você precisa.</p>
+             </div>
+             
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+                <div class="feature-card" style="padding: 40px 30px; text-align: left;">
+                    <div class="feature-icon"><i class="ph-bold ph-lightning"></i></div>
+                    <h3>Sem Burocracia</h3>
+                    <p style="color: #64748B; line-height: 1.6;">Esqueça a papelada. Nossa análise é inteligente, rápida e 100% digital.</p>
                 </div>
-                <div class="feature-card" style="padding: 30px;">
-                    <div class="feature-icon"><i class="ph-fill ph-piggy-bank"></i></div>
-                    <h3>BARATO</h3>
-                    <p style="color: #666;">Muito mais barato que banco. Fuja dos juros e pague uma parcela justa.</p>
+                <div class="feature-card" style="padding: 40px 30px; text-align: left;">
+                    <div class="feature-icon"><i class="ph-bold ph-percent"></i></div>
+                    <h3>Economia Real</h3>
+                    <p style="color: #64748B; line-height: 1.6;">Juros zero. Você paga apenas uma taxa administrativa fixa, muito menor que financiamento.</p>
                 </div>
-                <div class="feature-card" style="padding: 30px;">
-                    <div class="feature-icon"><i class="ph-fill ph-shield-check"></i></div>
-                    <h3>SEGURO</h3>
-                    <p style="color: #666;">Empresa séria, fiscalizada pelo Banco Central. Seu dinheiro está protegido.</p>
+                <div class="feature-card" style="padding: 40px 30px; text-align: left;">
+                    <div class="feature-icon"><i class="ph-bold ph-shield-check"></i></div>
+                    <h3>Segurança Total</h3>
+                    <p style="color: #64748B; line-height: 1.6;">Somos fiscalizados e regulados pelo Banco Central. Seu patrimônio está protegido.</p>
                 </div>
              </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 40px 20px; background: var(--topa-azul); color: white;">
-        <p><strong>GLID SERVIÇOS FINANCEIROS</strong></p>
-        <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">Vitória da Conquista/BA • Parceiro Autorizado</p>
+    <section class="faq-section" style="padding: 80px 20px; max-width: 800px; margin: 0 auto;">
+        <h3 style="text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--brand-blue);">Dúvidas Frequentes</h3>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Como funciona o lance?
+                <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div class="faq-answer">
+                Você pode ofertar um valor (lance) para tentar antecipar sua contemplação. Se o seu lance for o vencedor, você recebe o crédito na hora.
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Posso usar meu FGTS?
+                <i class="ph-bold ph-caret-down"></i>
+            </button>
+            <div class="faq-answer">
+                Sim! Para imóveis residenciais, você pode usar seu saldo do FGTS para dar lances ou amortizar parcelas.
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 60px 20px; background: var(--bg-surface); color: #94A3B8; border-top: 1px solid var(--border-light); margin-top: 60px;">
+        <i class="ph-bold ph-aperture" style="font-size: 2rem; color: var(--brand-blue); margin-bottom: 20px;"></i>
+        <p style="font-weight: 600; color: var(--brand-blue); margin-bottom: 10px;">GLID TECNOLOGIA FINANCEIRA</p>
+        <p style="font-size: 0.9rem;">Somos correspondentes bancários autorizados.</p>
     </footer>
 
-    <a href="https://wa.me/5577998633429?text=Oi%2C+quero+saber+mais+sobre+a+Glid." class="whatsapp-float">
-        <i class="ph-bold ph-whatsapp-logo"></i> Dúvidas?
+    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+preciso+de+ajuda+na+Glid." class="whatsapp-float">
+        <i class="ph-bold ph-whatsapp-logo"></i> Suporte
     </a>
 
     <script>
+        function toggleFaq(element) { 
+            const answer = element.nextElementSibling;
+            if (answer.style.display === "block") { answer.style.display = "none"; } else { answer.style.display = "block"; }
+        }
+
         async function enviarSimulacao() {
             const valorInput = document.getElementById('valor_credito').value;
-            if(!valorInput) return alert('Digite o valor que você precisa!');
+            if(!valorInput) return alert('Por favor, digite o valor que você precisa.');
             
             const valor = parseFloat(valorInput);
             const prazo = document.getElementById('tipo_bem').value === 'imovel' ? 180 : 80;
             const parcela = (valor * 1.23) / prazo;
             const formatar = (n) => n.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
             
+            const btn = document.querySelector('button.btn-neon');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Calculando...'; btn.style.opacity = '0.7';
+
             document.getElementById('box-formulario').style.display = 'none';
             document.getElementById('box-resultado').style.display = 'block';
             
@@ -206,9 +308,12 @@
             document.getElementById('res-prazo').innerText = prazo + " meses";
             document.getElementById('res-total').innerText = formatar(valor);
             
-            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Oi%2C+fiz+uma+simula%C3%A7%C3%A3o+de+${formatar(valor)}+na+Glid+e+gostei.`;
+            document.getElementById('btn-whatsapp').href = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+fiz+uma+simula%C3%A7%C3%A3o+na+Glid+de+${formatar(valor)}+e+gostaria+de+saber+mais.`;
             
-             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Topacred'}) }); } catch(e){}
+            // Simulação de envio para CRM (Fictício)
+             try { fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({valor, origem: 'Glid Fintech Clean'}) }); } catch(e){}
+             
+             btn.innerHTML = originalText; btn.style.opacity = '1';
         }
     </script>
 </body>
