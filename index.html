@@ -3,430 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | Inteligência em Crédito</title>
+    <title>Glid | Ecossistema Financeiro</title>
+    <meta name="description" content="Tecnologia financeira para alavancar seu patrimônio. Consórcios, Seguros e Crédito Inteligente.">
     
-    <meta name="description" content="Acesse crédito imobiliário e automotivo sem juros abusivos. Simule com inteligência artificial e economize até 50% em relação ao financiamento.">
-    
-    <meta property="og:title" content="Glid | Pare de alugar dinheiro do banco">
-    <meta property="og:description" content="Matemática a seu favor. Simule agora e descubra seu poder de compra.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80">
-
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-placeholder"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-placeholder'); 
-    </script>
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '0000000000'); 
-    fbq('track', 'PageView');
-    </script>
-
     <style>
-        /* --- CORE STYLES (DARK PREMIUM) --- */
+        /* --- DESIGN SYSTEM GLID (OFFICIAL) --- */
         :root {
             --bg-dark: #020617;
             --bg-card: #0f172a;
-            --primary: #3b82f6;       /* Azul Tech */
-            --accent: #f59e0b;        /* Laranja Ouro */
+            --primary: #3b82f6;       /* Azul Glid */
+            --accent: #f59e0b;        /* Ouro Glid */
             --text-white: #f8fafc;
             --text-gray: #94a3b8;
-            --success: #10b981;
         }
 
         body { 
             background-color: var(--bg-dark); color: var(--text-white); 
             font-family: 'Outfit', sans-serif; margin: 0; padding: 0; 
-            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            display: flex; flex-direction: column; min-height: 100vh;
         }
 
-        /* Layout Utility */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .text-center { text-align: center; }
-        .highlight { color: var(--primary); }
-        .text-gold { color: var(--accent); }
-
-        /* --- HEADER --- */
-        header { padding: 20px 0; border-bottom: 1px solid #1e293b; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(10px); }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; text-decoration: none; color: white; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; text-align: center; }
+        
+        header { padding: 40px 0; }
+        .logo { font-size: 2.5rem; font-weight: 800; letter-spacing: -2px; color: white; }
         .logo span { color: var(--primary); }
-        .btn-header { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px; text-decoration: none; color: white; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
-        .btn-header:hover { background: var(--primary); }
 
-        /* --- HERO SECTION (Simulador + Texto) --- */
-        .hero-section { padding: 140px 0 80px; position: relative; overflow: hidden; }
-        
-        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
-        .hero-text p { font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px; max-width: 500px; }
-        
-        .trust-badges { display: flex; gap: 20px; margin-top: 40px; opacity: 0.7; }
-        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--text-gray); }
+        .hero { padding: 60px 0 40px; }
+        h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.1; }
+        p.subtitle { font-size: 1.2rem; color: var(--text-gray); max-width: 600px; margin: 0 auto 60px; }
 
-        /* --- SIMULATOR CARD (O "App" Embutido) --- */
-        .simulator-wrapper {
-            background: var(--bg-card);
-            border: 1px solid #1e293b;
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 20px 50px -10px rgba(59, 130, 246, 0.15);
-            position: relative;
+        /* GRID DE PRODUTOS */
+        .product-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; margin-bottom: 80px; 
+        }
+
+        .product-card {
+            background: var(--bg-card); border: 1px solid #1e293b; padding: 40px 30px; 
+            border-radius: 24px; transition: 0.3s; text-decoration: none; color: white;
+            position: relative; overflow: hidden; display: block;
         }
         
-        /* Estilos Internos do Simulador (Mini App) */
-        .step-screen { display: none; animation: fadeIn 0.4s ease; }
-        .step-screen.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .selection-card {
-            background: #1e293b; border: 2px solid transparent; padding: 15px; border-radius: 12px; margin-bottom: 10px;
-            cursor: pointer; display: flex; align-items: center; gap: 15px; transition: 0.2s;
+        /* Efeito Hover Apenas nos Ativos */
+        .product-card.active:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--primary); 
+            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.2);
         }
-        .selection-card:hover, .selection-card.selected { border-color: var(--primary); background: #25334d; }
-        .icon-box { font-size: 1.5rem; color: var(--primary); }
-        
-        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 700; margin-bottom: 5px; display: block; }
-        input, select {
-            width: 100%; background: #020617; border: 1px solid #334155; color: white; padding: 15px;
-            border-radius: 10px; margin-bottom: 15px; font-size: 1rem; box-sizing: border-box; outline: none;
+
+        .product-card.coming-soon { opacity: 0.6; cursor: default; }
+
+        .icon { 
+            font-size: 3rem; color: var(--primary); margin-bottom: 20px; 
+            background: rgba(59, 130, 246, 0.1); width: 80px; height: 80px; 
+            display: flex; align-items: center; justify-content: center; 
+            border-radius: 20px; margin-left: auto; margin-right: auto;
         }
-        
-        .btn-action {
-            width: 100%; background: var(--primary); color: white; border: none; padding: 16px; border-radius: 12px;
-            font-weight: 700; font-size: 1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;
-            text-decoration: none; margin-top: 10px;
+
+        h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        p.desc { color: var(--text-gray); font-size: 0.95rem; }
+
+        .badge {
+            position: absolute; top: 20px; right: 20px; 
+            padding: 5px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
         }
-        .btn-action:hover { opacity: 0.9; }
+        .badge.new { background: var(--primary); color: white; }
+        .badge.soon { background: #334155; color: #94a3b8; }
 
-        .result-display { text-align: center; background: #020617; padding: 20px; border-radius: 16px; margin-bottom: 20px; border: 1px solid #334155; }
-        .big-number { font-size: 2.2rem; font-weight: 800; color: white; line-height: 1; margin: 10px 0; }
-        .economy-pill { background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: inline-block; }
-
-        /* --- PARTNERS SECTION --- */
-        .partners-section { padding: 40px 0; background: #020617; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b; }
-        .partners-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; opacity: 0.5; align-items: center; }
-        .partner-logo { font-size: 1.2rem; font-weight: 700; color: white; display: flex; align-items: center; gap: 8px; }
-
-        /* --- FEATURES SECTION --- */
-        .features-section { padding: 100px 0; }
-        .feature-card { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid #1e293b; transition: 0.3s; }
-        .feature-card:hover { transform: translateY(-5px); border-color: var(--primary); }
-        .f-icon { width: 60px; height: 60px; background: rgba(59, 130, 246, 0.1); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; }
-
-        /* --- COMPARISON TABLE --- */
-        .comparison-section { padding: 80px 0; background: #0f172a; }
-        .comp-table { width: 100%; max-width: 800px; margin: 50px auto 0; border-collapse: collapse; }
-        .comp-table th, .comp-table td { padding: 20px; text-align: left; border-bottom: 1px solid #334155; }
-        .comp-table th { color: var(--text-gray); font-size: 0.9rem; text-transform: uppercase; }
-        .comp-table td { font-size: 1.1rem; font-weight: 600; }
-        .vs-badge { background: #334155; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; }
-
-        /* --- FOOTER --- */
-        footer { padding: 60px 0; text-align: center; color: var(--text-gray); font-size: 0.9rem; border-top: 1px solid #1e293b; }
-        
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white;
-            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; text-decoration: none;
-            transition: transform 0.2s;
+        .cta-button {
+            display: inline-block; margin-top: 20px; color: var(--accent); font-weight: 700; font-size: 0.9rem;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* --- MOBILE RESPONSIVE --- */
+        footer { margin-top: auto; padding: 40px 0; border-top: 1px solid #1e293b; color: var(--text-gray); font-size: 0.9rem; }
+
         @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
-            .hero-section { padding: 100px 0 60px; text-align: center; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .hero-text p { margin: 0 auto 30px; }
-            .trust-badges { justify-content: center; flex-wrap: wrap; }
-            .partners-grid { justify-content: center; gap: 20px; }
-            .partner-logo { font-size: 1rem; }
+            h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container nav-content">
-            <a href="#" class="logo">Glid<span>.</span></a>
-            <a href="https://wa.me/557731420005" class="btn-header">Falar com Consultor</a>
+        <div class="container">
+            <div class="logo">Glid<span>.</span></div>
         </div>
     </header>
 
-    <section class="hero-section">
-        <div class="container grid-2">
-            
-            <div class="hero-text">
-                <div style="background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 20px; font-weight: 600; font-size: 0.9rem;">
-                    🚀 Fintech de Crédito Inteligente
-                </div>
-                <h1>Pare de alugar dinheiro do <span class="highlight">banco.</span></h1>
-                <p>Use a matemática a seu favor. Acesse crédito para imóveis e veículos sem juros abusivos, com estratégia baseada em dados e IA.</p>
-                
-                <div class="trust-badges">
-                    <div class="trust-item"><i class="ph-fill ph-shield-check" style="font-size: 1.5rem; color: var(--success);"></i> Regulado pelo Banco Central</div>
-                    <div class="trust-item"><i class="ph-fill ph-lock-key" style="font-size: 1.5rem; color: var(--success);"></i> Dados Criptografados</div>
-                </div>
-            </div>
-
-            <div class="simulator-wrapper">
-                
-                <div class="step-screen active" id="step-1">
-                    <h3 style="margin-top:0;">Qual seu momento atual?</h3>
-                    <p style="font-size:0.9rem; color:var(--text-gray); margin-bottom:20px;">Isso define nossa estratégia de alavancagem.</p>
-                    
-                    <div class="selection-card" onclick="selectOption('momento', 'pressa'); nextStep(2)">
-                        <div class="icon-box"><i class="ph-bold ph-rocket-launch"></i></div>
-                        <div>
-                            <div style="font-weight:700;">Tenho Pressa</div>
-                            <div style="font-size:0.8rem; color:var(--text-gray);">6 a 12 meses. Aceito lance.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="selection-card" onclick="selectOption('momento', 'patrimonio'); nextStep(2)">
-                        <div class="icon-box"><i class="ph-bold ph-piggy-bank"></i></div>
-                        <div>
-                            <div style="font-weight:700;">Construção de Patrimônio</div>
-                            <div style="font-size:0.8rem; color:var(--text-gray);">Foco no menor custo total.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="step-screen" id="step-2">
-                    <h3 style="margin-top:0;">O que você busca?</h3>
-                    
-                    <label>Tipo de Bem</label>
-                    <select id="tipo_bem">
-                        <option value="imovel">🏡 Imóvel (Casa, Terreno, Reforma)</option>
-                        <option value="veiculo">🚗 Veículo (Carro, Moto)</option>
-                    </select>
-
-                    <label>Valor do Crédito (R$)</label>
-                    <input type="number" id="valor_credito" placeholder="Ex: 200000">
-
-                    <button class="btn-action" onclick="nextStep(3)">Continuar <i class="ph-bold ph-arrow-right"></i></button>
-                    <button class="btn-action" style="background:transparent; border:1px solid #334155;" onclick="nextStep(1)">Voltar</button>
-                </div>
-
-                <div class="step-screen" id="step-3">
-                    <h3 style="margin-top:0;">Recursos Disponíveis</h3>
-                    
-                    <label>Você tem valor para Entrada/Lance?</label>
-                    <select id="tem_lance" onchange="toggleLance()">
-                        <option value="nao">Não, quero usar 100% do crédito</option>
-                        <option value="sim">Sim, tenho recurso próprio/FGTS</option>
-                    </select>
-
-                    <div id="box-lance" style="display:none;">
-                        <label>Valor disponível (R$)</label>
-                        <input type="number" id="valor_lance" placeholder="Ex: 50000">
-                    </div>
-
-                    <div id="aviso-pressa" style="background: rgba(245, 158, 11, 0.1); color: var(--accent); padding: 10px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 15px; display: none;">
-                        <i class="ph-bold ph-warning"></i> <b>Estratégia:</b> Sem lance livre, usaremos o <b>Lance Embutido</b> (da própria carta) para acelerar.
-                    </div>
-
-                    <button class="btn-action" onclick="calcular()">Gerar Estratégia <i class="ph-bold ph-lightning"></i></button>
-                    <button class="btn-action" style="background:transparent; border:1px solid #334155;" onclick="nextStep(2)">Voltar</button>
-                </div>
-
-                <div class="step-screen" id="step-result">
-                    <div style="text-align:center; margin-bottom:20px;">
-                        <div class="economy-pill">💰 Economia: R$ <span id="res-economia">--</span></div>
-                    </div>
-                    
-                    <div class="result-display">
-                        <span style="color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:1px;">Investimento Mensal</span>
-                        <div class="big-number">R$ <span id="res-parcela">0,00</span></div>
-                        <div style="font-size:0.9rem; color:var(--text-gray);">Prazo estimado: <span id="res-prazo" style="color:white; font-weight:700;">--</span> meses</div>
-                    </div>
-
-                    <div style="display:flex; justify-content:space-between; font-size:0.9rem; margin-bottom:20px; padding:0 10px;">
-                        <div>🏦 Banco: <span style="color:#f87171; font-weight:700;" id="custo-banco">--</span></div>
-                        <div>🚀 Glid: <span style="color:var(--success); font-weight:700;" id="custo-glid">--</span></div>
-                    </div>
-
-                    <a id="btn-whatsapp" href="#" class="btn-action" style="background:#25D366;">
-                        <i class="ph-bold ph-whatsapp-logo"></i> Validar no WhatsApp Oficial
-                    </a>
-                    <button class="btn-action" style="background:transparent; color:var(--text-gray); font-size:0.9rem;" onclick="location.reload()">Refazer Simulação</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="partners-section">
+    <section class="hero">
         <div class="container">
-            <p style="text-align:center; color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:20px;">Parceiros Oficiais</p>
-            <div class="partners-grid">
-                <div class="partner-logo"><i class="ph-fill ph-bank"></i> ADEMICON</div>
-                <div class="partner-logo"><i class="ph-fill ph-car-profile"></i> PORTO BANK</div>
-                <div class="partner-logo"><i class="ph-fill ph-engine"></i> YAMAHA</div>
-                <div class="partner-logo"><i class="ph-fill ph-shield-check"></i> CNP SEGUROS</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features-section">
-        <div class="container">
-            <div class="text-center" style="max-width: 700px; margin: 0 auto 60px;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Não é sorte. É <span class="highlight">Estatística.</span></h2>
-                <p style="color: var(--text-gray);">Diferente do consórcio tradicional de "gerente de banco", nós usamos dados de milhares de grupos para encontrar o caminho de menor resistência.</p>
-            </div>
-
-            <div class="grid-2" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="feature-card">
-                    <div class="f-icon"><i class="ph-bold ph-chart-line-up"></i></div>
-                    <h3>Análise de Grupos</h3>
-                    <p style="color: var(--text-gray);">Nossos algoritmos varrem o mercado para encontrar grupos com alta saúde financeira e média de lances compatível com seu bolso.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="f-icon"><i class="ph-bold ph-coins"></i></div>
-                    <h3>Lance Embutido</h3>
-                    <p style="color: var(--text-gray);">Não tem dinheiro para o lance? Use até 30% da própria carta de crédito para antecipar sua contemplação.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="f-icon"><i class="ph-bold ph-percent"></i></div>
-                    <h3>Meia Parcela</h3>
-                    <p style="color: var(--text-gray);">Opções onde você paga 50% da parcela até a contemplação. Ideal para quem paga aluguel e quer construir.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="comparison-section">
-        <div class="container text-center">
-            <h2 style="font-size: 2.5rem;">A Matemática não mente.</h2>
-            <p style="color: var(--text-gray);">Comparativo para um Crédito de R$ 500.000,00 (Imóvel)</p>
-
-            <table class="comp-table">
-                <thead>
-                    <tr>
-                        <th>Cenário</th>
-                        <th>Financiamento (Banco)</th>
-                        <th>Consórcio (Glid)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Taxa Global</td>
-                        <td style="color:#f87171;">~11% ao ano (Juros)</td>
-                        <td style="color:var(--success);">~18% total (Taxa Adm)</td>
-                    </tr>
-                    <tr>
-                        <td>Custo Final</td>
-                        <td>R$ 1.250.000,00</td>
-                        <td>R$ 590.000,00</td>
-                    </tr>
-                    <tr>
-                        <td>Entrada Obrigatória?</td>
-                        <td>Sim (Mínimo 20%)</td>
-                        <td style="color:var(--success);">Não (Zero entrada)</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h1>O futuro do seu <br><span style="color: var(--accent);">patrimônio.</span></h1>
+            <p class="subtitle">Um ecossistema de soluções financeiras desenhado para quem não quer perder dinheiro para o banco.</p>
             
-            <div style="margin-top: 50px;">
-                <a href="#step-1" class="btn-action" style="max-width: 300px; margin: 0 auto; background: var(--accent);">Simular Minha Economia</a>
+            <div class="product-grid">
+                
+                <a href="/consorcios/" class="product-card active">
+                    <span class="badge new">Disponível</span>
+                    <div class="icon"><i class="ph-fill ph-rocket-launch"></i></div>
+                    <h3>Consórcio Inteligente</h3>
+                    <p class="desc">Estratégias de alavancagem para Imóveis e Veículos com IA.</p>
+                    <span class="cta-button">Simular Agora <i class="ph-bold ph-arrow-right"></i></span>
+                </a>
+
+                <div class="product-card coming-soon">
+                    <span class="badge soon">Em Breve</span>
+                    <div class="icon" style="color: var(--text-gray); background: #1e293b;"><i class="ph-fill ph-shield-check"></i></div>
+                    <h3>Seguros & Proteção</h3>
+                    <p class="desc">Vida, Auto e Residencial com apólices personalizadas.</p>
+                </div>
+
+                <div class="product-card coming-soon">
+                    <span class="badge soon">Em Breve</span>
+                    <div class="icon" style="color: var(--text-gray); background: #1e293b;"><i class="ph-fill ph-house-line"></i></div>
+                    <h3>Home Equity</h3>
+                    <p class="desc">Crédito com garantia de imóvel. Taxas menores que o mercado.</p>
+                </div>
+
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <div class="logo" style="margin-bottom: 20px; display: inline-block;">Glid<span>.</span></div>
-            <p>Glid Tecnologia Financeira Ltda. CNPJ: 56.406.402/0001-35</p>
-            <p>Vitória da Conquista - BA | Brasil</p>
-            <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 20px;">A Glid não é uma instituição financeira, mas uma plataforma correspondente de administradoras autorizadas pelo Banco Central.</p>
+            <p>&copy; 2025 Glid Tecnologia Financeira.</p>
+            <p>Vitória da Conquista - BA</p>
         </div>
     </footer>
-
-    <a href="https://wa.me/557731420005" class="whatsapp-float"><i class="ph-bold ph-whatsapp-logo"></i></a>
-
-    <script>
-        const MARKET = {
-            imovel: { taxa: 0.18, prazo: 180 },
-            veiculo: { taxa: 0.15, prazo: 80 }
-        };
-
-        let user = { momento: '', tipo: 'imovel', credito: 0, lance: 0 };
-
-        function selectOption(key, val) {
-            user[key] = val;
-            document.querySelectorAll('.selection-card').forEach(e => e.classList.remove('selected'));
-            event.currentTarget.classList.add('selected');
-        }
-
-        function nextStep(n) {
-            document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
-            document.getElementById('step-'+n).classList.add('active');
-            if(n===3) checkAviso();
-        }
-
-        function toggleLance() {
-            const tem = document.getElementById('tem_lance').value === 'sim';
-            document.getElementById('box-lance').style.display = tem ? 'block' : 'none';
-            if(!tem) document.getElementById('valor_lance').value = '';
-            checkAviso();
-        }
-
-        function checkAviso() {
-            const temLance = document.getElementById('tem_lance').value === 'sim';
-            const aviso = document.getElementById('aviso-pressa');
-            if(user.momento === 'pressa' && !temLance) aviso.style.display = 'block';
-            else aviso.style.display = 'none';
-        }
-
-        function calcular() {
-            user.tipo = document.getElementById('tipo_bem').value;
-            user.credito = parseFloat(document.getElementById('valor_credito').value);
-            if(document.getElementById('tem_lance').value === 'sim') user.lance = parseFloat(document.getElementById('valor_lance').value) || 0;
-
-            if(!user.credito) return alert("Digite o valor do crédito!");
-
-            const dados = MARKET[user.tipo];
-            const totalGlid = user.credito * (1 + dados.taxa);
-            const parcela = totalGlid / dados.prazo;
-            const totalBanco = user.credito * 2.15;
-            const economia = totalBanco - totalGlid;
-
-            const fmt = (v) => v.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            const toK = (v) => 'R$ ' + (v/1000).toFixed(0) + 'k';
-
-            document.getElementById('res-parcela').innerText = fmt(parcela).replace('R$', '').trim();
-            document.getElementById('res-prazo').innerText = dados.prazo;
-            document.getElementById('custo-banco').innerText = toK(totalBanco);
-            document.getElementById('custo-glid').innerText = toK(totalGlid);
-            document.getElementById('res-economia').innerText = (economia/1000).toFixed(0) + ' mil';
-
-            let text = `Olá! Vim pelo site Glid.%0A`;
-            text += `🎯 *Objetivo:* ${user.tipo.toUpperCase()}%0A`;
-            text += `💰 *Crédito:* ${fmt(user.credito)}%0A`;
-            text += `🚀 *Momento:* ${user.momento === 'pressa' ? 'Tenho Pressa' : 'Patrimônio'}%0A`;
-            text += `💸 *Lance:* ${fmt(user.lance)}%0A`;
-            text += `O sistema indicou economia de *${toK(economia)}*.`;
-
-            document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${text}`;
-
-            nextStep('result');
-            if(typeof fbq === 'function') fbq('track', 'Lead');
-        }
-    </script>
 
 </body>
 </html>
