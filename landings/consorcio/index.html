@@ -3,101 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | Sua Parceira de Conquistas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Glid | O Impulso do Seu Patrimônio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- ESTILO ALIADA (CORAL + CELESTE) --- */
+        /* --- ESTILO IMPULSO (TERRACOTA + OURO) --- */
         :root {
-            --coral: #FB7185;         /* Coral Acolhedor (Ação/Afeto) */
-            --coral-dark: #E11D48;    /* Coral Forte (Hover) */
-            --celeste: #0EA5E9;       /* Azul Celeste (Transparência) */
-            --celeste-bg: #F0F9FF;    /* Fundo Céu Claro */
+            --terracota: #9F4536;     /* Tijolo/Barro (Base Sólida) */
+            --terracota-dark: #7C2D12; /* Terra Escura (Texto Forte) */
+            --ouro: #F59E0B;          /* Amarelo Ouro (Recompensa) */
+            --ouro-claro: #FEF3C7;    /* Fundo Destaque */
             
-            --bg-color: #F0F9FF;
+            --bg-color: #FFFCF5;      /* Creme/Areia (Quente e Acolhedor) */
             --card-bg: #FFFFFF;
-            --text-color: #334155;    /* Cinza Azulado (Leitura Suave) */
-            --text-muted: #64748B;
+            --text-color: #431407;    /* Marrom Café (Mais quente que preto) */
+            --text-muted: #78350F;    /* Marrom Claro */
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: 'Nunito', sans-serif; /* Fonte arredondada = Amigável */
+            font-family: 'Roboto', sans-serif; /* Fonte robusta, de trabalho */
         }
 
-        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; color: var(--text-color); }
-        
-        /* Destaque Coral */
+        h1, h2, h3 { font-weight: 900; letter-spacing: -0.5px; color: var(--terracota-dark); text-transform: uppercase; }
+
+        /* Destaque Ouro */
         span.highlight { 
-            color: var(--coral-dark);
-            font-weight: 800;
+            background: var(--ouro-claro);
+            color: var(--terracota-dark);
+            padding: 2px 8px;
+            border-bottom: 3px solid var(--ouro);
         }
 
-        /* Botões "Afetivos" (Coral Suave) */
+        /* Botões "Impulso" (Sólidos e Fortes) */
         .btn-neon {
-            background-color: var(--coral) !important;
+            background-color: var(--terracota) !important;
             color: #FFFFFF !important;
             font-weight: 700 !important;
             border: none !important;
-            border-radius: 20px !important; /* Cantos arredondados, mas sólidos */
+            border-radius: 8px !important; /* Cantos pouco arredondados = Tijolo */
             text-transform: uppercase;
-            padding: 16px 32px !important;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(251, 113, 133, 0.3) !important;
+            padding: 18px 36px !important;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 0 #7C2D12 !important; /* Sombra sólida 3D */
+            letter-spacing: 1px;
         }
         .btn-neon:hover {
-            background-color: var(--coral-dark) !important;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(251, 113, 133, 0.5) !important;
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 #7C2D12 !important; /* Efeito de botão físico */
+            background-color: #883a2d !important;
         }
 
-        /* Cards Leves como Nuvens */
+        /* Cards Robustos */
         .simulator-box, .feature-card, .faq-item {
             background-color: #FFFFFF !important;
-            border: 2px solid #E0F2FE !important; /* Borda Celeste muito suave */
-            border-radius: 24px;
-            box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.1) !important;
+            border: 2px solid #E7E5E4 !important;
+            border-bottom: 5px solid var(--ouro) !important; /* Base Dourada */
+            border-radius: 10px;
         }
 
-        /* Inputs Amigáveis */
+        /* Inputs de Trabalho */
         input, select {
-            background: #F8FAFC !important;
-            border: 2px solid #E2E8F0 !important;
+            background: #FFFFFF !important;
+            border: 2px solid #D6D3D1 !important;
             color: var(--text-color) !important; 
-            border-radius: 12px !important; 
+            border-radius: 6px !important; 
             padding: 16px !important;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Roboto', sans-serif;
             font-size: 1rem;
+            font-weight: 500;
         }
         input:focus, select:focus {
-            border-color: var(--celeste) !important; 
-            background: #FFFFFF !important;
+            border-color: var(--terracota) !important; 
             outline: none;
-            box-shadow: 0 0 0 3px rgba(186, 230, 253, 0.5);
+            background: #FFF7ED !important;
         }
 
         /* --- ÍCONES --- */
-        .feature-card { padding: 40px 30px; text-align: center; }
-        .feature-card:hover { border-color: var(--coral) !important; transform: translateY(-5px); }
+        .feature-card { padding: 30px; text-align: center; }
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--terracota) !important; }
         .feature-icon i {
-            font-size: 3rem; color: var(--coral);
+            font-size: 3rem; color: var(--terracota);
             margin-bottom: 15px; display: inline-block;
-            background: #FFF1F2; /* Fundo Coral clarinho */
-            padding: 15px; border-radius: 50%;
+            background: var(--ouro-claro);
+            padding: 15px; border-radius: 8px; /* Quadrado arredondado */
         }
 
         /* --- RESULTADO --- */
-        .result-value { font-size: 3rem; font-weight: 800; color: var(--coral-dark); margin: 15px 0; }
+        .result-value { font-size: 3.5rem; font-weight: 900; color: var(--terracota); margin: 15px 0; }
         
-        /* FAQ Suave */
+        /* FAQ Robusto */
         .faq-section { padding: 60px 20px; max-width: 800px; margin: 0 auto; }
-        .faq-item { margin-bottom: 15px; background: #FFFFFF !important; }
+        .faq-item { margin-bottom: 20px; border: 2px solid #E7E5E4 !important; }
         .faq-question {
-            width: 100%; text-align: left; padding: 25px;
-            background: none; border: none; color: var(--text-color); 
+            width: 100%; text-align: left; padding: 20px;
+            background: #FAFAF9; border: none; color: var(--terracota-dark); 
             font-weight: 700; font-size: 1.1rem; cursor: pointer;
             display: flex; justify-content: space-between; align-items: center;
         }
@@ -106,127 +109,128 @@
         .whatsapp-float {
             position: fixed; bottom: 20px; right: 20px;
             background-color: #25D366; color: white;
-            padding: 12px 24px; border-radius: 50px;
+            padding: 15px 20px; border-radius: 8px;
             text-decoration: none; font-weight: bold;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); z-index: 100;
-            display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 100;
+            display: flex; align-items: center; gap: 10px;
+            border-bottom: 4px solid #128C7E;
         }
     </style>
 </head>
 <body>
 
-    <header class="hero" style="padding: 100px 20px 80px; text-align: center; background: radial-gradient(circle at top, #E0F2FE 0%, #F0F9FF 100%);">
+    <header class="hero" style="padding: 100px 20px 80px; text-align: center; background: radial-gradient(circle at bottom, #FFF7ED 0%, #FFFCF5 100%);">
         <div class="container">
-            <i class="ph-duotone ph-heart-handshake" style="font-size: 4.5rem; color: var(--coral); margin-bottom: 20px;"></i>
+            <i class="ph-fill ph-arrow-fat-lines-up" style="font-size: 4rem; color: var(--terracota); margin-bottom: 20px;"></i>
             
-            <h1 style="font-size: 3rem; margin-bottom: 20px; color: #0F172A;">GLID</h1>
-            <p style="font-size: 1.3rem; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-                Sua parceira para realizar sonhos. <br>
-                A gente pega na sua mão e te ajuda a conquistar <span class="highlight">sua casa ou carro</span>.
+            <h1 style="font-size: 2.8rem; margin-bottom: 20px;">GLID</h1>
+            <p style="font-size: 1.3rem; color: var(--text-muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5; font-weight: 500;">
+                Transforme seu suor em tijolo e patrimônio.<br>
+                O <span class="highlight">impulso certo</span> para você sair do aluguel.
             </p>
             <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
-                Vamos planejar juntos? <i class="ph-bold ph-smiley"></i>
+                Dar o primeiro passo <i class="ph-bold ph-caret-down"></i>
             </a>
         </div>
     </header>
 
     <section class="container" id="simulador" style="max-width: 500px; margin: -50px auto 0; position: relative; z-index: 10; padding: 0 20px;">
-        <div class="simulator-box" id="box-formulario" style="padding: 40px 30px; box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.15) !important;">
-            <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.5rem; color: var(--text-color);">Qual conquista vamos planejar?</h3>
+        <div class="simulator-box" id="box-formulario" style="padding: 40px 30px; box-shadow: 0 20px 40px -10px rgba(124, 45, 18, 0.2) !important;">
+            <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.4rem;">Vamos construir seu futuro?</h3>
 
             <div style="margin-bottom: 25px;">
-                <label style="display: block; margin-bottom: 10px; color: var(--text-muted); font-weight: 600;">Eu quero muito:</label>
+                <label style="display: block; margin-bottom: 10px; color: var(--text-muted); font-weight: 700;">Objetivo da conquista:</label>
                 <select id="tipo_bem" style="width: 100%;">
-                    <option value="imovel">Ter minha Casa Própria (180x)</option>
-                    <option value="veiculo">Ter meu Carro na Garagem (80x)</option>
+                    <option value="imovel">Casa / Terreno / Reforma (180x)</option>
+                    <option value="veiculo">Carro / Caminhonete (80x)</option>
                 </select>
             </div>
             <div style="margin-bottom: 30px;">
-                <label style="display: block; margin-bottom: 10px; color: var(--text-muted); font-weight: 600;">Valor para realizar (R$):</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 150.000" style="width: 100%;">
+                <label style="display: block; margin-bottom: 10px; color: var(--text-muted); font-weight: 700;">Valor necessário (R$):</label>
+                <input type="number" id="valor_credito" placeholder="Ex: 200.000" style="width: 100%;">
             </div>
             <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer;" id="btn-simular">
-                Ver como fica a parcela
+                CALCULAR MEU IMPULSO
             </button>
         </div>
 
-        <div class="simulator-box result-card" id="box-resultado" style="display: none; padding: 40px 30px; text-align: center; box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.15) !important;">
-            <i class="ph-fill ph-star" style="font-size: 4rem; color: var(--coral); margin-bottom: 15px;"></i>
-            <h2 style="margin-bottom: 10px; font-size: 1.8rem;">Ficou ótimo!</h2>
-            <p style="color: var(--text-muted);">Olha só como cabe no seu orçamento:</p>
+        <div class="simulator-box result-card" id="box-resultado" style="display: none; padding: 40px 30px; text-align: center; box-shadow: 0 20px 40px -10px rgba(124, 45, 18, 0.2) !important;">
+            <i class="ph-fill ph-trophy" style="font-size: 4rem; color: var(--ouro); margin-bottom: 15px;"></i>
+            <h2 style="margin-bottom: 10px; font-size: 1.8rem;">Caminho Aberto!</h2>
+            <p style="color: var(--text-muted);">Com essa parcela, você chega lá:</p>
             <div class="result-value" id="res-parcela">R$ 0,00</div>
             
-            <div style="background: #FFF1F2; border: 1px solid #FFE4E6; border-radius: 20px; padding: 20px; margin: 30px 0; color: var(--text-muted);">
-                <p style="margin: 8px 0;"><strong>Prazo da parceria:</strong> <span id="res-prazo" style="color: var(--coral-dark); font-weight: bold;">--</span></p>
-                <p style="margin: 8px 0;"><strong>Seu crédito total:</strong> <span id="res-total" style="color: var(--coral-dark); font-weight: bold;">--</span></p>
+            <div style="background: #FFF7ED; border: 2px dashed var(--terracota); border-radius: 10px; padding: 20px; margin: 30px 0; color: var(--text-color);">
+                <p style="margin: 8px 0;"><strong>Prazo total:</strong> <span id="res-prazo" style="font-weight: 900;">--</span></p>
+                <p style="margin: 8px 0;"><strong>Patrimônio na mão:</strong> <span id="res-total" style="font-weight: 900;">--</span></p>
             </div>
             
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="background-color: #25D366 !important; color: white !important; display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 20px;">
-                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Falar com uma Aliada
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="background-color: #25D366 !important; box-shadow: 0 6px 0 #14532d !important; color: white !important; display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 20px;">
+                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.4rem;"></i> FECHAR NEGÓCIO NO ZAP
             </a>
             
-            <button onclick="location.reload()" style="background:none; border:none; color: var(--text-muted); cursor: pointer; text-decoration: underline; font-size: 0.9rem;">
-                Calcular outro sonho
+            <button onclick="location.reload()" style="background:none; border:none; color: var(--text-muted); cursor: pointer; text-decoration: underline; font-weight: bold; font-size: 0.9rem;">
+                Recalcular valores
             </button>
         </div>
     </section>
 
     <section style="padding: 80px 20px; background: white; margin-top: 80px;">
         <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 50px; color: var(--text-color);">Você nunca está sozinho na Glid</h2>
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 50px;">A base da Glid é forte</h2>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
                 <div class="feature-card">
-                    <span class="feature-icon"><i class="ph-duotone ph-users-three"></i></span>
-                    <h3>Força do Grupo</h3>
-                    <p style="color: var(--text-muted);">Unimos pessoas com o mesmo sonho que você. Juntos, todos pagam menos e conquistam mais.</p>
+                    <span class="feature-icon"><i class="ph-fill ph-wall"></i></span>
+                    <h3>Pé no Chão</h3>
+                    <p style="color: var(--text-muted);">Sem promessas vazias. Aqui você constrói patrimônio real, tijolo por tijolo, sem pagar juros abusivos.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon"><i class="ph-duotone ph-gift"></i></span>
-                    <h3>Liberdade Total</h3>
-                    <p style="color: var(--text-muted);">Sua carta de crédito é sua liberdade. Compre onde quiser, negocie e faça do seu jeito.</p>
+                    <span class="feature-icon"><i class="ph-fill ph-chart-line-up"></i></span>
+                    <h3>Alavanca Financeira</h3>
+                    <p style="color: var(--text-muted);">Use a carta de crédito para multiplicar o que você ganha. Pare de pagar aluguel e comece a pagar o que é seu.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon"><i class="ph-duotone ph-house"></i></span>
-                    <h3>Foco na Família</h3>
-                    <p style="color: var(--text-muted);">Ajudamos você a construir o patrimônio da sua família com segurança e pé no chão.</p>
+                    <span class="feature-icon"><i class="ph-fill ph-lock-key-open"></i></span>
+                    <h3>Chave na Mão</h3>
+                    <p style="color: var(--text-muted);">O objetivo é um só: você com a chave do seu bem. O processo é simples, direto e seguro pelo Banco Central.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="faq-section">
-        <h2 style="text-align: center; margin-bottom: 40px;">Conversa Franca (Dúvidas)</h2>
+        <h2 style="text-align: center; margin-bottom: 40px;">Preto no Branco (Dúvidas)</h2>
         
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                É seguro mesmo?
-                <i class="ph-bold ph-caret-down" style="color: var(--coral)"></i>
+                Como funciona o Lance Embutido?
+                <i class="ph-bold ph-caret-down" style="color: var(--terracota)"></i>
             </button>
             <div class="faq-answer">
-                100%. A Glid segue todas as regras do Banco Central. Somos parceiros oficiais e cuidamos do seu dinheiro com todo respeito.
+                Você pode usar parte da própria carta de crédito para dar o lance. Ou seja, você acelera a conquista sem precisar tirar dinheiro do bolso agora.
             </div>
         </div>
 
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                Como funciona o lance?
-                <i class="ph-bold ph-caret-down" style="color: var(--coral)"></i>
+                Serve para reformar e construir?
+                <i class="ph-bold ph-caret-down" style="color: var(--terracota)"></i>
             </button>
             <div class="faq-answer">
-                Lance é quando você quer acelerar. Se tiver um dinheiro guardado ou FGTS, você oferece para o grupo e pode pegar seu crédito antes do prazo.
+                Com certeza. Se você já tem o terreno, a carta serve para comprar o material e pagar a mão de obra da sua construção.
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 60px 20px; background: #F0F9FF; color: var(--text-muted); border-top: 1px solid #E0F2FE;">
-        <i class="ph-duotone ph-heart-handshake" style="font-size: 2rem; color: var(--coral); margin-bottom: 15px;"></i>
-        <p style="margin-bottom: 10px; font-weight: bold;">GLID • Sua Parceira de Conquistas</p>
-        <p style="font-size: 0.8rem; opacity: 0.8;">Parceiros: Teddy Open Finance • Cotafácil • Banco Central</p>
+    <footer style="text-align: center; padding: 60px 20px; background: #FFF7ED; color: var(--text-muted); border-top: 4px solid var(--terracota);">
+        <i class="ph-fill ph-bricks" style="font-size: 2rem; color: var(--terracota); margin-bottom: 15px;"></i>
+        <p style="margin-bottom: 10px; font-weight: 900;">GLID • O Impulso do Seu Patrimônio</p>
+        <p style="font-size: 0.8rem; font-weight: 500;">Parceiros: Teddy Open Finance • Cotafácil • Banco Central</p>
     </footer>
 
-    <a href="https://wa.me/5577998633429?text=Oi%2C+quero+uma+parceria+com+a+Glid." class="whatsapp-float">
-        <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> Falar com Parceira
+    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+quero+dar+um+impulso+na+minha+vida+financeira." class="whatsapp-float">
+        <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.5rem;"></i> FALAR NO ZAP
     </a>
 
     <script>
@@ -245,7 +249,7 @@
             const btn = document.getElementById('btn-simular');
             const originalText = btn.innerHTML;
 
-            if (!valorInput) { alert("Quanto você precisa para realizar seu sonho?"); return; }
+            if (!valorInput) { alert("Informe o valor da conquista."); return; }
 
             const valor = parseFloat(valorInput);
             const prazo = tipo === 'imovel' ? 180 : 80;
@@ -253,13 +257,13 @@
             const parcela = (valor * taxaTotal) / prazo;
             const formatarDinheiro = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-            btn.innerHTML = 'Calculando com carinho...'; btn.style.opacity = "0.8"; btn.disabled = true;
+            btn.innerHTML = 'CALCULANDO...'; btn.style.opacity = "0.8"; btn.disabled = true;
 
             try {
                 fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString(), origem: "Glid Aliada" })
+                    body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString(), origem: "Glid Impulso" })
                 });
 
                 document.getElementById('box-formulario').style.display = 'none';
@@ -269,7 +273,7 @@
                 document.getElementById('res-prazo').innerText = prazo + " meses";
                 document.getElementById('res-total').innerText = formatarDinheiro(valor);
 
-                const linkZap = `https://wa.me/5577998633429?text=Oi%2C+vi+a+simula%C3%A7%C3%A3o+de+${formatarDinheiro(valor)}+na+Glid+e+quero+essa+parceria.`;
+                const linkZap = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+fiz+uma+simula%C3%A7%C3%A3o+de+${formatarDinheiro(valor)}+na+Glid+e+quero+esse+impulso.`;
                 document.getElementById('btn-whatsapp').href = linkZap;
 
             } catch (error) { console.error(error); } 
