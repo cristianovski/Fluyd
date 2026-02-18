@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glid | Instrumento de Precisão Financeira</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
     <style>
-        /* --- IDENTIDADE VISUAL GLID (OVERRIDE) --- */
+        /* --- IDENTIDADE VISUAL GLID (PREMIUM) --- */
         :root {
-            --primary: #F5FF00;       /* Amarelo Cyber */
-            --bg-color: #121212;      /* Preto Ônix */
-            --card-bg: #2C2E31;       /* Chumbo Antracite */
-            --text-color: #F4F4F4;    /* Branco Gelo */
-            --text-muted: #A0A0A0;
+            --primary: #F5FF00;       /* Amarelo Cyber (Luz) */
+            --bg-color: #121212;      /* Preto Ônix (Profundidade) */
+            --card-bg: #1E1F22;       /* Chumbo Metálico (Estrutura) */
+            --text-color: #EAEAEA;    /* Branco Gelo (Leitura) */
+            --text-muted: #8A8B8F;    /* Cinza Técnico (Detalhes) */
         }
 
         body {
@@ -22,190 +23,217 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Títulos Fortes */
-        h1, h2, h3 { font-weight: 800; letter-spacing: -1px; }
-        
-        /* Destaque em Amarelo (Feixe de Luz) */
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; color: #FFFFFF; }
         span.highlight { color: var(--primary); }
 
-        /* Botões GLID (Amarelo Cyber + Texto Preto) */
+        /* Botões de Alta Conversão */
         .btn-neon {
             background-color: var(--primary) !important;
             color: #121212 !important;
-            font-weight: 800 !important;
+            font-weight: 700 !important;
             border: none !important;
-            box-shadow: none !important; /* Remove o brilho neon antigo */
-            border-radius: 4px !important; /* Cantos mais retos = Precisão */
-            text-transform: uppercase;
-            transition: transform 0.2s, filter 0.2s;
+            border-radius: 4px !important; /* Cantos técnicos */
+            text-transform: uppercase; letter-spacing: 1px;
+            padding: 16px 32px !important;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(245, 255, 0, 0.15) !important;
         }
         .btn-neon:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-            box-shadow: 0 4px 15px rgba(245, 255, 0, 0.3) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(245, 255, 0, 0.4) !important;
         }
 
-        /* Cards Sólidos (Metal Escovado vibe) */
+        /* Cards Sólidos (Metal Escovado) */
         .simulator-box, .feature-card, .faq-item {
             background-color: var(--card-bg) !important;
-            border: 1px solid #444 !important; /* Borda sutil metálica */
-            box-shadow: none !important;
-            border-radius: 8px;
+            border: 1px solid #333 !important; /* Borda técnica sutil */
+            border-radius: 12px;
         }
 
-        /* Inputs de Precisão */
+        /* Inputs Técnicos */
         input, select {
-            background: #1a1a1a !important;
-            border: 1px solid #555 !important;
-            color: white !important;
-            border-radius: 4px !important;
+            background: #151618 !important;
+            border: 1px solid #333 !important;
+            color: white !important; border-radius: 6px !important; padding: 14px !important;
+            font-family: 'Inter', sans-serif;
         }
         input:focus, select:focus {
-            border-color: var(--primary) !important;
-            outline: none;
+            border-color: var(--primary) !important; outline: none;
+            box-shadow: 0 0 0 2px rgba(245, 255, 0, 0.2);
         }
 
-        /* --- SESSÃO FAQ (NOVA) --- */
-        .faq-section { padding: 80px 20px; max-width: 800px; margin: 0 auto; }
-        .faq-item { margin-bottom: 15px; padding: 0; overflow: hidden; }
-        .faq-question {
-            width: 100%; text-align: left; padding: 20px;
-            background: none; border: none; color: white;
-            font-weight: 600; cursor: pointer; display: flex; justify-content: space-between;
-            align-items: center;
+        /* --- NOVOS ÍCONES (SUBSTITUINDO EMOJIS) --- */
+        .feature-card { padding: 40px 30px; text-align: center; transition: border-color 0.3s; }
+        .feature-card:hover { border-color: var(--primary) !important; }
+        .feature-icon i {
+            font-size: 2.8rem; color: #FFFFFF; /* Ícones brancos técnicos */
+            margin-bottom: 20px; display: block;
         }
-        .faq-question::after { content: '+'; color: var(--primary); font-size: 1.5rem; }
+
+        /* --- SESSÃO FAQ PREMIUM --- */
+        .faq-section { padding: 100px 20px; max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 15px; padding: 0; overflow: hidden; border: 1px solid #2A2B2E !important; }
+        .faq-question {
+            width: 100%; text-align: left; padding: 25px;
+            background: none; border: none; color: white; font-weight: 600; font-size: 1.1rem;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+        }
+        /* Ícone da seta do FAQ */
+        .faq-icon { font-size: 1.2rem; color: var(--primary); transition: transform 0.3s; }
+        .faq-active .faq-icon { transform: rotate(180deg); /* Gira a seta */ }
+        
         .faq-answer {
-            padding: 0 20px 20px 20px; display: none; color: var(--text-muted); line-height: 1.6;
-            border-top: 1px solid #444; margin-top: -10px; padding-top: 20px;
+            padding: 0 25px 25px 25px; display: none; color: var(--text-muted); line-height: 1.7;
+            border-top: 1px solid #2A2B2E; margin-top: -10px; padding-top: 25px;
         }
         .faq-active .faq-answer { display: block; }
-        .faq-active .faq-question::after { content: '-'; }
 
-        /* Estilos do Resultado */
-        .result-value { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 10px 0; }
+        /* Resultado */
+        .result-value { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 15px 0; letter-spacing: -1px; }
         
-        /* Grid de Vantagens */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1100px; margin: 40px auto 0; }
-        .feature-card { padding: 30px; text-align: center; }
-        .feature-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; display: block; }
+        /* Grid Vantagens */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; margin: 50px auto 0; }
 
-        /* Steps */
-        .steps-container { display: flex; justify-content: space-around; flex-wrap: wrap; max-width: 1100px; margin: 40px auto 0; gap: 20px; text-align: center; }
-        .step-number { font-size: 4rem; font-weight: 800; color: #333; }
-        
         /* Botão Flutuante */
         .whatsapp-float {
-            position: fixed; bottom: 20px; right: 20px;
+            position: fixed; bottom: 30px; right: 30px;
             background-color: #25D366; color: white;
-            padding: 12px 24px; border-radius: 50px;
-            text-decoration: none; font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 100;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 100;
+            font-size: 2rem; text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <header class="hero" style="padding: 100px 20px; text-align: center;">
+    <header class="hero" style="padding: 120px 20px 80px; text-align: center; background: radial-gradient(circle at center top, #1E1F22 0%, #121212 60%);">
         <div class="container">
-            <h1 style="font-size: 3.5rem; margin-bottom: 10px;">GLID</h1>
-            <p style="font-size: 1.2rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px;">
-                Instrumento de <span class="highlight">Precisão</span> Financeira.
+            <i class="ph-light ph-diamonds-four" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+            <h1 style="font-size: 4rem; margin-bottom: 15px;">GLID</h1>
+            <p style="font-size: 1.3rem; color: var(--text-muted); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; font-weight: 300;">
+                Instrumento de <span class="highlight" style="font-weight: 600;">Precisão</span> Financeira.
             </p>
-            <a href="#simulador" class="btn-neon" style="padding: 15px 40px; text-decoration: none; display: inline-block;">Iniciar Simulação</a>
+            <a href="#simulador" class="btn-neon" style="text-decoration: none; display: inline-flex; align-items: center; gap: 10px;">
+                Iniciar Simulação <i class="ph-bold ph-arrow-right"></i>
+            </a>
         </div>
     </header>
 
-    <section class="container" id="simulador" style="max-width: 500px; margin: -50px auto 0; position: relative; z-index: 10; padding: 0 20px;">
-        <div class="simulator-box" id="box-formulario" style="padding: 30px;">
-            <div style="margin-bottom: 20px;">
-                <label style="display: block; margin-bottom: 8px; color: #ccc;">Seu objetivo</label>
-                <select id="tipo_bem" style="width: 100%; padding: 12px;">
-                    <option value="imovel">Imóvel (Até 180x)</option>
-                    <option value="veiculo">Veículo (Até 80x)</option>
+    <section class="container" id="simulador" style="max-width: 500px; margin: -60px auto 0; position: relative; z-index: 10; padding: 0 20px;">
+        <div class="simulator-box" id="box-formulario" style="padding: 40px;">
+            <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.5rem;">Simulador Técnico</h3>
+            <div style="margin-bottom: 25px;">
+                <label style="display: block; margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Objetivo</label>
+                <select id="tipo_bem" style="width: 100%;">
+                    <option value="imovel">Imóvel (Até 180 meses)</option>
+                    <option value="veiculo">Veículo (Até 80 meses)</option>
                 </select>
             </div>
-            <div style="margin-bottom: 20px;">
-                <label style="display: block; margin-bottom: 8px; color: #ccc;">Valor do Crédito (R$)</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 300000" style="width: 100%; padding: 12px;">
+            <div style="margin-bottom: 30px;">
+                <label style="display: block; margin-bottom: 10px; color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Crédito Desejado (R$)</label>
+                <input type="number" id="valor_credito" placeholder="Ex: 300.000" style="width: 100%;">
             </div>
-            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; padding: 15px; cursor: pointer;" id="btn-simular">
-                CALCULAR PARCELA
+            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;" id="btn-simular">
+                CALCULAR INVESTIMENTO <i class="ph-bold ph-calculator"></i>
             </button>
         </div>
 
-        <div class="simulator-box result-card" id="box-resultado" style="display: none; padding: 30px; text-align: center;">
-            <h2 style="margin-bottom: 10px;">Análise Aprovada</h2>
-            <p style="color: #888;">Investimento mensal estimado:</p>
+        <div class="simulator-box result-card" id="box-resultado" style="display: none; padding: 40px; text-align: center;">
+            <i class="ph-fill ph-check-circle" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+            <h2 style="margin-bottom: 15px; font-size: 1.8rem;">Análise Preliminar Aprovada</h2>
+            <p style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; font-weight: 600;">Aporte mensal estimado</p>
             <div class="result-value" id="res-parcela">R$ 0,00</div>
             
-            <div style="border-top: 1px solid #444; border-bottom: 1px solid #444; padding: 15px 0; margin: 20px 0; display: flex; justify-content: space-between; color: #ccc; font-size: 0.9rem;">
-                <span>Prazo: <b id="res-prazo" style="color: white;">--</b></span>
-                <span>Crédito: <b id="res-total" style="color: white;">--</b></span>
+            <div style="background: #151618; border-radius: 8px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-around; text-align: center;">
+                <div>
+                    <span style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; display: block; margin-bottom: 5px;">Prazo Máximo</span>
+                    <b id="res-prazo" style="color: white; font-size: 1.2rem;">--</b>
+                </div>
+                <div style="border-left: 1px solid #333; height: 40px; margin: auto 0;"></div>
+                <div>
+                    <span style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; display: block; margin-bottom: 5px;">Crédito Total</span>
+                    <b id="res-total" style="color: white; font-size: 1.2rem;">--</b>
+                </div>
             </div>
             
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="background: #25D366 !important; color: white !important; display: block; padding: 15px; text-decoration: none; margin-bottom: 15px;">
-                Contratar via WhatsApp
+            <a id="btn-whatsapp" href="#" class="btn-neon" style="background: #25D366 !important; color: white !important; display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3) !important;">
+                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.2rem;"></i> Avançar com Especialista
             </a>
             
-            <button onclick="location.reload()" style="background:none; border:none; color: #666; cursor: pointer; text-decoration: underline; font-size: 0.8rem;">Refazer cálculo</button>
+            <button onclick="location.reload()" style="background:none; border:none; color: var(--text-muted); cursor: pointer; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; display: flex; align-items: center; gap: 5px; margin: 0 auto;">
+                <i class="ph-bold ph-arrow-counter-clockwise"></i> Nova simulação
+            </button>
         </div>
     </section>
 
-    <section style="padding: 80px 20px; background: #1a1a1a; margin-top: 60px;">
+    <section style="padding: 100px 20px; background: #151618; margin-top: 80px;">
         <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="text-align: center; margin-bottom: 40px;">Tecnologia a favor do seu <span class="highlight">Patrimônio</span>.</h2>
+            <h2 style="text-align: center; margin-bottom: 20px; font-size: 2.5rem;">Engenharia Financeira <br>a favor do seu <span class="highlight">Patrimônio</span>.</h2>
+            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 60px; font-size: 1.1rem;">Utilizamos o sistema de consórcio como uma ferramenta de alavancagem sem juros.</p>
             <div class="features-grid">
                 <div class="feature-card">
-                    <span class="feature-icon">⚡</span>
-                    <h3>Agilidade</h3>
-                    <p style="color: var(--text-muted);">Processos digitais e sem burocracia. O caminho mais curto entre você e seu bem.</p>
+                    <span class="feature-icon"><i class="ph-light ph-chart-line-up"></i></span>
+                    <h3>Eficiência de Custo</h3>
+                    <p style="color: var(--text-muted);">Custo final drasticamente inferior ao financiamento bancário. Zero juros compostos.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon">🎯</span>
-                    <h3>Precisão</h3>
-                    <p style="color: var(--text-muted);">Sem juros compostos. Você paga apenas o valor do bem e uma taxa administrativa fixa.</p>
+                    <span class="feature-icon"><i class="ph-light ph-handshake"></i></span>
+                    <h3>Poder de Negociação</h3>
+                    <p style="color: var(--text-muted);">Carta de crédito equivale a dinheiro à vista. Negocie descontos na compra do bem.</p>
                 </div>
                 <div class="feature-card">
-                    <span class="feature-icon">🛡️</span>
-                    <h3>Solidez</h3>
-                    <p style="color: var(--text-muted);">Fiscalizado pelo Banco Central. Segurança nível bancário para seu investimento.</p>
+                    <span class="feature-icon"><i class="ph-light ph-shield-check"></i></span>
+                    <h3>Segurança Regulatória</h3>
+                    <p style="color: var(--text-muted);">Operação auditada e fiscalizada pelo Banco Central do Brasil. Risco mitigado.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="faq-section">
-        <h2 style="text-align: center; margin-bottom: 40px;">Perguntas Frequentes</h2>
+        <h2 style="text-align: center; margin-bottom: 60px; font-size: 2.5rem;">Dúvidas Técnicas</h2>
         
         <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">Como funciona a taxa de administração?</button>
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Como é composta a taxa de administração?
+                <i class="ph-bold ph-caret-down faq-icon"></i>
+            </button>
             <div class="faq-answer">
-                Diferente dos juros bancários que multiplicam sua dívida, a taxa da Glid é fixa e diluída no prazo. Você paga pelo serviço de gestão do grupo, o que torna o custo final muito menor que um financiamento.
+                É uma taxa fixa de serviço pela gestão do grupo, diluída por todo o prazo. Diferente dos juros, ela não incide sobre o saldo devedor mês a mês, tornando o Custo Efetivo Total (CET) muito mais baixo.
             </div>
         </div>
 
         <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">Posso usar meu FGTS?</button>
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Procedimento para uso de FGTS (Imóveis)
+                <i class="ph-bold ph-caret-down faq-icon"></i>
+            </button>
             <div class="faq-answer">
-                Sim! Para consórcios de imóveis residenciais, você pode usar seu FGTS para ofertar lances, amortizar parcelas ou quitar seu saldo devedor, seguindo as regras da Caixa.
+                Seguindo as normativas da Caixa, o FGTS pode ser utilizado para oferta de lance (acelerar a contemplação), amortização de parcelas ou liquidação de saldo devedor em imóveis residenciais.
             </div>
         </div>
 
         <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">E se eu for contemplado rápido?</button>
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Contemplação imediata e fluxo de caixa
+                <i class="ph-bold ph-caret-down faq-icon"></i>
+            </button>
             <div class="faq-answer">
-                Se você for contemplado no primeiro mês (por sorteio ou lance), você já tem o crédito liberado para comprar o bem à vista, mas continua pagando as parcelas normalmente até o fim do plano.
+                Ao ser contemplado (via sorteio ou lance), o crédito é liberado para aquisição imediata do bem. O fluxo de pagamentos das parcelas restantes permanece inalterado até o final do plano contratado.
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 40px 20px; border-top: 1px solid #222; color: #666; font-size: 0.8rem;">
-        <p><strong>GLID</strong> • Tecnologia em Consórcios</p>
-        <p>Parceiros: Teddy Open Finance • Cotafácil</p>
+    <footer style="text-align: center; padding: 60px 20px; background: #0A0A0A; color: #666; font-size: 0.9rem; border-top: 1px solid #1E1F22;">
+        <i class="ph-light ph-diamonds-four" style="font-size: 2rem; color: #333; margin-bottom: 20px;"></i>
+        <p style="color: #888; margin-bottom: 10px;"><strong>GLID</strong> • Instrumento de Precisão Financeira</p>
+        <p style="font-size: 0.8rem;">Parceiros Homologados: Teddy Open Finance • Cotafácil • Banco Central</p>
     </footer>
 
-    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+tenho+uma+d%C3%BAvida+sobre+a+Glid." class="whatsapp-float">Suporte Humano</a>
+    <a href="https://wa.me/5577998633429?text=Ol%C3%A1%2C+preciso+de+suporte+t%C3%A9cnico+sobre+a+Glid." class="whatsapp-float" title="Falar com Especialista">
+        <i class="ph-bold ph-whatsapp-logo"></i>
+    </a>
 
     <script>
         // Lógica de Acordeão do FAQ
@@ -213,13 +241,14 @@
             element.parentElement.classList.toggle('faq-active');
         }
 
-        // Lógica do Simulador (Mantida)
+        // Lógica do Simulador (Glid Engine)
         async function enviarSimulacao() {
             const tipo = document.getElementById('tipo_bem').value;
             const valorInput = document.getElementById('valor_credito').value;
             const btn = document.getElementById('btn-simular');
+            const originalText = btn.innerHTML;
 
-            if (!valorInput) { alert("Por favor, digite o valor do crédito."); return; }
+            if (!valorInput) { alert("Informe o valor do crédito para cálculo."); return; }
 
             const valor = parseFloat(valorInput);
             const prazo = tipo === 'imovel' ? 180 : 80;
@@ -227,14 +256,14 @@
             const parcela = (valor * taxaTotal) / prazo;
             const formatarDinheiro = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-            btn.innerText = "CALCULANDO..."; btn.style.opacity = "0.7"; btn.disabled = true;
+            btn.innerHTML = 'PROCESSANDO <i class="ph-bold ph-circle-notch fa-spin"></i>'; btn.style.opacity = "0.8"; btn.disabled = true;
 
             try {
-                // Envia para o Make (CRM)
+                // Envia para o CRM (Make) - Em background
                 fetch('https://hook.us2.make.com/o93jlkarlvnk8kbw4emog88vutjqeh0v', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString(), origem: "Glid Website" })
+                    body: JSON.stringify({ tipo: tipo, valor: valor, data: new Date().toISOString(), origem: "Glid Terminal v1" })
                 });
 
                 // Exibe Resultado
@@ -246,13 +275,13 @@
                 document.getElementById('res-total').innerText = formatarDinheiro(valor);
 
                 // Link WhatsApp Personalizado GLID
-                const linkZap = `https://wa.me/5577998633429?text=Ol%C3%A1%21+Fiz+uma+simula%C3%A7%C3%A3o+na+Glid+para+${tipo}+de+${formatarDinheiro(valor)}+e+gostei+da+parcela.`;
+                const linkZap = `https://wa.me/5577998633429?text=Ol%C3%A1%2C+gostaria+de+avan%C3%A7ar+com+a+simula%C3%A7%C3%A3o+Glid%3A+${tipo}+de+${formatarDinheiro(valor)}.`;
                 document.getElementById('btn-whatsapp').href = linkZap;
 
             } catch (error) {
                 console.error(error);
             } finally {
-                btn.style.opacity = "1"; btn.disabled = false;
+                btn.innerHTML = originalText; btn.style.opacity = "1"; btn.disabled = false;
             }
         }
     </script>
