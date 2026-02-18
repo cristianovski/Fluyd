@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | Crédito Inteligente</title>
+    <title>Glid | Inteligência Financeira</title>
     
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.glid.com.br/">
-    <meta property="og:title" content="Glid | Crédito Inteligente">
-    <meta property="og:description" content="Simule seu crédito imobiliário ou automotivo sem juros.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=1200&q=80">
-
+    <meta property="og:title" content="Glid | Pare de alugar dinheiro do banco">
+    <meta property="og:description" content="Simulador com Inteligência Artificial. Descubra a matemática a seu favor.">
+    
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-placeholder"></script>
     <script>
@@ -33,218 +33,324 @@
     fbq('track', 'PageView');
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="../../assets/css/style-dark-neon.css">
-    
     <style>
-        /* --- ESTILO GLID FINTECH --- */
+        /* --- GLID DARK MODE (FINTECH STYLE) --- */
         :root {
-            --brand-blue: #0F172A;
-            --brand-orange: #F97316;
-            --brand-orange-hover: #EA580C;
-            --bg-white: #FFFFFF;
-            --bg-surface: #F8FAFC;
-            --border-light: #E2E8F0;
-            --text-main: #334155;
+            --bg-dark: #0f172a;       /* Fundo Principal */
+            --bg-card: #1e293b;       /* Fundo dos Cards */
+            --primary: #3b82f6;       /* Azul Ação */
+            --accent: #f59e0b;        /* Laranja Alerta/Destaque */
+            --text-white: #f8fafc;
+            --text-gray: #94a3b8;
+            --success: #10b981;
         }
 
-        body { background-color: var(--bg-white); color: var(--text-main); font-family: 'Outfit', sans-serif; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
-        h1, h2, h3 { color: var(--brand-blue); font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
-
-        .btn-neon {
-            background-color: var(--brand-orange) !important; color: white !important; font-weight: 700 !important;
-            border-radius: 12px !important; padding: 18px 32px !important; font-size: 1rem; border: none !important;
-            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3) !important; transition: all 0.2s ease;
-            display: inline-flex; align-items: center; gap: 8px; justify-content: center; text-decoration: none;
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-white); 
+            font-family: 'Outfit', sans-serif; 
+            margin: 0; padding: 0; 
+            -webkit-font-smoothing: antialiased;
         }
-        .btn-neon:hover { background-color: var(--brand-orange-hover) !important; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4) !important; }
 
-        .simulator-box, .feature-card {
-            background: var(--bg-white) !important; border: 1px solid var(--border-light) !important;
-            border-radius: 24px; box-shadow: 0 10px 40px -15px rgba(15, 23, 42, 0.08) !important;
-            transition: transform 0.3s ease, border-color 0.3s;
+        /* Container Central (Mobile First) */
+        .app-container {
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .feature-card:hover { transform: translateY(-5px); border-color: var(--brand-orange) !important; }
 
+        /* Barra de Progresso */
+        .progress-container {
+            width: 100%; height: 4px; background: #334155; border-radius: 4px; margin-bottom: 30px;
+        }
+        .progress-fill {
+            height: 100%; background: var(--primary); width: 25%; border-radius: 4px; transition: width 0.4s ease;
+        }
+
+        /* Header */
+        header { text-align: center; margin-bottom: 30px; }
+        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; }
+        .logo span { color: var(--primary); }
+        .tagline { color: var(--text-gray); font-size: 0.9rem; margin-top: 5px; }
+
+        /* Steps (Telas) */
+        .step-screen { display: none; animation: fadeIn 0.5s ease; }
+        .step-screen.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { font-size: 1.5rem; margin-bottom: 10px; line-height: 1.2; }
+        p.desc { color: var(--text-gray); font-size: 1rem; margin-bottom: 30px; }
+
+        /* Botões de Seleção (Cards Grandes) */
+        .selection-card {
+            background: var(--bg-card);
+            border: 2px solid transparent;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            display: flex; align-items: center; gap: 15px;
+            transition: all 0.2s;
+        }
+        .selection-card:hover, .selection-card.selected {
+            border-color: var(--primary);
+            background: #27354d;
+        }
+        .icon-box {
+            font-size: 1.8rem; color: var(--primary);
+            background: rgba(59, 130, 246, 0.1);
+            width: 50px; height: 50px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .card-text h3 { margin: 0; font-size: 1.1rem; }
+        .card-text p { margin: 4px 0 0; font-size: 0.85rem; color: var(--text-gray); }
+
+        /* Inputs */
+        label { display: block; color: var(--text-gray); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
         input, select {
-            background: var(--bg-surface) !important; border: 1px solid var(--border-light) !important;
-            border-radius: 12px !important; padding: 18px !important; color: var(--brand-blue) !important;
-            font-weight: 600; font-family: 'Outfit', sans-serif; font-size: 1rem; width: 100%; box-sizing: border-box;
+            width: 100%; background: var(--bg-card); border: 1px solid #475569; color: white;
+            padding: 16px; border-radius: 12px; font-size: 1.1rem; font-family: 'Outfit', sans-serif;
+            margin-bottom: 20px; box-sizing: border-box; outline: none;
         }
-        input:focus, select:focus { border-color: var(--brand-orange) !important; background: var(--bg-white) !important; outline: none; box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1); }
+        input:focus, select:focus { border-color: var(--primary); }
 
-        .feature-icon { width: 60px; height: 60px; background: #FFEDD5; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-        .feature-icon i { color: var(--brand-orange); font-size: 2rem; }
-        
-        span.highlight { color: var(--brand-orange); }
-
-        .faq-item { background: var(--bg-surface) !important; border-radius: 16px; margin-bottom: 12px; border: 1px solid transparent !important; transition: all 0.2s; }
-        .faq-item:hover { border-color: var(--border-light) !important; background: white !important; }
-        .faq-question { width: 100%; text-align: left; padding: 24px; background: none; border: none; font-weight: 700; color: var(--brand-blue); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
-        .faq-answer { padding: 0 24px 24px; display: none; color: #64748B; line-height: 1.6; }
-        
-        .result-value { font-size: 3.5rem; font-weight: 800; color: var(--brand-blue); margin: 15px 0; letter-spacing: -1px; }
-
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white;
-            padding: 12px 24px; border-radius: 50px; font-weight: 700; text-decoration: none;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3); z-index: 100; transition: transform 0.2s;
-            display: flex; align-items: center; gap: 8px; font-size: 1rem;
+        /* Botão Ação */
+        .btn-action {
+            width: 100%; background: var(--primary); color: white; border: none; padding: 18px;
+            border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            text-decoration: none; margin-top: 10px;
         }
-        .whatsapp-float:hover { transform: translateY(-3px); }
+        .btn-action:hover { opacity: 0.9; }
+        .btn-outline { background: transparent; border: 1px solid #475569; margin-top: 15px; color: var(--text-gray); }
 
-        /* --- CORREÇÃO MOBILE FORÇADA (OVERLAP FIX) --- */
-        /* Desktop */
-        header.hero { padding: 120px 20px 100px; text-align: center; background: white; }
-        #simulador { margin: -60px auto 0; position: relative; z-index: 10; padding: 0 20px; max-width: 480px; }
+        /* Resultado */
+        .result-box {
+            background: #172033; border: 1px solid #334155; border-radius: 20px; padding: 25px;
+            text-align: center; margin-bottom: 20px;
+        }
+        .highlight-value { font-size: 2.5rem; font-weight: 800; color: white; margin: 10px 0; letter-spacing: -1px; }
+        
+        .comparison-table {
+            display: flex; justify-content: space-between; margin: 20px 0; 
+            background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px;
+        }
+        .comp-item span { display: block; font-size: 0.8rem; color: var(--text-gray); }
+        .comp-item strong { font-size: 1.1rem; }
+        .bad { color: #f87171; }
+        .good { color: var(--success); }
 
-        /* Mobile */
-        @media (max-width: 768px) {
-            header.hero { 
-                padding: 100px 20px 60px !important; /* Mais espaço embaixo */
-            }
-            #simulador { 
-                margin: 20px auto 0 !important; /* Margem positiva para empurrar pra baixo */
-                padding: 0 15px !important; 
-            }
-            h1 { font-size: 2.2rem !important; }
+        .economy-tag {
+            background: rgba(16, 185, 129, 0.2); color: var(--success); 
+            padding: 8px 16px; border-radius: 50px; font-weight: 700; font-size: 0.9rem;
+            display: inline-block; margin-bottom: 15px;
+        }
+
+        /* Aviso de Pressa */
+        .alert-box {
+            background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fbbf24; padding: 15px; border-radius: 12px; font-size: 0.9rem; margin-bottom: 20px;
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="container" style="max-width: 800px; margin: 0 auto;">
-            <div style="width: 80px; height: 80px; background: var(--brand-blue); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px;">
-                <i class="ph-bold ph-aperture" style="font-size: 3rem; color: white;"></i>
-            </div>
-            <h1 style="margin-bottom: 20px;">
-                O crédito inteligente <br>que a gente <span class="highlight">topa</span>.
-            </h1>
-            <p style="font-size: 1.25rem; color: #64748B; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-                Sem juros abusivos. A tecnologia da Glid com a facilidade que você precisa.
-            </p>
-            <a href="#simulador" class="btn-neon" style="display: inline-flex;">
-                Simular Agora <i class="ph-bold ph-arrow-right"></i>
-            </a>
-        </div>
+<div class="app-container">
+    
+    <header>
+        <div class="logo">Glid<span>.</span></div>
+        <div class="progress-container"><div class="progress-fill" id="progress"></div></div>
     </header>
 
-    <section class="container" id="simulador">
-        <div class="simulator-box" id="box-formulario" style="padding: 40px;">
-            <div style="text-align: center; margin-bottom: 30px;">
-                <h3 style="font-size: 1.5rem;">Simulador Rápido</h3>
+    <div class="step-screen active" id="step-1">
+        <h2>Qual seu momento?</h2>
+        <p class="desc">Isso define a estratégia matemática.</p>
+        
+        <div class="selection-card" onclick="selectOption('momento', 'pressa'); nextStep(2)">
+            <div class="icon-box"><i class="ph-bold ph-rocket-launch"></i></div>
+            <div class="card-text">
+                <h3>Tenho Pressa (Previsibilidade)</h3>
+                <p>Preciso do bem em 6-12 meses. Aceito lance.</p>
             </div>
-            <div style="margin-bottom: 20px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--text-main); font-size: 0.9rem;">Qual o seu objetivo?</label>
-                <select id="tipo_bem">
-                    <option value="imovel">🏡 Imóvel (Até 180x)</option>
-                    <option value="veiculo">🚗 Veículo (Até 80x)</option>
-                </select>
-            </div>
-            <div style="margin-bottom: 30px;">
-                <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--text-main); font-size: 0.9rem;">Valor do crédito (R$)</label>
-                <input type="number" id="valor_credito" placeholder="Ex: 200.000">
-            </div>
-            <button class="btn-neon" onclick="enviarSimulacao()" style="width: 100%;">
-                Ver Parcelas Disponíveis
-            </button>
         </div>
 
-        <div class="simulator-box" id="box-resultado" style="display: none; padding: 40px; text-align: center;">
-            <div style="width: 60px; height: 60px; background: #DCFCE7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-                <i class="ph-bold ph-check" style="font-size: 2rem; color: #16A34A;"></i>
+        <div class="selection-card" onclick="selectOption('momento', 'patrimonio'); nextStep(2)">
+            <div class="icon-box"><i class="ph-bold ph-piggy-bank"></i></div>
+            <div class="card-text">
+                <h3>Construção de Patrimônio</h3>
+                <p>Foco no menor custo financeiro. Longo prazo.</p>
             </div>
-            <h2 style="font-size: 1.6rem; margin-bottom: 10px;">Pré-Aprovado!</h2>
-            <p style="color: #64748B;">Investimento mensal estimado:</p>
-            <div class="result-value" id="res-parcela">R$ 0,00</div>
+        </div>
+    </div>
+
+    <div class="step-screen" id="step-2">
+        <h2>O que você busca?</h2>
+        <p class="desc">Selecione o tipo de bem e o valor.</p>
+
+        <label>Objetivo</label>
+        <select id="tipo_bem">
+            <option value="imovel">🏡 Imóvel (Casa, Terreno, Construção)</option>
+            <option value="veiculo">🚗 Veículo (Carro, Moto, Caminhão)</option>
+        </select>
+
+        <label>Valor do Crédito (R$)</label>
+        <input type="number" id="valor_credito" placeholder="Ex: 200000">
+
+        <button class="btn-action" onclick="nextStep(3)">
+            Continuar <i class="ph-bold ph-arrow-right"></i>
+        </button>
+    </div>
+
+    <div class="step-screen" id="step-3">
+        <h2>Recursos para Lance</h2>
+        <p class="desc">Você tem algum valor para antecipar?</p>
+
+        <label>Tem entrada/FGTS?</label>
+        <select id="tem_lance" onchange="toggleLance()">
+            <option value="nao">Não, quero usar 100% do crédito</option>
+            <option value="sim">Sim, tenho recurso próprio</option>
+        </select>
+
+        <div id="box-lance" style="display:none;">
+            <label>Qual o valor disponível? (R$)</label>
+            <input type="number" id="valor_lance" placeholder="Ex: 50000">
+        </div>
+
+        <div class="alert-box" id="aviso-pressa">
+            <i class="ph-bold ph-warning"></i> <b>Estratégia Ajustada:</b> Como você tem pressa e não tem lance livre, usaremos o <b>Lance Embutido</b> (usar parte da carta) para acelerar sua contemplação.
+        </div>
+
+        <button class="btn-action" onclick="calcular()">
+            Gerar Estratégia <i class="ph-bold ph-lightning"></i>
+        </button>
+    </div>
+
+    <div class="step-screen" id="step-result">
+        <div class="result-box">
+            <div class="economy-tag">💰 Economia de R$ <span id="res-economia">--</span></div>
+            <p style="color:var(--text-gray); font-size:0.9rem; margin:0;">Investimento mensal estimado</p>
+            <div class="highlight-value">R$ <span id="res-parcela">0,00</span></div>
             
-            <div style="background: var(--bg-surface); border-radius: 16px; padding: 20px; margin: 30px 0; display: flex; justify-content: space-between; border: 1px solid var(--border-light);">
-                <div style="text-align: left;">
-                    <span style="color: #64748B; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Prazo</span>
-                    <b id="res-prazo" style="color: var(--brand-blue); font-size: 1.1rem; display: block;">--</b>
+            <div class="comparison-table">
+                <div class="comp-item">
+                    <span>Custo Banco</span>
+                    <strong class="bad" id="custo-banco">R$ --</strong>
                 </div>
-                <div style="text-align: right;">
-                    <span style="color: #64748B; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Crédito</span>
-                    <b id="res-total" style="color: var(--brand-blue); font-size: 1.1rem; display: block;">--</b>
+                <div class="comp-item">
+                    <span>Custo Glid</span>
+                    <strong class="good" id="custo-glid">R$ --</strong>
                 </div>
             </div>
-
-            <a id="btn-whatsapp" href="#" class="btn-neon" style="width: 100%; background-color: #25D366 !important; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3) !important;">
-                <i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Falar no WhatsApp Oficial
-            </a>
             
-            <button onclick="location.reload()" style="background:none; border:none; color: #94A3B8; margin-top: 20px; cursor: pointer; text-decoration: underline; font-size: 0.9rem;">
-                Fazer nova simulação
-            </button>
+            <p style="font-size:0.8rem; color:#64748b;">
+                *Cálculo baseado em taxa média de 2025 (Porto/Ademicon). Sujeito a análise.
+            </p>
         </div>
-    </section>
 
-    <section style="padding: 100px 20px; background: white; margin-top: 40px;">
-        <div style="max-width: 1000px; margin: 0 auto;">
-             <div style="text-align: center; margin-bottom: 60px;">
-                 <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Por que a Glid?</h2>
-                 <p style="color: #64748B; font-size: 1.1rem;">Segurança, agilidade e inteligência.</p>
-             </div>
-             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
-                <div class="feature-card" style="padding: 40px 30px;">
-                    <div class="feature-icon"><i class="ph-bold ph-lightning"></i></div>
-                    <h3>Sem Burocracia</h3>
-                    <p style="color: #64748B; line-height: 1.6;">100% digital.</p>
-                </div>
-                <div class="feature-card" style="padding: 40px 30px;">
-                    <div class="feature-icon"><i class="ph-bold ph-percent"></i></div>
-                    <h3>Economia Real</h3>
-                    <p style="color: #64748B; line-height: 1.6;">Juros zero. Apenas taxa adm.</p>
-                </div>
-                <div class="feature-card" style="padding: 40px 30px;">
-                    <div class="feature-icon"><i class="ph-bold ph-shield-check"></i></div>
-                    <h3>Segurança Total</h3>
-                    <p style="color: #64748B; line-height: 1.6;">Regulado pelo Banco Central.</p>
-                </div>
-             </div>
-        </div>
-    </section>
+        <a id="btn-whatsapp" href="#" class="btn-action" style="background:#25D366;">
+            <i class="ph-bold ph-whatsapp-logo"></i> Validar Estratégia no Zap
+        </a>
+        
+        <button class="btn-action btn-outline" onclick="location.reload()">
+            Refazer Simulação
+        </button>
+    </div>
 
-    <footer style="text-align: center; padding: 60px 20px; background: var(--bg-surface); color: #94A3B8; border-top: 1px solid var(--border-light); margin-top: 60px;">
-        <p style="font-weight: 600; color: var(--brand-blue);">GLID TECNOLOGIA FINANCEIRA</p>
-        <p style="font-size: 0.9rem;">CNPJ: 56.406.402/0001-35</p>
-    </footer>
+</div>
 
-    <a href="https://wa.me/557731420005?text=Ol%C3%A1%2C+Glid+Oficial." class="whatsapp-float">
-        <i class="ph-bold ph-whatsapp-logo"></i>
-    </a>
+<script>
+    // DADOS REAIS DE MERCADO (Ref: Turn2C / Ademicon / Porto)
+    const MARKET = {
+        imovel: { taxa: 0.18, prazo: 180 }, // 18% Taxa Adm Total
+        veiculo: { taxa: 0.15, prazo: 80 }  // 15% Taxa Adm Total
+    };
 
-    <script>
-        async function enviarSimulacao() {
-            const valorInput = document.getElementById('valor_credito').value;
-            if(!valorInput) return alert('Por favor, digite o valor que você precisa.');
-            const valor = parseFloat(valorInput);
-            const prazo = document.getElementById('tipo_bem').value === 'imovel' ? 180 : 80;
-            const parcela = (valor * 1.23) / prazo;
-            const formatar = (n) => n.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            const btn = document.querySelector('button.btn-neon');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = 'Calculando...'; btn.style.opacity = '0.7';
+    let user = { momento: '', tipo: 'imovel', credito: 0, lance: 0 };
 
-            setTimeout(() => {
-                document.getElementById('box-formulario').style.display = 'none';
-                document.getElementById('box-resultado').style.display = 'block';
-                document.getElementById('res-parcela').innerText = formatar(parcela);
-                document.getElementById('res-prazo').innerText = prazo + " meses";
-                document.getElementById('res-total').innerText = formatar(valor);
-                if(typeof fbq === 'function') fbq('track', 'Lead');
-                
-                // LINK NOVO AQUI
-                document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=Ol%C3%A1%2C+simulei+${formatar(valor)}+na+Glid+Oficial.`;
-                btn.innerHTML = originalText; btn.style.opacity = '1';
-            }, 800);
+    function selectOption(key, val) {
+        user[key] = val;
+        // Visual select
+        document.querySelectorAll('.selection-card').forEach(e => e.classList.remove('selected'));
+        event.currentTarget.classList.add('selected');
+    }
+
+    function nextStep(n) {
+        document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
+        document.getElementById('step-'+n).classList.add('active');
+        document.getElementById('progress').style.width = (n * 25) + '%';
+
+        // Lógica de Aviso
+        if(n === 3) checkAviso();
+    }
+
+    function toggleLance() {
+        const tem = document.getElementById('tem_lance').value === 'sim';
+        document.getElementById('box-lance').style.display = tem ? 'block' : 'none';
+        if(!tem) document.getElementById('valor_lance').value = '';
+        checkAviso();
+    }
+
+    function checkAviso() {
+        const temLance = document.getElementById('tem_lance').value === 'sim';
+        const aviso = document.getElementById('aviso-pressa');
+        // Se tem Pressa E Não tem Lance -> Mostra Aviso
+        if(user.momento === 'pressa' && !temLance) {
+            aviso.style.display = 'block';
+        } else {
+            aviso.style.display = 'none';
         }
-    </script>
+    }
+
+    function calcular() {
+        // 1. Coletar
+        user.tipo = document.getElementById('tipo_bem').value;
+        user.credito = parseFloat(document.getElementById('valor_credito').value);
+        if(document.getElementById('tem_lance').value === 'sim') {
+            user.lance = parseFloat(document.getElementById('valor_lance').value) || 0;
+        }
+
+        if(!user.credito) return alert("Digite o valor do crédito!");
+
+        // 2. Calcular (Matemática Financeira Simples)
+        const dados = MARKET[user.tipo];
+        
+        // Custo Glid (Valor + Taxa)
+        const totalGlid = user.credito * (1 + dados.taxa);
+        const parcela = totalGlid / dados.prazo;
+        
+        // Custo Banco (Estimativa Juros Compostos ~2.15x)
+        const totalBanco = user.credito * 2.15;
+        const economia = totalBanco - totalGlid;
+
+        // 3. Renderizar
+        const fmt = (v) => v.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+        const toK = (v) => 'R$ ' + (v/1000).toFixed(0) + 'k';
+
+        document.getElementById('res-parcela').innerText = fmt(parcela).replace('R$', '').trim(); // Só numero
+        document.getElementById('custo-banco').innerText = toK(totalBanco);
+        document.getElementById('custo-glid').innerText = toK(totalGlid);
+        document.getElementById('res-economia').innerText = (economia/1000).toFixed(0) + ' mil';
+
+        // 4. Link Inteligente WhatsApp
+        let text = `Olá! Fiz a consultoria digital na Glid.%0A`;
+        text += `🎯 *Objetivo:* ${user.tipo.toUpperCase()}%0A`;
+        text += `💰 *Crédito:* ${fmt(user.credito)}%0A`;
+        text += `🚀 *Perfil:* ${user.momento === 'pressa' ? 'Tenho Pressa' : 'Patrimônio'}%0A`;
+        text += `💸 *Lance:* ${fmt(user.lance)}%0A%0A`;
+        text += `O sistema indicou uma economia de *${toK(economia)}*. Quero ver os grupos disponíveis.`;
+
+        document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${text}`;
+
+        nextStep('result');
+        if(typeof fbq === 'function') fbq('track', 'Lead');
+    }
+</script>
+
 </body>
 </html>
-
-git add .
-git commit -m "Fix: Hard Mobile Layout & New WhatsApp Link"
-git push origin main
