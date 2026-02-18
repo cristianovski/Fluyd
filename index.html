@@ -3,106 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | O seu Hub de Crédito e Proteção</title>
-    <meta name="description" content="Empréstimos, Consórcios, Seguros e Soluções PJ. Acesso direto às melhores taxas do mercado.">
+    <title>Glid | Inteligência em Crédito e Proteção</title>
+    <meta name="description" content="Acesso direto às melhores taxas do mercado. Consórcios, Empréstimos e Seguros.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* --- DESIGN SYSTEM DARK --- */
+        /* --- DESIGN SYSTEM DARK PREMIUM --- */
         :root {
             --bg-dark: #020617;
             --bg-card: #0f172a;
             --bg-lighter: #1e293b;
             --primary: #3b82f6;
-            --primary-hover: #2563eb;
-            --accent: #f59e0b;
             --text-white: #f8fafc;
             --text-gray: #94a3b8;
             --success: #10b981;
         }
 
         * { box-sizing: border-box; }
-        body { 
-            background-color: var(--bg-dark); color: var(--text-white); 
-            font-family: 'Outfit', sans-serif; margin: 0; padding: 0; 
-            overflow-x: hidden; line-height: 1.6;
-        }
-
+        body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; }
+        a { text-decoration: none; transition: 0.3s; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .highlight { color: var(--primary); }
-        .text-gradient { background: linear-gradient(90deg, #3b82f6, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         /* HEADER */
         header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--bg-lighter); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; text-decoration: none; color: white; }
+        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; color: white; }
         .logo span { color: var(--primary); }
-        .btn-header { background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px; text-decoration: none; color: white; font-size: 0.9rem; font-weight: 600; transition: 0.3s; }
-        .btn-header:hover { background: var(--primary); }
+        .btn-header { background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-header:hover { background: white; color: var(--bg-dark); }
 
-        /* HERO SECTION */
-        .hero { padding: 150px 0 80px; text-align: center; }
-        .hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; }
-        .hero p { color: var(--text-gray); font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px; }
+        /* HERO MINIMALISTA */
+        .hero { padding: 180px 0 100px; text-align: center; }
+        .hero-label { background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 25px; border: 1px solid rgba(59, 130, 246, 0.2); }
+        .hero h1 { font-size: 4.5rem; line-height: 1.05; margin: 0 0 25px 0; font-weight: 800; letter-spacing: -2px; }
+        .hero p { color: var(--text-gray); font-size: 1.25rem; max-width: 650px; margin: 0 auto; }
 
-        /* OS 3 CARROS-CHEFE (GRID) */
-        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        /* OS 3 PILARES (CARDS ELEGANTES) */
+        .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 100px; }
+        .pillar-card { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 20px; padding: 40px; display: flex; flex-direction: column; color: white; position: relative; overflow: hidden; }
+        .pillar-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); background: #131d36; }
         
-        .service-card { 
-            background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 24px; 
-            padding: 40px 30px; display: flex; flex-direction: column; transition: all 0.3s ease;
-            position: relative; overflow: hidden;
-        }
-        .service-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1); }
+        /* Destaque Ouro para Consórcio */
+        .card-gold { border-color: rgba(59, 130, 246, 0.4); background: linear-gradient(180deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.05) 100%); }
+        .card-gold:hover { border-color: var(--primary); box-shadow: 0 10px 40px rgba(59, 130, 246, 0.15); }
+
+        .p-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+        .pillar-card h3 { font-size: 1.8rem; margin: 0 0 15px 0; letter-spacing: -0.5px; }
+        .pillar-card p { color: var(--text-gray); font-size: 1rem; flex-grow: 1; margin: 0 0 30px 0; }
+        .link-arrow { display: flex; align-items: center; gap: 10px; font-weight: 700; color: white; font-size: 0.95rem; }
+        .pillar-card:hover .link-arrow { color: var(--primary); gap: 15px; }
+
+        /* AUTORIDADE (ANEPS) */
+        .trust-section { background: var(--bg-card); border-top: 1px solid var(--bg-lighter); border-bottom: 1px solid var(--bg-lighter); padding: 80px 0; }
+        .trust-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: center; }
+        .aneps-badge { text-align: center; }
+        .aneps-badge img { max-width: 160px; opacity: 0.9; }
+        .trust-text h2 { font-size: 2.2rem; margin: 0 0 15px 0; letter-spacing: -1px; }
+        .trust-text p { color: var(--text-gray); font-size: 1.1rem; margin-bottom: 20px; }
+        .trust-check { display: inline-flex; align-items: center; gap: 10px; color: var(--success); font-weight: 600; background: rgba(16, 185, 129, 0.1); padding: 8px 16px; border-radius: 50px; font-size: 0.9rem; }
+
+        /* RODAPÉ (O MAPA DO TESOURO) */
+        .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .footer-brand p { color: var(--text-gray); font-size: 0.9rem; margin-top: 20px; max-width: 250px; }
         
-        .s-icon { width: 60px; height: 60px; background: rgba(59, 130, 246, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary); margin-bottom: 25px; }
-        .service-card h3 { font-size: 1.5rem; margin: 0 0 10px 0; }
-        .service-card p { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1; }
+        .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; display: inline-block; }
+        .footer-col ul li a:hover { color: var(--primary); transform: translateX(5px); }
 
-        /* AS PÍLULAS (TAGS) */
-        .tags-wrapper { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
-        .tag { background: var(--bg-lighter); color: var(--text-gray); font-size: 0.75rem; font-weight: 600; padding: 6px 12px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid transparent; }
-        .service-card:hover .tag { border-color: rgba(59, 130, 246, 0.3); color: white; background: rgba(59, 130, 246, 0.1); }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; font-size: 0.85rem; }
 
-        .btn-card { display: inline-flex; align-items: center; justify-content: center; width: 100%; background: var(--bg-lighter); color: white; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; gap: 10px; }
-        .service-card:hover .btn-card { background: var(--primary); }
-
-        /* B2B SECTION (EMPRESAS) */
-        .b2b-section { margin-top: 80px; background: linear-gradient(145deg, #0f172a, #020617); border: 1px solid var(--bg-lighter); border-radius: 30px; padding: 60px; display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden; }
-        .b2b-content { max-width: 500px; z-index: 2; position: relative; }
-        .b2b-section h2 { font-size: 2.2rem; margin-bottom: 15px; }
-        .b2b-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 25px 0; }
-        .b2b-tags .tag { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; }
-        .b2b-icon { font-size: 12rem; color: rgba(255,255,255,0.02); position: absolute; right: 50px; bottom: -20px; z-index: 1; }
-        
-        /* ANEPS / AUTORIDADE SECTION */
-        .trust-section { padding: 100px 0; }
-        .trust-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: center; background: var(--bg-card); padding: 50px; border-radius: 30px; border: 1px solid var(--bg-lighter); }
-        .aneps-badge img { max-width: 180px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
-        .trust-text h2 { font-size: 2rem; margin-bottom: 15px; }
-        .trust-text p { color: var(--text-gray); font-size: 1.1rem; }
-        .trust-check { display: flex; align-items: center; gap: 10px; margin-top: 20px; color: var(--success); font-weight: 600; }
-
-        /* FOOTER MINIMALISTA */
-        footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--bg-lighter); margin-top: 40px; }
-        .footer-logo { font-size: 1.5rem; font-weight: 800; color: white; text-decoration: none; margin-bottom: 10px; display: inline-block; }
-        .footer-logo span { color: var(--primary); }
-        .footer-copy { color: var(--text-gray); font-size: 0.85rem; }
-
-        /* WPP FLOAT */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; text-decoration: none; transition: transform 0.2s; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; }
         .whatsapp-float:hover { transform: scale(1.1); }
 
         @media (max-width: 992px) {
-            .services-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 3rem; }
-            .b2b-section { flex-direction: column; text-align: center; padding: 40px 20px; }
-            .b2b-tags { justify-content: center; }
-            .b2b-icon { display: none; }
-            .trust-grid { grid-template-columns: 1fr; text-align: center; padding: 30px; }
-            .aneps-badge { margin: 0 auto; }
+            .pillars-grid { grid-template-columns: 1fr; gap: 20px; }
+            .trust-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .footer-brand p { margin: 20px auto; }
         }
     </style>
 </head>
@@ -116,102 +100,101 @@
     </header>
 
     <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Seu Hub Inteligente de <br><span class="text-gradient">Crédito & Proteção</span></h1>
-                <p>Acesso direto às maiores instituições financeiras do país. Soluções exatas para o seu momento de vida ou para alavancar a sua empresa.</p>
-            </div>
+        <section class="hero container">
+            <div class="hero-label">Inteligência Financeira</div>
+            <h1>Pare de alugar<br>dinheiro do <span class="highlight">banco.</span></h1>
+            <p>Acesso direto às maiores administradoras e bancos do país. Use a matemática a seu favor para gerar liquidez, alavancar patrimônio e blindar sua família.</p>
         </section>
 
         <section class="container">
-            <div class="services-grid">
+            <div class="pillars-grid">
                 
-                <div class="service-card">
-                    <div class="s-icon"><i class="ph-bold ph-wallet"></i></div>
-                    <h3>Empréstimos</h3>
-                    <p>Dinheiro na mão de forma rápida, segura e com as menores taxas aprovadas do mercado.</p>
-                    <div class="tags-wrapper">
-                        <span class="tag">Saque FGTS</span>
-                        <span class="tag">Consignado INSS</span>
-                        <span class="tag">Público/Privado</span>
-                        <span class="tag">CLT</span>
-                        <span class="tag">Garantia Imóvel/Auto</span>
-                        <span class="tag">Bolsa Família</span>
-                    </div>
-                    <a href="https://wa.me/557731420005?text=Olá! Gostaria de simular um Empréstimo." class="btn-card">Simular Crédito <i class="ph-bold ph-arrow-right"></i></a>
-                </div>
-
-                <div class="service-card" style="border-color: rgba(59, 130, 246, 0.3); background: linear-gradient(180deg, var(--bg-card), rgba(59, 130, 246, 0.03));">
-                    <div class="s-icon"><i class="ph-bold ph-house-line"></i></div>
+                <a href="./consorcios/" class="pillar-card card-gold">
+                    <i class="ph-fill ph-buildings p-icon"></i>
                     <h3>Consórcios & Cartas</h3>
-                    <p>Planeje com inteligência matemática ou use lance embutido para acelerar sua contemplação.</p>
-                    <div class="tags-wrapper">
-                        <span class="tag">Imóveis</span>
-                        <span class="tag">Veículos</span>
-                        <span class="tag">Cartas Contempladas</span>
-                        <span class="tag">Alavancagem</span>
-                    </div>
-                    <a href="./consorcios/" class="btn-card" style="background: var(--primary);">Ver Consórcios <i class="ph-bold ph-arrow-right"></i></a>
-                </div>
+                    <p>Planeje sem juros abusivos ou use o lance embutido para acelerar a contemplação do seu Imóvel ou Veículo.</p>
+                    <div class="link-arrow">Simular Estratégia <i class="ph-bold ph-arrow-right"></i></div>
+                </a>
 
-                <div class="service-card">
-                    <div class="s-icon"><i class="ph-bold ph-shield-heart"></i></div>
+                <a href="https://wa.me/557731420005?text=Olá! Gostaria de ver opções de Empréstimos e Financiamentos." class="pillar-card">
+                    <i class="ph-fill ph-wallet p-icon"></i>
+                    <h3>Empréstimos</h3>
+                    <p>Liquidez imediata. Aprovamos seu crédito com as menores taxas do mercado, usando suas garantias ou histórico.</p>
+                    <div class="link-arrow">Ver Linhas de Crédito <i class="ph-bold ph-arrow-right"></i></div>
+                </a>
+
+                <a href="https://wa.me/557731420005?text=Olá! Quero proteger minha família com um Seguro/Plano de Saúde." class="pillar-card">
+                    <i class="ph-fill ph-shield-check p-icon"></i>
                     <h3>Seguros & Saúde</h3>
-                    <p>Proteção completa e blindagem patrimonial para você, sua família e seus bens mais valiosos.</p>
-                    <div class="tags-wrapper">
-                        <span class="tag">Planos de Saúde</span>
-                        <span class="tag">Seguro de Vida</span>
-                        <span class="tag">Seguro Auto/Imóvel</span>
-                        <span class="tag">Medpass (Telemedicina)</span>
-                        <span class="tag">Viagens</span>
-                    </div>
-                    <a href="https://wa.me/557731420005?text=Olá! Gostaria de saber mais sobre Seguros e Planos." class="btn-card">Proteger Família <i class="ph-bold ph-arrow-right"></i></a>
-                </div>
+                    <p>Blindagem total. Planos de saúde de ponta, proteção de bens e segurança vitalícia para quem você ama.</p>
+                    <div class="link-arrow">Blindar Patrimônio <i class="ph-bold ph-arrow-right"></i></div>
+                </a>
 
             </div>
         </section>
 
-        <section class="container">
-            <div class="b2b-section">
-                <div class="b2b-content">
-                    <div style="color: var(--primary); font-weight: 800; letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 10px;">Para o seu Negócio</div>
-                    <h2>Glid Empresas (PJ)</h2>
-                    <p style="color: var(--text-gray); font-size: 1.1rem;">Estruture o caixa da sua empresa ou ofereça os melhores benefícios para reter os talentos do seu time.</p>
-                    
-                    <div class="b2b-tags">
-                        <span class="tag"><i class="ph-fill ph-trend-up"></i> Capital de Giro</span>
-                        <span class="tag"><i class="ph-fill ph-receipt"></i> Antecipação de Recebíveis</span>
-                        <span class="tag"><i class="ph-fill ph-fork-knife"></i> Vale Refeição (VR)</span>
-                    </div>
-                    
-                    <a href="https://wa.me/557731420005?text=Olá! Sou PJ e quero conhecer as soluções Glid Empresas." class="btn-header" style="display: inline-block; background: white; color: var(--bg-dark); margin-top: 10px;">Atendimento PJ</a>
-                </div>
-                <i class="ph-fill ph-buildings b2b-icon"></i>
-            </div>
-        </section>
-
-        <section class="trust-section container">
-            <div class="trust-grid">
+        <section class="trust-section">
+            <div class="container trust-grid">
                 <div class="aneps-badge">
                     <img src="assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
                 </div>
                 <div class="trust-text">
-                    <h2>Crédito com <span class="highlight">Segurança Absoluta</span></h2>
-                    <p>Atuamos como Correspondente Bancário Certificado, em estrita conformidade com as diretrizes do <b>Banco Central do Brasil</b> e com a Lei Geral de Proteção de Dados (LGPD).</p>
-                    <p style="margin-top: 15px;">Nosso compromisso é garantir transparência total, sigilo de dados e as melhores aprovações em todas as suas operações financeiras.</p>
+                    <h2>Segurança <span class="highlight">Absoluta</span></h2>
+                    <p>Atuamos como Correspondente Bancário Certificado, operando rigorosamente dentro das diretrizes do <b>Banco Central do Brasil</b> e da Lei Geral de Proteção de Dados (LGPD).</p>
                     <div class="trust-check">
-                        <i class="ph-fill ph-check-circle" style="font-size: 1.5rem;"></i> Profissional Certificado ANEPS
+                        <i class="ph-fill ph-check-circle"></i> Profissional Certificado ANEPS
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <footer>
+    <footer class="fat-footer">
         <div class="container">
-            <a href="/" class="footer-logo">Glid<span>.</span></a>
-            <p class="footer-copy">&copy; 2026 Glid Tecnologia Financeira. Todos os direitos reservados.</p>
+            <div class="footer-grid">
+                
+                <div class="footer-brand">
+                    <a href="/" class="logo">Glid<span>.</span></a>
+                    <p>O seu hub definitivo para soluções de crédito inteligente, proteção e negócios.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Crédito Rápido</h4>
+                    <ul>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero saber sobre Antecipação do Saque FGTS.">Saque Aniversário FGTS</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero saber sobre Consignado.">Consignado (INSS/Público)</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero saber sobre Empréstimo CLT.">Empréstimo CLT</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero saber sobre Empréstimo Bolsa Família.">Bolsa Família</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero saber sobre Empréstimo com Garantia.">Garantia (Imóvel/Auto)</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Saúde & Seguros</h4>
+                    <ul>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero cotar um Plano de Saúde.">Planos de Saúde</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero cotar Seguro de Vida.">Seguro de Vida</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero cotar Seguro Auto/Imóvel.">Seguro Auto & Imóvel</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero saber sobre Medpass.">Medpass (Telemedicina)</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero cotar Seguro Viagem.">Seguro Viagem</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Para Empresas (PJ)</h4>
+                    <ul>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Sou PJ e busco Capital de Giro.">Capital de Giro</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Sou PJ e quero Antecipar Recebíveis.">Antecipação de Recebíveis</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero oferecer Vale Refeição/Alimentação na minha empresa.">Benefícios (VR/VA)</a></li>
+                        <li><a href="https://wa.me/557731420005?text=Olá! Quero planos corporativos.">Saúde Ocupacional</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                &copy; 2026 Glid Tecnologia Financeira Ltda. CNPJ: 00.000.000/0000-00. Correspondente Bancário.
+            </div>
         </div>
     </footer>
 
