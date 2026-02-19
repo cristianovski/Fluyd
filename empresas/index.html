@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glid | Soluções para Empresas</title>
+    <meta name="description" content="Crédito corporativo, antecipação de recebíveis e benefícios flexíveis (VR/VA) para impulsionar seu negócio.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* --- DESIGN SYSTEM DARK PREMIUM --- */
+        :root {
+            --bg-dark: #020617;
+            --bg-card: #0f172a;
+            --bg-lighter: #1e293b;
+            --primary: #3b82f6; 
+            --accent: #f59e0b; 
+            --text-white: #f8fafc;
+            --text-gray: #94a3b8;
+            --success: #10b981; 
+            --danger: #ef4444;
+        }
+
+        * { box-sizing: border-box; }
+        body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; }
+        a { text-decoration: none; transition: 0.3s; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .highlight { color: var(--accent); }
+
+        /* HEADER */
+        header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--bg-lighter); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; color: white; }
+        .logo span { color: var(--primary); }
+        .btn-header { background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-header:hover { background: white; color: var(--bg-dark); }
+
+        /* HERO & GRID DO SIMULADOR */
+        .hero-section { padding: 160px 0 60px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        
+        .hero-label { background: rgba(245, 158, 11, 0.1); color: var(--accent); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(245, 158, 11, 0.2); }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin: 0 0 20px 0; font-weight: 800; letter-spacing: -1px; }
+        .hero-text p { color: var(--text-gray); font-size: 1.15rem; margin-bottom: 30px; }
+        .trust-badges { display: flex; gap: 20px; margin-top: 40px; opacity: 0.8; }
+        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-gray); font-weight: 600; }
+
+        /* SIMULADOR UI (TRIAGEM B2B) */
+        .simulator-wrapper { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 24px; padding: 40px; box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
+        .simulator-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--primary)); }
+        
+        .step-screen { display: none; animation: fadeIn 0.4s ease; }
+        .step-screen.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .step-screen h3 { font-size: 1.5rem; margin: 0 0 5px 0; }
+        
+        .selection-card { background: var(--bg-dark); padding: 15px 20px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; display: flex; align-items: center; gap: 20px; border: 2px solid transparent; transition: 0.2s; }
+        .selection-card:hover, .selection-card.selected { border-color: var(--accent); background: rgba(245, 158, 11, 0.05); }
+        .icon-box { font-size: 1.8rem; color: var(--accent); }
+
+        input, select { width: 100%; background: var(--bg-dark); border: 1px solid var(--bg-lighter); color: white; padding: 18px; border-radius: 12px; margin-bottom: 20px; box-sizing: border-box; font-size: 1rem; font-family: inherit; }
+        input:focus, select:focus { outline: none; border-color: var(--primary); }
+        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 700; margin-bottom: 8px; display: block; letter-spacing: 0.5px; }
+        
+        .btn-action { width: 100%; background: var(--primary); color: white; border: none; padding: 18px; border-radius: 12px; font-weight: 700; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; transition: 0.3s; }
+        .btn-action:hover { background: #2563eb; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 1px solid var(--bg-lighter); color: var(--text-gray); }
+        .btn-outline:hover { background: var(--bg-lighter); color: white; }
+
+        .result-display { text-align: center; background: var(--bg-dark); padding: 30px; border-radius: 16px; margin-bottom: 20px; border: 1px solid var(--bg-lighter); }
+
+        /* CARROSSEL PJ */
+        .partners-section { padding: 50px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); border-bottom: 1px solid var(--bg-lighter); overflow: hidden; white-space: nowrap; position: relative; }
+        .marquee-track { display: inline-block; animation: scroll 40s linear infinite; }
+        .partners-section:hover .marquee-track { animation-play-state: paused; }
+        .partner-logo { display: inline-block; margin: 0 40px; vertical-align: middle; font-size: 1.2rem; font-weight: 800; color: #475569; letter-spacing: 1px; text-transform: uppercase; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* FEATURES SECTION */
+        .features-section { padding: 100px 0 60px 0; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .feature-card { background: var(--bg-card); padding: 30px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; }
+        .feature-card:hover { border-color: rgba(245, 158, 11, 0.3); transform: translateY(-5px); }
+        .f-icon { width: 50px; height: 50px; background: rgba(245, 158, 11, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--accent); margin-bottom: 20px; }
+
+        /* COMPARISON */
+        .comparison-section { padding: 80px 0 100px 0; background: #01040a; text-align: center; border-top: 1px solid var(--bg-lighter); }
+        .comp-box { background: var(--bg-dark); border-radius: 20px; padding: 30px; display: inline-block; border: 1px solid var(--bg-lighter); max-width: 800px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+        /* FOOTER */
+        .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .footer-brand p { color: var(--text-gray); font-size: 0.9rem; margin-top: 20px; max-width: 250px; }
+        .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; }
+        .footer-col ul li a:hover { color: var(--primary); }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; font-size: 0.85rem; }
+
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        @media (max-width: 992px) { 
+            .grid-2 { grid-template-columns: 1fr; gap: 40px; } 
+            .grid-4 { grid-template-columns: 1fr 1fr; }
+            .hero-section { padding: 120px 0 60px; text-align: center; } 
+            .hero-text h1 { font-size: 3rem; } 
+            .trust-badges { justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .footer-brand p { margin: 20px auto; }
+        }
+        @media (max-width: 600px) {
+            .grid-4 { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'SEU_PIXEL_ID_AQUI');
+    fbq('track', 'PageView');
+    </script>
+    </head>
+<body>
+    <header>
+        <div class="container nav-content">
+            <a href="/" class="logo">Glid<span>.</span></a>
+            <a href="https://wa.me/557731420005" class="btn-header">Falar com Consultor B2B</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container grid-2">
+            <div class="hero-text">
+                <div class="hero-label">Corporate Hub</div>
+                <h1>Alavanque seu Caixa. Retenha seus <span class="highlight">Talentos.</span></h1>
+                <p>Soluções financeiras estruturadas para empresas. Antecipe recebíveis sem burocracia bancária ou ofereça benefícios flexíveis economizando em encargos.</p>
+                <div class="trust-badges">
+                    <div class="trust-item"><i class="ph-fill ph-check-circle" style="color:var(--success); font-size:1.4rem;"></i> Sem travar limite bancário</div>
+                    <div class="trust-item"><i class="ph-fill ph-lightning" style="color:var(--accent); font-size:1.4rem;"></i> Avaliação Desburocratizada</div>
+                </div>
+            </div>
+
+            <div class="simulator-wrapper">
+                
+                <div class="step-screen active" id="step-1">
+                    <h3>Qual a dor da sua empresa hoje?</h3>
+                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px;">Direcionaremos você ao especialista correto.</p>
+                    
+                    <div class="selection-card" onclick="selectRota('credito'); nextStep('credito')">
+                        <div class="icon-box"><i class="ph-bold ph-trend-up"></i></div>
+                        <div>
+                            <div style="font-weight:700; color:white;">Preciso de Fluxo de Caixa</div>
+                            <div style="font-size:0.85rem; color:var(--text-gray);">Capital de Giro Limpo ou Antecipação de Recebíveis.</div>
+                        </div>
+                    </div>
+
+                    <div class="selection-card" onclick="selectRota('beneficios'); nextStep('beneficios')">
+                        <div class="icon-box"><i class="ph-bold ph-users"></i></div>
+                        <div>
+                            <div style="font-weight:700; color:white;">Gestão e Retenção de Equipe</div>
+                            <div style="font-size:0.85rem; color:var(--text-gray);">Vale Alimentação/Refeição, Premiações e Saúde.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-screen" id="step-credito">
+                    <h3>Estruturação de Caixa</h3>
+                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px;">Para dimensionar sua oferta, informe:</p>
+                    
+                    <label>Faturamento Médio Mensal (R$)</label>
+                    <select id="fat_empresa">
+                        <option value="Até R$ 50.000">Até R$ 50.000 (MEI/Micro)</option>
+                        <option value="De R$ 50k a R$ 300k">De R$ 50.000 a R$ 300.000</option>
+                        <option value="Acima de R$ 300k">Acima de R$ 300.000 (Middle Market)</option>
+                    </select>
+
+                    <label>Qual a garantia principal?</label>
+                    <select id="garantia_empresa">
+                        <option value="Notas Fiscais / Cartões">Vendas a Prazo (Notas Fiscais/Cartão)</option>
+                        <option value="Imóveis / Veículos">Bens Patrimoniais (Imóveis/Frota)</option>
+                        <option value="Sem Garantia">Limpo (Apenas Aval dos Sócios)</option>
+                    </select>
+
+                    <button class="btn-action" onclick="finalizarCredito()">Analisar Limites <i class="ph-bold ph-chart-bar"></i></button>
+                    <button class="btn-action btn-outline" onclick="nextStep('1')">Voltar</button>
+                </div>
+
+                <div class="step-screen" id="step-beneficios">
+                    <h3>Benefícios Inteligentes</h3>
+                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px;">Economia em impostos (PAT) e equipe feliz.</p>
+                    
+                    <label>Tamanho do seu Time</label>
+                    <select id="vidas_empresa">
+                        <option value="De 1 a 10 Vidas">De 1 a 10 Colaboradores</option>
+                        <option value="De 11 a 50 Vidas">De 11 a 50 Colaboradores</option>
+                        <option value="Mais de 50 Vidas">Mais de 50 Colaboradores</option>
+                    </select>
+
+                    <label>Quais benefícios deseja implantar?</label>
+                    <select id="tipo_beneficio">
+                        <option value="Cartão Flexível (VR/VA)">Cartão Flexível (Vale Alimentação/Refeição)</option>
+                        <option value="Cartão Premiação">Cartão Premiação / Incentivos</option>
+                        <option value="Plano de Saúde e Odonto">Plano de Saúde e Odontológico</option>
+                    </select>
+
+                    <button class="btn-action" onclick="finalizarBeneficios()">Montar Proposta <i class="ph-bold ph-gift"></i></button>
+                    <button class="btn-action btn-outline" onclick="nextStep('1')">Voltar</button>
+                </div>
+
+                <div class="step-screen" id="step-result">
+                    <div class="result-display">
+                        <i class="ph-fill ph-check-circle" style="font-size:4rem; color:var(--success); margin-bottom:15px;"></i>
+                        <h3 style="margin-bottom:10px;">Perfil Mapeado!</h3>
+                        <p style="color:var(--text-gray); font-size:0.95rem; margin-bottom:20px;">Com esses dados, nosso time de corporate já consegue estruturar uma operação otimizada para o seu CNPJ. O contato será rápido, direto e sem burocracia.</p>
+                    </div>
+                    
+                    <a id="btn-whatsapp" href="#" class="btn-action" style="background:#25D366; color:white;"><i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Falar com Gerente B2B</a>
+                    <button class="btn-action btn-outline" onclick="location.reload()">Nova Triagem</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <div class="container">
+            <p style="text-align:center; color:var(--text-gray); font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:40px; font-weight:700;">Conectados aos melhores fundos (FIDCs) e Bandeiras</p>
+            <div style="width:100%; overflow:hidden;">
+                <div class="marquee-track">
+                    <div class="partner-logo">FIDCs Independentes</div>
+                    <div class="partner-logo">Bancos Tradicionais</div>
+                    <div class="partner-logo">Bandeiras Flexíveis (VR/VA)</div>
+                    <div class="partner-logo">Operadoras de Saúde</div>
+                    <div class="partner-logo">Seguradoras Globais</div>
+                    
+                    <div class="partner-logo">FIDCs Independentes</div>
+                    <div class="partner-logo">Bancos Tradicionais</div>
+                    <div class="partner-logo">Bandeiras Flexíveis (VR/VA)</div>
+                    <div class="partner-logo">Operadoras de Saúde</div>
+                    <div class="partner-logo">Seguradoras Globais</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 style="font-size:2.5rem; text-align:center; margin: 0 0 50px 0; letter-spacing: -1px;">Gestão Inteligente.</h2>
+            <div class="grid-4">
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-bank"></i></div>
+                    <h3 style="margin-top:0;">Capital Limpo</h3>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Linhas de crédito estruturadas fora do seu banco principal, evitando o engessamento dos seus limites atuais no rotativo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-file-text"></i></div>
+                    <h3 style="margin-top:0;">Fomento Mercantil</h3>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Antecipe notas fiscais, boletos e recebíveis de cartão. Transforme suas vendas a prazo em dinheiro vivo na conta hoje.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-credit-card"></i></div>
+                    <h3 style="margin-top:0;">VR/VA Flexível</h3>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Cartões multibenefícios com bandeira MasterCard/Visa. Aceitos em qualquer estabelecimento, sem as antigas travas de rede.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-receipt"></i></div>
+                    <h3 style="margin-top:0;">Isenção PAT</h3>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Ao fornecer benefícios estruturados, sua empresa ganha isenção de encargos trabalhistas (INSS/FGTS) sobre esses valores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="fat-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">Glid<span>.</span></a>
+                    <p>O seu hub definitivo para soluções de crédito inteligente, proteção e negócios.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Crédito Rápido</h4>
+                    <ul>
+                        <li><a href="../emprestimos/">Saque Aniversário FGTS</a></li>
+                        <li><a href="../emprestimos/">Consignado (INSS/Público)</a></li>
+                        <li><a href="../emprestimos/">Empréstimo CLT</a></li>
+                        <li><a href="../emprestimos/">Garantia (Imóvel/Auto)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Saúde & Seguros</h4>
+                    <ul>
+                        <li><a href="../seguros/">Planos de Saúde (CNPJ/MEI)</a></li>
+                        <li><a href="../seguros/">Seguro de Vida</a></li>
+                        <li><a href="../seguros/">Seguro Auto & Imóvel</a></li>
+                        <li><a href="../seguros/">Medpass (Telemedicina)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Para Empresas (PJ)</h4>
+                    <ul>
+                        <li><a href="../empresas/">Capital de Giro</a></li>
+                        <li><a href="../empresas/">Antecipação de Recebíveis</a></li>
+                        <li><a href="../empresas/">Benefícios (VR/VA)</a></li>
+                        <li><a href="../seguros/">Saúde Ocupacional</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Glid Tecnologia Financeira Ltda. CNPJ: 00.000.000/0000-00. Correspondente Bancário.</div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/557731420005" class="whatsapp-float"><i class="ph-bold ph-whatsapp-logo"></i></a>
+
+    <script>
+        let rotaPJ = '';
+
+        function selectRota(tipo) {
+            rotaPJ = tipo;
+            document.querySelectorAll('.selection-card').forEach(e => e.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+
+        function nextStep(stepID) {
+            document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
+            document.getElementById('step-' + stepID).classList.add('active');
+        }
+
+        function finalizarCredito() {
+            const fat = document.getElementById('fat_empresa').value;
+            const gar = document.getElementById('garantia_empresa').value;
+            
+            let wppText = `Olá! Preciso de estruturação de *Crédito Empresarial (PJ)*.%0A📊 *Faturamento:* ${fat}%0A🛡️ *Garantia Principal:* ${gar}%0AGostaria de falar com um gerente B2B sobre Capital de Giro/Antecipação.`;
+            
+            document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${wppText}`;
+            nextStep('result');
+        }
+
+        function finalizarBeneficios() {
+            const vidas = document.getElementById('vidas_empresa').value;
+            const ben = document.getElementById('tipo_beneficio').value;
+            
+            let wppText = `Olá! Quero estruturar o plano de *Benefícios Corporativos* da minha empresa.%0A👥 *Tamanho do Time:* ${vidas}%0A🎁 *Interesse:* ${ben}%0AGostaria de ver as opções disponíveis e a economia fiscal (PAT).`;
+            
+            document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${wppText}`;
+            nextStep('result');
+        }
+    </script>
+</body>
+</html>
