@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glid | Empréstimos e Portabilidade</title>
+    <meta name="description" content="Troque sua dívida cara por crédito inteligente. Antecipação FGTS, Consignado e Crédito com Garantia.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* --- DESIGN SYSTEM DARK PREMIUM --- */
+        :root {
+            --bg-dark: #020617;
+            --bg-card: #0f172a;
+            --bg-lighter: #1e293b;
+            --primary: #3b82f6;
+            --accent: #f59e0b; 
+            --text-white: #f8fafc;
+            --text-gray: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        * { box-sizing: border-box; }
+        body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; }
+        a { text-decoration: none; transition: 0.3s; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .highlight { color: var(--primary); }
+        .text-green { color: var(--success); }
+
+        /* HEADER */
+        header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--bg-lighter); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; color: white; }
+        .logo span { color: var(--primary); }
+        .btn-header { background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-header:hover { background: white; color: var(--bg-dark); }
+
+        /* HERO & GRID DO SIMULADOR */
+        .hero-section { padding: 160px 0 60px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        
+        .hero-label { background: rgba(16, 185, 129, 0.1); color: var(--success); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(16, 185, 129, 0.2); }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin: 0 0 20px 0; font-weight: 800; letter-spacing: -1px; }
+        .hero-text p { color: var(--text-gray); font-size: 1.15rem; margin-bottom: 30px; }
+        .trust-badges { display: flex; gap: 20px; margin-top: 40px; opacity: 0.8; }
+        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-gray); font-weight: 600; }
+
+        /* SIMULADOR UI */
+        .simulator-wrapper { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 24px; padding: 40px; box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
+        .simulator-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--success), var(--primary)); }
+        
+        .step-screen { display: none; animation: fadeIn 0.4s ease; }
+        .step-screen.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .step-screen h3 { font-size: 1.5rem; margin: 0 0 5px 0; }
+        
+        input, select { width: 100%; background: var(--bg-dark); border: 1px solid var(--bg-lighter); color: white; padding: 18px; border-radius: 12px; margin-bottom: 20px; box-sizing: border-box; font-size: 1rem; font-family: inherit; }
+        input:focus, select:focus { outline: none; border-color: var(--primary); }
+        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 700; margin-bottom: 8px; display: block; letter-spacing: 0.5px; }
+        
+        .btn-action { width: 100%; background: var(--primary); color: white; border: none; padding: 18px; border-radius: 12px; font-weight: 700; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; transition: 0.3s; }
+        .btn-action:hover { background: #2563eb; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 1px solid var(--bg-lighter); color: var(--text-gray); }
+        .btn-outline:hover { background: var(--bg-lighter); color: white; }
+
+        .result-display { text-align: center; background: var(--bg-dark); padding: 30px; border-radius: 16px; margin-bottom: 15px; border: 1px solid var(--bg-lighter); }
+        .big-number { font-size: 2.2rem; font-weight: 800; color: white; margin: 5px 0; }
+        
+        .disclaimer { font-size: 0.75rem; color: #64748b; text-align: center; margin-bottom: 20px; line-height: 1.4; padding: 0 10px; }
+        .badge-taxa { background: rgba(16, 185, 129, 0.1); color: var(--success); padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; display: inline-block; margin-bottom: 10px; border: 1px solid rgba(16, 185, 129, 0.2); }
+
+        /* FEATURES SECTION (OS 4 PILARES) */
+        .features-section { padding: 80px 0; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .feature-card { background: var(--bg-card); padding: 30px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .f-icon { width: 50px; height: 50px; background: rgba(59, 130, 246, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; }
+
+        /* COMPARISON */
+        .comparison-section { padding: 80px 0 100px 0; background: #01040a; text-align: center; border-top: 1px solid var(--bg-lighter); }
+        .comp-box { background: var(--bg-dark); border-radius: 20px; padding: 30px; display: inline-block; border: 1px solid var(--bg-lighter); max-width: 800px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+
+        /* ANEPS E FOOTER */
+        .aneps-slim-bar { border-top: 1px solid var(--bg-lighter); background: var(--bg-dark); padding: 25px 0; display: flex; justify-content: center; align-items: center; gap: 20px; }
+        .aneps-slim-bar img { height: 35px; opacity: 0.9; }
+        .aneps-slim-bar p { color: var(--text-gray); font-size: 0.9rem; margin: 0; }
+        
+        .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .footer-brand p { color: var(--text-gray); font-size: 0.9rem; margin-top: 20px; max-width: 250px; }
+        .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; }
+        .footer-col ul li a:hover { color: var(--primary); }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; font-size: 0.85rem; }
+
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        @media (max-width: 992px) { 
+            .grid-2 { grid-template-columns: 1fr; gap: 40px; } 
+            .grid-3 { grid-template-columns: 1fr; }
+            .hero-section { padding: 120px 0 60px; text-align: center; } 
+            .hero-text h1 { font-size: 3rem; } 
+            .trust-badges { justify-content: center; }
+            .aneps-slim-bar { flex-direction: column; text-align: center; padding: 25px 20px; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .footer-brand p { margin: 20px auto; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-content">
+            <a href="/" class="logo">Glid<span>.</span></a>
+            <a href="https://wa.me/557731420005" class="btn-header">Falar com Consultor</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container grid-2">
+            <div class="hero-text">
+                <div class="hero-label">Crédito Inteligente</div>
+                <h1>Devolva o seu <br><span class="text-green">fôlego financeiro.</span></h1>
+                <p>Troque suas dívidas caras por linhas de crédito com as menores taxas do Brasil. Antecipe seu FGTS, faça a portabilidade do seu Consignado com troco, ou use seu bem como garantia.</p>
+                <div class="trust-badges">
+                    <div class="trust-item"><i class="ph-fill ph-lightning" style="color:var(--accent); font-size:1.4rem;"></i> Pix em até 2 horas</div>
+                    <div class="trust-item"><i class="ph-fill ph-shield-check" style="color:var(--success); font-size:1.4rem;"></i> Sem consulta ao SPC/Serasa*</div>
+                </div>
+            </div>
+
+            <div class="simulator-wrapper">
+                
+                <div class="step-screen active" id="step-1">
+                    <h3>Simulação Rápida</h3>
+                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px;">Descubra a melhor linha liberada para o seu CPF.</p>
+                    
+                    <label>Qual o seu Perfil / Linha de Crédito?</label>
+                    <select id="tipo_emprestimo" onchange="mudarLabelValor()">
+                        <option value="inss">Aposentado/Pensionista INSS</option>
+                        <option value="siape">Servidor Público (SIAPE)</option>
+                        <option value="fgts">Antecipação Saque FGTS</option>
+                        <option value="garantia">Crédito com Garantia (Imóvel/Auto)</option>
+                        <option value="outros">Outros (CLT, Bolsa Família, Governos)</option>
+                    </select>
+
+                    <label id="label-valor">Qual valor você precisa? (R$)</label>
+                    <input type="number" id="valor_desejado" placeholder="Ex: 10000">
+
+                    <button class="btn-action" onclick="calcularEmprestimo()">Buscar Limite Aprovado <i class="ph-bold ph-arrow-right"></i></button>
+                </div>
+
+                <div class="step-screen" id="step-result">
+                    
+                    <div id="resultado-normal" style="display:none;">
+                        <div style="text-align:center;">
+                            <div class="badge-taxa" id="res-badge-taxa"><i class="ph-bold ph-fire"></i> Taxas a partir de 1.29% a.m.</div>
+                        </div>
+                        <div class="result-display">
+                            <span id="res-titulo" style="color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; font-weight:700;">Projeção de Parcela Estimada</span>
+                            <div class="big-number" id="res-valor">R$ 0,00 a R$ 0,00</div>
+                            <div id="res-sub" style="font-size:0.95rem; color:var(--text-gray); margin-top:5px;">--</div>
+                        </div>
+                        <p class="disclaimer">Simulação baseada na taxa média de mercado. O valor final e a aprovação estão sujeitos à análise de crédito, margem consignável e regras de cada banco parceiro.</p>
+                    </div>
+
+                    <div id="resultado-coringa" style="display:none; text-align:center; padding: 20px 0;">
+                        <i class="ph-fill ph-check-circle" style="font-size:4rem; color:var(--success); margin-bottom:15px;"></i>
+                        <h3 style="margin-bottom:10px;">Linhas Encontradas!</h3>
+                        <p style="color:var(--text-gray); font-size:0.95rem; margin-bottom:20px;">Como as taxas para o seu perfil variam por região e avaliação cadastral, liberamos o seu limite exato diretamente pelo WhatsApp para garantir a melhor oferta.</p>
+                    </div>
+                    
+                    <a id="btn-whatsapp" href="#" class="btn-action" style="background:#25D366; color:white;"><i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Descobrir Banco Aprovado</a>
+                    <button class="btn-action btn-outline" onclick="location.reload()">Refazer Simulação</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 style="font-size:2.5rem; text-align:center; margin: 0 0 50px 0; letter-spacing: -1px;">Por que a Glid é diferente?</h2>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-arrows-left-right"></i></div>
+                    <h3 style="margin-top:0;">Portabilidade com Troco</h3>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Já tem um consignado? Nós compramos sua dívida, reduzimos a taxa de juros e ainda liberamos um valor extra na sua conta (Troco).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-scissors"></i></div>
+                    <h3 style="margin-top:0;">Troca de Dívida Cara</h3>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Use a inteligência de garantias ou FGTS para quitar cartões de crédito e cheque especial, reduzindo sua prestação mensal em até 70%.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-paper-plane-tilt"></i></div>
+                    <h3 style="margin-top:0;">Zero Burocracia</h3>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Contratação 100% digital e segura. Para linhas como FGTS e Consignado, o dinheiro cai na sua conta em algumas horas, mesmo estando negativado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparison-section">
+        <div class="container">
+            <h2 style="font-size:2.5rem; margin: 0 0 40px 0; letter-spacing: -1px;">Fuja da Dívida Burra.</h2>
+            <div class="comp-box">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; text-align:left;">
+                    <div style="padding:20px;">
+                        <div style="color:var(--danger); font-weight:800; margin-bottom:10px; text-transform:uppercase; font-size:0.9rem;">Vilões do Mercado</div>
+                        <div style="font-size:0.9rem; color:var(--text-gray);">Cartão de Crédito / Cheque Especial</div>
+                        <div style="font-size:2rem; font-weight:800; line-height:1.2; margin:10px 0;">~15% <span style="font-size:1rem;">ao mês</span></div>
+                        <div style="font-size:0.9rem; color:var(--text-gray);">Uma bola de neve impossível de pagar.</div>
+                    </div>
+                    <div style="padding:20px; border-left:1px solid var(--bg-lighter);">
+                        <div style="color:var(--success); font-weight:800; margin-bottom:10px; text-transform:uppercase; font-size:0.9rem;">Crédito Inteligente Glid</div>
+                        <div style="font-size:0.9rem; color:var(--text-gray);">Consignado, FGTS e Garantias</div>
+                        <div style="font-size:2rem; font-weight:800; line-height:1.2; margin:10px 0; color:var(--success);">a partir de 1.29%</div>
+                        <div style="font-size:0.9rem; color:var(--text-gray);">Juros baixos e parcelas que cabem no bolso.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="aneps-slim-bar">
+        <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <img src="../assets/img/logos/aneps.png" alt="Selo ANEPS">
+            <p>Correspondente Bancário Autorizado. Atuação estrita em conformidade com o <b>Banco Central do Brasil</b>.</p>
+        </div>
+    </section>
+
+    <footer class="fat-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">Glid<span>.</span></a>
+                    <p>O seu hub definitivo para soluções de crédito inteligente, proteção e negócios.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Crédito Rápido</h4>
+                    <ul>
+                        <li><a href="https://wa.me/557731420005">Saque Aniversário FGTS</a></li>
+                        <li><a href="https://wa.me/557731420005">Consignado (INSS/Público)</a></li>
+                        <li><a href="https://wa.me/557731420005">Empréstimo CLT</a></li>
+                        <li><a href="https://wa.me/557731420005">Garantia (Imóvel/Auto)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Saúde & Seguros</h4>
+                    <ul>
+                        <li><a href="https://wa.me/557731420005">Planos de Saúde</a></li>
+                        <li><a href="https://wa.me/557731420005">Seguro de Vida</a></li>
+                        <li><a href="https://wa.me/557731420005">Seguro Auto & Imóvel</a></li>
+                        <li><a href="https://wa.me/557731420005">Medpass (Telemedicina)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Para Empresas (PJ)</h4>
+                    <ul>
+                        <li><a href="https://wa.me/557731420005">Capital de Giro</a></li>
+                        <li><a href="https://wa.me/557731420005">Antecipação de Recebíveis</a></li>
+                        <li><a href="https://wa.me/557731420005">Benefícios (VR/VA)</a></li>
+                        <li><a href="https://wa.me/557731420005">Saúde Ocupacional</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Glid Tecnologia Financeira Ltda. CNPJ: 00.000.000/0000-00. Correspondente Bancário.</div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/557731420005" class="whatsapp-float"><i class="ph-bold ph-whatsapp-logo"></i></a>
+
+    <script>
+        function mudarLabelValor() {
+            const tipo = document.getElementById('tipo_emprestimo').value;
+            const label = document.getElementById('label-valor');
+            if(tipo === 'fgts') {
+                label.innerText = "Qual o seu Saldo Aproximado no FGTS? (R$)";
+            } else {
+                label.innerText = "Qual valor você precisa liberar? (R$)";
+            }
+        }
+
+        function formatCurrency(value) {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function calcularEmprestimo() {
+            const tipo = document.getElementById('tipo_emprestimo').value;
+            const valorInput = document.getElementById('valor_desejado').value;
+            const valor = parseFloat(valorInput);
+
+            if(!valor || valor <= 0) {
+                alert("Por favor, digite um valor válido.");
+                return;
+            }
+
+            const resNormal = document.getElementById('resultado-normal');
+            const resCoringa = document.getElementById('resultado-coringa');
+            const btnWpp = document.getElementById('btn-whatsapp');
+            
+            let wppText = "";
+
+            // Simulador Coringa (Garantias e Outros)
+            if (tipo === 'garantia' || tipo === 'outros') {
+                resNormal.style.display = 'none';
+                resCoringa.style.display = 'block';
+                wppText = `Olá! Fiz uma simulação no site.%0A🎯 *Perfil:* ${tipo === 'garantia' ? 'Crédito com Garantia' : 'Outros (CLT/Gov)'}%0A💰 *Valor desejado:* ${formatCurrency(valor)}%0AGostaria de saber qual banco aprovou meu CPF e qual a taxa liberada.`;
+            
+            // Lógica FGTS
+            } else if (tipo === 'fgts') {
+                resCoringa.style.display = 'none';
+                resNormal.style.display = 'block';
+                
+                // Estimativa de liberação (Média segura de 60% a 70% do saldo)
+                const liberadoMin = valor * 0.60;
+                const liberadoMax = valor * 0.70;
+                
+                document.getElementById('res-badge-taxa').innerHTML = '<i class="ph-bold ph-fire"></i> Taxas a partir de 1.29% a.m.';
+                document.getElementById('res-titulo').innerText = "Valor Estimado a Liberar (Pix Hoje)";
+                document.getElementById('res-valor').innerText = `${formatCurrency(liberadoMin)} a ${formatCurrency(liberadoMax)}`;
+                document.getElementById('res-sub').innerText = "Sem parcelas mensais. Descontado anualmente no seu aniversário.";
+                
+                wppText = `Olá! Fiz uma simulação.%0A🎯 *Perfil:* Antecipação FGTS%0A💼 *Saldo Aproximado:* ${formatCurrency(valor)}%0AGostaria de confirmar o valor exato liberado para o meu CPF.`;
+
+            // Lógica Consignado (INSS e SIAPE)
+            } else {
+                resCoringa.style.display = 'none';
+                resNormal.style.display = 'block';
+                
+                let taxaMediaSegura, taxaPisoAviso, prazo;
+                
+                if(tipo === 'inss') {
+                    taxaMediaSegura = 0.0165; // 1.65% a.m (Média Segura p/ cálculo)
+                    taxaPisoAviso = "1.35%";   // Promessa "A partir de" (Daycoval Portabilidade)
+                    prazo = 84;
+                } else {
+                    taxaMediaSegura = 0.0160; // 1.60% a.m
+                    taxaPisoAviso = "1.30%";
+                    prazo = 96;
+                }
+
+                // Cálculo PMT (Prestação Juros Compostos)
+                const pmt = valor * (taxaMediaSegura * Math.pow(1 + taxaMediaSegura, prazo)) / (Math.pow(1 + taxaMediaSegura, prazo) - 1);
+                
+                // Margem de Variação (+/- 5%) para criar o Range (Intervalo)
+                const parcelaMin = pmt * 0.95;
+                const parcelaMax = pmt * 1.05;
+
+                document.getElementById('res-badge-taxa').innerHTML = `<i class="ph-bold ph-fire"></i> Taxas a partir de ${taxaPisoAviso} a.m.`;
+                document.getElementById('res-titulo').innerText = "Projeção de Parcela (Mensal)";
+                document.getElementById('res-valor').innerText = `${formatCurrency(parcelaMin)} a ${formatCurrency(parcelaMax)}`;
+                document.getElementById('res-sub').innerText = `Prazo estimado: ${prazo} meses. Taxas sujeitas a aprovação.`;
+
+                wppText = `Olá! Fiz uma simulação.%0A🎯 *Perfil:* ${tipo.toUpperCase()}%0A💰 *Valor desejado:* ${formatCurrency(valor)}%0AGostaria de ver as opções de bancos e verificar se consigo a taxa mínima anunciada.`;
+            }
+
+            btnWpp.href = `https://wa.me/557731420005?text=${wppText}`;
+            
+            // Animação de transição das telas
+            document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
+            document.getElementById('step-result').classList.add('active');
+        }
+    </script>
+</body>
+</html>
