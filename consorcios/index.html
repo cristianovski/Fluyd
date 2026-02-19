@@ -82,26 +82,25 @@
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* FEATURES SECTION (Agora com 4 Pilares da IA) */
-        .features-section { padding: 100px 0; }
+        .features-section { padding: 100px 0 60px 0; }
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
         .feature-card { background: var(--bg-card); padding: 30px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; }
         .feature-card:hover { border-color: rgba(245, 158, 11, 0.3); transform: translateY(-5px); }
         .f-icon { width: 50px; height: 50px; background: rgba(245, 158, 11, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--accent); margin-bottom: 20px; }
         
-        /* CARTA CONTEMPLADA VIP BOX */
-        .vip-section { padding: 20px 0 80px 0; }
-        .vip-box { background: linear-gradient(135deg, var(--bg-card), #0b1120); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 24px; padding: 50px; display: flex; align-items: center; justify-content: space-between; gap: 40px; position: relative; overflow: hidden; }
-        .vip-box::after { content: ''; position: absolute; right: -50px; bottom: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(245, 158, 11, 0.05) 0%, transparent 70%); z-index: 0; }
-        .vip-text { position: relative; z-index: 1; max-width: 700px; }
-        .vip-text h2 { font-size: 2.2rem; margin: 0 0 15px 0; letter-spacing: -1px; }
-        .vip-text p { color: var(--text-gray); font-size: 1.1rem; margin-bottom: 15px; }
-        .vip-icon { font-size: 8rem; color: rgba(245, 158, 11, 0.1); position: relative; z-index: 1; }
+        /* CARTA CONTEMPLADA VIP BOX (Reduzida e Elegante) */
+        .vip-section { padding: 0 0 80px 0; }
+        .vip-box { background: linear-gradient(135deg, var(--bg-card), #0b1120); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 20px; padding: 35px 40px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+        .vip-text { max-width: 800px; }
+        .vip-text h2 { font-size: 1.6rem; margin: 0 0 10px 0; letter-spacing: -0.5px; }
+        .vip-text p { color: var(--text-gray); font-size: 1rem; margin-bottom: 15px; }
+        .vip-icon { font-size: 4rem; color: rgba(245, 158, 11, 0.2); }
 
         /* COMPARISON */
         .comparison-section { padding: 80px 0 100px 0; background: #01040a; text-align: center; border-top: 1px solid var(--bg-lighter); }
         .comp-box { background: var(--bg-dark); border-radius: 20px; padding: 30px; display: inline-block; border: 1px solid var(--bg-lighter); max-width: 800px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 
-        /* ANEPS E FOOTER DA HOME */
+        /* ANEPS E FOOTER */
         .aneps-slim-bar { border-top: 1px solid var(--bg-lighter); background: var(--bg-dark); padding: 25px 0; display: flex; justify-content: center; align-items: center; gap: 20px; }
         .aneps-slim-bar img { height: 35px; opacity: 0.9; }
         .aneps-slim-bar p { color: var(--text-gray); font-size: 0.9rem; margin: 0; }
@@ -125,7 +124,7 @@
             .hero-section { padding: 120px 0 60px; text-align: center; } 
             .hero-text h1 { font-size: 3rem; } 
             .trust-badges { justify-content: center; }
-            .vip-box { flex-direction: column; text-align: center; padding: 30px; }
+            .vip-box { flex-direction: column; text-align: left; padding: 30px; gap: 15px; }
             .vip-icon { display: none; }
             .aneps-slim-bar { flex-direction: column; text-align: center; padding: 25px 20px; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
@@ -279,13 +278,13 @@
                 <div class="feature-card">
                     <div class="f-icon"><i class="ph-bold ph-brain"></i></div>
                     <h3 style="margin-top:0;">Previsão por IA</h3>
-                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Nosso sistema projeta sua contemplação com <b>50% a 99% de precisão</b>, identificando brechas em grupos com prazos a partir de 1 mês.</p>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Nosso sistema projeta sua contemplação com <b>até 99% de precisão</b>, identificando brechas em grupos com prazos a partir de 1 mês.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="f-icon"><i class="ph-bold ph-shield-check"></i></div>
                     <h3 style="margin-top:0;">Caminho Seguro</h3>
-                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Risco zero. Garantimos em contrato o <b>reembolso integral</b> do seu dinheiro caso a contemplação não ocorra no prazo estipulado pela nossa análise.</p>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Através de uma <b>contratação opcional</b>, garantimos em contrato o reembolso integral do seu dinheiro caso a contemplação não ocorra no prazo.</p>
                 </div>
 
                 <div class="feature-card">
@@ -308,14 +307,13 @@
         <div class="container">
             <div class="vip-box">
                 <div class="vip-text">
-                    <div class="hero-label" style="margin-bottom: 15px;">A Rota Expressa</div>
+                    <div class="hero-label" style="margin-bottom: 10px; font-size: 0.75rem; padding: 4px 12px;">A Rota Expressa</div>
                     <h2>Cartas Já Contempladas</h2>
-                    <p>Tem pressa absoluta e quer fugir da aprovação demorada dos bancos? A solução é adquirir uma cota que <b>já foi sorteada</b> e está pronta para uso.</p>
-                    <p style="margin-bottom: 25px;"><b>Como a matemática funciona:</b> Você paga um *ágio* (um valor de entrada para o dono atual da carta) e assume as parcelas originais sem pagar 1 centavo de juros. No custo final, o ágio é infinitamente menor do que os juros compostos de um financiamento tradicional.</p>
-                    <a href="https://wa.me/557731420005?text=Olá! Quero ver o estoque de Cartas Contempladas disponíveis." class="btn-action" style="max-width: 300px; font-size: 1rem;"><i class="ph-bold ph-crown"></i> Ver Estoque de Cartas</a>
+                    <p style="margin-bottom: 10px;">Tem pressa absoluta? Pague um ágio (entrada) e assuma uma cota pronta para uso imediato.</p>
+                    <p style="margin-bottom: 0;">Com um custo equivalente a cerca de <b style="color: var(--accent);">0,5% ao mês</b>, você evita a aprovação demorada dos bancos e economiza centenas de milhares de reais frente aos juros abusivos de um financiamento tradicional.</p>
                 </div>
-                <div class="vip-icon">
-                    <i class="ph-fill ph-ticket"></i>
+                <div style="flex-shrink: 0;">
+                    <a href="https://wa.me/557731420005?text=Olá! Quero ver o estoque de Cartas Contempladas disponíveis." class="btn-action" style="font-size: 0.95rem; padding: 15px 25px;"><i class="ph-bold ph-crown"></i> Ver Estoque Disponível</a>
                 </div>
             </div>
         </div>
