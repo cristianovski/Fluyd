@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GWS Solar by Glid | Engenharia e Economia</title>
+    <meta name="description" content="Sistemas fotovoltaicos de alta performance na Bahia. Trave a taxa do Fio B e reduza sua conta em até 95%.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☀️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* --- DESIGN SYSTEM GWS SOLAR (AUTONOMIA) --- */
+        :root {
+            --bg-dark: #020617;
+            --bg-card: #0f172a;
+            --bg-lighter: #1e293b;
+            --primary: #f59e0b; /* Âmbar Solar */
+            --primary-hover: #d97706;
+            --success: #10b981; /* Verde Economia */
+            --text-white: #f8fafc;
+            --text-gray: #94a3b8;
+            --danger: #ef4444;
+        }
+
+        * { box-sizing: border-box; }
+        body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; }
+        a { text-decoration: none; transition: 0.3s; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .highlight { color: var(--primary); }
+        .text-green { color: var(--success); }
+
+        /* HEADER GWS */
+        header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--bg-lighter); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 2rem; font-weight: 800; letter-spacing: -1px; color: var(--primary); display: flex; flex-direction: column; line-height: 0.8; }
+        .logo span { font-size: 0.75rem; color: var(--text-gray); font-weight: 400; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+        .btn-header { background: rgba(245, 158, 11, 0.1); padding: 10px 20px; border-radius: 50px; color: var(--primary); font-size: 0.9rem; font-weight: 700; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .btn-header:hover { background: var(--primary); color: var(--bg-dark); }
+
+        /* HERO SECTION */
+        .hero-section { padding: 160px 0 60px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        
+        .hero-label { background: rgba(16, 185, 129, 0.1); color: var(--success); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(16, 185, 129, 0.2); }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin: 0 0 20px 0; font-weight: 800; letter-spacing: -1px; }
+        .hero-text p { color: var(--text-gray); font-size: 1.15rem; margin-bottom: 30px; }
+        
+        .urgency-box { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-left: 4px solid var(--danger); padding: 15px 20px; border-radius: 8px; margin-bottom: 30px; }
+        .urgency-box p { margin: 0; font-size: 0.9rem; color: #fca5a5; }
+        .urgency-box b { color: white; }
+
+        .trust-badges { display: flex; gap: 20px; opacity: 0.9; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-gray); font-weight: 600; background: var(--bg-card); padding: 8px 16px; border-radius: 50px; border: 1px solid var(--bg-lighter); }
+
+        /* SIMULADOR UI (FILTRO ESTRITO) */
+        .simulator-wrapper { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 24px; padding: 40px; box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
+        .simulator-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--success)); }
+        
+        .step-screen { display: none; animation: fadeIn 0.4s ease; }
+        .step-screen.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .step-screen h3 { font-size: 1.5rem; margin: 0 0 5px 0; }
+        
+        input, select { width: 100%; background: var(--bg-dark); border: 1px solid var(--bg-lighter); color: white; padding: 18px; border-radius: 12px; margin-bottom: 20px; box-sizing: border-box; font-size: 1rem; font-family: inherit; }
+        input:focus, select:focus { outline: none; border-color: var(--primary); }
+        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 700; margin-bottom: 8px; display: block; letter-spacing: 0.5px; }
+        
+        .btn-action { width: 100%; background: var(--primary); color: var(--bg-dark); border: none; padding: 18px; border-radius: 12px; font-weight: 800; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; transition: 0.3s; }
+        .btn-action:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2); }
+        .btn-outline { background: transparent; border: 1px solid var(--bg-lighter); color: var(--text-gray); font-weight: 600; }
+        .btn-outline:hover { background: var(--bg-lighter); color: white; box-shadow: none; }
+
+        .result-display { text-align: center; background: var(--bg-dark); padding: 30px; border-radius: 16px; margin-bottom: 20px; border: 1px solid var(--bg-lighter); }
+        .big-number { font-size: 2.8rem; font-weight: 800; color: var(--success); margin: 5px 0; line-height: 1; }
+
+        /* FEATURES / ENGENHARIA */
+        .features-section { padding: 80px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .feature-card { background: var(--bg-dark); padding: 30px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .f-icon { width: 50px; height: 50px; background: rgba(245, 158, 11, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--primary); margin-bottom: 20px; }
+
+        /* FOOTER ECOSSISTEMA GLID */
+        .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .footer-brand p { color: var(--text-gray); font-size: 0.9rem; margin-top: 20px; max-width: 250px; }
+        .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; }
+        .footer-col ul li a:hover { color: var(--primary); }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; font-size: 0.85rem; }
+
+        @media (max-width: 992px) { 
+            .grid-2 { grid-template-columns: 1fr; gap: 40px; } 
+            .grid-3 { grid-template-columns: 1fr; }
+            .hero-section { padding: 120px 0 60px; text-align: center; } 
+            .hero-text h1 { font-size: 3rem; } 
+            .trust-badges { justify-content: center; }
+            .urgency-box { text-align: left; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .footer-brand p { margin: 20px auto; }
+        }
+    </style>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'SEU_PIXEL_ID_AQUI');
+    fbq('track', 'PageView');
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container nav-content">
+            <a href="/" class="logo">GWS Solar<span>by Glid.</span></a>
+            <a href="https://wa.me/557731420005" class="btn-header">Falar com Engenharia</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container grid-2">
+            <div class="hero-text">
+                <div class="hero-label">Atuação Exclusiva na Bahia</div>
+                <h1>Pare de alugar energia. Gere <span class="highlight">patrimônio.</span></h1>
+                <p>Projetos fotovoltaicos de alta performance para residências e empresas. Reduza sua conta em até 95% e blinde seu bolso contra os aumentos anuais da concessionária.</p>
+                
+                <div class="urgency-box">
+                    <p>⚠️ <b>Atenção Lei 14.300/22:</b> O encargo do TUSD Fio B saltará de 45% para 60% em 2026. Homologue seu sistema GWS agora para travar a taxa e garantir o máximo retorno sobre o investimento.</p>
+                </div>
+
+                <div class="trust-badges">
+                    <div class="trust-item"><i class="ph-fill ph-map-pin" style="color:var(--primary);"></i> Coelba / Equatorial</div>
+                    <div class="trust-item"><i class="ph-fill ph-sun" style="color:var(--primary);"></i> Módulos Bifaciais</div>
+                    <div class="trust-item"><i class="ph-fill ph-bank" style="color:var(--primary);"></i> Financiamento Glid</div>
+                </div>
+            </div>
+
+            <div class="simulator-wrapper">
+                
+                <div class="step-screen active" id="step-1">
+                    <h3>Análise de Viabilidade</h3>
+                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px;">Descubra o ROI do seu projeto em segundos.</p>
+                    
+                    <label>Valor Médio da Conta de Luz (R$)</label>
+                    <input type="number" id="valor_conta" placeholder="Ex: 850">
+
+                    <label>Tipo de Imóvel</label>
+                    <select id="tipo_imovel">
+                        <option value="proprio">Imóvel Próprio (Casa/Empresa/Terreno)</option>
+                        <option value="alugado">Imóvel Alugado</option>
+                    </select>
+
+                    <button class="btn-action" onclick="analisarViabilidade()">Calcular Retorno Financeiro <i class="ph-bold ph-arrow-right"></i></button>
+                </div>
+
+                <div class="step-screen" id="step-reprovado" style="text-align: center; padding: 20px 0;">
+                    <i class="ph-fill ph-info" style="font-size:4rem; color:var(--text-gray); margin-bottom:15px;"></i>
+                    <h3 style="margin-bottom:10px;">Perfil Fora da Zona de ROI</h3>
+                    <p style="color:var(--text-gray); font-size:0.95rem; margin-bottom:20px;">Atualmente, nossos projetos de engenharia GWS são otimizados para imóveis próprios com consumo mensal acima de R$ 500,00. Abaixo desse valor ou em imóveis alugados, o tempo de retorno do investimento (Payback) não atinge o padrão de excelência exigido pela Glid.</p>
+                    <button class="btn-action btn-outline" onclick="location.reload()">Refazer Simulação</button>
+                </div>
+
+                <div class="step-screen" id="step-aprovado">
+                    <div style="text-align:center;">
+                        <span style="background: rgba(16, 185, 129, 0.15); color: var(--success); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.3);">Viabilidade Confirmada</span>
+                    </div>
+                    
+                    <div class="result-display" style="margin-top: 15px;">
+                        <span style="color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; font-weight:700;">Economia Projetada (1º Ano)</span>
+                        <div class="big-number" id="res-ano">R$ 0,00</div>
+                        <div style="font-size:0.95rem; color:var(--text-gray); margin-top:10px; border-top: 1px solid var(--bg-lighter); padding-top: 10px;">
+                            Projeção em 25 anos: <b style="color:white;" id="res-25anos">R$ 0,00</b>
+                        </div>
+                    </div>
+
+                    <p style="font-size:0.8rem; color:#fca5a5; text-align:center; margin-bottom: 15px;"><b>Atenção:</b> Esta simulação considera as regras atuais. Fechando após 2025, o encargo Fio B sobe, reduzindo sua economia.</p>
+                    
+                    <a id="btn-whatsapp" href="#" class="btn-action"><i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Travar Taxa em 45% no WhatsApp</a>
+                    <button class="btn-action btn-outline" onclick="location.reload()">Refazer</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 style="font-size:2.5rem; text-align:center; margin: 0 0 50px 0; letter-spacing: -1px;">Não é apenas placa. É <span class="highlight">Engenharia.</span></h2>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-sun-horizon"></i></div>
+                    <h3 style="margin-top:0;">Módulos Bifaciais</h3>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Tecnologia de ponta (painéis de até 700W) que capta a luz solar por ambos os lados, gerando até 30% mais energia no mesmo espaço.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-file-text"></i></div>
+                    <h3 style="margin-top:0;">Homologação Rápida</h3>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Nosso time de engenheiros lida com toda a burocracia junto à Coelba/Equatorial para garantir a sua isenção de taxas antigas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-bank"></i></div>
+                    <h3 style="margin-top:0;">Financiamento Glid</h3>
+                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Sendo parte do Hub Glid, aprovamos sua linha de crédito com taxas de banco de fomento. A própria economia da luz paga a parcela.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="fat-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; color: white;">Glid<span style="color: #3b82f6;">.</span></a>
+                    <p>O seu hub definitivo para soluções de crédito inteligente, proteção e negócios.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Crédito Rápido</h4>
+                    <ul>
+                        <li><a href="../emprestimos/">Saque Aniversário FGTS</a></li>
+                        <li><a href="../emprestimos/">Consignado (INSS/Público)</a></li>
+                        <li><a href="../emprestimos/">Garantia (Imóvel/Auto)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Proteção & Energia</h4>
+                    <ul>
+                        <li><a href="../seguros/">Planos de Saúde</a></li>
+                        <li><a href="../seguros/">Seguro de Vida</a></li>
+                        <li><a href="../solar/" style="color: var(--primary); font-weight: 600;">GWS Energia Solar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Para Empresas (PJ)</h4>
+                    <ul>
+                        <li><a href="../empresas/">Capital de Giro</a></li>
+                        <li><a href="../empresas/">Antecipação de Recebíveis</a></li>
+                        <li><a href="../empresas/">Benefícios (VR/VA)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Glid Tecnologia Financeira Ltda. GWS Solar é uma marca integrante do ecossistema Glid.</div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/557731420005" class="whatsapp-float" style="background-color: var(--primary);"><i class="ph-bold ph-whatsapp-logo"></i></a>
+
+    <script>
+        function formatCurrency(value) {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function analisarViabilidade() {
+            const valorInput = document.getElementById('valor_conta').value;
+            const conta = parseFloat(valorInput);
+            const imovel = document.getElementById('tipo_imovel').value;
+
+            if(!valorInput || conta <= 0) {
+                alert("Por favor, digite o valor médio da sua conta de luz.");
+                return;
+            }
+
+            // O FILTRO (Menos de 500 ou Alugado = Fora)
+            if (conta < 500 || imovel === 'alugado') {
+                document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
+                document.getElementById('step-reprovado').classList.add('active');
+            } else {
+                // APROVADO: Cálculo de Economia
+                // Assumindo redução média de 95% da conta
+                const economiaMes = conta * 0.95;
+                const economiaAno = economiaMes * 12;
+                const economia25Anos = economiaAno * 25; // Vida útil dos painéis
+
+                document.getElementById('res-ano').innerText = formatCurrency(economiaAno);
+                document.getElementById('res-25anos').innerText = formatCurrency(economia25Anos);
+
+                // Prepara mensagem matadora pro WhatsApp
+                const wppText = `Olá! Fiz a simulação GWS Solar pelo site.%0A📍 *Região:* Bahia%0A⚡ *Conta Atual:* ${formatCurrency(conta)}%0A🎯 *Status:* Imóvel Próprio%0A%0AQuero garantir meu projeto e *travar a taxa do Fio B em 45%* antes do aumento.`;
+                document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${wppText}`;
+
+                document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
+                document.getElementById('step-aprovado').classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
