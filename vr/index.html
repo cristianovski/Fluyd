@@ -3,122 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | Benefícios VR e Eficiência Fiscal</title>
-    <meta name="description" content="Premeie a sua equipa sem pagar impostos. Descubra como a Glid e a VR reduzem os encargos da sua folha de pagamento.">
+    <title>Glid | Benefícios VR - Retenção a Custo Zero</title>
+    <meta name="description" content="Entregue benefícios de multinacional para sua equipe pagando zero taxas operacionais. Conheça a parceria Glid e VR.">
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* --- DESIGN SYSTEM DARK PREMIUM --- */
+        /* --- DESIGN SYSTEM DARK PREMIUM (TEMA VR) --- */
         :root {
             --bg-dark: #020617;
             --bg-card: #0f172a;
             --bg-lighter: #1e293b;
             --primary: #3b82f6; 
-            --accent: #10b981; /* Mudança do Dourado para Verde (Dinheiro/Economia) para esta página */
-            --accent-hover: #059669;
+            --accent: #a3e635; /* VR Green */
+            --accent-hover: #84cc16;
             --text-white: #f8fafc;
             --text-gray: #94a3b8;
-            --danger: #ef4444;
-            --vr-green: #a3e635; /* Tom vibrante VR */
+            --success: #10b981;
         }
 
         * { box-sizing: border-box; }
         body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; }
         a { text-decoration: none; transition: 0.3s ease; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-        
-        .highlight { color: var(--vr-green); } 
+        .highlight { color: var(--accent); } 
 
-        /* HEADER */
-        header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.8); z-index: 1000; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.9); z-index: 1000; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; color: white; }
         .logo span { color: var(--primary); }
         .btn-header { background: rgba(255,255,255,0.05); padding: 12px 24px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 700; border: 1px solid rgba(255,255,255,0.1); }
-        .btn-header:hover { background: white; color: var(--bg-dark); transform: scale(1.05); }
+        .btn-header:hover { background: white; color: var(--bg-dark); }
 
-        /* HERO AREA */
-        .hero { padding: 160px 0 60px; text-align: left; }
-        .grid-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        
-        .hero-label { background: rgba(163, 230, 53, 0.1); color: var(--vr-green); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; display: inline-block; margin-bottom: 25px; border: 1px solid rgba(163, 230, 53, 0.2); }
-        .hero h1 { font-size: 4rem; line-height: 1.1; margin: 0 0 25px 0; font-weight: 900; letter-spacing: -1.5px; }
-        .hero p { color: var(--text-gray); font-size: 1.2rem; margin-bottom: 30px; font-weight: 300; line-height: 1.6; }
+        /* HERO */
+        .hero { padding: 160px 0 60px; }
+        .grid-hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+        .hero-label { background: rgba(163, 230, 53, 0.1); color: var(--accent); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 25px; border: 1px solid rgba(163, 230, 53, 0.2); }
+        .hero h1 { font-size: 3.8rem; line-height: 1.05; margin: 0 0 20px 0; font-weight: 900; letter-spacing: -1.5px; }
+        .hero p { color: var(--text-gray); font-size: 1.15rem; margin-bottom: 30px; font-weight: 300; line-height: 1.6; }
+        .trust-badges { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
+        .trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: white; font-weight: 700; background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); }
 
-        /* SIMULADOR DE ECONOMIA (O CORAÇÃO) */
+        /* DATA BOX */
+        .stats-box { background: linear-gradient(135deg, rgba(163, 230, 53, 0.1) 0%, rgba(2, 6, 23, 0) 100%); border-left: 4px solid var(--accent); padding: 20px; border-radius: 0 16px 16px 0; }
+        .stats-box p { margin: 0; color: white; font-size: 1rem; font-weight: 600; }
+        .stats-box span { color: var(--accent); font-weight: 900; }
+
+        /* SIMULADOR */
         .simulator-wrapper { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 24px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
-        .simulator-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--primary), var(--vr-green)); }
-        
+        .simulator-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
         .step-screen { display: none; animation: fadeIn 0.4s ease; }
         .step-screen.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .step-screen h3 { font-size: 1.8rem; margin: 0 0 10px 0; font-weight: 800; }
-        
-        input, select { width: 100%; background: var(--bg-dark); border: 2px solid var(--bg-lighter); color: white; padding: 18px; border-radius: 12px; margin-bottom: 20px; font-size: 1.1rem; font-family: inherit; font-weight: 600; transition: 0.3s; }
-        input:focus, select:focus { outline: none; border-color: var(--accent); background: #081021; }
+        .simulator-wrapper h3 { font-size: 1.8rem; margin: 0 0 10px 0; font-weight: 800; }
+        input { width: 100%; background: var(--bg-dark); border: 2px solid var(--bg-lighter); color: white; padding: 18px; border-radius: 12px; margin-bottom: 20px; font-size: 1.1rem; font-weight: 600; transition: 0.3s; }
+        input:focus { outline: none; border-color: var(--accent); background: #081021; }
         label { font-size: 0.85rem; text-transform: uppercase; color: var(--text-gray); font-weight: 800; margin-bottom: 8px; display: block; letter-spacing: 0.5px; }
-        
-        .btn-action { width: 100%; background: var(--accent); color: white; border: none; padding: 20px; border-radius: 12px; font-weight: 800; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-action:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); }
+        .btn-action { width: 100%; background: var(--accent); color: var(--bg-dark); border: none; padding: 20px; border-radius: 12px; font-weight: 900; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-action:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(163, 230, 53, 0.3); }
         .btn-outline { background: transparent; border: 2px solid var(--bg-lighter); color: var(--text-gray); margin-top: 10px; box-shadow: none; }
         .btn-outline:hover { background: var(--bg-lighter); color: white; transform: none; }
 
-        /* RESULTADO DO SIMULADOR */
-        .result-box { background: var(--bg-dark); padding: 30px; border-radius: 16px; border: 1px solid rgba(16, 185, 129, 0.3); text-align: center; margin-bottom: 25px; position: relative; }
-        .result-box::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(163,230,53,0.05) 0%, transparent 60%); pointer-events: none; }
-        .big-number { font-size: 3.5rem; font-weight: 900; color: var(--vr-green); margin: 5px 0; line-height: 1; letter-spacing: -1px; }
-        
-        .compare-row { display: flex; justify-content: space-between; padding: 15px 20px; background: rgba(255,255,255,0.02); border-radius: 12px; margin-bottom: 10px; align-items: center; border: 1px solid var(--bg-lighter); }
-        .compare-row span { font-size: 0.9rem; color: var(--text-gray); font-weight: 600; text-transform: uppercase; }
-        .compare-row b { font-size: 1.2rem; }
+        /* RESULTADOS DO SIMULADOR */
+        .res-modelo { background: rgba(255,255,255,0.02); border: 1px solid var(--bg-lighter); border-radius: 16px; padding: 20px; margin-bottom: 15px; text-align: left; }
+        .res-modelo h4 { margin: 0 0 10px 0; color: white; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+        .res-modelo ul { margin: 0; padding-left: 20px; color: var(--text-gray); font-size: 0.95rem; }
+        .res-modelo ul li { margin-bottom: 8px; }
+        .res-modelo ul li b { color: var(--accent); }
 
-        /* TRÍADE DA ECONOMIA */
-        .triade-section { padding: 80px 0; background: #01040a; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .feature-card { background: var(--bg-card); padding: 40px 30px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; position: relative; overflow: hidden; }
-        .feature-card:hover { border-color: rgba(163, 230, 53, 0.4); transform: translateY(-8px); }
-        .f-icon { width: 60px; height: 60px; background: rgba(163, 230, 53, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--vr-green); margin-bottom: 20px; }
-        .feature-card h3 { margin: 0 0 15px 0; font-size: 1.4rem; font-weight: 800; }
-        .feature-card p { color: var(--text-gray); margin: 0; font-size: 1rem; line-height: 1.6; }
+        /* SEÇÃO RETENÇÃO (ECOSSISTEMA) */
+        .ecosystem-section { padding: 100px 0; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .eco-card { background: var(--bg-card); padding: 35px 25px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; position: relative; overflow: hidden; }
+        .eco-card:hover { border-color: var(--accent); transform: translateY(-8px); }
+        .e-icon { width: 60px; height: 60px; background: rgba(163, 230, 53, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: var(--accent); margin-bottom: 20px; }
+        .eco-card h3 { margin: 0 0 10px 0; font-size: 1.3rem; font-weight: 800; color: white; }
+        .eco-card p { color: var(--text-gray); margin: 0; font-size: 0.95rem; line-height: 1.5; }
 
-        /* AVISO PAT 2026 */
-        .pat-alert { background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(2, 6, 23, 1) 100%); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 20px; padding: 40px; margin: 80px 0; display: flex; gap: 30px; align-items: center; }
-        .pat-icon { font-size: 4rem; color: var(--danger); flex-shrink: 0; }
-        .pat-text h3 { margin: 0 0 10px 0; font-size: 1.6rem; color: white; }
-        .pat-text p { margin: 0; color: var(--text-gray); font-size: 1.05rem; }
+        /* PORTFÓLIO E PRODUTOS */
+        .portfolio-section { padding: 80px 0; background: var(--bg-dark); }
+        .port-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .port-item { display: flex; gap: 20px; background: rgba(255,255,255,0.02); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); align-items: flex-start; }
+        .port-item .icon { font-size: 2.5rem; color: var(--primary); }
+        .port-item h4 { margin: 0 0 5px 0; color: white; font-size: 1.2rem; }
+        .port-item p { margin: 0; color: var(--text-gray); font-size: 0.95rem; }
 
-        /* FOOTER E ANEPS */
-        .aneps-section { padding: 40px 0 80px; background: var(--bg-dark); }
-        .aneps-box { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.02); padding: 30px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        /* ANEPS E FOOTER */
+        .aneps-section { padding: 60px 0; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        .aneps-box { display: flex; align-items: center; gap: 30px; background: var(--bg-card); padding: 30px 40px; border-radius: 20px; border: 1px solid var(--bg-lighter); max-width: 900px; margin: 0 auto; }
         .aneps-box img { height: 70px; }
-        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 0.95rem; line-height: 1.5; }
+        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.1rem; text-transform: uppercase; }
+        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 0.95rem; }
 
         .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
         .footer-brand p { color: var(--text-gray); font-size: 0.9rem; margin-top: 20px; max-width: 250px; }
-        .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; text-transform: uppercase; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; }
         .footer-col ul li a:hover { color: var(--primary); }
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; font-size: 0.85rem; }
-
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; }
-        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; z-index: 999; }
 
         @media (max-width: 992px) { 
-            .grid-hero { grid-template-columns: 1fr; gap: 40px; } 
+            .grid-hero, .grid-4, .port-grid { grid-template-columns: 1fr; gap: 30px; }
             .hero { text-align: center; padding: 140px 0 40px; }
-            .hero h1 { font-size: 3rem; }
-            .grid-3 { grid-template-columns: 1fr; }
-            .pat-alert { flex-direction: column; text-align: center; padding: 30px 20px; gap: 15px; }
+            .trust-badges { justify-content: center; }
+            .stats-box { border-left: none; border-top: 4px solid var(--accent); border-radius: 0 0 16px 16px; }
             .aneps-box { flex-direction: column; text-align: center; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .footer-brand p { margin: 20px auto; }
         }
     </style>
@@ -128,7 +124,7 @@
     <header>
         <div class="container nav-content">
             <a href="/" class="logo">Glid<span>.</span></a>
-            <a href="https://wa.me/557731420005" class="btn-header">Falar com Consultor B2B</a>
+            <a href="https://wa.me/557731420005" class="btn-header">Consultoria B2B</a>
         </div>
     </header>
 
@@ -136,86 +132,125 @@
         <section class="hero container">
             <div class="grid-hero">
                 <div>
-                    <div class="hero-label">Otimização Fiscal RH</div>
-                    <h1>Premeie a sua equipa. <br>Zere a emissão.<br><span class="highlight">Reduza impostos.</span></h1>
-                    <p>A Glid e a VR transformam o custo da sua folha de pagamentos em eficiência real. Utilize as regras do PAT e a tecnologia de cartões multibenefícios para eliminar encargos sociais (INSS/FGTS) sem gastar um cêntimo em taxas operacionais.</p>
+                    <div class="hero-label">O Novo RH Estratégico</div>
+                    <h1>Valorize a sua equipa. Pague <span class="highlight">zero taxas</span> operacionais.</h1>
+                    <p>Esqueça o risco do dinheiro em espécie ou a logística da cesta básica. A partir de 1 único funcionário, a Glid e a VR levam para a sua empresa um ecossistema completo de benefícios sem cobrar taxa de adesão, emissão ou manutenção.</p>
+                    
+                    <div class="trust-badges">
+                        <div class="trust-item"><i class="ph-fill ph-check-circle" style="color:var(--accent);"></i> Custo Zero de Emissão</div>
+                        <div class="trust-item"><i class="ph-fill ph-check-circle" style="color:var(--accent);"></i> A partir de 1 Funcionário</div>
+                    </div>
+
+                    <div class="stats-box">
+                        <p>💡 Colaboradores engajados com bons benefícios produzem <span>40% a mais</span> e tornam a empresa <span>21% mais lucrativa</span>.</p>
+                    </div>
                 </div>
 
                 <div class="simulator-wrapper">
                     <div class="step-screen active" id="step-1">
-                        <h3>Calculadora de Encargos</h3>
-                        <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px;">Descubra quanto a sua empresa perde ao pagar benefícios em dinheiro (pecúnia).</p>
+                        <h3>Simulador de Estratégia</h3>
+                        <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px;">Descubra as vantagens exatas para o tamanho da sua empresa hoje.</p>
                         
-                        <label>Número de Colaboradores</label>
-                        <input type="number" id="qtd_vidas" placeholder="Ex: 15">
+                        <label>Quantidade de Funcionários</label>
+                        <input type="number" id="qtd_vidas" placeholder="Ex: 5">
 
-                        <label>Valor Mensal do Benefício por Pessoa (R$)</label>
-                        <input type="number" id="valor_beneficio" placeholder="Ex: 600">
+                        <label>Valor Mensal por Funcionário (R$)</label>
+                        <input type="number" id="valor_beneficio" placeholder="Ex: 400">
 
-                        <label>Regime Tributário da Empresa</label>
-                        <select id="regime_trib">
-                            <option value="lucro">Lucro Presumido / Real</option>
-                            <option value="simples">Simples Nacional</option>
-                        </select>
-
-                        <button class="btn-action" onclick="calcularEconomia()">Calcular Desperdício <i class="ph-bold ph-calculator"></i></button>
+                        <button class="btn-action" onclick="calcularVantagens()">Revelar Benefícios <i class="ph-bold ph-magic-wand"></i></button>
                     </div>
 
                     <div class="step-screen" id="step-result">
-                        <span style="display:block; text-align:center; color:white; font-weight:700; text-transform:uppercase; font-size:0.85rem; margin-bottom:10px;">Economia Anual com a Glid/VR:</span>
-                        <div class="result-box">
-                            <div class="big-number" id="res-economia">R$ 0,00</div>
-                            <div style="font-size:0.95rem; color:var(--text-gray); margin-top:10px;">
-                                Dinheiro que ficaria retido em impostos e que agora regressa ao fluxo de caixa da empresa.
-                            </div>
-                        </div>
+                        <h3 style="font-size: 1.5rem; text-align: center; margin-bottom: 20px;">O seu cenário ideal:</h3>
                         
-                        <div class="compare-row">
-                            <span>Impostos pagos em Dinheiro:</span>
-                            <b style="color:var(--danger);" id="res-imposto-dinheiro">--</b>
-                        </div>
-                        <div class="compare-row" style="background: rgba(163,230,53,0.05); border-color: rgba(163,230,53,0.3);">
-                            <span style="color: var(--vr-green);">Impostos pagos com VR:</span>
-                            <b style="color:var(--vr-green);">R$ 0,00</b>
-                        </div>
-                        <div class="compare-row">
-                            <span>Taxa de Emissão Glid/VR:</span>
-                            <b style="color:var(--vr-green);">Custo Zero</b>
+                        <div class="res-modelo">
+                            <h4><i class="ph-fill ph-star" style="color:var(--accent);"></i> Modelo Auxílio (Custo R$ 0,00)</h4>
+                            <ul>
+                                <li>Taxa de emissão e manutenção: <b>R$ 0,00</b>.</li>
+                                <li>O valor de <b><span id="res-val-total"></span></b> chega integralmente ao cartão do funcionário.</li>
+                                <li>Desbloqueia acesso ao pacote <b>TotalPass</b> e <b>Seguro Alimentação</b> grátis.</li>
+                            </ul>
                         </div>
 
-                        <a id="btn-whatsapp" href="#" class="btn-action" style="margin-top:20px;">Solicitar Implementação <i class="ph-bold ph-arrow-right"></i></a>
-                        <button class="btn-action btn-outline" onclick="location.reload()">Refazer Cálculo</button>
+                        <div class="res-modelo" style="border-color: rgba(59, 130, 246, 0.3);">
+                            <h4><i class="ph-fill ph-buildings" style="color:var(--primary);"></i> Modelo PAT (Lucro Real)</h4>
+                            <ul>
+                                <li>Permite desconto de até <b>20%</b> na folha do funcionário.</li>
+                                <li>Dedução de até <b>4% no IRPJ</b> da empresa.</li>
+                                <li>Seu contador vai amar esta solução 100% legal.</li>
+                            </ul>
+                        </div>
+
+                        <a id="btn-whatsapp" href="#" class="btn-action" style="margin-top:10px;">Solicitar Ativação Rápida</a>
+                        <button class="btn-action btn-outline" onclick="location.reload()">Refazer Simulação</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="triade-section">
+        <section class="ecosystem-section">
             <div class="container">
-                <h2 style="font-size:2.8rem; text-align:center; margin: 0 0 60px 0; letter-spacing: -1px;">A Tríade da Eficiência Corporativa.</h2>
-                <div class="grid-3">
-                    <div class="feature-card">
-                        <div class="f-icon"><i class="ph-bold ph-prohibit"></i></div>
-                        <h3>Tarifa Operacional Zero</h3>
-                        <p>Não pague taxa de adesão, mensalidades ou custos pela emissão dos cartões. O lucro do ecossistema provém das taxas de intercâmbio (maquininhas), livrando o seu RH de qualquer custo extra.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="f-icon"><i class="ph-bold ph-scissors"></i></div>
-                        <h3>Fuga de Encargos</h3>
-                        <p>Pagar auxílio em dinheiro integra o salário, forçando a empresa a pagar INSS patronal, FGTS e reflexos sobre Férias/13º. Ao migrar para a plataforma VR, a <b>isenção desses impostos é imediata e 100% legal</b>.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="f-icon"><i class="ph-bold ph-receipt"></i></div>
-                        <h3>Dedução IRPJ e RH Digital</h3>
-                        <p>Empresas no Lucro Real podem deduzir até 4% do Imposto de Renda ao aderir ao PAT. Além disso, a gestão integrada reduz em até 85% o tempo que o seu RH perde a fechar a folha de pagamento.</p>
-                    </div>
+                <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
+                    <h2 style="font-size:2.8rem; margin: 0 0 15px 0; letter-spacing: -1px; color: white;">O Maior Hub de Retenção do Brasil.</h2>
+                    <p style="color:var(--text-gray); font-size:1.1rem;">Muito além da alimentação. Substitua o pacote básico por um ecossistema completo de saúde, proteção e flexibilidade, <b>sem aumentar o custo da sua folha</b>.</p>
                 </div>
 
-                <div class="pat-alert">
-                    <i class="ph-fill ph-warning-circle pat-icon"></i>
-                    <div class="pat-text">
-                        <h3>Atenção: Novas Regras do PAT e Multas Trabalhistas</h3>
-                        <p>O Decreto nº 12.712/2025 proibiu a prática do "rebate" (descontos financeiros na fatura) e exige separação estrita de saldos. Empresas que operam com cartões genéricos ou pagam em dinheiro vivo estão expostas a passivos e multas pesadas. <b>A infraestrutura VR Benefícios oferecida pela Glid já está 100% adequada à nova regulação, garantindo segurança jurídica absoluta à sua empresa.</b></p>
+                <div class="grid-4">
+                    <div class="eco-card">
+                        <div class="e-icon"><i class="ph-bold ph-barbell"></i></div>
+                        <h3>TotalPass</h3>
+                        <p>Acesso liberado a mais de 30 mil academias (incluindo Smart Fit e Bio Ritmo) para o titular e até 3 dependentes, além de apps como Zen App e Total Nutri.</p>
+                    </div>
+                    <div class="eco-card">
+                        <div class="e-icon"><i class="ph-bold ph-shield-plus"></i></div>
+                        <h3>Seguro Alimentação</h3>
+                        <p>Proteção inédita: em caso de demissão sem justa causa (após carência), a VR paga R$ 400 de alimentação para amparar o seu ex-funcionário. Custo zero para a empresa.</p>
+                    </div>
+                    <div class="eco-card">
+                        <div class="e-icon"><i class="ph-bold ph-stethoscope"></i></div>
+                        <h3>Telemedicina 24h</h3>
+                        <p>Fim do absenteísmo. Consultas médicas online direto pelo aplicativo, garantindo saúde rápida para a equipe sem perder dias inteiros em pronto-socorro.</p>
+                    </div>
+                    <div class="eco-card">
+                        <div class="e-icon"><i class="ph-bold ph-cards"></i></div>
+                        <h3>VR Multi Flexível</h3>
+                        <p>Um único cartão com saldos separados (Alimentação, Refeição, Mobilidade). Autonomia total para a nova geração, operando 100% dentro das novas regras do PAT.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-section">
+            <div class="container">
+                <h2 style="font-size:2.5rem; text-align:center; margin: 0 0 50px 0; letter-spacing: -1px;">Para cada dor, uma solução inteligente.</h2>
+                <div class="port-grid">
+                    <div class="port-item">
+                        <i class="ph-fill ph-medal icon"></i>
+                        <div>
+                            <h4>Cartão Premiação (Metas)</h4>
+                            <p>Perfeito para campanhas de vendas. O saldo é hiperflexível: o funcionário pode pagar boletos (água/luz) ou até gerar um boleto e transferir o dinheiro para bancos digitais como o Nubank.</p>
+                        </div>
+                    </div>
+                    <div class="port-item">
+                        <i class="ph-fill ph-house-line icon"></i>
+                        <div>
+                            <h4>Cartão Home Office</h4>
+                            <p>Ajuda de custo moderna. Saldo unificado para pagar contas de internet, energia, aplicativos de transporte (Uber) e alimentação, facilitando a gestão do trabalho remoto.</p>
+                        </div>
+                    </div>
+                    <div class="port-item">
+                        <i class="ph-fill ph-bus icon"></i>
+                        <div>
+                            <h4>Gestão de Vale-Transporte</h4>
+                            <p>Através da nossa tecnologia embarcada, auditamos as rotas e saldos dos bilhetes da sua equipe, gerando uma <b>economia real de 15% a 20%</b> nos custos do RH com transporte.</p>
+                        </div>
+                    </div>
+                    <div class="port-item">
+                        <i class="ph-fill ph-users-three icon"></i>
+                        <div>
+                            <h4>Atendimento Humanizado</h4>
+                            <p>Esqueça os robôs de grandes centrais. Ao fechar com a Glid, você tem um consultor dedicado e presencial. Cadastramos a sua empresa em minutos, sem burocracia de crédito.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -226,8 +261,8 @@
                 <div class="aneps-box">
                     <img src="../assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
                     <div class="aneps-text">
-                        <h4>Consultoria Homologada e Segura</h4>
-                        <p>A Glid opera sob certificação <b>ANEPS</b> e actua em estrita conformidade técnica. Não apenas emitimos cartões; desenhamos a estrutura fiscal mais vantajosa para o seu negócio dentro da legalidade.</p>
+                        <h4>Consultoria de Confiança</h4>
+                        <p>A Glid opera sob certificação <b>ANEPS</b>. Atuamos de forma consultiva para desenhar a estrutura de benefícios mais vantajosa para o seu negócio dentro das regulamentações do Ministério do Trabalho.</p>
                     </div>
                 </div>
             </div>
@@ -276,10 +311,9 @@
     <script>
         const fmt = (v) => v.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
 
-        function calcularEconomia() {
+        function calcularVantagens() {
             const vidas = parseInt(document.getElementById('qtd_vidas').value);
             const valor = parseFloat(document.getElementById('valor_beneficio').value);
-            const regime = document.getElementById('regime_trib').value;
 
             if(!vidas || !valor || vidas <= 0 || valor <= 0) {
                 alert("Por favor, preencha a quantidade de funcionários e o valor do benefício.");
@@ -287,27 +321,10 @@
             }
 
             const totalMensal = vidas * valor;
-            const totalAnual = totalMensal * 12;
 
-            let taxaEncargos;
-            
-            // Lógica Simplificada do Passivo de dar dinheiro (Pecúnia)
-            // Simples Nacional: ~8% FGTS + Reflexos Férias/13º (estimado 15% extra)
-            // Lucro Real/Presumido: ~20% INSS + 8% FGTS + Sist S/RAT + Reflexos (estimado 37% extra)
-            if(regime === 'simples') {
-                taxaEncargos = 0.15; 
-            } else {
-                taxaEncargos = 0.37;
-            }
+            document.getElementById('res-val-total').innerText = fmt(valor);
 
-            const impostosPagos = totalAnual * taxaEncargos;
-
-            document.getElementById('res-economia').innerText = fmt(impostosPagos);
-            document.getElementById('res-imposto-dinheiro').innerText = fmt(impostosPagos);
-
-            // Geração de mensagem para o WhatsApp
-            const wppText = `Olá! Fiz o cálculo fiscal de Benefícios VR no site.%0A👥 *Colaboradores:* ${vidas}%0A💰 *Benefício Estimado:* ${fmt(valor)}/mês%0A🏦 *Regime:* ${regime === 'simples' ? 'Simples Nacional' : 'Lucro Real/Presumido'}%0A💸 *Economia Projetada:* ${fmt(impostosPagos)} ao ano.%0A%0AQuero solicitar a implementação a Custo Zero na minha empresa.`;
-            
+            const wppText = `Olá! Fiz uma simulação de Benefícios VR no site.%0A👥 *Colaboradores:* ${vidas}%0A💰 *Valor Estimado:* ${fmt(valor)}/mês%0A%0AGostaria de ativar a minha empresa a Custo Zero e liberar o TotalPass para a equipe.`;
             document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${wppText}`;
 
             document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
