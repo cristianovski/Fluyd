@@ -95,8 +95,19 @@
         .port-item h4 { margin: 0 0 5px 0; color: white; font-size: 1.2rem; }
         .port-item p { margin: 0; color: var(--text-gray); font-size: 0.95rem; }
 
+        /* FAQ SECTION */
+        .faq-section { padding: 80px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 16px; margin-bottom: 15px; overflow: hidden; transition: 0.3s; }
+        .faq-item summary { padding: 25px; font-size: 1.15rem; font-weight: 700; color: white; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; font-size: 1.8rem; font-weight: 300; color: var(--accent); transition: 0.3s; }
+        .faq-item[open] summary::after { content: '-'; }
+        .faq-item[open] { border-color: rgba(163, 230, 53, 0.4); }
+        .faq-content { padding: 0 25px 25px; color: var(--text-gray); font-size: 1rem; line-height: 1.6; }
+
         /* ANEPS E FOOTER */
-        .aneps-section { padding: 60px 0; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        .aneps-section { padding: 60px 0; background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); }
         .aneps-box { display: flex; align-items: center; gap: 30px; background: var(--bg-card); padding: 30px 40px; border-radius: 20px; border: 1px solid var(--bg-lighter); max-width: 900px; margin: 0 auto; }
         .aneps-box img { height: 70px; }
         .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.1rem; text-transform: uppercase; }
@@ -138,7 +149,7 @@
             <div class="grid-hero">
                 <div>
                     <div class="hero-label">O Novo RH Estratégico</div>
-                    <h1>Valorize a sua equipa. Pague <span class="highlight">zero taxas</span> operacionais.</h1>
+                    <h1>Valorize a sua equipe. Pague <span class="highlight">zero taxas</span> operacionais.</h1>
                     <p>Esqueça o risco do dinheiro em espécie ou a logística da cesta básica. A partir de 1 único funcionário, a Glid e a VR levam para a sua empresa um ecossistema completo de benefícios sem cobrar taxa de adesão, emissão ou manutenção.</p>
                     
                     <div class="trust-badges">
@@ -226,7 +237,7 @@
                     <div class="eco-card">
                         <div class="e-icon"><i class="ph-bold ph-stethoscope"></i></div>
                         <h3>Telemedicina 24h</h3>
-                        <p>Fim do absenteísmo. Consultas médicas online direto pelo aplicativo, garantindo saúde rápida para a equipa sem perder dias inteiros em pronto-socorro.</p>
+                        <p>Fim do absenteísmo. Consultas médicas online direto pelo aplicativo, garantindo saúde rápida para a equipe sem perder dias inteiros em pronto-socorro.</p>
                     </div>
                     <div class="eco-card">
                         <div class="e-icon"><i class="ph-bold ph-cards"></i></div>
@@ -259,17 +270,69 @@
                         <i class="ph-fill ph-bus icon"></i>
                         <div>
                             <h4>Gestão de Vale-Transporte</h4>
-                            <p>Através da nossa tecnologia embarcada, auditamos as rotas e saldos dos bilhetes da sua equipa, gerando uma <b>economia real de 15% a 20%</b> nos custos do RH com transporte.</p>
+                            <p>Através da nossa tecnologia embarcada, auditamos as rotas e saldos dos bilhetes da sua equipe, gerando uma <b>economia real de 15% a 20%</b> nos custos do RH com transporte.</p>
                         </div>
                     </div>
                     <div class="port-item">
                         <i class="ph-fill ph-users-three icon"></i>
                         <div>
                             <h4>Atendimento Humanizado</h4>
-                            <p>Esqueça os robôs de grandes centrais. Ao fechar com a Glid, tem um consultor dedicado e presencial. Cadastramos a sua empresa em minutos, sem burocracia de crédito.</p>
+                            <p>Esqueça os robôs de grandes centrais. Ao fechar com a Glid, você tem um consultor dedicado e presencial. Cadastramos a sua empresa em minutos, sem burocracia de crédito.</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container faq-container">
+                <h2 style="font-size:2.5rem; text-align:center; margin: 0 0 50px 0; letter-spacing: -1px; color: white;">Perguntas Frequentes</h2>
+                
+                <details class="faq-item">
+                    <summary>A VR realmente tem Custo Zero para a empresa? Como ganham dinheiro?</summary>
+                    <div class="faq-content">
+                        Sim! A Glid e a VR não cobram taxa de adesão, emissão de cartões ou mensalidade do RH (no Modelo Auxílio). Se a sua empresa depositar R$ 500 para o funcionário, você pagará exatamente um boleto de R$ 500. A VR é remunerada através das "taxas de intercâmbio" cobradas diretamente dos restaurantes e supermercados (nas maquininhas) quando o cartão é utilizado.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Qual a diferença na prática entre o Modelo Auxílio e o Modelo PAT?</summary>
+                    <div class="faq-content">
+                        <p style="margin-top: 0;">Ambos isentam a sua empresa de pagar INSS e FGTS sobre o valor do benefício. A grande diferença é fiscal e contábil:</p>
+                        <ul style="margin: 15px 0 0 0; padding-left: 20px;">
+                            <li style="margin-bottom: 10px;"><b>Modelo Auxílio:</b> Ideal para empresas do <i>Simples Nacional</i>. Possui zero burocracia, zero taxas operacionais e a VR libera todo o pacote de vantagens (TotalPass, Telemedicina e Seguro) gratuitamente. Não permite desconto em folha nem dedução no IRPJ.</li>
+                            <li><b>Modelo PAT:</b> Ideal para empresas de <i>Lucro Real/Presumido</i>. Permite que a empresa desconte até 20% do valor do benefício na folha do funcionário e abata até 4% no IRPJ da empresa. Para acessar o pacote TotalPass neste modelo, pode haver uma taxa simbólica de R$ 3,99 por vida após um período de isenção.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Como funciona o acesso ao TotalPass (Academias)?</summary>
+                    <div class="faq-content">
+                        Ao contratar a VR através da Glid, a sua empresa não precisa pagar a adesão corporativa milionária exigida pela TotalPass. O seu funcionário ganha automaticamente o direito de assinar planos com descontos agressivos para acessar mais de 30 mil academias (incluindo Smart Fit e Bio Ritmo) e ainda pode incluir até 3 dependentes, além de ganhar 2 sessões de terapia online grátis com psicólogos.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>O que é o Seguro Alimentação (Proteção VR)?</summary>
+                    <div class="faq-content">
+                        É uma ferramenta incrível de retenção e responsabilidade social, totalmente sem custo para o RH. Caso o funcionário sofra uma demissão sem justa causa (após o período de carência de um ano de utilização do VR), invalidez ou falecimento, a VR e a seguradora parceira pagam um auxílio extra de R$ 400,00 para garantir a alimentação da família dele durante a transição de carreira.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Posso contratar mesmo tendo apenas 1 funcionário ou se for MEI?</summary>
+                    <div class="faq-content">
+                        Absolutamente. Diferente dos grandes bancos que exigem dezenas de vidas (funcionários) para liberar uma tabela viável, a parceria Glid + VR democratiza os benefícios corporativos. Você pode emitir um cartão VR Multi para um único funcionário ou até para o sócio-administrador e desfrutar do mesmo ecossistema de proteção de uma empresa multinacional.
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary>O que mudou com as novas regras do PAT em 2026?</summary>
+                    <div class="faq-content">
+                        O Decreto nº 12.712 proibiu a prática do "rebate" (descontos financeiros e obscuros na fatura cobrados por antigas operadoras) e exigiu maior rigor e transparência na separação de saldos (o que é dinheiro de refeição, só pode ser gasto em restaurante, por exemplo). Operar com cartões flexíveis sem conformidade hoje gera passivos e pesadas multas trabalhistas. A tecnologia VR Multi oferecida pela Glid já possui travas sistêmicas inteligentes que garantem 100% de adequação jurídica à nova lei, blindando a sua empresa.
+                    </div>
+                </details>
             </div>
         </section>
 
@@ -351,7 +414,7 @@
             document.getElementById('res-val-total').innerText = fmt(valor);
             document.getElementById('res-economia').innerText = fmt(impostosPoupados);
 
-            const wppText = `Olá! Fiz uma simulação de Benefícios VR no site.%0A👥 *Colaboradores:* ${vidas}%0A💰 *Valor Estimado:* ${fmt(valor)}/mês%0A🏦 *Regime:* ${regime === 'simples' ? 'Simples Nacional' : 'Lucro Real/Presumido'}%0A💸 *Economia de Impostos Projetada:* ${fmt(impostosPoupados)}/ano.%0A%0AGostaria de ativar a minha empresa a Custo Zero e libertar o pacote TotalPass para a equipa.`;
+            const wppText = `Olá! Fiz uma simulação de Benefícios VR no site.%0A👥 *Colaboradores:* ${vidas}%0A💰 *Valor Estimado:* ${fmt(valor)}/mês%0A🏦 *Regime:* ${regime === 'simples' ? 'Simples Nacional' : 'Lucro Real/Presumido'}%0A💸 *Economia de Impostos Projetada:* ${fmt(impostosPoupados)}/ano.%0A%0AGostaria de ativar a minha empresa a Custo Zero e liberar o pacote TotalPass para a equipe.`;
             document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${wppText}`;
 
             document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
