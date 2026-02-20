@@ -72,12 +72,12 @@
         .link-arrow { display: flex; align-items: center; gap: 10px; font-weight: 700; color: white; font-size: 0.95rem; }
         .pillar-card:hover .link-arrow { color: var(--primary); gap: 15px; }
 
-        /* FAIXA ANEPS (SLIM BAR) - NOVO DESIGN */
-        .aneps-slim-bar { border-top: 1px solid var(--bg-lighter); background: var(--bg-card); padding: 30px 0; display: flex; justify-content: center; align-items: center; gap: 25px; }
-        .aneps-slim-bar img { height: 50px; opacity: 0.7; filter: grayscale(100%); transition: all 0.3s ease; }
-        .aneps-slim-bar:hover img { opacity: 1; filter: grayscale(0%); transform: scale(1.05); }
-        .aneps-slim-bar p { color: var(--text-gray); font-size: 0.95rem; margin: 0; max-width: 500px; line-height: 1.4; }
-        .aneps-slim-bar b { color: white; font-weight: 600; }
+        /* CAIXA DE CONFIANÇA ANEPS (NOVO DESIGN) */
+        .aneps-section { padding: 60px 0; background: var(--bg-dark); }
+        .aneps-box { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.02); padding: 30px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .aneps-box img { height: 70px; object-fit: contain; flex-shrink: 0; }
+        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 0.95rem; line-height: 1.5; }
 
         /* RODAPÉ (O MAPA DO TESOURO) */
         .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
@@ -98,7 +98,7 @@
         @media (max-width: 992px) {
             .hero h1 { font-size: 3rem; }
             .pillars-grid { grid-template-columns: 1fr; gap: 20px; }
-            .aneps-slim-bar { flex-direction: column; text-align: center; gap: 15px; padding: 25px 20px; }
+            .aneps-box { flex-direction: column; text-align: center; padding: 30px 20px; gap: 20px; }
             .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .footer-brand p { margin: 20px auto; }
         }
@@ -165,10 +165,15 @@
             </div>
         </section>
 
-        <section class="aneps-slim-bar">
-            <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <img src="assets/img/logos/aneps.png" alt="Selo ANEPS">
-                <p>Correspondente Bancário Autorizado. Atuação estrita em conformidade com o <b>Banco Central do Brasil</b>.</p>
+        <section class="aneps-section">
+            <div class="container">
+                <div class="aneps-box">
+                    <img src="assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
+                    <div class="aneps-text">
+                        <h4>Certificação e Segurança Regulada</h4>
+                        <p>A Glid opera sob certificação <b>ANEPS</b> (Associação Nacional dos Profissionais e Empresas Promotoras de Crédito), garantindo que todas as nossas operações são auditadas e seguem rigorosamente as diretrizes do <b>Banco Central do Brasil</b>.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -217,7 +222,7 @@
             </div>
 
             <div class="footer-bottom">
-                &copy; 2026 Glid Tecnologia Financeira Ltda. CNPJ: 00.000.000/0000-00. Correspondente Bancário.
+                &copy; 2026 Glid Tecnologia Financeira Ltda. Correspondente Bancário.
             </div>
         </div>
     </footer>

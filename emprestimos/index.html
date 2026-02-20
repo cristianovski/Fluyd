@@ -84,10 +84,13 @@
         .comparison-section { padding: 80px 0 100px 0; background: #01040a; text-align: center; border-top: 1px solid var(--bg-lighter); }
         .comp-box { background: var(--bg-dark); border-radius: 20px; padding: 30px; display: inline-block; border: 1px solid var(--bg-lighter); max-width: 800px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 
-        /* ANEPS E FOOTER */
-        .aneps-slim-bar { border-top: 1px solid var(--bg-lighter); background: var(--bg-dark); padding: 25px 0; display: flex; justify-content: center; align-items: center; gap: 20px; }
-        .aneps-slim-bar img { height: 35px; opacity: 0.9; }
-        .aneps-slim-bar p { color: var(--text-gray); font-size: 0.9rem; margin: 0; }
+        /* CAIXA DE CONFIANÇA ANEPS (NOVO DESIGN) */
+        .aneps-section { padding: 60px 0; background: var(--bg-dark); border-top: 1px solid var(--bg-lighter); }
+        .aneps-box { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.02); padding: 30px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .aneps-box img { height: 70px; object-fit: contain; flex-shrink: 0; }
+        .aneps-text { text-align: left; }
+        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 0.95rem; line-height: 1.5; }
         
         .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
@@ -108,7 +111,8 @@
             .hero-section { padding: 120px 0 60px; text-align: center; } 
             .hero-text h1 { font-size: 3rem; } 
             .trust-badges { justify-content: center; }
-            .aneps-slim-bar { flex-direction: column; text-align: center; padding: 25px 20px; }
+            .aneps-box { flex-direction: column; text-align: center; padding: 30px 20px; gap: 20px; }
+            .aneps-text { text-align: center; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .footer-brand p { margin: 20px auto; }
         }
@@ -227,10 +231,15 @@
         </div>
     </section>
 
-    <section class="aneps-slim-bar">
-        <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <img src="../assets/img/logos/aneps.png" alt="Selo ANEPS">
-            <p>Correspondente Bancário Autorizado. Atuação estrita em conformidade com o <b>Banco Central do Brasil</b>.</p>
+    <section class="aneps-section">
+        <div class="container">
+            <div class="aneps-box">
+                <img src="../assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
+                <div class="aneps-text">
+                    <h4>Certificação e Segurança Regulada</h4>
+                    <p>A Glid opera sob certificação <b>ANEPS</b> (Associação Nacional dos Profissionais e Empresas Promotoras de Crédito), garantindo que todas as nossas operações são auditadas e seguem rigorosamente as diretrizes do <b>Banco Central do Brasil</b>.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -269,7 +278,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">&copy; 2026 Glid Tecnologia Financeira Ltda. CNPJ: 00.000.000/0000-00. Correspondente Bancário.</div>
+            <div class="footer-bottom">&copy; 2026 Glid Tecnologia Financeira Ltda. Correspondente Bancário.</div>
         </div>
     </footer>
 
@@ -306,18 +315,14 @@
             
             let wppText = "";
 
-            // Simulador Coringa (Garantias e Outros)
             if (tipo === 'garantia' || tipo === 'outros') {
                 resNormal.style.display = 'none';
                 resCoringa.style.display = 'block';
                 wppText = `Olá! Fiz uma simulação no site.%0A🎯 *Perfil:* ${tipo === 'garantia' ? 'Crédito com Garantia' : 'Outros (CLT/Gov)'}%0A💰 *Valor desejado:* ${formatCurrency(valor)}%0AGostaria de saber qual banco aprovou meu CPF e qual a taxa liberada.`;
-            
-            // Lógica FGTS
             } else if (tipo === 'fgts') {
                 resCoringa.style.display = 'none';
                 resNormal.style.display = 'block';
                 
-                // Estimativa de liberação (Média segura de 60% a 70% do saldo)
                 const liberadoMin = valor * 0.60;
                 const liberadoMax = valor * 0.70;
                 
@@ -327,8 +332,6 @@
                 document.getElementById('res-sub').innerText = "Sem parcelas mensais. Descontado anualmente no seu aniversário.";
                 
                 wppText = `Olá! Fiz uma simulação.%0A🎯 *Perfil:* Antecipação FGTS%0A💼 *Saldo Aproximado:* ${formatCurrency(valor)}%0AGostaria de confirmar o valor exato liberado para o meu CPF.`;
-
-            // Lógica Consignado (INSS e SIAPE)
             } else {
                 resCoringa.style.display = 'none';
                 resNormal.style.display = 'block';
@@ -336,19 +339,17 @@
                 let taxaMediaSegura, taxaPisoAviso, prazo;
                 
                 if(tipo === 'inss') {
-                    taxaMediaSegura = 0.0165; // 1.65% a.m (Média Segura p/ cálculo)
-                    taxaPisoAviso = "1.35%";   // Promessa "A partir de" (Daycoval Portabilidade)
+                    taxaMediaSegura = 0.0165; 
+                    taxaPisoAviso = "1.35%";   
                     prazo = 84;
                 } else {
-                    taxaMediaSegura = 0.0160; // 1.60% a.m
+                    taxaMediaSegura = 0.0160; 
                     taxaPisoAviso = "1.30%";
                     prazo = 96;
                 }
 
-                // Cálculo PMT (Prestação Juros Compostos)
                 const pmt = valor * (taxaMediaSegura * Math.pow(1 + taxaMediaSegura, prazo)) / (Math.pow(1 + taxaMediaSegura, prazo) - 1);
                 
-                // Margem de Variação (+/- 5%) para criar o Range (Intervalo)
                 const parcelaMin = pmt * 0.95;
                 const parcelaMax = pmt * 1.05;
 
@@ -362,7 +363,6 @@
 
             btnWpp.href = `https://wa.me/557731420005?text=${wppText}`;
             
-            // Animação de transição das telas
             document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
             document.getElementById('step-result').classList.add('active');
         }
