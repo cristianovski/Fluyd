@@ -4,264 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glid | Inteligência em Crédito e Proteção</title>
-    <meta name="description" content="Acesso direto às melhores taxas do mercado. Consórcios, Empréstimos, Seguros e Soluções para Empresas.">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.glid.com.br/">
-    <meta property="og:title" content="Glid | Inteligência em Crédito e Proteção">
-    <meta property="og:description" content="Pare de alugar dinheiro do banco. Acesso às melhores linhas de crédito, consórcios e seguros do país.">
-    <meta property="og:image" content="https://www.glid.com.br/assets/img/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Glid | Inteligência em Crédito">
-    <meta name="twitter:description" content="Acesso às melhores linhas de crédito, consórcios e seguros do país.">
-    <meta name="twitter:image" content="https://www.glid.com.br/assets/img/og-image.jpg">
+    <meta name="description" content="Acesso direto às melhores taxas do mercado através de Inteligência Artificial.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
     <style>
-        /* --- DESIGN SYSTEM DARK PREMIUM --- */
-        :root {
-            --bg-dark: #020617;
-            --bg-card: #0f172a;
-            --bg-lighter: #1e293b;
-            --primary: #3b82f6; 
-            --accent: #f59e0b;  
-            --text-white: #f8fafc;
-            --text-gray: #94a3b8;
-            --success: #10b981;
-        }
-
+        :root { --bg-dark: #020617; --bg-card: #0f172a; --bg-lighter: #1e293b; --primary: #3b82f6; --accent: #f59e0b; --text-white: #f8fafc; --text-gray: #94a3b8; --success: #10b981; }
         * { box-sizing: border-box; }
         body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; }
         a { text-decoration: none; transition: 0.3s; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        .highlight { color: var(--accent); } 
-
-        /* HEADER */
-        header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--bg-lighter); }
+        .highlight { color: var(--accent); }
+        header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; color: white; }
         .logo span { color: var(--primary); }
-        .btn-header { background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-header { background: rgba(255,255,255,0.05); padding: 10px 24px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); }
         .btn-header:hover { background: white; color: var(--bg-dark); }
-
-        /* HERO MINIMALISTA */
         .hero { padding: 180px 0 100px; text-align: center; }
         .hero-label { background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 25px; border: 1px solid rgba(59, 130, 246, 0.2); }
-        .hero h1 { font-size: 4.5rem; line-height: 1.05; margin: 0 0 25px 0; font-weight: 800; letter-spacing: -2px; }
-        .hero p { color: var(--text-gray); font-size: 1.25rem; max-width: 650px; margin: 0 auto; }
-
-        /* OS 3 PILARES (CARDS ELEGANTES) */
+        .hero h1 { font-size: 4.2rem; line-height: 1.05; margin: 0 0 25px 0; font-weight: 800; letter-spacing: -2px; }
+        .hero p { color: var(--text-gray); font-size: 1.25rem; max-width: 850px; margin: 0 auto; }
         .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 80px; }
-        .pillar-card { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 20px; padding: 40px; display: flex; flex-direction: column; color: white; position: relative; overflow: hidden; }
-        .pillar-card:hover { transform: translateY(-5px); border-color: rgba(59, 130, 246, 0.4); background: #131d36; }
-        
+        .pillar-card { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 20px; padding: 40px; display: flex; flex-direction: column; color: white; transition: 0.3s; }
+        .pillar-card:hover { transform: translateY(-5px); border-color: var(--primary); }
         .card-gold { border-color: rgba(245, 158, 11, 0.3); background: linear-gradient(180deg, var(--bg-card) 0%, rgba(245, 158, 11, 0.05) 100%); }
-        .card-gold:hover { border-color: var(--accent); box-shadow: 0 10px 40px rgba(245, 158, 11, 0.15); }
-        .card-gold .p-icon { color: var(--accent); } 
-        .card-gold:hover .link-arrow { color: var(--accent); gap: 15px; }
-
         .p-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
-        .pillar-card h3 { font-size: 1.8rem; margin: 0 0 15px 0; letter-spacing: -0.5px; }
-        .pillar-card p { color: var(--text-gray); font-size: 1rem; flex-grow: 1; margin: 0 0 30px 0; }
-        .link-arrow { display: flex; align-items: center; gap: 10px; font-weight: 700; color: white; font-size: 0.95rem; }
-        .pillar-card:hover .link-arrow { color: var(--primary); gap: 15px; }
-
-        /* CARROSSEL DE PARCEIROS */
-        .partners-section { padding: 40px 0 60px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); border-bottom: 1px solid var(--bg-lighter); overflow: hidden; white-space: nowrap; position: relative; }
+        .card-gold .p-icon { color: var(--accent); }
+        .partners-section { padding: 40px 0 60px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); border-bottom: 1px solid var(--bg-lighter); overflow: hidden; white-space: nowrap; }
         .marquee-track { display: inline-block; animation: scroll 40s linear infinite; }
-        .partners-section:hover .marquee-track { animation-play-state: paused; }
         .partner-logo { display: inline-block; margin: 0 40px; vertical-align: middle; }
-        .partner-logo img { height: 35px; width: auto; display: block; filter: grayscale(100%) brightness(0) invert(1); opacity: 0.4; transition: all 0.3s ease; }
-        .partner-logo:hover img { opacity: 1; transform: scale(1.1); }
+        .partner-logo img { height: 35px; filter: grayscale(100%) invert(1); opacity: 0.4; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* CAIXA DE CONFIANÇA ANEPS (NOVO DESIGN) */
-        .aneps-section { padding: 60px 0; background: var(--bg-dark); }
-        .aneps-box { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.02); padding: 30px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .aneps-box img { height: 70px; object-fit: contain; flex-shrink: 0; }
-        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 0.95rem; line-height: 1.5; }
-
-        /* RODAPÉ */
+        .aneps-box { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.02); padding: 30px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 60px auto; }
+        .aneps-box img { height: 70px; }
         .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-        .footer-brand p { color: var(--text-gray); font-size: 0.9rem; margin-top: 20px; max-width: 250px; }
-        
-        .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; display: inline-block; }
-        .footer-col ul li a:hover { color: var(--primary); transform: translateX(5px); }
-
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; }
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; font-size: 0.85rem; }
-
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; }
-        .whatsapp-float:hover { transform: scale(1.1); }
-
-        @media (max-width: 992px) {
-            .hero h1 { font-size: 3rem; }
-            .pillars-grid { grid-template-columns: 1fr; gap: 20px; }
-            .aneps-box { flex-direction: column; text-align: center; padding: 30px 20px; gap: 20px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .footer-brand p { margin: 20px auto; }
-        }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; z-index: 999; }
+        @media (max-width: 992px) { .hero h1 { font-size: 2.8rem; } .pillars-grid { grid-template-columns: 1fr; } .aneps-box { flex-direction: column; text-align: center; } .footer-grid { grid-template-columns: 1fr; } }
     </style>
-
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'SEU_PIXEL_ID_AQUI');
-    fbq('track', 'PageView');
-    </script>
 </head>
 <body>
-
-    <header>
-        <div class="container nav-content">
-            <a href="/" class="logo">Glid<span>.</span></a>
-            <a href="https://wa.me/557731420005" class="btn-header">Falar com Consultor</a>
+    <header><div class="container nav-content"><a href="/" class="logo">Glid<span>.</span></a><a href="https://wa.me/557731420005" class="btn-header">Falar com Consultor</a></div></header>
+    <section class="hero container">
+        <div class="hero-label">Inteligência Artificial & Dados</div>
+        <h1>A matemática a favor do seu <span class="highlight">patrimônio.</span></h1>
+        <p>Tenha acesso direto aos grandes bancos e administradoras. Nossa tecnologia de IA cruza dados entre dezenas de instituições para garantir a menor taxa para o seu perfil, transformando o crédito em uma ferramenta matemática para alavancar patrimônio e blindar sua família.</p>
+    </section>
+    <section class="container">
+        <div class="pillars-grid">
+            <a href="./consorcios/" class="pillar-card card-gold"><i class="ph-fill ph-buildings p-icon"></i><h3>Consórcios</h3><p>Planeje de forma inteligente para a compra imbatível do seu Imóvel ou Veículo fugindo dos juros bancários.</p></a>
+            <a href="./emprestimos/" class="pillar-card"><i class="ph-fill ph-wallet p-icon"></i><h3>Empréstimos</h3><p>Liquidez imediata com as menores taxas do mercado, usando inteligência de garantias ou histórico.</p></a>
+            <a href="./seguros/" class="pillar-card"><i class="ph-fill ph-shield-check p-icon"></i><h3>Seguros & Saúde</h3><p>Blindagem total. As melhores opções de Planos de Saúde (CNPJ/MEI) e Seguros Patrimoniais.</p></a>
         </div>
-    </header>
-
-    <main>
-        <section class="hero container">
-            <div class="hero-label">Inteligência Financeira</div>
-            <h1>Pare de alugar<br>dinheiro do <span class="highlight">banco.</span></h1>
-            <p>Acesso direto às maiores administradoras e bancos do país. Use a matemática a seu favor para gerar liquidez, alavancar patrimônio e blindar sua família.</p>
-        </section>
-
-        <section class="container">
-            <div class="pillars-grid">
-                
-                <a href="./consorcios/" class="pillar-card card-gold">
-                    <i class="ph-fill ph-buildings p-icon"></i>
-                    <h3>Consórcios</h3>
-                    <p>Planeje de forma inteligente para a compra imbatível do seu Imóvel ou Veículo fugindo dos juros bancários.</p>
-                    <div class="link-arrow">Simular Estratégia <i class="ph-bold ph-arrow-right"></i></div>
-                </a>
-
-                <a href="./emprestimos/" class="pillar-card">
-                    <i class="ph-fill ph-wallet p-icon"></i>
-                    <h3>Empréstimos</h3>
-                    <p>Liquidez imediata. Aprovamos seu crédito com as menores taxas do mercado, usando suas garantias ou histórico.</p>
-                    <div class="link-arrow">Simular Linhas de Crédito <i class="ph-bold ph-arrow-right"></i></div>
-                </a>
-
-                <a href="./seguros/" class="pillar-card">
-                    <i class="ph-fill ph-shield-check p-icon"></i>
-                    <h3>Seguros & Saúde</h3>
-                    <p>Blindagem total. As melhores opções de Planos de Saúde (CNPJ/MEI), Seguros para o seu Veículo, Vida e Patrimônio.</p>
-                    <div class="link-arrow">Ver Opções de Proteção <i class="ph-bold ph-arrow-right"></i></div>
-                </a>
-
-            </div>
-        </section>
-
-        <section class="partners-section">
-            <div class="container">
-                <p style="text-align:center; color:var(--text-gray); font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px; font-weight:700;">Acesso direto às maiores instituições do Brasil</p>
-                <div style="width:100%; overflow:hidden;">
-                    <div class="marquee-track">
-                        <div class="partner-logo"><img src="assets/img/logos/itau.png" alt="Itaú"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/bradesco.png" alt="Bradesco"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/bb.png" alt="BB"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/santander.png" alt="Santander"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/caixa.png" alt="Caixa"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/embracon.png" alt="Embracon"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/mapfre.png" alt="Mapfre"></div>
-                        
-                        <div class="partner-logo"><img src="assets/img/logos/itau.png" alt="Itaú"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/bradesco.png" alt="Bradesco"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/bb.png" alt="BB"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/santander.png" alt="Santander"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/caixa.png" alt="Caixa"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/embracon.png" alt="Embracon"></div>
-                        <div class="partner-logo"><img src="assets/img/logos/mapfre.png" alt="Mapfre"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="aneps-section">
-            <div class="container">
-                <div class="aneps-box">
-                    <img src="assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
-                    <div class="aneps-text">
-                        <h4>Certificação e Segurança Regulada</h4>
-                        <p>A Glid opera sob certificação <b>ANEPS</b> (Associação Nacional dos Profissionais e Empresas Promotoras de Crédito), garantindo que todas as nossas operações são auditadas e seguem rigorosamente as diretrizes do <b>Banco Central do Brasil</b>.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="fat-footer">
-        <div class="container">
-            <div class="footer-grid">
-                
-                <div class="footer-brand">
-                    <a href="/" class="logo">Glid<span>.</span></a>
-                    <p>O seu hub definitivo para soluções de crédito inteligente, proteção e negócios.</p>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Crédito Rápido</h4>
-                    <ul>
-                        <li><a href="./emprestimos/">Saque Aniversário FGTS</a></li>
-                        <li><a href="./emprestimos/">Consignado (INSS/Público)</a></li>
-                        <li><a href="./emprestimos/">Empréstimo CLT</a></li>
-                        <li><a href="./emprestimos/">Bolsa Família</a></li>
-                        <li><a href="./emprestimos/">Garantia (Imóvel/Auto)</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Saúde, Seguros & Energia</h4>
-                    <ul>
-                        <li><a href="./seguros/">Planos de Saúde (CNPJ/MEI)</a></li>
-                        <li><a href="./seguros/">Planos Odontológicos</a></li>
-                        <li><a href="./seguros/">Seguro de Vida & Auto</a></li>
-                        <li><a href="./seguros/">Medpass (Telemedicina)</a></li>
-                        <li><a href="./solar/">GWS Energia Solar</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Para Empresas (PJ)</h4>
-                    <ul>
-                        <li><a href="./empresas/">Capital de Giro</a></li>
-                        <li><a href="./empresas/">Antecipação de Recebíveis</a></li>
-                        <li><a href="./empresas/">Benefícios (VR/VA)</a></li>
-                        <li><a href="./empresas/">Saúde Ocupacional</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="footer-bottom">
-                &copy; 2026 Glid Tecnologia Financeira Ltda. Correspondente Bancário.
-            </div>
-        </div>
-    </footer>
-
+    </section>
+    <section class="partners-section"><div class="marquee-track">
+        <div class="partner-logo"><img src="assets/img/logos/itau.png"></div><div class="partner-logo"><img src="assets/img/logos/bradesco.png"></div><div class="partner-logo"><img src="assets/img/logos/bb.png"></div><div class="partner-logo"><img src="assets/img/logos/santander.png"></div><div class="partner-logo"><img src="assets/img/logos/caixa.png"></div><div class="partner-logo"><img src="assets/img/logos/mapfre.png"></div>
+        <div class="partner-logo"><img src="assets/img/logos/itau.png"></div><div class="partner-logo"><img src="assets/img/logos/bradesco.png"></div><div class="partner-logo"><img src="assets/img/logos/bb.png"></div><div class="partner-logo"><img src="assets/img/logos/santander.png"></div><div class="partner-logo"><img src="assets/img/logos/caixa.png"></div><div class="partner-logo"><img src="assets/img/logos/mapfre.png"></div>
+    </div></section>
+    <section class="container"><div class="aneps-box"><img src="assets/img/logos/aneps.png"><div class="aneps-text"><h4>Certificação e Segurança Regulada</h4><p>A Glid opera sob certificação <b>ANEPS</b>, garantindo que todas as nossas operações são auditadas e seguem rigorosamente as diretrizes do <b>Banco Central do Brasil</b>.</p></div></div></section>
+    <footer class="fat-footer"><div class="container"><div class="footer-bottom">&copy; 2026 Glid Tecnologia Financeira Ltda. Correspondente Bancário.</div></div></footer>
     <a href="https://wa.me/557731420005" class="whatsapp-float"><i class="ph-bold ph-whatsapp-logo"></i></a>
-
 </body>
 </html>
