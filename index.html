@@ -72,6 +72,15 @@
         .link-arrow { display: flex; align-items: center; gap: 10px; font-weight: 700; color: white; font-size: 0.95rem; }
         .pillar-card:hover .link-arrow { color: var(--primary); gap: 15px; }
 
+        /* CARROSSEL DE PARCEIROS */
+        .partners-section { padding: 40px 0 60px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); border-bottom: 1px solid var(--bg-lighter); overflow: hidden; white-space: nowrap; position: relative; }
+        .marquee-track { display: inline-block; animation: scroll 40s linear infinite; }
+        .partners-section:hover .marquee-track { animation-play-state: paused; }
+        .partner-logo { display: inline-block; margin: 0 40px; vertical-align: middle; }
+        .partner-logo img { height: 35px; width: auto; display: block; filter: grayscale(100%) brightness(0) invert(1); opacity: 0.4; transition: all 0.3s ease; }
+        .partner-logo:hover img { opacity: 1; transform: scale(1.1); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
         /* CAIXA DE CONFIANÇA ANEPS (NOVO DESIGN) */
         .aneps-section { padding: 60px 0; background: var(--bg-dark); }
         .aneps-box { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.02); padding: 30px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
@@ -79,7 +88,7 @@
         .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; }
         .aneps-text p { margin: 0; color: var(--text-gray); font-size: 0.95rem; line-height: 1.5; }
 
-        /* RODAPÉ (O MAPA DO TESOURO) */
+        /* RODAPÉ */
         .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
         .footer-brand p { color: var(--text-gray); font-size: 0.9rem; margin-top: 20px; max-width: 250px; }
@@ -144,7 +153,7 @@
                 <a href="./consorcios/" class="pillar-card card-gold">
                     <i class="ph-fill ph-buildings p-icon"></i>
                     <h3>Consórcios</h3>
-                    <p>Planeje de forma inteligente ou adquira uma Carta Contemplada para a compra imediata do seu Imóvel ou Veículo.</p>
+                    <p>Planeje de forma inteligente para a compra imbatível do seu Imóvel ou Veículo fugindo dos juros bancários.</p>
                     <div class="link-arrow">Simular Estratégia <i class="ph-bold ph-arrow-right"></i></div>
                 </a>
 
@@ -162,6 +171,31 @@
                     <div class="link-arrow">Ver Opções de Proteção <i class="ph-bold ph-arrow-right"></i></div>
                 </a>
 
+            </div>
+        </section>
+
+        <section class="partners-section">
+            <div class="container">
+                <p style="text-align:center; color:var(--text-gray); font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px; font-weight:700;">Acesso direto às maiores instituições do Brasil</p>
+                <div style="width:100%; overflow:hidden;">
+                    <div class="marquee-track">
+                        <div class="partner-logo"><img src="assets/img/logos/itau.png" alt="Itaú"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/bradesco.png" alt="Bradesco"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/bb.png" alt="BB"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/santander.png" alt="Santander"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/caixa.png" alt="Caixa"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/embracon.png" alt="Embracon"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/mapfre.png" alt="Mapfre"></div>
+                        
+                        <div class="partner-logo"><img src="assets/img/logos/itau.png" alt="Itaú"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/bradesco.png" alt="Bradesco"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/bb.png" alt="BB"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/santander.png" alt="Santander"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/caixa.png" alt="Caixa"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/embracon.png" alt="Embracon"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/mapfre.png" alt="Mapfre"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
