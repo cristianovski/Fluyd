@@ -138,7 +138,7 @@
             <div class="grid-hero">
                 <div>
                     <div class="hero-label">O Novo RH Estratégico</div>
-                    <h1>Valorize os seus funcionários. Pague <span class="highlight">zero taxas</span> operacionais.</h1>
+                    <h1>Valorize a sua equipa. Pague <span class="highlight">zero taxas</span> operacionais.</h1>
                     <p>Esqueça o risco do dinheiro em espécie ou a logística da cesta básica. A partir de 1 único funcionário, a Glid e a VR levam para a sua empresa um ecossistema completo de benefícios sem cobrar taxa de adesão, emissão ou manutenção.</p>
                     
                     <div class="trust-badges">
@@ -177,7 +177,7 @@
                         <div class="result-box">
                             <div class="big-number" id="res-economia">R$ 0,00</div>
                             <div style="font-size:0.95rem; color:var(--text-gray); margin-top:10px;">
-                                Dinheiro de <b>INSS e FGTS</b> que a sua empresa perderia caso pagasse este benefício em dinheiro na folha. Com o VR, a isenção é total.
+                                Dinheiro de <b>INSS e FGTS</b> que a sua empresa perderia caso pagasse este benefício em dinheiro na folha. Com a VR, a isenção é total.
                             </div>
                         </div>
 
@@ -226,7 +226,7 @@
                     <div class="eco-card">
                         <div class="e-icon"><i class="ph-bold ph-stethoscope"></i></div>
                         <h3>Telemedicina 24h</h3>
-                        <p>Fim do absenteísmo. Consultas médicas online direto pelo aplicativo, garantindo saúde rápida para a equipe sem perder dias inteiros em pronto-socorro.</p>
+                        <p>Fim do absenteísmo. Consultas médicas online direto pelo aplicativo, garantindo saúde rápida para a equipa sem perder dias inteiros em pronto-socorro.</p>
                     </div>
                     <div class="eco-card">
                         <div class="e-icon"><i class="ph-bold ph-cards"></i></div>
@@ -259,14 +259,14 @@
                         <i class="ph-fill ph-bus icon"></i>
                         <div>
                             <h4>Gestão de Vale-Transporte</h4>
-                            <p>Através da nossa tecnologia embarcada, auditamos as rotas e saldos dos bilhetes da sua equipe, gerando uma <b>economia real de 15% a 20%</b> nos custos do RH com transporte.</p>
+                            <p>Através da nossa tecnologia embarcada, auditamos as rotas e saldos dos bilhetes da sua equipa, gerando uma <b>economia real de 15% a 20%</b> nos custos do RH com transporte.</p>
                         </div>
                     </div>
                     <div class="port-item">
                         <i class="ph-fill ph-users-three icon"></i>
                         <div>
                             <h4>Atendimento Humanizado</h4>
-                            <p>Esqueça os robôs de grandes centrais. Ao fechar com a Glid, você tem um consultor dedicado e presencial. Cadastramos a sua empresa em minutos, sem burocracia de crédito.</p>
+                            <p>Esqueça os robôs de grandes centrais. Ao fechar com a Glid, tem um consultor dedicado e presencial. Cadastramos a sua empresa em minutos, sem burocracia de crédito.</p>
                         </div>
                     </div>
                 </div>
@@ -338,18 +338,20 @@
                 return;
             }
 
-            // Cálculos
+            // Cálculos da poupança anual
             const totalMensal = vidas * valor;
             const totalAnual = totalMensal * 12;
             
-            // Taxas médias de encargos caso a empresa desse isso em dinheiro (pecúnia)
+            // Taxas médias de encargos se a empresa pagasse em dinheiro (pecúnia)
+            // Simples Nacional: ~15% (FGTS + reflexos Férias/13º)
+            // Lucro Real/Presumido: ~37% (INSS Patronal + Sist S/RAT + FGTS + reflexos)
             const taxaEncargos = regime === 'simples' ? 0.15 : 0.37;
             const impostosPoupados = totalAnual * taxaEncargos;
 
             document.getElementById('res-val-total').innerText = fmt(valor);
             document.getElementById('res-economia').innerText = fmt(impostosPoupados);
 
-            const wppText = `Olá! Fiz uma simulação de Benefícios VR no site.%0A👥 *Colaboradores:* ${vidas}%0A💰 *Valor Estimado:* ${fmt(valor)}/mês%0A🏦 *Regime:* ${regime === 'simples' ? 'Simples Nacional' : 'Lucro Real/Presumido'}%0A💸 *Economia de Impostos Projetada:* ${fmt(impostosPoupados)}/ano.%0A%0AGostaria de ativar a minha empresa a Custo Zero e liberar o TotalPass para a equipe.`;
+            const wppText = `Olá! Fiz uma simulação de Benefícios VR no site.%0A👥 *Colaboradores:* ${vidas}%0A💰 *Valor Estimado:* ${fmt(valor)}/mês%0A🏦 *Regime:* ${regime === 'simples' ? 'Simples Nacional' : 'Lucro Real/Presumido'}%0A💸 *Economia de Impostos Projetada:* ${fmt(impostosPoupados)}/ano.%0A%0AGostaria de ativar a minha empresa a Custo Zero e libertar o pacote TotalPass para a equipa.`;
             document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${wppText}`;
 
             document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
