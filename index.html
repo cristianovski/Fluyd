@@ -1,4 +1,3 @@
-cat <<'EOF' > index.html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -12,13 +11,13 @@ cat <<'EOF' > index.html
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* --- DESIGN SYSTEM DARK PREMIUM (HOME) --- */
+        /* --- DESIGN SYSTEM DARK PREMIUM --- */
         :root {
             --bg-dark: #020617;
             --bg-card: #0f172a;
             --bg-lighter: #1e293b;
             --primary: #3b82f6; 
-            --accent: #eab308; /* Dourado para a Home (Riqueza/Patrimônio) */
+            --accent: #eab308; /* DOURADO RESTAURADO */
             --accent-hover: #ca8a04;
             --text-white: #f8fafc;
             --text-gray: #94a3b8;
@@ -28,34 +27,43 @@ cat <<'EOF' > index.html
         body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; }
         a { text-decoration: none; transition: 0.3s ease; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-        .highlight { color: var(--primary); } 
+        
+        /* O highlight agora usa o Dourado */
+        .highlight { color: var(--accent); } 
 
         header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.9); z-index: 1000; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; color: white; }
-        .logo span { color: var(--primary); }
+        .logo span { color: var(--accent); } /* Ponto do logo em Dourado */
         .btn-header { background: rgba(255,255,255,0.05); padding: 12px 24px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 700; border: 1px solid rgba(255,255,255,0.1); }
         .btn-header:hover { background: white; color: var(--bg-dark); }
 
         /* HERO CENTRALIZADO */
-        .hero { text-align: center; padding: 180px 0 100px; max-width: 1000px; margin: 0 auto; }
-        .hero-label { background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 30px; border: 1px solid rgba(59, 130, 246, 0.2); }
-        .hero h1 { font-size: 4.8rem; line-height: 1.05; margin: 0 0 25px 0; font-weight: 900; letter-spacing: -2px; }
+        .hero { text-align: center; padding: 160px 0 60px; max-width: 1000px; margin: 0 auto; }
+        .hero-label { background: rgba(234, 179, 8, 0.1); color: var(--accent); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 30px; border: 1px solid rgba(234, 179, 8, 0.2); }
+        .hero h1 { font-size: 4.5rem; line-height: 1.05; margin: 0 0 25px 0; font-weight: 900; letter-spacing: -2px; }
         .hero p { color: var(--text-gray); font-size: 1.25rem; margin-bottom: 40px; font-weight: 300; line-height: 1.7; padding: 0 20px; }
         
-        .btn-action { background: var(--primary); color: white; border: none; padding: 18px 40px; border-radius: 12px; font-weight: 800; font-size: 1.1rem; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-action:hover { background: #2563eb; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4); }
-        .btn-outline { background: transparent; border: 2px solid var(--bg-lighter); color: var(--text-gray); box-shadow: none; }
+        .btn-action { background: var(--accent); color: var(--bg-dark); border: none; padding: 18px 40px; border-radius: 12px; font-weight: 800; font-size: 1.1rem; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-action:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(234, 179, 8, 0.3); }
+        .btn-outline { background: transparent; border: 2px solid var(--bg-lighter); color: var(--text-white); box-shadow: none; }
         .btn-outline:hover { background: var(--bg-lighter); color: white; transform: none; box-shadow: none; }
 
-        /* HUB DE SOLUÇÕES */
-        .solutions-section { padding: 80px 0 120px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
-        .grid-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 50px; }
+        /* BARRA DE BANCOS (MARQUEE/PARCEIROS) */
+        .partners-section { padding: 40px 0; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; overflow: hidden; }
+        .partners-section p { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); font-weight: 700; margin-bottom: 25px; }
+        .partners-flex { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; opacity: 0.6; }
+        .partners-flex span { font-size: 1.5rem; font-weight: 800; color: var(--text-white); letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+
+        /* HUB DE SOLUÇÕES COM CONSÓRCIO */
+        .solutions-section { padding: 80px 0 120px; background: #01040a; }
+        /* Grid de 3 colunas para acomodar os 5 itens de forma elegante */
+        .grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
         .hub-card { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; position: relative; overflow: hidden; display: block; color: white; }
-        .hub-card:hover { border-color: var(--primary); transform: translateY(-8px); }
-        .hub-icon { width: 60px; height: 60px; background: rgba(59, 130, 246, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: var(--primary); margin-bottom: 25px; }
+        .hub-card:hover { border-color: var(--accent); transform: translateY(-8px); }
+        .hub-icon { width: 60px; height: 60px; background: rgba(234, 179, 8, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: var(--accent); margin-bottom: 25px; }
         .hub-card h3 { font-size: 1.5rem; margin: 0 0 15px 0; font-weight: 800; }
-        .hub-card p { color: var(--text-gray); font-size: 1rem; line-height: 1.6; margin-bottom: 0; }
+        .hub-card p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0; }
 
         /* ANEPS E FOOTER */
         .aneps-section { padding: 60px 0; background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); }
@@ -71,12 +79,13 @@ cat <<'EOF' > index.html
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
         .footer-col ul li { margin-bottom: 12px; }
         .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; }
-        .footer-col ul li a:hover { color: var(--primary); }
+        .footer-col ul li a:hover { color: var(--accent); }
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; font-size: 0.85rem; }
 
         @media (max-width: 992px) { 
             .hero h1 { font-size: 3.2rem; }
             .grid-cards { grid-template-columns: 1fr; }
+            .partners-flex { gap: 30px; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .footer-brand p { margin: 20px auto; }
         }
@@ -110,34 +119,54 @@ cat <<'EOF' > index.html
             </div>
         </section>
 
+        <section class="partners-section">
+            <div class="container">
+                <p>Acesso direto aos maiores fundos e instituições do país</p>
+                <div class="partners-flex">
+                    <span><i class="ph-fill ph-bank"></i> Itaú</span>
+                    <span><i class="ph-fill ph-bank"></i> Bradesco</span>
+                    <span><i class="ph-fill ph-bank"></i> Santander</span>
+                    <span><i class="ph-fill ph-bank"></i> Safra</span>
+                    <span><i class="ph-fill ph-bank"></i> Daycoval</span>
+                    <span><i class="ph-fill ph-bank"></i> Porto Seguro</span>
+                </div>
+            </div>
+        </section>
+
         <section id="solucoes" class="solutions-section">
             <div class="container">
-                <h2 style="font-size:2.5rem; text-align:center; margin: 0; letter-spacing: -1px; color: white;">O Ecossistema Glid</h2>
-                <p style="text-align: center; color: var(--text-gray); margin-top: 10px; font-size: 1.1rem;">Navegue pelos nossos pilares de atuação.</p>
+                <h2 style="font-size:2.8rem; text-align:center; margin: 0; letter-spacing: -1px; color: white;">O Ecossistema Glid</h2>
+                <p style="text-align: center; color: var(--text-gray); margin-top: 10px; font-size: 1.1rem; margin-bottom: 20px;">Navegue pelos nossos pilares de atuação.</p>
 
                 <div class="grid-cards">
+                    <a href="consorcios/" class="hub-card" style="border-color: var(--accent); box-shadow: 0 10px 30px rgba(234, 179, 8, 0.1);">
+                        <div class="hub-icon"><i class="ph-bold ph-house-line"></i></div>
+                        <h3>Consórcios Premium</h3>
+                        <p>O nosso carro-chefe. Planeamento inteligente para aquisição de imóveis, veículos pesados e frotas, com estratégias de lances embutidos e taxas de administração reduzidas.</p>
+                    </a>
+
                     <a href="emprestimos/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-bold ph-wallet"></i></div>
+                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-wallet"></i></div>
                         <h3>Crédito Rápido</h3>
                         <p>Libere liquidez imediata com as melhores taxas do mercado. Saque-Aniversário, Consignado e Empréstimo CLT aprovados na hora.</p>
                     </a>
                     
                     <a href="empresas/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-bold ph-buildings"></i></div>
+                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-buildings"></i></div>
                         <h3>Soluções Corporativas</h3>
-                        <p>Capital de giro, antecipação de recebíveis e estrutura de crédito estruturado para escalar o caixa do seu CNPJ.</p>
+                        <p>Capital de giro, antecipação de recebíveis e estrutura de crédito estruturado para escalar o caixa do seu CNPJ sem amarras.</p>
                     </a>
 
-                    <a href="vr/" class="hub-card" style="border-color: rgba(163, 230, 53, 0.3);">
+                    <a href="vr/" class="hub-card">
                         <div class="hub-icon" style="background: rgba(163, 230, 53, 0.1); color: #a3e635;"><i class="ph-bold ph-cards"></i></div>
-                        <h3 style="color: #a3e635;">Benefícios VR e Retenção</h3>
-                        <p>Isenção de impostos trabalhistas e pacote TotalPass a custo zero. A parceria Glid + VR que transforma o RH da sua empresa.</p>
+                        <h3 style="color: white;">Benefícios VR</h3>
+                        <p>Isenção de impostos trabalhistas e pacote TotalPass a custo zero. A parceria Glid + VR que transforma a retenção do RH da sua empresa.</p>
                     </a>
 
                     <a href="seguros/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-bold ph-shield-check"></i></div>
+                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-shield-check"></i></div>
                         <h3>Saúde e Seguros</h3>
-                        <p>Blindagem total contra imprevistos. Planos de saúde empresariais, seguros de vida, automóvel e telemedicina 24 horas.</p>
+                        <p>Blindagem total contra imprevistos. Planos de saúde empresariais, seguros de vida, automóvel e proteção patrimonial completa.</p>
                     </a>
                 </div>
             </div>
@@ -166,10 +195,10 @@ cat <<'EOF' > index.html
                 <div class="footer-col">
                     <h4>Crédito Rápido</h4>
                     <ul>
+                        <li><a href="consorcios/">Consórcios Premium</a></li>
                         <li><a href="emprestimos/">Saque Aniversário FGTS</a></li>
                         <li><a href="emprestimos/">Consignado (INSS/Público)</a></li>
-                        <li><a href="emprestimos/">Empréstimo CLT</a></li>
-                        <li><a href="emprestimos/">Garantia (Imóvel/Auto)</a></li>
+                        <li><a href="emprestimos/">Empréstimo com Garantia</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -186,7 +215,7 @@ cat <<'EOF' > index.html
                     <ul>
                         <li><a href="empresas/">Capital de Giro</a></li>
                         <li><a href="empresas/">Antecipação de Recebíveis</a></li>
-                        <li><a href="/vr/">Benefícios (VR/VA)</a></li>
+                        <li><a href="vr/">Benefícios (VR/VA)</a></li>
                         <li><a href="empresas/">Saúde Ocupacional</a></li>
                     </ul>
                 </div>
@@ -196,8 +225,3 @@ cat <<'EOF' > index.html
     </footer>
 </body>
 </html>
-EOF
-
-git add index.html
-git commit -m "UI: Overhaul Home Page with centered Hero design and updated VR links"
-git push origin main
