@@ -17,7 +17,7 @@
             --bg-card: #0f172a;
             --bg-lighter: #1e293b;
             --primary: #3b82f6; 
-            --accent: #eab308; /* DOURADO */
+            --accent: #eab308; /* DOURADO PREMIUM */
             --accent-hover: #ca8a04;
             --text-white: #f8fafc;
             --text-gray: #94a3b8;
@@ -57,25 +57,30 @@
         .partner-logo:hover img { opacity: 1; transform: scale(1.1); filter: grayscale(0%) brightness(1) invert(0); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* HUB DE SOLUÇÕES (6 ITENS EXATOS) */
+        /* HUB DE SOLUÇÕES (PADRÃO UNIFORME E ELEGANTE) */
         .solutions-section { padding: 80px 0 120px; background: #01040a; }
         .grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
-        .hub-card { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; position: relative; overflow: hidden; display: block; color: white; }
-        .hub-card:hover { border-color: var(--accent); transform: translateY(-8px); }
-        .hub-icon { width: 60px; height: 60px; background: rgba(59, 130, 246, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: var(--primary); margin-bottom: 25px; }
-        .hub-card h3 { font-size: 1.5rem; margin: 0 0 15px 0; font-weight: 800; }
+        
+        .hub-card { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; display: block; color: white; }
+        .hub-card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 15px 35px rgba(234, 179, 8, 0.1); }
+        
+        /* Ícones Minimalistas (Estilo Apple) */
+        .hub-icon { width: 64px; height: 64px; background: rgba(59, 130, 246, 0.05); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; color: var(--primary); margin-bottom: 25px; transition: 0.4s; border: 1px solid rgba(59, 130, 246, 0.1); }
+        .hub-card:hover .hub-icon { background: rgba(234, 179, 8, 0.1); color: var(--accent); border-color: rgba(234, 179, 8, 0.2); transform: scale(1.05); }
+        
+        .hub-card h3 { font-size: 1.5rem; margin: 0 0 15px 0; font-weight: 700; transition: 0.3s; }
         .hub-card p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0; }
 
-        /* ANEPS E FOOTER */
-        .aneps-section { padding: 60px 0; background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); }
-        .aneps-box { display: flex; align-items: center; gap: 30px; background: var(--bg-card); padding: 30px 40px; border-radius: 20px; border: 1px solid var(--bg-lighter); max-width: 900px; margin: 0 auto; }
-        .aneps-box img { height: 70px; }
-        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.1rem; text-transform: uppercase; }
-        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 0.95rem; }
-
+        /* FOOTER COM ANEPS INTEGRADO */
         .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-        .footer-brand p { color: var(--text-gray); font-size: 0.9rem; margin-top: 20px; max-width: 250px; }
+        
+        /* Caixa do Selo ANEPS */
+        .footer-aneps { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+        .footer-aneps img { height: 90px; width: auto; margin-bottom: 20px; filter: grayscale(100%) brightness(200%); opacity: 0.7; transition: 0.3s ease; }
+        .footer-aneps:hover img { filter: none; opacity: 1; transform: scale(1.05); }
+        .footer-aneps p { color: var(--text-gray); font-size: 0.9rem; line-height: 1.5; margin: 0; max-width: 250px; }
+        
         .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
         .footer-col ul li { margin-bottom: 12px; }
@@ -87,7 +92,7 @@
             .hero h1 { font-size: 3.2rem; }
             .grid-cards { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .footer-brand p { margin: 20px auto; }
+            .footer-aneps p { margin: 0 auto; }
         }
     </style>
 </head>
@@ -147,53 +152,41 @@
                 <p style="text-align: center; color: var(--text-gray); margin-top: 10px; font-size: 1.1rem; margin-bottom: 20px;">Navegue pelos nossos pilares de atuação.</p>
 
                 <div class="grid-cards">
-                    <a href="consorcios/" class="hub-card" style="border-color: var(--accent); box-shadow: 0 10px 30px rgba(234, 179, 8, 0.1);">
-                        <div class="hub-icon" style="background: rgba(234, 179, 8, 0.1); color: var(--accent);"><i class="ph-bold ph-house-line"></i></div>
-                        <h3 style="color: white;">Consórcios</h3>
+                    <a href="consorcios/" class="hub-card">
+                        <div class="hub-icon"><i class="ph-light ph-house-line"></i></div>
+                        <h3>Consórcios</h3>
                         <p>Planejamento inteligente para aquisição de imóveis, veículos pesados e energia solar, com estratégias de lances embutidos e taxas reduzidas.</p>
                     </a>
 
                     <a href="emprestimos/" class="hub-card">
-                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-wallet"></i></div>
+                        <div class="hub-icon"><i class="ph-light ph-wallet"></i></div>
                         <h3>Empréstimos</h3>
                         <p>Libere liquidez imediata com as melhores taxas do mercado. Saque-Aniversário, Consignado e Empréstimo CLT aprovados na hora e sem burocracia.</p>
                     </a>
 
                     <a href="#" class="hub-card">
-                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-car-profile"></i></div>
+                        <div class="hub-icon"><i class="ph-light ph-car-profile"></i></div>
                         <h3>Financiamentos</h3>
                         <p>Aquisição rápida de veículos e imóveis com acesso às melhores linhas de crédito dos grandes bancos. Aprovação ágil e taxas competitivas.</p>
                     </a>
                     
                     <a href="empresas/" class="hub-card">
-                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-buildings"></i></div>
+                        <div class="hub-icon"><i class="ph-light ph-buildings"></i></div>
                         <h3>Crédito PJ</h3>
                         <p>Capital de giro, antecipação de recebíveis e estrutura de crédito inteligente para escalar o caixa do seu CNPJ sem amarras.</p>
                     </a>
 
-                    <a href="vr/" class="hub-card" style="border-color: rgba(163, 230, 53, 0.3);">
-                        <div class="hub-icon" style="background: rgba(163, 230, 53, 0.1); color: #a3e635;"><i class="ph-bold ph-cards"></i></div>
-                        <h3 style="color: #a3e635;">VA e VR</h3>
+                    <a href="vr/" class="hub-card">
+                        <div class="hub-icon"><i class="ph-light ph-cards"></i></div>
+                        <h3>VA e VR</h3>
                         <p>Isenção de impostos trabalhistas e pacote TotalPass a custo zero. A parceria Glid + VR que transforma a retenção do RH da sua empresa.</p>
                     </a>
 
                     <a href="seguros/" class="hub-card">
-                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-shield-check"></i></div>
+                        <div class="hub-icon"><i class="ph-light ph-shield-check"></i></div>
                         <h3>Seguros</h3>
                         <p>Blindagem total contra imprevistos. Seguros de vida corporativos e individuais, seguro auto e proteção de responsabilidade civil.</p>
                     </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="aneps-section">
-            <div class="container">
-                <div class="aneps-box">
-                    <img src="assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
-                    <div class="aneps-text">
-                        <h4>Consultoria de Confiança</h4>
-                        <p>A Glid opera sob certificação <b>ANEPS</b>. Atuamos de forma consultiva para desenhar a estrutura mais vantajosa para o seu negócio dentro das regulamentações federais.</p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -202,10 +195,12 @@
     <footer class="fat-footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="/" class="logo">Glid<span>.</span></a>
-                    <p>O seu hub definitivo para soluções de crédito inteligente, proteção e negócios.</p>
+                
+                <div class="footer-aneps">
+                    <img src="assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
+                    <p>A Glid opera sob rigorosa certificação <b>ANEPS</b>. Atuamos de forma consultiva dentro das regulamentações federais.</p>
                 </div>
+
                 <div class="footer-col">
                     <h4>Crédito & Aquisições</h4>
                     <ul>
@@ -215,14 +210,17 @@
                         <li><a href="consorcios/">Energia Solar</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-col">
                     <h4>Saúde & Proteção</h4>
                     <ul>
                         <li><a href="seguros/">Seguros de Vida e Auto</a></li>
-                        <li><a href="seguros/">Planos de Saúde</a></li> <li><a href="seguros/">Planos Odontológicos</a></li>
+                        <li><a href="seguros/">Planos de Saúde</a></li>
+                        <li><a href="seguros/">Planos Odontológicos</a></li>
                         <li><a href="seguros/">Medpass (Telemedicina)</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-col">
                     <h4>Para o seu Negócio</h4>
                     <ul>
