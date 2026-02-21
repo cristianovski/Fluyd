@@ -47,20 +47,17 @@
         .btn-outline { background: transparent; border: 2px solid var(--bg-lighter); color: var(--text-white); box-shadow: none; }
         .btn-outline:hover { background: var(--bg-lighter); color: white; transform: none; box-shadow: none; }
 
-        /* BARRA DE BANCOS COM ANIMAÇÃO DE ROLAGEM */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .partners-section { padding: 40px 0; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); text-align: center; overflow: hidden; white-space: nowrap; }
-        .partners-section p { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-gray); font-weight: 700; margin-bottom: 25px; }
-        .partners-track { display: inline-flex; animation: scroll 25s linear infinite; }
-        .partners-track:hover { animation-play-state: paused; }
-        .partners-flex { display: flex; align-items: center; gap: 60px; padding-right: 60px; opacity: 0.6; }
-        .partners-flex span { font-size: 1.6rem; font-weight: 800; color: var(--text-white); letter-spacing: -1px; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-        .partners-flex span:hover { opacity: 1; color: var(--accent); }
+        /* PARCEIROS COM LOGOS OFICIAIS ANIMADOS */
+        .partners-section { padding: 25px 0 60px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); border-bottom: 1px solid var(--bg-lighter); overflow: hidden; white-space: nowrap; position: relative; }
+        .partners-section p { text-align:center; color:var(--text-gray); font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px; font-weight:700; }
+        .marquee-track { display: inline-block; animation: scroll 40s linear infinite; }
+        .partners-section:hover .marquee-track { animation-play-state: paused; }
+        .partner-logo { display: inline-block; margin: 0 40px; vertical-align: middle; }
+        .partner-logo img { height: 35px; width: auto; display: block; filter: grayscale(100%) brightness(0) invert(1); opacity: 0.4; transition: all 0.3s ease; }
+        .partner-logo:hover img { opacity: 1; transform: scale(1.1); filter: grayscale(0%) brightness(1) invert(0); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* HUB DE SOLUÇÕES (6 ITENS) */
+        /* HUB DE SOLUÇÕES (6 ITENS EXATOS) */
         .solutions-section { padding: 80px 0 120px; background: #01040a; }
         .grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
         .hub-card { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; position: relative; overflow: hidden; display: block; color: white; }
@@ -124,27 +121,21 @@
 
         <section class="partners-section">
             <div class="container" style="max-width: 100%; padding: 0;">
-                <p>Acesso direto aos maiores fundos e instituições do país</p>
-                <div class="partners-track">
-                    <div class="partners-flex">
-                        <span><i class="ph-fill ph-bank"></i> Itaú</span>
-                        <span><i class="ph-fill ph-bank"></i> Bradesco</span>
-                        <span><i class="ph-fill ph-bank"></i> Santander</span>
-                        <span><i class="ph-fill ph-bank"></i> Safra</span>
-                        <span><i class="ph-fill ph-bank"></i> Daycoval</span>
-                        <span><i class="ph-fill ph-bank"></i> Porto Seguro</span>
-                        <span><i class="ph-fill ph-bank"></i> Caixa</span>
-                        <span><i class="ph-fill ph-bank"></i> BMG</span>
-                    </div>
-                    <div class="partners-flex">
-                        <span><i class="ph-fill ph-bank"></i> Itaú</span>
-                        <span><i class="ph-fill ph-bank"></i> Bradesco</span>
-                        <span><i class="ph-fill ph-bank"></i> Santander</span>
-                        <span><i class="ph-fill ph-bank"></i> Safra</span>
-                        <span><i class="ph-fill ph-bank"></i> Daycoval</span>
-                        <span><i class="ph-fill ph-bank"></i> Porto Seguro</span>
-                        <span><i class="ph-fill ph-bank"></i> Caixa</span>
-                        <span><i class="ph-fill ph-bank"></i> BMG</span>
+                <p>Credenciado nas Maiores Administradoras do País</p>
+                <div style="width:100%; overflow:hidden;">
+                    <div class="marquee-track">
+                        <div class="partner-logo"><img src="assets/img/logos/itau.png" alt="Itaú"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/bradesco.png" alt="Bradesco"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/bb.png" alt="Banco do Brasil"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/santander.png" alt="Santander"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/caixa.png" alt="Caixa Econômica"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/embracon.png" alt="Embracon"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/itau.png" alt="Itaú"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/bradesco.png" alt="Bradesco"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/bb.png" alt="Banco do Brasil"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/santander.png" alt="Santander"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/caixa.png" alt="Caixa Econômica"></div>
+                        <div class="partner-logo"><img src="assets/img/logos/embracon.png" alt="Embracon"></div>
                     </div>
                 </div>
             </div>
@@ -163,13 +154,19 @@
                     </a>
 
                     <a href="emprestimos/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-bold ph-wallet"></i></div>
+                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-wallet"></i></div>
                         <h3>Empréstimos</h3>
-                        <p>Libere liquidez imediata com as melhores taxas do mercado. Saque-Aniversário, Consignado e Empréstimo CLT aprovados na hora.</p>
+                        <p>Libere liquidez imediata com as melhores taxas do mercado. Saque-Aniversário, Consignado e Empréstimo CLT aprovados na hora e sem burocracia.</p>
+                    </a>
+
+                    <a href="#" class="hub-card">
+                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-car-profile"></i></div>
+                        <h3>Financiamentos</h3>
+                        <p>Aquisição rápida de veículos e imóveis com acesso às melhores linhas de crédito dos grandes bancos. Aprovação ágil e taxas competitivas.</p>
                     </a>
                     
                     <a href="empresas/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-bold ph-buildings"></i></div>
+                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-buildings"></i></div>
                         <h3>Crédito PJ</h3>
                         <p>Capital de giro, antecipação de recebíveis e estrutura de crédito inteligente para escalar o caixa do seu CNPJ sem amarras.</p>
                     </a>
@@ -181,13 +178,7 @@
                     </a>
 
                     <a href="seguros/" class="hub-card">
-                        <div class="hub-icon" style="background: rgba(239, 68, 68, 0.1); color: #ef4444;"><i class="ph-bold ph-heartbeat"></i></div>
-                        <h3 style="color: white;">Planos de Saúde</h3>
-                        <p>Cobertura médica de excelência para sua família ou CNPJ. Acesso às melhores redes de hospitais e laboratórios do Brasil.</p>
-                    </a>
-
-                    <a href="seguros/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-bold ph-shield-check"></i></div>
+                        <div class="hub-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--primary);"><i class="ph-bold ph-shield-check"></i></div>
                         <h3>Seguros</h3>
                         <p>Blindagem total contra imprevistos. Seguros de vida corporativos e individuais, seguro auto e proteção de responsabilidade civil.</p>
                     </a>
@@ -216,20 +207,19 @@
                     <p>O seu hub definitivo para soluções de crédito inteligente, proteção e negócios.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Soluções Financeiras</h4>
+                    <h4>Crédito & Aquisições</h4>
                     <ul>
                         <li><a href="consorcios/">Consórcios Premium</a></li>
-                        <li><a href="emprestimos/">Empréstimos (CLT/FGTS)</a></li>
-                        <li><a href="empresas/">Crédito PJ (Capital de Giro)</a></li>
+                        <li><a href="emprestimos/">Empréstimos Rápidos</a></li>
+                        <li><a href="#">Financiamentos (Auto/Imóvel)</a></li>
                         <li><a href="consorcios/">Energia Solar</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Saúde & Proteção</h4>
                     <ul>
-                        <li><a href="seguros/">Planos de Saúde (PF/PJ)</a></li>
                         <li><a href="seguros/">Seguros de Vida e Auto</a></li>
-                        <li><a href="seguros/">Planos Odontológicos</a></li>
+                        <li><a href="seguros/">Planos de Saúde</a></li> <li><a href="seguros/">Planos Odontológicos</a></li>
                         <li><a href="seguros/">Medpass (Telemedicina)</a></li>
                     </ul>
                 </div>
@@ -237,9 +227,9 @@
                     <h4>Para o seu Negócio</h4>
                     <ul>
                         <li><a href="vr/">VA e VR (Benefícios)</a></li>
+                        <li><a href="empresas/">Crédito PJ</a></li>
                         <li><a href="seguros/">Saúde Ocupacional</a></li>
-                        <li><a href="consorcios/">Frota Corporativa e Pesados</a></li>
-                        <li><a href="empresas/">Antecipação de Recebíveis</a></li>
+                        <li><a href="consorcios/">Frota Corporativa</a></li>
                     </ul>
                 </div>
             </div>
