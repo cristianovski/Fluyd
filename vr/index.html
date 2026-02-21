@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glid | Benefícios VR - Retenção a Custo Zero</title>
-    <meta name="description" content="Entregue benefícios de multinacional para sua equipe pagando zero taxas operacionais e fuja dos impostos sobre a folha.">
+    <meta name="description" content="Entregue benefícios de multinacional para a sua equipe pagando zero taxas operacionais e fuja dos impostos sobre a folha.">
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
@@ -79,7 +79,7 @@
         .res-modelo ul li b { color: var(--accent); }
 
         /* SEÇÃO RETENÇÃO (ECOSSISTEMA) */
-        .ecosystem-section { padding: 100px 0; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        .ecosystem-section { padding: 100px 0 60px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
         .eco-card { background: var(--bg-card); padding: 35px 25px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; position: relative; overflow: hidden; }
         .eco-card:hover { border-color: var(--accent); transform: translateY(-8px); }
@@ -88,16 +88,21 @@
         .eco-card p { color: var(--text-gray); margin: 0; font-size: 0.95rem; line-height: 1.5; }
 
         /* PORTFÓLIO E PRODUTOS */
-        .portfolio-section { padding: 80px 0; background: var(--bg-dark); }
+        .portfolio-section { padding: 60px 0 80px; background: var(--bg-dark); }
         .port-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
         .port-item { display: flex; gap: 20px; background: rgba(255,255,255,0.02); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); align-items: flex-start; }
         .port-item .icon { font-size: 2.5rem; color: var(--primary); }
         .port-item h4 { margin: 0 0 5px 0; color: white; font-size: 1.2rem; }
         .port-item p { margin: 0; color: var(--text-gray); font-size: 0.95rem; }
 
-        /* FAQ SECTION */
+        /* ALERTA PAT E FAQ */
+        .pat-alert { background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(2, 6, 23, 1) 100%); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 20px; padding: 40px; margin: 0 auto 60px; display: flex; gap: 30px; align-items: center; max-width: 900px; }
+        .pat-icon { font-size: 4rem; color: var(--danger); flex-shrink: 0; }
+        .pat-text h3 { margin: 0 0 10px 0; font-size: 1.5rem; color: white; }
+        .pat-text p { margin: 0; color: var(--text-gray); font-size: 1.05rem; }
+
         .faq-section { padding: 80px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); }
-        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-container { max-width: 900px; margin: 0 auto; }
         .faq-item { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 16px; margin-bottom: 15px; overflow: hidden; transition: 0.3s; }
         .faq-item summary { padding: 25px; font-size: 1.15rem; font-weight: 700; color: white; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
         .faq-item summary::-webkit-details-marker { display: none; }
@@ -129,6 +134,7 @@
             .hero { text-align: center; padding: 140px 0 40px; }
             .trust-badges { justify-content: center; }
             .stats-box { border-left: none; border-top: 4px solid var(--accent); border-radius: 0 0 16px 16px; }
+            .pat-alert { flex-direction: column; text-align: center; }
             .aneps-box { flex-direction: column; text-align: center; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .footer-brand p { margin: 20px auto; }
@@ -175,39 +181,24 @@
 
                         <label>Regime Tributário da Empresa</label>
                         <select id="regime_trib">
-                            <option value="simples">Simples Nacional</option>
-                            <option value="lucro">Lucro Presumido / Real</option>
+                            <option value="simples">Simples Nacional ou Presumido</option>
+                            <option value="lucro">Lucro Real</option>
                         </select>
 
-                        <button class="btn-action" onclick="calcularVantagens()">Revelar Economia <i class="ph-bold ph-magic-wand"></i></button>
+                        <button class="btn-action" onclick="calcularVantagens()">Revelar Diagnóstico <i class="ph-bold ph-magic-wand"></i></button>
                     </div>
 
                     <div class="step-screen" id="step-result">
-                        <span style="display:block; text-align:center; color:white; font-weight:700; text-transform:uppercase; font-size:0.85rem; margin-bottom:10px;">Economia Anual Projetada (Impostos):</span>
+                        <span style="display:block; text-align:center; color:white; font-weight:700; text-transform:uppercase; font-size:0.85rem; margin-bottom:10px;">Dinheiro Recuperado por Ano:</span>
                         
                         <div class="result-box">
                             <div class="big-number" id="res-economia">R$ 0,00</div>
                             <div style="font-size:0.95rem; color:var(--text-gray); margin-top:10px;">
-                                Dinheiro de <b>INSS e FGTS</b> que a sua empresa perderia caso pagasse este benefício em dinheiro na folha. Com a VR, a isenção é total.
+                                Fuga de <b>INSS/FGTS</b> (que incidiria no pagamento em dinheiro) somada à sua inteligência tributária.
                             </div>
                         </div>
 
-                        <div class="res-modelo">
-                            <h4><i class="ph-fill ph-star" style="color:var(--accent);"></i> Modelo Auxílio (Custo R$ 0,00)</h4>
-                            <ul>
-                                <li>Taxa de emissão e manutenção: <b>R$ 0,00</b>.</li>
-                                <li>O valor de <b><span id="res-val-total"></span></b> chega integralmente ao cartão do funcionário.</li>
-                                <li>Desbloqueia acesso ao pacote <b>TotalPass</b> e <b>Seguro Alimentação</b> grátis.</li>
-                            </ul>
-                        </div>
-
-                        <div class="res-modelo" style="border-color: rgba(59, 130, 246, 0.3);">
-                            <h4><i class="ph-fill ph-buildings" style="color:var(--primary);"></i> Modelo PAT (Lucro Real)</h4>
-                            <ul>
-                                <li>Permite desconto de até <b>20%</b> na folha do funcionário.</li>
-                                <li>Dedução de até <b>4% no IRPJ</b> da empresa.</li>
-                            </ul>
-                        </div>
+                        <div id="diagnostico-container"></div>
 
                         <a id="btn-whatsapp" href="#" class="btn-action" style="margin-top:10px;">Solicitar Ativação Rápida</a>
                         <button class="btn-action btn-outline" onclick="location.reload()">Refazer Simulação</button>
@@ -242,7 +233,7 @@
                     <div class="eco-card">
                         <div class="e-icon"><i class="ph-bold ph-cards"></i></div>
                         <h3>VR Multi Flexível</h3>
-                        <p>Um único cartão com saldos separados (Alimentação, Refeição, Mobilidade). Autonomia total para a nova geração, operando 100% dentro das novas regras do PAT.</p>
+                        <p>Um único cartão com saldos separados (Alimentação, Refeição, Mobilidade). Autonomia total para a nova geração, operando 100% dentro da lei.</p>
                     </div>
                 </div>
             </div>
@@ -286,22 +277,31 @@
 
         <section class="faq-section">
             <div class="container faq-container">
-                <h2 style="font-size:2.5rem; text-align:center; margin: 0 0 50px 0; letter-spacing: -1px; color: white;">Perguntas Frequentes</h2>
+                
+                <div class="pat-alert">
+                    <i class="ph-fill ph-warning-circle pat-icon"></i>
+                    <div class="pat-text">
+                        <h3>Atenção: Novas Regras do PAT e Multas Trabalhistas</h3>
+                        <p>A nova legislação proibiu a prática do "rebate" (descontos oferecidos por operadoras antigas) e exige total rigor no bloqueio de estabelecimentos não alimentícios. Empresas não conformes estão sujeitas a <b>multas de até R$ 50.000,00 por ocorrência</b>, além da cobrança retroativa de INSS, FGTS e perda da dedução do IRPJ. A infraestrutura VR oferecida pela Glid já possui as travas sistêmicas (CNAE) e regulatórias exatas para blindar o seu CNPJ.</p>
+                    </div>
+                </div>
+
+                <h2 style="font-size:2.5rem; text-align:center; margin: 0 0 40px 0; letter-spacing: -1px; color: white;">Perguntas Frequentes</h2>
                 
                 <details class="faq-item">
                     <summary>A VR realmente tem Custo Zero para a empresa? Como ganham dinheiro?</summary>
                     <div class="faq-content">
-                        Sim! A Glid e a VR não cobram taxa de adesão, emissão de cartões ou mensalidade do RH (no Modelo Auxílio). Se a sua empresa depositar R$ 500 para o funcionário, você pagará exatamente um boleto de R$ 500. A VR é remunerada através das "taxas de intercâmbio" cobradas diretamente dos restaurantes e supermercados (nas maquininhas) quando o cartão é utilizado.
+                        Sim! A Glid e a VR não cobram taxa de adesão, emissão de cartões ou mensalidade do RH. Se a sua empresa depositar R$ 500 para o funcionário, você pagará exatamente um boleto de R$ 500. A VR é remunerada através das "taxas de intercâmbio" cobradas diretamente dos restaurantes e supermercados (nas maquininhas) quando o cartão é utilizado.
                     </div>
                 </details>
 
                 <details class="faq-item">
                     <summary>Qual a diferença na prática entre o Modelo Auxílio e o Modelo PAT?</summary>
                     <div class="faq-content">
-                        <p style="margin-top: 0;">Ambos isentam a sua empresa de pagar INSS e FGTS sobre o valor do benefício. A grande diferença é fiscal e contábil:</p>
+                        <p style="margin-top: 0;">Ambos isentam a sua empresa de pagar aproximadamente 28% de INSS e FGTS sobre o valor do benefício. A grande diferença é fiscal e operacional:</p>
                         <ul style="margin: 15px 0 0 0; padding-left: 20px;">
-                            <li style="margin-bottom: 10px;"><b>Modelo Auxílio:</b> Ideal para empresas do <i>Simples Nacional</i>. Possui zero burocracia, zero taxas operacionais e a VR libera todo o pacote de vantagens (TotalPass, Telemedicina e Seguro) gratuitamente. Não permite desconto em folha nem dedução no IRPJ.</li>
-                            <li><b>Modelo PAT:</b> Ideal para empresas de <i>Lucro Real/Presumido</i>. Permite que a empresa desconte até 20% do valor do benefício na folha do funcionário e abata até 4% no IRPJ da empresa. Para acessar o pacote TotalPass neste modelo, pode haver uma taxa simbólica de R$ 3,99 por vida após um período de isenção.</li>
+                            <li style="margin-bottom: 10px;"><b>Modelo Auxílio:</b> Ideal para empresas do <i>Simples Nacional e Presumido</i>. <b>Burocracia Zero:</b> Não exige inscrição no Gov.br nem contratação de nutricionista. Possibilita o uso de cartões flexíveis (CNAE livre) e a VR liberta o pacote TotalPass 100% grátis.</li>
+                            <li><b>Modelo PAT:</b> Ideal para empresas de <i>Lucro Real</i>. É bloqueado estritamente para alimentação (trava de CNAE) e exige inscrição no Gov.br. A grande vantagem é que permite que a empresa desconte até 20% do benefício no contracheque do funcionário e abata até 4% no IRPJ da empresa.</li>
                         </ul>
                     </div>
                 </details>
@@ -309,7 +309,7 @@
                 <details class="faq-item">
                     <summary>Como funciona o acesso ao TotalPass (Academias)?</summary>
                     <div class="faq-content">
-                        Ao contratar a VR através da Glid, a sua empresa não precisa pagar a adesão corporativa milionária exigida pela TotalPass. O seu funcionário ganha automaticamente o direito de assinar planos com descontos agressivos para acessar mais de 30 mil academias (incluindo Smart Fit e Bio Ritmo) e ainda pode incluir até 3 dependentes, além de ganhar 2 sessões de terapia online grátis com psicólogos.
+                        Ao contratar a VR através da Glid, o seu funcionário ganha o direito de assinar planos para aceder a mais de 30 mil academias (incluindo Smart Fit e Bio Ritmo) e ainda pode incluir até 3 dependentes, além de ganhar sessões de terapia online grátis. Para o Modelo Auxílio, esse benefício é entregue a custo zero. Para o Lucro Real (PAT), para cumprir a rigorosa "Lei Anti-Rebate", o benefício é repassado a preço de custo (R$ 3,99/vida), gerando uma economia enorme face ao preço de balcão (R$ 25/vida).
                     </div>
                 </details>
 
@@ -323,14 +323,7 @@
                 <details class="faq-item">
                     <summary>Posso contratar mesmo tendo apenas 1 funcionário ou se for MEI?</summary>
                     <div class="faq-content">
-                        Absolutamente. Diferente dos grandes bancos que exigem dezenas de vidas (funcionários) para liberar uma tabela viável, a parceria Glid + VR democratiza os benefícios corporativos. Você pode emitir um cartão VR Multi para um único funcionário ou até para o sócio-administrador e desfrutar do mesmo ecossistema de proteção de uma empresa multinacional.
-                    </div>
-                </details>
-
-                <details class="faq-item">
-                    <summary>O que mudou com as novas regras do PAT em 2026?</summary>
-                    <div class="faq-content">
-                        O Decreto nº 12.712 proibiu a prática do "rebate" (descontos financeiros e obscuros na fatura cobrados por antigas operadoras) e exigiu maior rigor e transparência na separação de saldos (o que é dinheiro de refeição, só pode ser gasto em restaurante, por exemplo). Operar com cartões flexíveis sem conformidade hoje gera passivos e pesadas multas trabalhistas. A tecnologia VR Multi oferecida pela Glid já possui travas sistêmicas inteligentes que garantem 100% de adequação jurídica à nova lei, blindando a sua empresa.
+                        Absolutamente. Diferente dos grandes bancos que exigem dezenas de vidas (funcionários) para libertar uma tabela viável, a parceria Glid + VR democratiza os benefícios corporativos. Pode emitir um cartão para um único funcionário ou até para o sócio-administrador e desfrutar do mesmo ecossistema de proteção de uma multinacional.
                     </div>
                 </details>
             </div>
@@ -342,7 +335,7 @@
                     <img src="../assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
                     <div class="aneps-text">
                         <h4>Consultoria de Confiança</h4>
-                        <p>A Glid opera sob certificação <b>ANEPS</b>. Atuamos de forma consultiva para desenhar a estrutura de benefícios mais vantajosa para o seu negócio dentro das regulamentações do Ministério do Trabalho.</p>
+                        <p>A Glid opera sob certificação <b>ANEPS</b>. Atuamos de forma consultiva para desenhar a estrutura de benefícios mais vantajosa para o seu negócio dentro das regulamentações da lei e do Ministério do Trabalho.</p>
                     </div>
                 </div>
             </div>
@@ -401,20 +394,49 @@
                 return;
             }
 
-            // Cálculos da poupança anual
+            // Cálculos base
             const totalMensal = vidas * valor;
             const totalAnual = totalMensal * 12;
             
-            // Taxas médias de encargos se a empresa pagasse em dinheiro (pecúnia)
-            // Simples Nacional: ~15% (FGTS + reflexos Férias/13º)
-            // Lucro Real/Presumido: ~37% (INSS Patronal + Sist S/RAT + FGTS + reflexos)
-            const taxaEncargos = regime === 'simples' ? 0.15 : 0.37;
-            const impostosPoupados = totalAnual * taxaEncargos;
+            // Fuga de encargos ao não pagar em dinheiro (INSS Patronal 20% + FGTS 8% = 28%)
+            const impostosPoupados = totalAnual * 0.28;
+            
+            let dinheiroRecuperado = impostosPoupados;
+            let diagnosticoHTML = '';
 
-            document.getElementById('res-val-total').innerText = fmt(valor);
-            document.getElementById('res-economia').innerText = fmt(impostosPoupados);
+            if (regime === 'simples') {
+                // MODELO AUXÍLIO
+                diagnosticoHTML = `
+                <div class="res-modelo" style="border-color: rgba(163, 230, 53, 0.4);">
+                    <h4><i class="ph-fill ph-star" style="color:var(--accent);"></i> Recomendação: Modelo Auxílio</h4>
+                    <ul>
+                        <li><b>Burocracia Zero:</b> Não exige registo no portal Gov.br nem contratação de nutricionista.</li>
+                        <li><b>Flexibilidade (Sem Trava CNAE):</b> Permite usar saldo em cartões multibenefícios para além de restaurantes.</li>
+                        <li><b>TotalPass 100% Gratuito:</b> Economia de aprox. R$ 3.000/ano (para 10 vidas) comparado ao preço do mercado.</li>
+                        <li>Seguro Alimentação e Telemedicina inclusos a custo <b>R$ 0,00</b>.</li>
+                    </ul>
+                </div>`;
+            } else {
+                // MODELO PAT (LUCRO REAL)
+                const coparticipacao = totalAnual * 0.20; // Pode descontar até 20% do funcionário
+                dinheiroRecuperado += coparticipacao; // Soma a fuga de impostos com o dinheiro retido na folha
 
-            const wppText = `Olá! Fiz uma simulação de Benefícios VR no site.%0A👥 *Colaboradores:* ${vidas}%0A💰 *Valor Estimado:* ${fmt(valor)}/mês%0A🏦 *Regime:* ${regime === 'simples' ? 'Simples Nacional' : 'Lucro Real/Presumido'}%0A💸 *Economia de Impostos Projetada:* ${fmt(impostosPoupados)}/ano.%0A%0AGostaria de ativar a minha empresa a Custo Zero e liberar o pacote TotalPass para a equipe.`;
+                diagnosticoHTML = `
+                <div class="res-modelo" style="border-color: rgba(59, 130, 246, 0.4);">
+                    <h4><i class="ph-fill ph-buildings" style="color:var(--primary);"></i> Recomendação: Modelo PAT</h4>
+                    <ul>
+                        <li>Permite recuperar <b>${fmt(coparticipacao)}/ano</b> através da coparticipação (desconto de até 20% na folha).</li>
+                        <li>Dedução agressiva de até <b>4% no IRPJ</b> da empresa.</li>
+                        <li><b>Conformidade Anti-Rebate:</b> Para cumprir a lei e evitar a multa de R$ 50 mil, o TotalPass não pode ser gratuito, sendo repassado a preço de custo (R$ 3,99/vida).</li>
+                        <li>Exige registo no Gov.br e atua com trava de CNAE (exclusivo alimentação).</li>
+                    </ul>
+                </div>`;
+            }
+
+            document.getElementById('res-economia').innerText = fmt(dinheiroRecuperado);
+            document.getElementById('diagnostico-container').innerHTML = diagnosticoHTML;
+
+            const wppText = `Olá! Fiz uma simulação avançada de Benefícios VR no site.%0A👥 *Colaboradores:* ${vidas}%0A💰 *Valor Estimado:* ${fmt(valor)}/mês%0A🏦 *Regime:* ${regime === 'simples' ? 'Simples Nacional/Presumido' : 'Lucro Real (PAT)'}%0A💸 *Dinheiro Recuperado Projetado:* ${fmt(dinheiroRecuperado)}/ano.%0A%0AQuero falar com a consultoria B2B para estruturar a ativação.`;
             document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${wppText}`;
 
             document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
