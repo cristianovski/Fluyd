@@ -7,91 +7,107 @@
     <meta name="description" content="Acesso direto aos grandes bancos. Transformamos o crédito numa ferramenta matemática para alavancar patrimônio.">
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* --- DESIGN SYSTEM DARK PREMIUM --- */
+        /* --- DESIGN SYSTEM DARK PREMIUM BANCÁRIO --- */
         :root {
-            --bg-dark: #020617;
-            --bg-card: #0f172a;
-            --bg-lighter: #1e293b;
-            --primary: #3b82f6; 
-            --accent: #eab308; /* DOURADO PREMIUM */
-            --accent-hover: #ca8a04;
-            --text-white: #f8fafc;
+            --bg-base: #02040a;
+            --bg-dark: #060b19;
+            --bg-card: rgba(15, 23, 42, 0.6);
+            --bg-lighter: rgba(255, 255, 255, 0.05);
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --primary-hover: #2563eb;
+            --accent: #eab308; 
+            --accent-glow: rgba(234, 179, 8, 0.3);
+            --text-white: #ffffff;
             --text-gray: #94a3b8;
         }
 
         * { box-sizing: border-box; }
-        body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; }
+        body { 
+            background-color: var(--bg-base); 
+            background-image: radial-gradient(circle at 50% -10%, rgba(59, 130, 246, 0.15), transparent 60%);
+            color: var(--text-white); 
+            font-family: 'Outfit', sans-serif; 
+            margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; 
+            -webkit-font-smoothing: antialiased;
+        }
         a { text-decoration: none; transition: 0.3s ease; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-        .highlight { color: var(--accent); } 
-
-        header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.9); z-index: 1000; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        /* HEADER GLASS */
+        header { padding: 15px 0; position: fixed; width: 100%; background: rgba(2, 4, 10, 0.7); z-index: 1000; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.03); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; color: white; }
-        .logo span { color: var(--accent); } 
-        .btn-header { background: rgba(255,255,255,0.05); padding: 12px 24px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 700; border: 1px solid rgba(255,255,255,0.1); }
-        .btn-header:hover { background: white; color: var(--bg-dark); }
+        .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; color: white; }
+        .logo span { color: var(--primary); }
+        .btn-header { background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); padding: 10px 28px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; }
+        .btn-header:hover { background: white; color: var(--bg-base); box-shadow: 0 0 20px rgba(255,255,255,0.2); transform: translateY(-2px); }
 
         /* HERO CENTRALIZADO */
-        .hero { text-align: center; padding: 160px 0 60px; max-width: 1000px; margin: 0 auto; }
-        .hero-label { background: rgba(234, 179, 8, 0.1); color: var(--accent); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 30px; border: 1px solid rgba(234, 179, 8, 0.2); }
-        .hero h1 { font-size: 4.5rem; line-height: 1.05; margin: 0 0 25px 0; font-weight: 900; letter-spacing: -2px; }
-        .hero p { color: var(--text-gray); font-size: 1.25rem; margin-bottom: 40px; font-weight: 300; line-height: 1.7; padding: 0 20px; }
+        .hero { text-align: center; padding: 180px 0 60px; max-width: 1000px; margin: 0 auto; position: relative; }
+        .hero-label { background: rgba(59, 130, 246, 0.1); color: #60a5fa; padding: 8px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 30px; border: 1px solid rgba(59, 130, 246, 0.2); box-shadow: 0 0 20px var(--primary-glow); }
+        .hero h1 { font-size: 4.8rem; line-height: 1.05; margin: 0 0 25px 0; font-weight: 900; letter-spacing: -2px; }
+        .highlight { color: transparent; background: linear-gradient(to right, var(--accent), #fef08a); -webkit-background-clip: text; }
+        .hero p { color: var(--text-gray); font-size: 1.25rem; margin-bottom: 40px; font-weight: 300; line-height: 1.8; padding: 0 20px; }
         
-        .btn-action { background: var(--accent); color: var(--bg-dark); border: none; padding: 18px 40px; border-radius: 12px; font-weight: 800; font-size: 1.1rem; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-action:hover { background: var(--accent-hover); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(234, 179, 8, 0.3); }
-        .btn-outline { background: transparent; border: 2px solid var(--bg-lighter); color: var(--text-white); box-shadow: none; }
-        .btn-outline:hover { background: var(--bg-lighter); color: white; transform: none; box-shadow: none; }
+        .btn-action { background: linear-gradient(135deg, var(--primary), #1e3a8a); color: white; border: none; padding: 18px 40px; border-radius: 16px; font-weight: 800; font-size: 1.1rem; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; gap: 10px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
+        .btn-action:hover { filter: brightness(1.1); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5); }
+        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-gray); box-shadow: none; }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); color: white; transform: none; box-shadow: none; border-color: white; }
 
-        /* PARCEIROS COM LOGOS OFICIAIS ANIMADOS */
-        .partners-section { padding: 25px 0 60px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); border-bottom: 1px solid var(--bg-lighter); overflow: hidden; white-space: nowrap; position: relative; }
-        .partners-section p { text-align:center; color:var(--text-gray); font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:30px; font-weight:700; }
-        .marquee-track { display: inline-block; animation: scroll 40s linear infinite; }
-        .partners-section:hover .marquee-track { animation-play-state: paused; }
-        .partner-logo { display: inline-block; margin: 0 40px; vertical-align: middle; }
-        .partner-logo img { height: 35px; width: auto; display: block; filter: grayscale(100%) brightness(0) invert(1); opacity: 0.4; transition: all 0.3s ease; }
-        .partner-logo:hover img { opacity: 1; transform: scale(1.1); filter: grayscale(0%) brightness(1) invert(0); }
+        /* MARQUEE COM MÁSCARA */
+        .partners-section { padding: 40px 0; background: var(--bg-base); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02); overflow: hidden; white-space: nowrap; position: relative; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
+        .partners-section p { text-align:center; color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:3px; margin-bottom:30px; font-weight:700; opacity: 0.7;}
+        .marquee-track { display: inline-block; animation: scroll 35s linear infinite; }
+        .partner-logo { display: inline-block; margin: 0 50px; vertical-align: middle; }
+        .partner-logo img { height: 35px; width: auto; display: block; filter: grayscale(100%) brightness(0) invert(1) opacity(0.75); transition: 0.4s; }
+        .partner-logo:hover img { filter: grayscale(0%) brightness(1) invert(0) opacity(1); transform: scale(1.05); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* HUB DE SOLUÇÕES (PADRÃO UNIFORME E ELEGANTE) */
-        .solutions-section { padding: 80px 0 120px; background: #01040a; }
-        .grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        /* HUB DE SOLUÇÕES (PREMIUM) */
+        .solutions-section { padding: 100px 0 120px; background: var(--bg-dark); position: relative; }
+        .solutions-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); }
+        .grid-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
         
-        .hub-card { background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; display: block; color: white; }
-        .hub-card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 15px 35px rgba(234, 179, 8, 0.1); }
+        .hub-card { background: linear-gradient(145deg, rgba(15,23,42,0.4), rgba(0,0,0,0.6)); padding: 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; display: block; color: white; backdrop-filter: blur(10px); }
+        .hub-card:hover { border-color: rgba(59, 130, 246, 0.3); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); background: linear-gradient(145deg, rgba(15,23,42,0.8), rgba(0,0,0,0.8)); }
         
-        /* Ícones Minimalistas (Estilo Apple) */
-        .hub-icon { width: 64px; height: 64px; background: rgba(59, 130, 246, 0.05); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.8rem; color: var(--primary); margin-bottom: 25px; transition: 0.4s; border: 1px solid rgba(59, 130, 246, 0.1); }
-        .hub-card:hover .hub-icon { background: rgba(234, 179, 8, 0.1); color: var(--accent); border-color: rgba(234, 179, 8, 0.2); transform: scale(1.05); }
+        .hub-icon { width: 65px; height: 65px; background: rgba(59, 130, 246, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--primary); margin-bottom: 25px; transition: 0.4s; box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.1); }
+        .hub-card:hover .hub-icon { background: rgba(234, 179, 8, 0.1); color: var(--accent); transform: scale(1.05); box-shadow: inset 0 0 20px rgba(234, 179, 8, 0.2); }
         
-        .hub-card h3 { font-size: 1.5rem; margin: 0 0 15px 0; font-weight: 700; transition: 0.3s; }
-        .hub-card p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0; }
+        .hub-card h3 { font-size: 1.4rem; margin: 0 0 15px 0; font-weight: 800; letter-spacing: -0.5px; transition: 0.3s; }
+        .hub-card p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0; font-weight: 300; }
 
-        /* FOOTER COM ANEPS INTEGRADO E COLORIDO */
-        .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        /* ANEPS (Certificate Style) */
+        .aneps-section { padding: 80px 0; background: var(--bg-dark); }
+        .aneps-box { display: flex; align-items: center; gap: 40px; background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.5)); padding: 40px 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); }
+        .aneps-box img { height: 80px; object-fit: contain; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5)); }
+        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; }
+        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 1rem; font-weight: 300; }
+        
+        /* FOOTER */
+        .fat-footer { padding: 80px 0 40px; background: #010205; border-top: 1px solid rgba(255,255,255,0.03); }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-        
-        /* Caixa do Selo ANEPS */
-        .footer-aneps { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
-        .footer-aneps img { height: 90px; width: auto; margin-bottom: 20px; } /* Filtros removidos */
-        .footer-aneps p { color: var(--text-gray); font-size: 0.9rem; line-height: 1.5; margin: 0; max-width: 250px; }
-        
-        .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-brand p { color: var(--text-gray); font-size: 0.95rem; margin-top: 20px; max-width: 250px; font-weight: 300; }
+        .footer-col h4 { color: white; font-size: 0.9rem; font-weight: 800; margin: 0 0 25px 0; text-transform: uppercase; letter-spacing: 2px; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; }
-        .footer-col ul li a:hover { color: var(--accent); }
-        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; font-size: 0.85rem; }
+        .footer-col ul li { margin-bottom: 15px; }
+        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; font-weight: 400; }
+        .footer-col ul li a:hover { color: white; padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.03); color: #475569; font-size: 0.85rem; font-weight: 300; }
+
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #25D366, #128C7E); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 999; transition: 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(-5deg); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
 
         @media (max-width: 992px) { 
             .hero h1 { font-size: 3.2rem; }
             .grid-cards { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .footer-aneps p { margin: 0 auto; }
+            .aneps-box { flex-direction: column; text-align: center; padding: 30px; }
+            .hero { padding: 140px 0 60px; }
         }
     </style>
 </head>
@@ -108,10 +124,7 @@
         <section class="hero container">
             <div class="hero-label">Inteligência Financeira B2B & B2C</div>
             
-            <h1>
-                Crédito estratégico.<br>
-                <span class="highlight">Patrimônio blindado.</span>
-            </h1>
+            <h1>Crédito estratégico.<br><span class="highlight">Patrimônio blindado.</span></h1>
             
             <p>
                 Acesso direto aos grandes bancos e administradoras. Nossa tecnologia de IA cruza dados para garantir a menor taxa do mercado, transformando o crédito numa ferramenta matemática para alavancar o seu patrimônio e blindar a sua família.
@@ -147,42 +160,42 @@
 
         <section id="solucoes" class="solutions-section">
             <div class="container">
-                <h2 style="font-size:2.8rem; text-align:center; margin: 0; letter-spacing: -1px; color: white;">O Ecossistema Glid</h2>
-                <p style="text-align: center; color: var(--text-gray); margin-top: 10px; font-size: 1.1rem; margin-bottom: 20px;">Navegue pelos nossos pilares de atuação.</p>
+                <h2 style="font-size:3rem; font-weight:900; letter-spacing: -1.5px; text-align:center; margin: 0; color: white;">O Ecossistema Glid</h2>
+                <p style="text-align: center; color: var(--text-gray); margin-top: 10px; font-size: 1.1rem; margin-bottom: 20px; font-weight:300;">Navegue pelos nossos pilares de atuação.</p>
 
                 <div class="grid-cards">
                     <a href="consorcios/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-light ph-house-line"></i></div>
+                        <div class="hub-icon"><i class="ph-bold ph-house-line"></i></div>
                         <h3>Consórcios</h3>
                         <p>Planejamento inteligente para aquisição de imóveis, veículos pesados e energia solar, com estratégias de lances embutidos e taxas reduzidas.</p>
                     </a>
 
                     <a href="emprestimos/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-light ph-wallet"></i></div>
+                        <div class="hub-icon"><i class="ph-bold ph-wallet"></i></div>
                         <h3>Empréstimos</h3>
                         <p>Libere liquidez imediata com as melhores taxas do mercado. Saque-Aniversário, Consignado e Empréstimo CLT aprovados na hora e sem burocracia.</p>
                     </a>
 
-                    <a href="https://wa.me/557731420005?text=Olá! Quero saber mais sobre Financiamentos." class="hub-card">
-                        <div class="hub-icon"><i class="ph-light ph-car-profile"></i></div>
+                    <a href="#" class="hub-card">
+                        <div class="hub-icon"><i class="ph-bold ph-car-profile"></i></div>
                         <h3>Financiamentos</h3>
                         <p>Aquisição rápida de veículos e imóveis com acesso às melhores linhas de crédito dos grandes bancos. Aprovação ágil e taxas competitivas.</p>
                     </a>
                     
                     <a href="empresas/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-light ph-buildings"></i></div>
+                        <div class="hub-icon"><i class="ph-bold ph-buildings"></i></div>
                         <h3>Crédito PJ</h3>
                         <p>Capital de giro, antecipação de recebíveis e estrutura de crédito inteligente para escalar o caixa do seu CNPJ sem amarras.</p>
                     </a>
 
                     <a href="vr/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-light ph-cards"></i></div>
+                        <div class="hub-icon"><i class="ph-bold ph-cards"></i></div>
                         <h3>VA e VR</h3>
                         <p>Isenção de impostos trabalhistas e pacote TotalPass a custo zero. A parceria Glid + VR que transforma a retenção do RH da sua empresa.</p>
                     </a>
 
                     <a href="seguros/" class="hub-card">
-                        <div class="hub-icon"><i class="ph-light ph-shield-check"></i></div>
+                        <div class="hub-icon"><i class="ph-bold ph-shield-check"></i></div>
                         <h3>Seguros</h3>
                         <p>Blindagem total contra imprevistos. Seguros de vida corporativos e individuais, seguro auto e proteção de responsabilidade civil.</p>
                     </a>
@@ -191,43 +204,54 @@
         </section>
     </main>
 
-        <footer class="fat-footer">
+    <section class="aneps-section">
+        <div class="container">
+            <div class="aneps-box">
+                <img src="assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
+                <div class="aneps-text">
+                    <h4>Certificação e Segurança Regulada</h4>
+                    <p>A Glid opera sob rigorosa certificação <b>ANEPS</b>, garantindo que todas as nossas operações são auditadas e seguem as diretrizes do <b>Banco Central do Brasil</b>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="fat-footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-aneps">
-                    <img src="/assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
-                    <p>A Glid opera sob rigorosa certificação <b>ANEPS</b>. Atuamos de forma consultiva dentro das regulamentações federais.</p>
+                <div class="footer-brand">
+                    <a href="/" class="logo">Glid<span>.</span></a>
+                    <p>A sua consultoria estratégica definitiva de crédito e patrimônio.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Crédito</h4>
                     <ul>
-                        <li><a href="/emprestimos/">Empréstimos</a></li>
-                        <li><a href="/emprestimos/">Consignado</a></li>
-                        <li><a href="https://wa.me/557731420005?text=Olá! Gostaria de saber mais sobre Financiamento de Veículos e Imóveis.">Financiamentos</a></li>
-                        <li><a href="/consorcios/">Consórcios</a></li>
+                        <li><a href="emprestimos/">Saque FGTS</a></li>
+                        <li><a href="emprestimos/">Consignado</a></li>
+                        <li><a href="emprestimos/">Garantia</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Saúde & Proteção</h4>
+                    <h4>Proteção</h4>
                     <ul>
-                        <li><a href="/seguros/">Seguros</a></li>
-                        <li><a href="/seguros/">Planos de Saúde</a></li>
-                        <li><a href="/seguros/">Planos Odontológicos</a></li>
-                        <li><a href="/seguros/">Medpass</a></li>
+                        <li><a href="seguros/">Planos de Saúde</a></li>
+                        <li><a href="seguros/">Seguro Auto</a></li>
+                        <li><a href="consorcios/">Energia Solar</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Empresas</h4>
+                    <h4>Para Empresas</h4>
                     <ul>
-                        <li><a href="/vr/">VA e VR</a></li>
-                        <li><a href="/empresas/">Capital de Giro</a></li>
-                        <li><a href="/empresas/">Antecipação de Recebíveis</a></li>
-                        <li><a href="/consorcios/">Energia Solar</a></li>
+                        <li><a href="empresas/">Capital de Giro</a></li>
+                        <li><a href="vr/">Benefícios (VR/VA)</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">&copy; 2026 Glid Tecnologia Financeira Ltda. Correspondente Bancário.</div>
         </div>
     </footer>
+
+    <a href="https://wa.me/557731420005" class="whatsapp-float"><i class="ph-bold ph-whatsapp-logo"></i></a>
+
 </body>
 </html>

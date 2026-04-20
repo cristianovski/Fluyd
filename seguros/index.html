@@ -6,128 +6,131 @@
     <title>Glid | Seguros e Planos de Saúde</title>
     <meta name="description" content="Proteja sua empresa, sua família e seu patrimônio com as melhores operadoras do Brasil.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* --- DESIGN SYSTEM DARK PREMIUM --- */
+        /* --- DESIGN SYSTEM DARK PREMIUM BANCÁRIO --- */
         :root {
-            --bg-dark: #020617;
-            --bg-card: #0f172a;
-            --bg-lighter: #1e293b;
-            --primary: #3b82f6; 
+            --bg-base: #02040a;
+            --bg-dark: #060b19;
+            --bg-card: rgba(15, 23, 42, 0.6);
+            --bg-lighter: rgba(255, 255, 255, 0.05);
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --primary-hover: #2563eb;
             --accent: #eab308; 
-            --text-white: #f8fafc;
+            --accent-glow: rgba(234, 179, 8, 0.3);
+            --text-white: #ffffff;
             --text-gray: #94a3b8;
-            --success: #10b981; 
+            --success: #10b981;
             --danger: #ef4444;
         }
 
         * { box-sizing: border-box; }
-        body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; }
-        a { text-decoration: none; transition: 0.3s; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .highlight { color: var(--primary); }
-        .text-green { color: var(--success); }
+        body { background-color: var(--bg-base); background-image: radial-gradient(circle at 50% -10%, rgba(59, 130, 246, 0.15), transparent 60%); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none; transition: 0.3s ease; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+        .highlight { color: transparent; background: linear-gradient(to right, var(--primary), #93c5fd); -webkit-background-clip: text; }
 
-        /* HEADER */
-        header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--bg-lighter); }
+        /* HEADER GLASS */
+        header { padding: 15px 0; position: fixed; width: 100%; background: rgba(2, 4, 10, 0.7); z-index: 1000; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.03); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: -1px; color: white; }
+        .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; color: white; }
         .logo span { color: var(--primary); }
-        .btn-header { background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); }
-        .btn-header:hover { background: white; color: var(--bg-dark); }
+        .btn-header { background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); padding: 10px 28px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; }
+        .btn-header:hover { background: white; color: var(--bg-base); box-shadow: 0 0 20px rgba(255,255,255,0.2); transform: translateY(-2px); }
 
-        /* HERO & GRID DO SIMULADOR */
-        .hero-section { padding: 160px 0 60px; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        /* HERO SECTION */
+        .hero-section { padding: 180px 0 80px; position: relative; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
         
-        .hero-label { background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(59, 130, 246, 0.2); }
-        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin: 0 0 20px 0; font-weight: 800; letter-spacing: -1px; }
-        .hero-text p { color: var(--text-gray); font-size: 1.15rem; margin-bottom: 30px; }
-        .trust-badges { display: flex; gap: 20px; margin-top: 40px; opacity: 0.8; }
-        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-gray); font-weight: 600; }
+        .hero-label { background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 8px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 25px; border: 1px solid rgba(59, 130, 246, 0.2); box-shadow: 0 0 20px var(--primary-glow); }
+        .hero-text h1 { font-size: 4.2rem; line-height: 1.05; margin: 0 0 20px 0; font-weight: 900; letter-spacing: -2px; }
+        .hero-text p { color: var(--text-gray); font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; line-height: 1.8; max-width: 90%; }
+        
+        .trust-badges { display: flex; gap: 15px; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #cbd5e1; font-weight: 500; background: rgba(255,255,255,0.02); padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px); }
 
-        /* SIMULADOR UI (COTAÇÃO) */
-        .simulator-wrapper { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 24px; padding: 40px; box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
+        /* SIMULADOR UI (Premium) */
+        .simulator-wrapper { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px; box-shadow: 0 30px 60px -10px rgba(0,0,0,0.8), 0 0 40px rgba(59, 130, 246, 0.1); position: relative; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
         .simulator-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--success)); }
         
-        .step-screen { display: none; animation: fadeIn 0.4s ease; }
+        .step-screen { display: none; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         .step-screen.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .step-screen h3 { font-size: 1.8rem; margin: 0 0 5px 0; font-weight: 800; letter-spacing: -0.5px; }
         
-        .step-screen h3 { font-size: 1.5rem; margin: 0 0 5px 0; }
+        .selection-card { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 16px; margin-bottom: 15px; cursor: pointer; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
+        .selection-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        .selection-card.selected { border-color: var(--primary); background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(0,0,0,0.3)); box-shadow: 0 10px 30px var(--primary-glow); }
+        .icon-box { font-size: 2rem; color: var(--primary); }
+
+        input, select { width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 20px; border-radius: 16px; margin-bottom: 25px; font-size: 1.1rem; font-family: inherit; font-weight: 500; transition: all 0.3s; outline: none; appearance: none; }
+        input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); background: rgba(0,0,0,0.6); }
+        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 800; margin-bottom: 10px; display: block; letter-spacing: 1px; }
         
-        .selection-card { background: var(--bg-dark); padding: 15px 20px; border-radius: 12px; margin-bottom: 15px; cursor: pointer; display: flex; align-items: center; gap: 20px; border: 2px solid transparent; transition: 0.2s; }
-        .selection-card:hover, .selection-card.selected { border-color: var(--primary); background: rgba(59, 130, 246, 0.05); }
-        .icon-box { font-size: 1.8rem; color: var(--primary); }
+        .btn-action { width: 100%; background: linear-gradient(135deg, var(--primary), #1e3a8a); color: white; border: none; padding: 22px; border-radius: 16px; font-weight: 800; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
+        .btn-action:hover { filter: brightness(1.1); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5); }
+        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-gray); box-shadow: none; padding: 18px; margin-top: 15px;}
+        .btn-outline:hover { background: rgba(255,255,255,0.05); color: white; transform: none; box-shadow: none; border-color: white; }
 
-        input, select { width: 100%; background: var(--bg-dark); border: 1px solid var(--bg-lighter); color: white; padding: 18px; border-radius: 12px; margin-bottom: 20px; box-sizing: border-box; font-size: 1rem; font-family: inherit; }
-        input:focus, select:focus { outline: none; border-color: var(--primary); }
-        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 700; margin-bottom: 8px; display: block; letter-spacing: 0.5px; }
-        
-        .btn-action { width: 100%; background: var(--primary); color: white; border: none; padding: 18px; border-radius: 12px; font-weight: 700; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; transition: 0.3s; }
-        .btn-action:hover { background: #2563eb; transform: translateY(-2px); }
-        .btn-outline { background: transparent; border: 1px solid var(--bg-lighter); color: var(--text-gray); }
-        .btn-outline:hover { background: var(--bg-lighter); color: white; }
+        .result-display { background: linear-gradient(145deg, rgba(0,0,0,0.6), rgba(15,23,42,0.8)); padding: 40px 30px; border-radius: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.08); text-align: center; }
 
-        .result-display { text-align: center; background: var(--bg-dark); padding: 30px; border-radius: 16px; margin-bottom: 20px; border: 1px solid var(--bg-lighter); }
-
-        /* CARROSSEL */
-        .partners-section { padding: 50px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); border-bottom: 1px solid var(--bg-lighter); overflow: hidden; white-space: nowrap; position: relative; }
-        .marquee-track { display: inline-block; animation: scroll 40s linear infinite; }
-        .partners-section:hover .marquee-track { animation-play-state: paused; }
-        .partner-logo { display: inline-block; margin: 0 40px; vertical-align: middle; }
-        .partner-logo img { height: 35px; width: auto; display: block; filter: grayscale(100%) brightness(0) invert(1); opacity: 0.4; transition: all 0.3s ease; }
-        .partner-logo:hover img { opacity: 1; transform: scale(1.1); }
+        /* MARQUEE COM MÁSCARA (Logos Claros) */
+        .partners-section { padding: 50px 0; background: var(--bg-base); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02); overflow: hidden; white-space: nowrap; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
+        .marquee-track { display: inline-block; animation: scroll 35s linear infinite; }
+        .partner-logo { display: inline-block; margin: 0 50px; vertical-align: middle; }
+        .partner-logo img { height: 35px; filter: grayscale(100%) brightness(0) invert(1) opacity(0.75); transition: 0.4s; }
+        .partner-logo:hover img { filter: grayscale(0%) brightness(1) invert(0) opacity(1); transform: scale(1.05); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* FEATURES SECTION */
-        .features-section { padding: 100px 0 60px 0; }
+        .features-section { padding: 120px 0; background: var(--bg-dark); position: relative; }
+        .features-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); }
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-        .feature-card { background: var(--bg-card); padding: 30px; border-radius: 20px; border: 1px solid var(--bg-lighter); transition: 0.3s; }
-        .feature-card:hover { border-color: rgba(16, 185, 129, 0.3); transform: translateY(-5px); }
-        .f-icon { width: 50px; height: 50px; background: rgba(16, 185, 129, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--success); margin-bottom: 20px; }
+        .feature-card { background: linear-gradient(145deg, rgba(15,23,42,0.4), rgba(0,0,0,0.6)); padding: 40px 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px); }
+        .feature-card:hover { border-color: rgba(16, 185, 129, 0.3); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); background: linear-gradient(145deg, rgba(15,23,42,0.8), rgba(0,0,0,0.8)); }
+        .f-icon { width: 65px; height: 65px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: var(--success); margin-bottom: 25px; box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.1); }
+        .feature-card h3 { margin: 0 0 15px 0; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+        .feature-card p { color: var(--text-gray); margin: 0; font-size: 0.95rem; line-height: 1.6; }
 
         /* COMPARISON */
-        .comparison-section { padding: 80px 0 100px 0; background: #01040a; text-align: center; border-top: 1px solid var(--bg-lighter); }
-        .comp-box { background: var(--bg-dark); border-radius: 20px; padding: 30px; display: inline-block; border: 1px solid var(--bg-lighter); max-width: 800px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .comparison-section { padding: 100px 0; background: var(--bg-base); text-align: center; border-top: 1px solid rgba(255,255,255,0.02); }
+        .comp-box { background: linear-gradient(145deg, rgba(15,23,42,0.4), rgba(0,0,0,0.6)); border-radius: 24px; padding: 40px; display: inline-block; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); }
 
-        /* CAIXA DE CONFIANÇA ANEPS (NOVO DESIGN) */
-        .aneps-section { padding: 60px 0; background: var(--bg-dark); border-top: 1px solid var(--bg-lighter); }
-        .aneps-box { display: flex; align-items: center; gap: 30px; background: rgba(255,255,255,0.02); padding: 30px 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .aneps-box img { height: 70px; object-fit: contain; flex-shrink: 0; }
-        .aneps-text { text-align: left; }
-        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 0.95rem; line-height: 1.5; }
+        /* ANEPS (PADRÃO GLOBAL) */
+        .aneps-section { padding: 80px 0; background: var(--bg-dark); }
+        .aneps-box { display: flex; align-items: center; gap: 40px; background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.5)); padding: 40px 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); }
+        .aneps-box img { height: 80px; object-fit: contain; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5)); }
+        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
+        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 1rem; font-weight: 300; }
         
-        .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        /* FOOTER (PADRÃO GLOBAL) */
+        .fat-footer { padding: 80px 0 40px; background: #010205; border-top: 1px solid rgba(255,255,255,0.03); }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-        .footer-brand p { color: var(--text-gray); font-size: 0.9rem; margin-top: 20px; max-width: 250px; }
-        .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-brand p { color: var(--text-gray); font-size: 0.95rem; margin-top: 20px; max-width: 250px; font-weight: 300; }
+        .footer-col h4 { color: white; font-size: 0.9rem; font-weight: 800; margin: 0 0 25px 0; text-transform: uppercase; letter-spacing: 2px; }
         .footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; }
-        .footer-col ul li a:hover { color: var(--primary); }
-        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; font-size: 0.85rem; }
+        .footer-col ul li { margin-bottom: 15px; }
+        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; font-weight: 400; }
+        .footer-col ul li a:hover { color: white; padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.03); color: #475569; font-size: 0.85rem; font-weight: 300; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); z-index: 999; }
-        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #25D366, #128C7E); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 999; transition: 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(-5deg); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
 
         @media (max-width: 992px) { 
             .grid-2 { grid-template-columns: 1fr; gap: 40px; } 
             .grid-4 { grid-template-columns: 1fr 1fr; }
-            .hero-section { padding: 120px 0 60px; text-align: center; } 
-            .hero-text h1 { font-size: 3rem; } 
+            .hero-section { padding: 140px 0 60px; text-align: center; } 
+            .hero-text h1 { font-size: 3.2rem; } 
             .trust-badges { justify-content: center; }
-            .aneps-box { flex-direction: column; text-align: center; padding: 30px 20px; gap: 20px; }
-            .aneps-text { text-align: center; }
+            .aneps-box { flex-direction: column; text-align: center; padding: 30px; }
             .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .footer-brand p { margin: 20px auto; }
+            .simulator-wrapper { padding: 30px 20px; }
         }
-        @media (max-width: 600px) {
-            .grid-4 { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 600px) { .grid-4 { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -142,8 +145,8 @@
         <div class="container grid-2">
             <div class="hero-text">
                 <div class="hero-label">Blindagem Patrimonial</div>
-                <h1>A matemática a favor do seu <span class="highlight">patrimônio.</span></h1>
-                <p>Tenha acesso direto às maiores seguradoras e operadoras do país. Nossa tecnologia de IA mapeia as melhores coberturas para o seu perfil, transformando a proteção em uma ferramenta estratégica para blindar sua família e seu patrimônio.
+                <h1>A matemática a favor do seu <span class="highlight">patrimônio</span></h1>
+                <p>Tenha acesso direto às maiores seguradoras e operadoras do país. Nossa tecnologia de IA mapeia as melhores coberturas para o seu perfil, transformando a proteção em uma ferramenta estratégica para blindar sua família e seu patrimônio.</p>
                 <div class="trust-badges">
                     <div class="trust-item"><i class="ph-fill ph-check-circle" style="color:var(--success); font-size:1.4rem;"></i> Cobertura Nacional</div>
                     <div class="trust-item"><i class="ph-fill ph-buildings" style="color:var(--primary); font-size:1.4rem;"></i> Condições Especiais para MEI/CNPJ</div>
@@ -151,15 +154,14 @@
             </div>
 
             <div class="simulator-wrapper">
-                
                 <div class="step-screen active" id="step-1">
                     <h3>O que vamos proteger hoje?</h3>
-                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px;">Selecione a categoria desejada.</p>
+                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px; font-weight:300;">Selecione a categoria desejada.</p>
                     
                     <div class="selection-card" onclick="selectCotacao('Plano de Saúde (CNPJ/MEI)'); nextStep(2)">
                         <div class="icon-box"><i class="ph-bold ph-buildings"></i></div>
                         <div>
-                            <div style="font-weight:700; color:white;">Plano de Saúde (Empresarial)</div>
+                            <div style="font-weight:700; color:white; font-size:1.1rem;">Plano de Saúde (Empresarial)</div>
                             <div style="font-size:0.85rem; color:var(--success); font-weight:600;">Exclusivo CNPJ/MEI. Até 40% mais barato.</div>
                         </div>
                     </div>
@@ -167,25 +169,31 @@
                     <div class="selection-card" onclick="selectCotacao('Plano Odontológico (CNPJ/MEI)'); nextStep(2)">
                         <div class="icon-box"><i class="ph-bold ph-tooth"></i></div>
                         <div>
-                            <div style="font-weight:700; color:white;">Plano Odontológico (Empresarial)</div>
+                            <div style="font-weight:700; color:white; font-size:1.1rem;">Plano Odontológico (Empresarial)</div>
                             <div style="font-size:0.85rem; color:var(--text-gray);">Cuidado completo para sócios e funcionários.</div>
                         </div>
                     </div>
 
                     <div class="selection-card" onclick="selectCotacao('Seguro Auto / Frota'); nextStep(2)">
                         <div class="icon-box"><i class="ph-bold ph-car-profile"></i></div>
-                        <div><div style="font-weight:700; color:white;">Seguro Automóvel</div><div style="font-size:0.85rem; color:var(--text-gray);">Proteção contra colisão, roubo e terceiros.</div></div>
+                        <div>
+                            <div style="font-weight:700; color:white; font-size:1.1rem;">Seguro Automóvel</div>
+                            <div style="font-size:0.85rem; color:var(--text-gray);">Proteção contra colisão, roubo e terceiros.</div>
+                        </div>
                     </div>
 
                     <div class="selection-card" onclick="selectCotacao('Seguro de Vida'); nextStep(2)">
                         <div class="icon-box"><i class="ph-bold ph-shield-check"></i></div>
-                        <div><div style="font-weight:700; color:white;">Seguro de Vida</div><div style="font-size:0.85rem; color:var(--text-gray);">Segurança vitalícia para quem você ama.</div></div>
+                        <div>
+                            <div style="font-weight:700; color:white; font-size:1.1rem;">Seguro de Vida</div>
+                            <div style="font-size:0.85rem; color:var(--text-gray);">Segurança vitalícia para quem você ama.</div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="step-screen" id="step-2">
                     <h3>Detalhes da Cotação</h3>
-                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px;">Para buscar a melhor tabela, informe:</p>
+                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px; font-weight:300;">Para buscar a melhor tabela, informe:</p>
                     
                     <label>Seu Estado (UF)</label>
                     <select id="uf_cotacao">
@@ -210,16 +218,16 @@
 
                 <div class="step-screen" id="step-result">
                     <div class="result-display">
-                        <i class="ph-fill ph-check-circle" style="font-size:4rem; color:var(--success); margin-bottom:15px;"></i>
-                        <h3 style="margin-bottom:10px;">Opções Localizadas!</h3>
-                        <p style="color:var(--text-gray); font-size:0.95rem; margin-bottom:20px;">Como os valores variam pela operadora, faixa etária e perfil do bem, organizamos as melhores tabelas de mercado sob medida para você.</p>
+                        <i class="ph-fill ph-check-circle" style="font-size:4.5rem; color:var(--success); margin-bottom:15px; filter: drop-shadow(0 0 20px rgba(16,185,129,0.4));"></i>
+                        <h3 style="margin-bottom:10px; font-size: 2rem;">Opções Localizadas!</h3>
+                        <p style="color:var(--text-gray); font-size:1rem; margin-bottom:20px; font-weight:300;">Como os valores variam pela operadora, faixa etária e perfil do bem, organizamos as melhores tabelas de mercado sob medida para você.</p>
                         
-                        <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 15px; border-radius: 12px; font-size: 0.85rem; color: white; text-align: left;">
-                            <i class="ph-bold ph-info" style="color:var(--primary);"></i> <b>Atenção CNPJ:</b> Lembre de enviar o número do seu MEI/CNPJ para o nosso especialista aplicar a redução de tabela de até 40%.
+                        <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 20px; border-radius: 16px; font-size: 0.9rem; color: white; text-align: left; line-height: 1.5;">
+                            <i class="ph-bold ph-info" style="color:var(--primary); font-size:1.2rem; vertical-align:middle; margin-right:5px;"></i> <b>Atenção CNPJ:</b> Lembre de enviar o número do seu MEI/CNPJ para o nosso especialista aplicar a redução de tabela de até 40%.
                         </div>
                     </div>
                     
-                    <a id="btn-whatsapp" href="#" class="btn-action" style="background:#25D366; color:white;"><i class="ph-bold ph-whatsapp-logo" style="font-size: 1.3rem;"></i> Receber Tabelas no WhatsApp</a>
+                    <a id="btn-whatsapp" href="#" class="btn-action" style="background: linear-gradient(135deg, #25D366, #128C7E);"><i class="ph-bold ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Receber Tabelas no WhatsApp</a>
                     <button class="btn-action btn-outline" onclick="location.reload()">Nova Cotação</button>
                 </div>
             </div>
@@ -227,8 +235,8 @@
     </section>
 
     <section class="partners-section">
-        <div class="container">
-            <p style="text-align:center; color:var(--text-gray); font-size:0.85rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:40px; font-weight:700;">Credenciado nas Maiores Seguradoras e Operadoras do Brasil</p>
+        <div class="container" style="max-width: 100%;">
+            <p style="text-align:center; color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:3px; margin-bottom:40px; font-weight:700; opacity: 0.7;">Credenciado nas Maiores Seguradoras e Operadoras do Brasil</p>
             <div style="width:100%; overflow:hidden;">
                 <div class="marquee-track">
                     <div class="partner-logo"><img src="../assets/img/logos/bradesco.png" alt="Bradesco Seguros"></div>
@@ -237,7 +245,6 @@
                     <div class="partner-logo"><img src="../assets/img/logos/itau.png" alt="Itaú"></div>
                     <div class="partner-logo"><img src="../assets/img/logos/mapfre.png" alt="Mapfre"></div>
                     <div class="partner-logo"><img src="../assets/img/logos/bb.png" alt="BB Seguros"></div>
-                    
                     <div class="partner-logo"><img src="../assets/img/logos/bradesco.png" alt="Bradesco Seguros"></div>
                     <div class="partner-logo"><img src="../assets/img/logos/caixa.png" alt="Caixa Seguradora"></div>
                     <div class="partner-logo"><img src="../assets/img/logos/santander.png" alt="Santander"></div>
@@ -251,7 +258,7 @@
 
     <section class="features-section">
         <div class="container">
-            <h2 style="font-size:2.5rem; text-align:center; margin: 0 0 50px 0; letter-spacing: -1px;">Sua paz de espírito não tem preço.</h2>
+            <h2 style="font-size:3rem; text-align:center; margin: 0 0 70px 0; letter-spacing: -1.5px; font-weight: 900;">Sua paz de espírito não tem preço.</h2>
             <div class="grid-4">
                 <div class="feature-card">
                     <div class="f-icon"><i class="ph-bold ph-buildings"></i></div>
@@ -279,19 +286,19 @@
 
     <section class="comparison-section">
         <div class="container">
-            <h2 style="font-size:2.5rem; margin: 0 0 40px 0; letter-spacing: -1px;">O Risco Calculado.</h2>
+            <h2 style="font-size:3rem; margin: 0 0 50px 0; letter-spacing: -1.5px; font-weight: 900;">O Risco Calculado.</h2>
             <div class="comp-box">
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; text-align:left;">
                     <div style="padding:20px;">
-                        <div style="color:var(--danger); font-weight:800; margin-bottom:10px; text-transform:uppercase; font-size:0.9rem;">Sem Proteção</div>
+                        <div style="color:var(--danger); font-weight:800; margin-bottom:10px; text-transform:uppercase; font-size:0.85rem; letter-spacing: 1px;">Sem Proteção</div>
                         <div style="font-size:0.9rem; color:var(--text-gray);">Emergências, acidentes ou doenças</div>
-                        <div style="font-size:1.8rem; font-weight:800; line-height:1.2; margin:10px 0;">Custo Incalculável</div>
+                        <div style="font-size:2.5rem; font-weight:900; line-height:1.2; margin:10px 0; color: white;">Custo Incalculável</div>
                         <div style="font-size:0.9rem; color:var(--text-gray);">Risco de dilapidação total do seu patrimônio para cobrir despesas médicas ou perdas materiais.</div>
                     </div>
-                    <div style="padding:20px; border-left:1px solid var(--bg-lighter);">
-                        <div style="color:var(--success); font-weight:800; margin-bottom:10px; text-transform:uppercase; font-size:0.9rem;">Com Proteção Glid</div>
+                    <div style="padding:20px; border-left:1px solid rgba(255,255,255,0.05);">
+                        <div style="color:var(--success); font-weight:800; margin-bottom:10px; text-transform:uppercase; font-size:0.85rem; letter-spacing: 1px;">Com Proteção Glid</div>
                         <div style="font-size:0.9rem; color:var(--text-gray);">Seguros e Planos de Saúde</div>
-                        <div style="font-size:1.8rem; font-weight:800; line-height:1.2; margin:10px 0; color:var(--success);">Parcela Fixa</div>
+                        <div style="font-size:2.5rem; font-weight:900; line-height:1.2; margin:10px 0; color:var(--success);">Parcela Fixa</div>
                         <div style="font-size:0.9rem; color:var(--text-gray);">Previsibilidade financeira. Você paga uma pequena fração por mês e transfere o risco para a Operadora.</div>
                     </div>
                 </div>
@@ -299,40 +306,46 @@
         </div>
     </section>
 
-    
+    <section class="aneps-section">
+        <div class="container">
+            <div class="aneps-box">
+                <img src="../assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
+                <div class="aneps-text">
+                    <h4>Certificação e Segurança Regulada</h4>
+                    <p>A Glid opera sob rigorosa certificação <b>ANEPS</b>, garantindo que todas as nossas operações são auditadas e seguem as diretrizes do <b>Banco Central do Brasil</b> e órgãos como ANS e SUSEP.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <footer class="fat-footer">
+    <footer class="fat-footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-aneps">
-                    <img src="/assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
-                    <p>A Glid opera sob rigorosa certificação <b>ANEPS</b>. Atuamos de forma consultiva dentro das regulamentações federais.</p>
+                <div class="footer-brand">
+                    <a href="/" class="logo">Glid<span>.</span></a>
+                    <p>A sua consultoria estratégica definitiva de crédito e patrimônio.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Crédito</h4>
                     <ul>
-                        <li><a href="/emprestimos/">Empréstimos</a></li>
-                        <li><a href="/emprestimos/">Consignado</a></li>
-                        <li><a href="https://wa.me/557731420005?text=Olá! Gostaria de saber mais sobre Financiamento de Veículos e Imóveis.">Financiamentos</a></li>
-                        <li><a href="/consorcios/">Consórcios</a></li>
+                        <li><a href="../emprestimos/">Saque FGTS</a></li>
+                        <li><a href="../emprestimos/">Consignado</a></li>
+                        <li><a href="../emprestimos/">Garantia</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Saúde & Proteção</h4>
+                    <h4>Proteção</h4>
                     <ul>
-                        <li><a href="/seguros/">Seguros</a></li>
-                        <li><a href="/seguros/">Planos de Saúde</a></li>
-                        <li><a href="/seguros/">Planos Odontológicos</a></li>
-                        <li><a href="/seguros/">Medpass</a></li>
+                        <li><a href="../seguros/">Planos de Saúde</a></li>
+                        <li><a href="../seguros/">Seguro Auto</a></li>
+                        <li><a href="../consorcios/">Energia Solar</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Empresas</h4>
+                    <h4>Para Empresas</h4>
                     <ul>
-                        <li><a href="/vr/">VA e VR</a></li>
-                        <li><a href="/empresas/">Capital de Giro</a></li>
-                        <li><a href="/empresas/">Antecipação de Recebíveis</a></li>
-                        <li><a href="/consorcios/">Energia Solar</a></li>
+                        <li><a href="../empresas/">Capital de Giro</a></li>
+                        <li><a href="../vr/">Benefícios (VR/VA)</a></li>
                     </ul>
                 </div>
             </div>
@@ -344,28 +357,20 @@
 
     <script>
         let cotacao = { produto: '' };
-        
         function selectCotacao(produtoNome) {
             cotacao.produto = produtoNome;
             document.querySelectorAll('.selection-card').forEach(e => e.classList.remove('selected'));
             event.currentTarget.classList.add('selected');
         }
-
         function nextStep(n) {
-            if(n === 2 && !cotacao.produto) {
-                alert("Selecione um produto primeiro!");
-                return;
-            }
+            if(n === 2 && !cotacao.produto) { alert("Selecione um produto primeiro!"); return; }
             document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
             document.getElementById('step-'+n).classList.add('active');
         }
-
         function gerarCotacao() {
             const uf = document.getElementById('uf_cotacao').value;
             const vidas = document.getElementById('vidas_cotacao').value;
-            
             let wppText = `Olá! Vim pelo site da Glid e gostaria de uma Cotação Expressa.%0A🎯 *Produto:* ${cotacao.produto}%0A📍 *Região:* ${uf}%0A👥 *Perfil/Vidas:* ${vidas}%0AAguardo o contato com as tabelas de valores.`;
-            
             document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${wppText}`;
             nextStep('result');
         }
