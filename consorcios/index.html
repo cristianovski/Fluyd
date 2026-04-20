@@ -6,77 +6,182 @@
     <title>Glid | Consórcio Inteligente e Preditivo</title>
     <meta name="description" content="Simule seu consórcio imobiliário, veicular ou de serviços com inteligência artificial.">
     
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.glid.com.br/consorcios/">
+    <meta property="og:title" content="Glid | Consórcios Inteligentes">
+    <meta property="og:description" content="Use a matemática a seu favor. Adquira imóveis e veículos sem pagar os juros abusivos do financiamento bancário.">
+    <meta property="og:image" content="https://www.glid.com.br/assets/img/og-image.jpg">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
-        /* --- DESIGN SYSTEM DARK PREMIUM --- */
+        /* --- DESIGN SYSTEM DARK PREMIUM BANCÁRIO --- */
         :root {
-            --bg-dark: #020617;
-            --bg-card: #0f172a;
-            --bg-lighter: #1e293b;
-            --primary: #3b82f6; 
+            --bg-base: #02040a;
+            --bg-dark: #060b19;
+            --bg-card: rgba(15, 23, 42, 0.6);
+            --bg-lighter: rgba(255, 255, 255, 0.05);
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --primary-hover: #2563eb;
             --accent: #eab308; 
-            --accent-hover: #ca8a04;
-            --text-white: #f8fafc;
+            --accent-glow: rgba(234, 179, 8, 0.3);
+            --text-white: #ffffff;
             --text-gray: #94a3b8;
+            --success: #10b981;
+            --danger: #ef4444;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-dark); color: var(--text-white); font-family: 'Outfit', sans-serif; line-height: 1.6; overflow-x: hidden; }
+        * { box-sizing: border-box; }
+        body { 
+            background-color: var(--bg-base); 
+            background-image: radial-gradient(circle at 50% -10%, rgba(59, 130, 246, 0.15), transparent 60%);
+            color: var(--text-white); 
+            font-family: 'Outfit', sans-serif; 
+            margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; 
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; transition: 0.3s; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-        
-        /* Header */
-        header { padding: 20px 0; position: fixed; width: 100%; background: rgba(2, 6, 23, 0.95); z-index: 1000; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        /* HEADER GLASS */
+        header { padding: 15px 0; position: fixed; width: 100%; background: rgba(2, 4, 10, 0.7); z-index: 1000; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.03); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: 800; color: white; text-decoration: none; }
-        .logo span { color: var(--accent); }
-        .btn-header { background: rgba(255,255,255,0.05); padding: 12px 24px; border-radius: 50px; color: white; font-weight: 700; border: 1px solid rgba(255,255,255,0.1); text-decoration: none; font-size: 0.9rem; }
+        .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; color: white; }
+        .logo span { color: var(--primary); }
+        .btn-header { background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); padding: 10px 28px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; }
+        .btn-header:hover { background: white; color: var(--bg-base); box-shadow: 0 0 20px rgba(255,255,255,0.2); transform: translateY(-2px); }
 
-        /* Hero & Simulador */
-        .hero { padding: 160px 0 80px; text-align: center; }
-        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; letter-spacing: -2px; }
-        .hero p { color: var(--text-gray); font-size: 1.2rem; max-width: 700px; margin: 0 auto 40px; }
+        /* HERO SECTION */
+        .hero-section { padding: 180px 0 80px; position: relative; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+        
+        .hero-label { background: rgba(59, 130, 246, 0.1); color: #60a5fa; padding: 8px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 25px; border: 1px solid rgba(59, 130, 246, 0.2); box-shadow: 0 0 20px var(--primary-glow); }
+        .hero-text h1 { font-size: 4.2rem; line-height: 1.05; margin: 0 0 20px 0; font-weight: 900; letter-spacing: -2px; }
+        .highlight { color: transparent; background: linear-gradient(to right, var(--accent), #fef08a); -webkit-background-clip: text; }
+        .hero-text p { color: var(--text-gray); font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; line-height: 1.8; max-width: 90%; }
+        
+        .trust-badges { display: flex; gap: 15px; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #cbd5e1; font-weight: 500; background: rgba(255,255,255,0.02); padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px); }
 
-        /* SEÇÃO FAQ (REVISADA) */
-        .faq-section { padding: 100px 0; background: #01040a; border-top: 1px solid var(--bg-lighter); }
-        .faq-title { text-align: center; margin-bottom: 50px; }
-        .faq-title h2 { font-size: 2.5rem; font-weight: 800; color: white; }
-        .faq-container { max-width: 850px; margin: 0 auto; }
+        /* SIMULADOR UI (Premium) */
+        .simulator-wrapper { 
+            background: var(--bg-card); 
+            border: 1px solid rgba(255,255,255,0.08); 
+            border-radius: 24px; 
+            padding: 40px; 
+            box-shadow: 0 30px 60px -10px rgba(0,0,0,0.8), 0 0 40px rgba(59, 130, 246, 0.1); 
+            position: relative; 
+            backdrop-filter: blur(24px); 
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .simulator-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+        
+        .step-screen { display: none; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .step-screen.active { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .step-screen h3 { font-size: 1.8rem; margin: 0 0 5px 0; font-weight: 800; letter-spacing: -0.5px; }
+        
+        .selection-card { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 16px; margin-bottom: 15px; cursor: pointer; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
+        .selection-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        .selection-card.selected { border-color: var(--accent); background: linear-gradient(145deg, rgba(234, 179, 8, 0.1), rgba(0,0,0,0.3)); box-shadow: 0 10px 30px var(--accent-glow); }
+        
+        input, select { 
+            width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; 
+            padding: 20px; border-radius: 16px; margin-bottom: 25px; font-size: 1.1rem; font-family: inherit; font-weight: 500; 
+            transition: all 0.3s; outline: none; appearance: none;
+        }
+        input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); background: rgba(0,0,0,0.6); }
+        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 800; margin-bottom: 10px; display: block; letter-spacing: 1px; }
+        
+        .btn-action { 
+            width: 100%; background: linear-gradient(135deg, var(--primary), #1e3a8a); color: white; border: none; 
+            padding: 22px; border-radius: 16px; font-weight: 800; font-size: 1.1rem; cursor: pointer; display: flex; 
+            justify-content: center; align-items: center; gap: 10px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1.5px; 
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        .btn-action:hover { filter: brightness(1.1); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5); }
+        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-gray); box-shadow: none; padding: 18px; }
+        .btn-outline:hover { background: rgba(255,255,255,0.05); color: white; transform: none; box-shadow: none; border-color: white; }
 
-        details { background: var(--bg-card); border: 1px solid var(--bg-lighter); border-radius: 16px; margin-bottom: 16px; padding: 24px; cursor: pointer; transition: all 0.3s ease; }
-        details[open] { border-color: var(--accent); background: #161e31; }
-        summary { list-style: none; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 1.15rem; color: white; outline: none; }
-        summary::-webkit-details-marker { display: none; }
-        .faq-answer { margin-top: 16px; color: var(--text-gray); font-size: 1rem; line-height: 1.7; }
+        /* RESULTADOS VIP */
+        .result-display { background: linear-gradient(145deg, rgba(0,0,0,0.6), rgba(15,23,42,0.8)); padding: 40px 30px; border-radius: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.08); text-align: center; position: relative; overflow: hidden; }
+        .big-number { font-size: 4rem; font-weight: 900; margin: 10px 0; line-height: 1; letter-spacing: -2px; background: linear-gradient(to bottom right, #ffffff, #94a3b8); -webkit-background-clip: text; color: transparent; }
+        .economy-pill { background: rgba(16, 185, 129, 0.1); color: var(--success); padding: 8px 24px; border-radius: 50px; font-size: 0.9rem; font-weight: 800; display: inline-block; margin-bottom: 25px; border: 1px solid rgba(16, 185, 129, 0.2); letter-spacing: 1px; text-transform: uppercase; }
+        
+        .compare-row { display: flex; justify-content: space-between; padding: 18px 24px; background: rgba(0,0,0,0.3); border-radius: 16px; margin-bottom: 12px; align-items: center; border: 1px solid rgba(255,255,255,0.03); }
+        .compare-row span { font-size: 0.85rem; color: var(--text-gray); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .compare-row b { font-size: 1.3rem; font-weight: 800; }
 
-        /* Alerta Específico Item 2 */
-        .faq-warning { border: 1px solid var(--accent); background: rgba(234, 179, 8, 0.03); }
-        .faq-warning summary { color: var(--accent); }
+        /* MARQUEE COM MÁSCARA (Ajustado para Logos Claros) */
+        .partners-section { padding: 50px 0; background: var(--bg-base); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02); overflow: hidden; white-space: nowrap; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
+        .marquee-track { display: inline-block; animation: scroll 35s linear infinite; }
+        .partner-logo { display: inline-block; margin: 0 50px; vertical-align: middle; }
+        
+        /* CORREÇÃO DO LOGO: Branco 75% e Volta a cor no hover */
+        .partner-logo img { height: 35px; filter: grayscale(100%) brightness(0) invert(1) opacity(0.75); transition: 0.4s; }
+        .partner-logo:hover img { filter: grayscale(0%) brightness(1) invert(0) opacity(1); transform: scale(1.05); }
+        
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* Footer */
-        .fat-footer { padding: 80px 0 40px; background: #01040a; border-top: 1px solid rgba(255,255,255,0.05); }
+        /* FEATURES SECTION (BOUTIQUE) */
+        .features-section { padding: 120px 0; background: var(--bg-dark); position: relative; }
+        .features-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .feature-card { background: linear-gradient(145deg, rgba(15,23,42,0.4), rgba(0,0,0,0.6)); padding: 40px 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px); }
+        .feature-card:hover { border-color: rgba(59, 130, 246, 0.3); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); background: linear-gradient(145deg, rgba(15,23,42,0.8), rgba(0,0,0,0.8)); }
+        .f-icon { width: 65px; height: 65px; background: rgba(59, 130, 246, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: var(--primary); margin-bottom: 25px; box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.1); }
+        .feature-card h3 { margin: 0 0 15px 0; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+        .feature-card p { color: var(--text-gray); margin: 0; font-size: 0.95rem; line-height: 1.6; }
+
+        /* ESTILOS FAQ */
+        .faq-section { padding: 100px 0; background: var(--bg-base); position: relative; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-category-title { color: var(--primary); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; margin: 50px 0 20px 5px; opacity: 0.8; }
+        .faq-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; margin-bottom: 12px; padding: 24px; cursor: pointer; transition: all 0.3s ease; }
+        .faq-item:hover { background: rgba(255,255,255,0.04); }
+        .faq-item[open] { background: rgba(15,23,42,0.8); border-color: rgba(59, 130, 246, 0.3); }
+        .faq-item summary { font-weight: 600; color: white; list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none; font-size: 1.1rem; letter-spacing: -0.3px; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-answer { margin-top: 20px; color: #cbd5e1; font-size: 1rem; line-height: 1.7; font-weight: 300; }
+        .faq-warning { border: 1px solid rgba(234, 179, 8, 0.3); background: rgba(234, 179, 8, 0.03); }
+        .faq-warning[open] { background: rgba(234, 179, 8, 0.08); border-color: var(--accent); }
+        .faq-warning summary { color: var(--accent); font-weight: 800; }
+
+        /* ANEPS */
+        .aneps-section { padding: 80px 0; background: var(--bg-dark); }
+        .aneps-box { display: flex; align-items: center; gap: 40px; background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.5)); padding: 40px 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); }
+        .aneps-box img { height: 80px; object-fit: contain; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5)); }
+        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; }
+        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 1rem; font-weight: 300; }
+        
+        /* FOOTER */
+        .fat-footer { padding: 80px 0 40px; background: #010205; border-top: 1px solid rgba(255,255,255,0.03); }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-        .footer-aneps { text-align: center; display: flex; flex-direction: column; align-items: center; }
-        .footer-aneps img { height: 90px; margin-bottom: 20px; }
-        .footer-aneps p { color: var(--text-gray); font-size: 0.9rem; line-height: 1.5; }
-        .footer-col h4 { color: white; font-size: 1rem; font-weight: 700; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-col ul { list-style: none; }
+        .footer-brand p { color: var(--text-gray); font-size: 0.95rem; margin-top: 20px; max-width: 250px; font-weight: 300; }
+        .footer-col h4 { color: white; font-size: 0.9rem; font-weight: 800; margin: 0 0 25px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
         .footer-col ul li { margin-bottom: 15px; }
-        .footer-col ul li a { color: var(--text-gray); text-decoration: none; font-size: 0.95rem; transition: 0.3s; }
-        .footer-col ul li a:hover { color: var(--accent); }
-        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); color: #475569; font-size: 0.85rem; }
+        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; font-weight: 400; }
+        .footer-col ul li a:hover { color: white; padding-left: 5px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.03); color: #475569; font-size: 0.85rem; font-weight: 300; }
 
-        @media (max-width: 992px) {
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .hero h1 { font-size: 2.8rem; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #25D366, #128C7E); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 999; transition: 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(-5deg); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
+
+        @media (max-width: 992px) { 
+            .grid-2, .grid-4, .footer-grid { grid-template-columns: 1fr; text-align: center; } 
+            .hero-text h1 { font-size: 3rem; } 
+            .aneps-box { flex-direction: column; text-align: center; padding: 30px; }
+            .hero-section { padding: 140px 0 60px; }
+            .simulator-wrapper { padding: 30px 20px; }
+            .trust-badges { justify-content: center; }
         }
     </style>
 </head>
-<body>
-
+<body onload="updatePrazos()">
     <header>
         <div class="container nav-content">
             <a href="/" class="logo">Glid<span>.</span></a>
@@ -84,125 +189,301 @@
         </div>
     </header>
 
-    <main>
-        <section class="hero container">
-            <div style="background: rgba(234, 179, 8, 0.1); color: var(--accent); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 800; display: inline-block; margin-bottom: 20px; text-transform: uppercase;">Consórcio Estratégico</div>
-            <h1>Simulador <span style="color: var(--accent);">Preditivo</span></h1>
-            <p>Abaixo do simulador, você encontrará as respostas para as principais dúvidas sobre como funciona o nosso ecossistema.</p>
-            
-            <div style="background: var(--bg-card); padding: 40px; border-radius: 24px; border: 1px solid var(--bg-lighter); margin-top: 20px;">
-                <p style="color: var(--text-white); font-weight: 600;">[ O seu simulador de parcelas e lances está ativo neste bloco ]</p>
-            </div>
-        </section>
-
-        <section class="faq-section">
-            <div class="container">
-                <div class="faq-title">
-                    <h2>Dúvidas Frequentes</h2>
-                    <p style="color: var(--text-gray); margin-top: 10px;">Transparência total sobre o seu próximo passo financeiro.</p>
+    <section class="hero-section">
+        <div class="container grid-2">
+            <div class="hero-text">
+                <div class="hero-label">Inteligência Financeira</div>
+                <h1>A matemática a favor do seu <span class="highlight">patrimônio</span></h1>
+                <p>Tenha acesso direto aos grandes bancos e administradoras. Nossa tecnologia de IA cruza dados entre dezenas de instituições para garantir a menor taxa para o seu perfil, transformando o crédito em uma ferramenta matemática para alavancar patrimônio e blindar sua família.</p>
+                
+                <div class="trust-badges">
+                    <div class="trust-item"><i class="ph-fill ph-chart-polar" style="color:var(--primary);"></i> Análise Preditiva</div>
+                    <div class="trust-item"><i class="ph-fill ph-percent" style="color:var(--success);"></i> Zero Juros Compostos</div>
                 </div>
+            </div>
 
-                <div class="faq-container">
+            <div class="simulator-wrapper">
+                <div class="step-screen active" id="step-1">
+                    <h3>Qual o seu objetivo principal?</h3>
+                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px; font-weight: 300;">Isso define a nossa estratégia.</p>
                     
-                    <details>
-                        <summary>O consórcio é melhor que o financiamento do banco? <i class="ph-bold ph-caret-down"></i></summary>
-                        <div class="faq-answer">
-                            No financiamento, você paga juros compostos que podem dobrar o valor do bem. No consórcio, não existem juros. Existe apenas uma taxa de administração pequena diluída no prazo. É a forma mais barata de adquirir patrimônio com planejamento.
+                    <div class="selection-card" onclick="selectOption('momento', 'pressa'); nextStep(2)">
+                        <div class="icon-box" style="font-size: 2rem; color: var(--accent);"><i class="ph-bold ph-rocket-launch"></i></div>
+                        <div>
+                            <div style="font-weight:700; color:white; font-size:1.1rem;">Acelerar Contemplação</div>
+                            <div style="font-size:0.85rem; color:var(--text-gray); margin-top:3px;">Foco em prazo curto usando análise de grupos e lances</div>
                         </div>
-                    </details>
-
-                    <details class="faq-warning" open>
-                        <summary>AVISO IMPORTANTE: Já pego o bem na hora? <i class="ph-bold ph-warning"></i></summary>
-                        <div class="faq-answer" style="color: white;">
-                            <b>Não.</b> O consórcio é um plano para quem quer comprar com inteligência. Você recebe o seu bem quando for <b>contemplado</b> por sorteio ou lance. Se você precisa do carro ou da casa imediatamente, o consórcio não é a ferramenta certa para você.
+                    </div>
+                    
+                    <div class="selection-card" onclick="selectOption('momento', 'patrimonio'); nextStep(2)">
+                        <div class="icon-box" style="font-size: 2rem; color: var(--accent);"><i class="ph-bold ph-piggy-bank"></i></div>
+                        <div>
+                            <div style="font-weight:700; color:white; font-size:1.1rem;">Construção de Patrimônio</div>
+                            <div style="font-size:0.85rem; color:var(--text-gray); margin-top:3px;">Foco no menor custo total e poupança forçada.</div>
                         </div>
-                    </details>
+                    </div>
+                </div>
 
-                    <details>
-                        <summary>O que acontece se eu não tiver dinheiro para o lance? <i class="ph-bold ph-caret-down"></i></summary>
-                        <div class="faq-answer">
-                            Não tem problema. Você continua participando dos sorteios mensais normalmente. Caso queira acelerar, a Glid ajuda você a usar o "lance embutido", onde usamos uma parte da sua própria carta para ofertar o lance por você, sem tirar dinheiro do bolso.
-                        </div>
-                    </details>
+                <div class="step-screen" id="step-2">
+                    <h3>Configurar Carta</h3>
+                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px; font-weight: 300;">Defina o tamanho do seu projeto.</p>
+                    
+                    <label>Categoria do Bem</label>
+                    <select id="tipo_bem" onchange="updatePrazos()">
+                        <option value="imovel">🏡 Imóveis (Casas, Terrenos, Construção)</option>
+                        <option value="automovel">🚗 Veículos Leves e Pesados</option>
+                        <option value="motocicleta">🏍️ Motocicletas Premium</option>
+                        <option value="servico">🛠️ Serviços / Reformas</option>
+                        <option value="eletro">💻 Eletro / Eletrônicos</option>
+                    </select>
 
-                    <details>
-                        <summary>Como funciona de um jeito fácil? <i class="ph-bold ph-caret-down"></i></summary>
-                        <div class="faq-answer">
-                            Imagine um grupo de pessoas que poupa junto. Todo mês a "caixinha" do grupo tem dinheiro para comprar o bem de um ou mais integrantes sorteados. Todos compram o que querem pagando parcelas justas e sem juros.
-                        </div>
-                    </details>
+                    <label>Prazo Desejado</label>
+                    <select id="prazo_bem"></select>
 
-                    <details>
-                        <summary>É seguro? Com quem eu assino o contrato? <i class="ph-bold ph-shield-check"></i></summary>
-                        <div class="faq-answer">
-                            <b>Totalmente seguro.</b> Você assina o contrato <b>diretamente com as maiores administradoras do país</b>, fiscalizadas pelo Banco Central. <br><br>
-                            Atualmente trabalhamos com: <b>Chevrolet, Banco do Brasil, Bradesco, CNP/Embracon, Disal, Itaú, Porto Seguro, Racon, Recon, Rodobens, Servopa e Santander.</b>
-                        </div>
-                    </details>
+                    <label>Valor do Crédito Desejado (R$)</label>
+                    <input type="number" id="valor_credito" placeholder="Ex: 250000">
+                    
+                    <button class="btn-action" onclick="nextStep(3)">Continuar Etapa <i class="ph-bold ph-arrow-right"></i></button>
+                    <button class="btn-action btn-outline" onclick="nextStep(1)">Voltar</button>
+                </div>
 
-                    <details>
-                        <summary>E se eu parar de pagar? <i class="ph-bold ph-caret-down"></i></summary>
-                        <div class="faq-answer">
-                            Se tiver dificuldade, nossa equipe ajuda a renegociar. Se cancelar, você recebe o que pagou (com os descontos do contrato) quando for sorteado no grupo de excluídos ou ao fim do plano. Ajudamos você a escolher uma parcela que caiba no seu bolso.
-                        </div>
-                    </details>
+                <div class="step-screen" id="step-3">
+                    <h3>Recursos Iniciais</h3>
+                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px; font-weight: 300;">Você possui algum valor guardado?</p>
+                    <label>Disponibilidade de Lance</label>
+                    <select id="tem_lance" onchange="toggleLance()">
+                        <option value="nao">Não, quero usar 100% da carta</option>
+                        <option value="sim">Sim, possuo um valor para lance</option>
+                    </select>
+                    <div id="box-lance" style="display:none;">
+                        <label>Valor Disponível (R$)</label>
+                        <input type="number" id="valor_lance" placeholder="Ex: 50000">
+                    </div>
+                    <div id="aviso-pressa" style="background: rgba(245, 158, 11, 0.1); color: #fde047; padding: 20px; border-radius: 16px; font-size: 0.9rem; margin-bottom: 25px; display: none; border: 1px solid rgba(245, 158, 11, 0.2); line-height: 1.5;">
+                        <i class="ph-bold ph-lightbulb" style="font-size: 1.4rem; vertical-align: middle; margin-right: 8px; color: var(--accent);"></i> <b>Estratégia Glid:</b> Como você não tem entrada, usaremos a tática do <b>Lance Embutido</b> (usar parte do próprio crédito) para acelerar seu resultado.
+                    </div>
+                    <button class="btn-action" onclick="calcular()">Gerar Relatório Preditivo <i class="ph-bold ph-lightning"></i></button>
+                    <button class="btn-action btn-outline" onclick="nextStep(2)">Voltar</button>
+                </div>
 
+                <div class="step-screen" id="step-result">
+                    <div style="text-align:center;">
+                        <div class="economy-pill">💰 Seu patrimônio blindado contra os bancos</div>
+                    </div>
+                    
+                    <div id="box-resultado-dinamico"></div>
+                    
+                    <div class="compare-row">
+                        <span>Custo Efetivo no Banco:</span>
+                        <b style="color:var(--danger);" id="custo-banco">--</b>
+                    </div>
+                    <div class="compare-row" style="background: linear-gradient(to right, rgba(16,185,129,0.1), transparent); border-color: rgba(16,185,129,0.2);">
+                        <span style="color: var(--success);">Custo Planejado Glid:</span>
+                        <b style="color:var(--success);" id="custo-glid">--</b>
+                    </div>
+                    
+                    <a id="btn-whatsapp" href="#" class="btn-action" style="background: linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); margin-top: 25px;"><i class="ph-bold ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Validar Projeto com Especialista</a>
+                    <button class="btn-action btn-outline" onclick="location.reload()">Refazer Simulação</button>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <section class="partners-section">
+        <div class="container" style="max-width: 100%;">
+            <p style="text-align:center; color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:3px; margin-bottom:40px; font-weight:700; opacity: 0.7;">Credenciado nas Maiores Administradoras do País</p>
+            <div style="width:100%; overflow:hidden;">
+                <div class="marquee-track">
+                    <div class="partner-logo"><img src="../assets/img/logos/itau.png" alt="Itaú"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bradesco.png" alt="Bradesco"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bb.png" alt="BB"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/santander.png" alt="Santander"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/caixa.png" alt="Caixa"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/embracon.png" alt="Embracon"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/itau.png" alt="Itaú"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bradesco.png" alt="Bradesco"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/bb.png" alt="BB"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/santander.png" alt="Santander"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/caixa.png" alt="Caixa"></div>
+                    <div class="partner-logo"><img src="../assets/img/logos/embracon.png" alt="Embracon"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 style="font-size:3rem; text-align:center; margin: 0 0 70px 0; letter-spacing: -1.5px; font-weight: 900;">A Engenharia do Crédito.</h2>
+            <div class="grid-4">
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-brain"></i></div>
+                    <h3>Previsão por IA</h3>
+                    <p>Mapeamos grupos em andamento e identificamos brechas de lances para acelerar sua contemplação com base em dados reais.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-coins"></i></div>
+                    <h3>Lance Embutido</h3>
+                    <p>Você não precisa descapitalizar. Utilizamos até 30% do valor da própria carta de crédito para dar o lance vencedor no seu lugar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-percent"></i></div>
+                    <h3>Meia Parcela</h3>
+                    <p>Em grupos selecionados, você paga apenas uma fração do valor da parcela até ter o bem em mãos. Ideal para quem paga aluguel.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon"><i class="ph-bold ph-shield-check"></i></div>
+                    <h3>Blindagem Total</h3>
+                    <p>Todas as nossas cotas contam com Seguro Prestamista (Vida) e Seguro Quebra de Garantia, protegendo sua família em qualquer cenário.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 style="text-align:center; font-size:3rem; font-weight:900; margin-bottom:60px; letter-spacing: -1px;">Dúvidas Frequentes</h2>
+            <div class="faq-container">
+                
+                <div class="faq-category-title">1. Funcionamento</div>
+                <details class="faq-item faq-warning" open>
+                    <summary>Já pego o bem na hora que assinar? <i class="ph-bold ph-warning"></i></summary>
+                    <div class="faq-answer"><b>Não.</b> O consórcio é um planejamento. Você recebe o bem quando for <b>contemplado</b> por sorteio ou lance. Se precisa do bem hoje, o consórcio não é para você.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>O que é o lance embutido? <i class="ph-bold ph-caret-down"></i></summary>
+                    <div class="faq-answer">Permite utilizar uma parte do seu próprio crédito (até 30%) para ajudar no pagamento do lance vencedor, acelerando sua conquista sem tirar dinheiro do bolso.</div>
+                </details>
+
+                <div class="faq-category-title">2. Documentos e Crédito</div>
+                <details class="faq-item">
+                    <summary>Quais documentos preciso após ganhar? <i class="ph-bold ph-caret-down"></i></summary>
+                    <div class="faq-answer"><b>Pessoa Física:</b> RG, CPF, Comprovante de Residência e Renda (3 últimos contracheques). <br><br><b>Pessoa Jurídica:</b> Contrato Social, faturamento dos últimos 12 meses e documentos dos sócios.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Qual a renda mínima exigida? <i class="ph-bold ph-caret-down"></i></summary>
+                    <div class="faq-answer">Geralmente, sua renda mensal deve ser de 3 a 5 vezes o valor da parcela para garantir que o plano caiba no seu bolso com segurança.</div>
+                </details>
+
+                <div class="faq-category-title">3. Veículos e Imóveis</div>
+                <details class="faq-item">
+                    <summary>Posso comprar um veículo usado? <i class="ph-bold ph-caret-down"></i></summary>
+                    <div class="faq-answer">Sim! Carros com até 10 anos e caminhões com até 15 anos de uso são aceitos perfeitamente após uma vistoria técnica.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Posso usar meu FGTS para Imóveis? <i class="ph-bold ph-caret-down"></i></summary>
+                    <div class="faq-answer">Sim! O saldo do FGTS pode ser usado para dar lances ou complementar o valor da compra da sua moradia própria.</div>
+                </details>
+
+                <div class="faq-category-title">4. Segurança</div>
+                <details class="faq-item">
+                    <summary>Com quem eu assino o contrato? É seguro? <i class="ph-bold ph-shield-check"></i></summary>
+                    <div class="faq-answer">Totalmente seguro. Você assina direto com administradoras como: <b>Chevrolet, BB, Bradesco, CNP, Disal, Itaú, Porto, Racon, Recon, Rodobens, Servopa ou Santander.</b></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="aneps-section">
+        <div class="container">
+            <div class="aneps-box">
+                <img src="../assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
+                <div class="aneps-text">
+                    <h4>Certificação e Segurança Regulada</h4>
+                    <p>A Glid opera sob rigorosa certificação <b>ANEPS</b>, garantindo que todas as nossas operações são auditadas e seguem as diretrizes do <b>Banco Central do Brasil</b>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="fat-footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-aneps">
-                    <img src="/assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
-                    <p>A Glid opera sob rigorosa certificação <b>ANEPS</b>. Atuamos de forma consultiva dentro das regulamentações federais.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Crédito</h4>
-                    <ul>
-                        <li><a href="/emprestimos/">Empréstimos</a></li>
-                        <li><a href="/emprestimos/">Consignado</a></li>
-                        <li><a href="https://wa.me/557731420005?text=Olá! Quero saber mais sobre Financiamentos.">Financiamentos</a></li>
-                        <li><a href="/consorcios/">Consórcios</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Saúde & Proteção</h4>
-                    <ul>
-                        <li><a href="/seguros/">Seguros</a></li>
-                        <li><a href="/seguros/">Planos de Saúde</a></li>
-                        <li><a href="/seguros/">Planos Odontológicos</a></li>
-                        <li><a href="/seguros/">Medpass</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Empresas</h4>
-                    <ul>
-                        <li><a href="/vr/">VA e VR</a></li>
-                        <li><a href="/empresas/">Capital de Giro</a></li>
-                        <li><a href="/empresas/">Antecipação de Recebíveis</a></li>
-                        <li><a href="/consorcios/">Energia Solar</a></li>
-                    </ul>
-                </div>
+                <div class="footer-brand"><a href="/" class="logo">Glid<span>.</span></a><p>A sua consultoria estratégica definitiva de crédito e patrimônio.</p></div>
+                <div class="footer-col"><h4>Crédito</h4><ul><li><a href="../emprestimos/">Saque FGTS</a></li><li><a href="../emprestimos/">Consignado</a></li><li><a href="../emprestimos/">Garantia</a></li></ul></div>
+                <div class="footer-col"><h4>Proteção</h4><ul><li><a href="../seguros/">Planos de Saúde</a></li><li><a href="../seguros/">Seguro Auto</a></li><li><a href="../solar/">Energia Solar</a></li></ul></div>
+                <div class="footer-col"><h4>Para Empresas</h4><ul><li><a href="../empresas/">Capital de Giro</a></li><li><a href="/vr/">Benefícios (VR/VA)</a></li></ul></div>
             </div>
             <div class="footer-bottom">&copy; 2026 Glid Tecnologia Financeira Ltda. Correspondente Bancário.</div>
         </div>
     </footer>
 
+    <a href="https://wa.me/557731420005" class="whatsapp-float"><i class="ph-bold ph-whatsapp-logo"></i></a>
+
     <script>
-        // Mantém apenas uma pergunta aberta por vez (Opcional, melhora a UX)
-        const details = document.querySelectorAll("details");
-        details.forEach((targetDetail) => {
-            targetDetail.addEventListener("click", () => {
-                details.forEach((detail) => {
-                    if (detail !== targetDetail) {
-                        detail.removeAttribute("open");
-                    }
-                });
-            });
-        });
+        const MARKET = { 
+            imovel: { taxa: 0.23, prazos: [180, 200, 220, 240], temMeia: true }, 
+            automovel: { taxa: 0.165, prazos: [50, 80, 100], temMeia: true },
+            motocicleta: { taxa: 0.195, prazos: [60, 80], temMeia: false },
+            servico: { taxa: 0.25, prazos: [36, 48], temMeia: false },
+            eletro: { taxa: 0.15, prazos: [36, 48], temMeia: false }
+        };
+
+        const fmt = (v) => v.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'}); 
+        const toK = (v) => 'R$ ' + (v/1000).toFixed(0) + 'k';
+
+        let user = { momento: '', tipo: 'imovel', credito: 0, lance: 0, prazo: 0 };
+        
+        function selectOption(key, val) { 
+            user[key] = val; 
+            document.querySelectorAll('.selection-card').forEach(e => e.classList.remove('selected')); 
+            event.currentTarget.classList.add('selected'); 
+        }
+
+        function updatePrazos() {
+            const tipo = document.getElementById('tipo_bem').value;
+            const selectPrazo = document.getElementById('prazo_bem');
+            selectPrazo.innerHTML = '';
+            MARKET[tipo].prazos.forEach(p => { selectPrazo.innerHTML += `<option value="${p}">${p} meses</option>`; });
+        }
+
+        function nextStep(n) { 
+            document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active')); 
+            document.getElementById('step-'+n).classList.add('active'); 
+            if(n===3) checkAviso(); 
+        }
+
+        function toggleLance() { 
+            const tem = document.getElementById('tem_lance').value === 'sim'; 
+            document.getElementById('box-lance').style.display = tem ? 'block' : 'none'; 
+            if(!tem) document.getElementById('valor_lance').value = ''; 
+            checkAviso(); 
+        }
+        
+        function checkAviso() { 
+            const temLance = document.getElementById('tem_lance').value === 'sim'; 
+            const aviso = document.getElementById('aviso-pressa'); 
+            if(user.momento === 'pressa' && !temLance) aviso.style.display = 'block'; 
+            else aviso.style.display = 'none'; 
+        }
+
+        function calcular() {
+            user.tipo = document.getElementById('tipo_bem').value; 
+            user.credito = parseFloat(document.getElementById('valor_credito').value);
+            user.prazo = parseInt(document.getElementById('prazo_bem').value);
+            if(document.getElementById('tem_lance').value === 'sim') user.lance = parseFloat(document.getElementById('valor_lance').value) || 0;
+            if(!user.credito) return alert("Por favor, digite o valor do crédito.");
+            
+            const dados = MARKET[user.tipo]; 
+            const totalGlid = user.credito * (1 + dados.taxa); 
+            const parcelaNormal = totalGlid / user.prazo; 
+            const parcelaMeia = parcelaNormal * 0.55; 
+            const fatorBanco = user.tipo === 'imovel' ? 2.15 : 1.70;
+            const totalBanco = user.credito * fatorBanco; 
+            
+            let htmlResult = dados.temMeia ? 
+                `<div class="result-display"><span style="color:var(--success); font-weight:800; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px;"><i class="ph-bold ph-star"></i> Plano Meia Parcela</span><div class="big-number" style="color: var(--success);">R$ ${fmt(parcelaMeia).replace('R$','').trim()}</div><p style="color:var(--text-gray); font-size:0.9rem;">Pague reduzido até a contemplação.</p></div><div style="background: rgba(255,255,255,0.02); padding: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px;"><span style="color:var(--text-gray); font-size:0.8rem; font-weight:700; text-transform:uppercase;">Ou Parcela Integral</span><div style="font-size: 1.6rem; font-weight: 800; color: white;">R$ ${fmt(parcelaNormal).replace('R$','').trim()} <span style="font-size:1rem; color:var(--text-gray); font-weight:400;">em ${user.prazo}x</span></div></div>` : 
+                `<div class="result-display"><span style="color:var(--primary); font-weight:800; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px;"><i class="ph-bold ph-check-circle"></i> Parcela Mensal Fixa</span><div class="big-number">R$ ${fmt(parcelaNormal).replace('R$','').trim()}</div><p style="color:var(--text-gray); font-size:0.9rem;">Plano Integral em ${user.prazo} meses.</p></div>`;
+            
+            document.getElementById('box-resultado-dinamico').innerHTML = htmlResult;
+            document.getElementById('custo-banco').innerText = toK(totalBanco); 
+            document.getElementById('custo-glid').innerText = toK(totalGlid); 
+            
+            let textLance = document.getElementById('tem_lance').value === 'sim' ? `Tenho R$ ${user.lance} para lance.` : "Vou usar lance embutido/sorteio.";
+            let text = `Olá! Fiz uma simulação preditiva de Consórcio.%0A🎯 *Bem:* ${user.tipo.toUpperCase()}%0A💰 *Crédito:* ${fmt(user.credito)}%0A⏳ *Prazo:* ${user.prazo}x%0A🚀 *Estratégia:* ${user.momento === 'pressa' ? 'Acelerar' : 'Patrimônio'}%0A💬 *Recursos:* ${textLance}%0A%0AQuero validar as opções disponíveis nas administradoras.`;
+            document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${text}`; 
+            
+            nextStep('result');
+        }
     </script>
 </body>
 </html>
