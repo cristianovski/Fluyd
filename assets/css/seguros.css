@@ -39,6 +39,9 @@
 .insurance-hero .hero-copy { padding-block: 20px; }
 .insurance-hero .hero-description { max-width: 590px; }
 .insurance-hero .legal-note { max-width: 590px; }
+.hero-title-mobile,
+.hero-description-mobile,
+.legal-note-mobile { display: none; }
 
 .quote-card {
     position: relative;
@@ -740,8 +743,22 @@
 }
 
 @media (max-width: 640px) {
-    .insurance-hero-grid { gap: 40px; padding-block: 52px 68px; }
-    .insurance-hero .hero-actions { margin-top: 28px; }
+    .insurance-hero-grid { gap: 32px; padding-block: 38px 56px; }
+    .insurance-hero h1 { max-width: 330px; font-size: clamp(2.02rem, 9vw, 2.3rem); line-height: 1.06; }
+    .insurance-hero h1 em::after { display: none; }
+    .hero-title-desktop,
+    .hero-description-desktop,
+    .legal-note-desktop { display: none; }
+    .hero-title-mobile,
+    .hero-description-mobile,
+    .legal-note-mobile { display: inline; }
+    .insurance-hero .hero-description { max-width: 34ch; margin-top: 16px; font-size: 0.9rem; line-height: 1.5; }
+    .insurance-hero .hero-actions { margin-top: 22px; }
+    .insurance-hero .hero-actions .text-link { display: none; }
+    .insurance-hero .trust-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 10px; margin-top: 20px; }
+    .insurance-hero .trust-list li { font-size: 0.7rem; line-height: 1.35; }
+    .insurance-hero .trust-list li:first-child { display: none; }
+    .insurance-hero .legal-note { max-width: 42ch; margin-top: 12px; font-size: 0.66rem; line-height: 1.45; }
     .quote-card { padding: 24px 18px; border-radius: 16px 16px 16px 6px; }
     .quote-heading h2 { font-size: 1.35rem; }
     .quote-progress { margin-block: 23px 26px; }
