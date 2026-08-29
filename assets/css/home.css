@@ -86,28 +86,14 @@ button, input, select, summary, a { -webkit-tap-highlight-color: transparent; }
 
 .brand {
     display: inline-flex;
-    flex-direction: column;
+    align-items: center;
     flex-shrink: 0;
-    line-height: 1;
+    line-height: 0;
 }
 
-.brand-word {
-    color: var(--text);
-    font-family: var(--font-heading);
-    font-size: 1.55rem;
-    font-weight: 700;
-    letter-spacing: -0.075em;
-}
-
-.brand-word > span { color: var(--gold); }
-
-.brand-descriptor {
-    margin-top: 5px;
-    color: var(--muted);
-    font-size: 0.63rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+.brand-logo {
+    width: 132px;
+    height: auto;
 }
 
 .desktop-nav {
@@ -450,14 +436,14 @@ button, input, select, summary, a { -webkit-tap-highlight-color: transparent; }
     margin-bottom: 26px;
 }
 
-.group-number {
-    min-width: 44px;
-    padding-top: 5px;
-    color: var(--gold);
-    font-family: var(--font-heading);
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+.group-heading::before {
+    content: "";
+    width: 30px;
+    height: 2px;
+    flex: 0 0 auto;
+    margin-top: 13px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
 }
 
 .group-heading h3 {
@@ -492,8 +478,6 @@ button, input, select, summary, a { -webkit-tap-highlight-color: transparent; }
 .card-topline {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
 }
 
 .solution-icon {
@@ -516,7 +500,6 @@ button, input, select, summary, a { -webkit-tap-highlight-color: transparent; }
     stroke-linejoin: round;
 }
 
-.card-index { color: #6f7f8d; font-family: var(--font-heading); font-size: 0.72rem; letter-spacing: 0.1em; }
 .solution-card h4 { margin: 28px 0 10px; font-family: var(--font-heading); font-size: 1.3rem; font-weight: 600; }
 .solution-card p { margin: 0; color: var(--muted); font-size: 0.91rem; }
 .solution-card .card-detail { margin-top: 11px; color: var(--mint); font-size: 0.76rem; }
@@ -611,8 +594,28 @@ button, input, select, summary, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .principles-grid article { min-height: 245px; padding: 30px; background: var(--surface); }
-.principles-grid article > span { color: var(--gold); font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.09em; }
-.principles-grid h3 { margin: 50px 0 10px; font-family: var(--font-heading); font-size: 1.05rem; line-height: 1.38; }
+.principle-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(101, 226, 192, 0.18);
+    border-radius: 14px;
+    background: rgba(0, 199, 165, 0.08);
+    color: var(--mint);
+}
+
+.principle-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.principles-grid h3 { margin: 34px 0 10px; font-family: var(--font-heading); font-size: 1.05rem; line-height: 1.38; }
 .principles-grid p { margin: 0; color: var(--muted); font-size: 0.84rem; }
 
 .contact-section {
@@ -720,6 +723,7 @@ button, input, select, summary, a { -webkit-tap-highlight-color: transparent; }
 
 .footer-brand > p { margin: 23px 0 0; color: var(--text); font-family: var(--font-heading); font-size: 0.9rem; font-weight: 500; }
 .footer-brand .campaign-line { margin-top: 7px; color: var(--muted); font-family: var(--font-body); font-size: 0.78rem; font-weight: 400; }
+.footer-brand .brand-logo { width: 154px; }
 
 .footer-column {
     display: flex;
