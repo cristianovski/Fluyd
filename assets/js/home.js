@@ -2,6 +2,9 @@
     const productSelect = document.querySelector("#lead-product");
     const nameInput = document.querySelector("#lead-name");
     const leadForm = document.querySelector("#lead-router");
+    const hero = document.querySelector(".hero");
+    const whatsappFloat = document.querySelector(".whatsapp-float");
+    const mobileViewport = window.matchMedia?.("(max-width: 900px)");
     const query = new URLSearchParams(window.location.search);
     const availableProducts = [...(productSelect?.options || [])].map((option) => option.value);
     const requestedProduct = query.get("produto");
@@ -56,4 +59,30 @@
 
         window.location.href = `https://wa.me/557731420005?text=${encodeURIComponent(message)}`;
     });
+
+    if (hero && whatsappFloat) {
+        document.documentElement.classList.add("js");
+        let heroIsVisible = true;
+        const updateWhatsappVisibility = () => {
+            const isCompactViewport = mobileViewport?.matches ?? false;
+            whatsappFloat.classList.toggle("is-visible", !isCompactViewport || !heroIsVisible);
+        };
+
+        if ("IntersectionObserver" in window) {
+            const heroObserver = new IntersectionObserver(([entry]) => {
+                heroIsVisible = entry.isIntersecting;
+                updateWhatsappVisibility();
+            }, { rootMargin: "-70px 0px 0px 0px", threshold: 0 });
+            heroObserver.observe(hero);
+        } else {
+            heroIsVisible = false;
+        }
+
+        if (mobileViewport?.addEventListener) {
+            mobileViewport.addEventListener("change", updateWhatsappVisibility);
+        } else {
+            mobileViewport?.addListener?.(updateWhatsappVisibility);
+        }
+        updateWhatsappVisibility();
+    }
 })();
