@@ -3,376 +3,408 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Glid | Seguros e Planos de Saúde</title>
-    <meta name="description" content="Proteja sua empresa, sua família e seu patrimônio com as melhores operadoras do Brasil.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <title>Seguro Auto: compare cotações | GLID</title>
+    <meta name="description" content="Solicite sua cotação de Seguro Auto uma vez e compare as cotações retornadas por diferentes companhias, com preço, cobertura e franquia claros.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#071321">
+    <link rel="canonical" href="https://www.glid.com.br/seguros/">
 
-    <style>
-        /* --- DESIGN SYSTEM DARK PREMIUM BANCÁRIO --- */
-        :root {
-            --bg-base: #02040a;
-            --bg-dark: #060b19;
-            --bg-card: rgba(15, 23, 42, 0.6);
-            --bg-lighter: rgba(255, 255, 255, 0.05);
-            --primary: #3b82f6;
-            --primary-glow: rgba(59, 130, 246, 0.4);
-            --primary-hover: #2563eb;
-            --accent: #eab308; 
-            --accent-glow: rgba(234, 179, 8, 0.3);
-            --text-white: #ffffff;
-            --text-gray: #94a3b8;
-            --success: #10b981;
-            --danger: #ef4444;
-        }
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="GLID — Crédito e Seguros">
+    <meta property="og:title" content="Seguro Auto com comparação transparente | GLID">
+    <meta property="og:description" content="Uma solicitação, diferentes companhias e a menor cotação retornada em destaque — sem esconder diferenças de cobertura ou franquia.">
+    <meta property="og:url" content="https://www.glid.com.br/seguros/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Seguro Auto com comparação transparente | GLID">
+    <meta name="twitter:description" content="Compare cotações de Seguro Auto por preço, cobertura e franquia com a orientação da GLID.">
 
-        * { box-sizing: border-box; }
-        body { background-color: var(--bg-base); background-image: radial-gradient(circle at 50% -10%, rgba(59, 130, 246, 0.15), transparent 60%); color: var(--text-white); font-family: 'Outfit', sans-serif; margin: 0; padding: 0; overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-        a { text-decoration: none; transition: 0.3s ease; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
-        .highlight { color: transparent; background: linear-gradient(to right, var(--primary), #93c5fd); -webkit-background-clip: text; }
-
-        /* HEADER GLASS */
-        header { padding: 15px 0; position: fixed; width: 100%; background: rgba(2, 4, 10, 0.7); z-index: 1000; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.03); }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; color: white; }
-        .logo span { color: var(--primary); }
-        .btn-header { background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)); padding: 10px 28px; border-radius: 50px; color: white; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); transition: all 0.3s ease; }
-        .btn-header:hover { background: white; color: var(--bg-base); box-shadow: 0 0 20px rgba(255,255,255,0.2); transform: translateY(-2px); }
-
-        /* HERO SECTION */
-        .hero-section { padding: 180px 0 80px; position: relative; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
-        
-        .hero-label { background: rgba(59, 130, 246, 0.1); color: var(--primary); padding: 8px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 25px; border: 1px solid rgba(59, 130, 246, 0.2); box-shadow: 0 0 20px var(--primary-glow); }
-        .hero-text h1 { font-size: 4.2rem; line-height: 1.05; margin: 0 0 20px 0; font-weight: 900; letter-spacing: -2px; }
-        .hero-text p { color: var(--text-gray); font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; line-height: 1.8; max-width: 90%; }
-        
-        .trust-badges { display: flex; gap: 15px; flex-wrap: wrap; }
-        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: #cbd5e1; font-weight: 500; background: rgba(255,255,255,0.02); padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px); }
-
-        /* SIMULADOR UI (Premium) */
-        .simulator-wrapper { background: var(--bg-card); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px; box-shadow: 0 30px 60px -10px rgba(0,0,0,0.8), 0 0 40px rgba(59, 130, 246, 0.1); position: relative; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
-        .simulator-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--success)); }
-        
-        .step-screen { display: none; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        .step-screen.active { display: block; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .step-screen h3 { font-size: 1.8rem; margin: 0 0 5px 0; font-weight: 800; letter-spacing: -0.5px; }
-        
-        .selection-card { background: rgba(0,0,0,0.3); padding: 25px; border-radius: 16px; margin-bottom: 15px; cursor: pointer; display: flex; align-items: center; gap: 20px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
-        .selection-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
-        .selection-card.selected { border-color: var(--primary); background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(0,0,0,0.3)); box-shadow: 0 10px 30px var(--primary-glow); }
-        .icon-box { font-size: 2rem; color: var(--primary); }
-
-        input, select { width: 100%; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 20px; border-radius: 16px; margin-bottom: 25px; font-size: 1.1rem; font-family: inherit; font-weight: 500; transition: all 0.3s; outline: none; appearance: none; }
-        input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); background: rgba(0,0,0,0.6); }
-        label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 800; margin-bottom: 10px; display: block; letter-spacing: 1px; }
-        
-        .btn-action { width: 100%; background: linear-gradient(135deg, var(--primary), #1e3a8a); color: white; border: none; padding: 22px; border-radius: 16px; font-weight: 800; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1.5px; box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
-        .btn-action:hover { filter: brightness(1.1); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5); }
-        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-gray); box-shadow: none; padding: 18px; margin-top: 15px;}
-        .btn-outline:hover { background: rgba(255,255,255,0.05); color: white; transform: none; box-shadow: none; border-color: white; }
-
-        .result-display { background: linear-gradient(145deg, rgba(0,0,0,0.6), rgba(15,23,42,0.8)); padding: 40px 30px; border-radius: 20px; margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.08); text-align: center; }
-
-        /* MARQUEE COM MÁSCARA (Logos Claros) */
-        .partners-section { padding: 50px 0; background: var(--bg-base); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02); overflow: hidden; white-space: nowrap; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
-        .marquee-track { display: inline-block; animation: scroll 35s linear infinite; }
-        .partner-logo { display: inline-block; margin: 0 50px; vertical-align: middle; }
-        .partner-logo img { height: 35px; filter: grayscale(100%) brightness(0) invert(1) opacity(0.75); transition: 0.4s; }
-        .partner-logo:hover img { filter: grayscale(0%) brightness(1) invert(0) opacity(1); transform: scale(1.05); }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* FEATURES SECTION */
-        .features-section { padding: 120px 0; background: var(--bg-dark); position: relative; }
-        .features-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
-        .feature-card { background: linear-gradient(145deg, rgba(15,23,42,0.4), rgba(0,0,0,0.6)); padding: 40px 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px); }
-        .feature-card:hover { border-color: rgba(16, 185, 129, 0.3); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); background: linear-gradient(145deg, rgba(15,23,42,0.8), rgba(0,0,0,0.8)); }
-        .f-icon { width: 65px; height: 65px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: var(--success); margin-bottom: 25px; box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.1); }
-        .feature-card h3 { margin: 0 0 15px 0; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
-        .feature-card p { color: var(--text-gray); margin: 0; font-size: 0.95rem; line-height: 1.6; }
-
-        /* COMPARISON */
-        .comparison-section { padding: 100px 0; background: var(--bg-base); text-align: center; border-top: 1px solid rgba(255,255,255,0.02); }
-        .comp-box { background: linear-gradient(145deg, rgba(15,23,42,0.4), rgba(0,0,0,0.6)); border-radius: 24px; padding: 40px; display: inline-block; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; width: 100%; box-shadow: 0 20px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); }
-
-        /* ANEPS (PADRÃO GLOBAL) */
-        .aneps-section { padding: 80px 0; background: var(--bg-dark); }
-        .aneps-box { display: flex; align-items: center; gap: 40px; background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,0,0,0.5)); padding: 40px 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); max-width: 900px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); }
-        .aneps-box img { height: 80px; object-fit: contain; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5)); }
-        .aneps-text h4 { margin: 0 0 10px 0; color: white; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
-        .aneps-text p { margin: 0; color: var(--text-gray); font-size: 1rem; font-weight: 300; }
-        
-        /* FOOTER (PADRÃO GLOBAL) */
-        .fat-footer { padding: 80px 0 40px; background: #010205; border-top: 1px solid rgba(255,255,255,0.03); }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-        .footer-brand p { color: var(--text-gray); font-size: 0.95rem; margin-top: 20px; max-width: 250px; font-weight: 300; }
-        .footer-col h4 { color: white; font-size: 0.9rem; font-weight: 800; margin: 0 0 25px 0; text-transform: uppercase; letter-spacing: 2px; }
-        .footer-col ul { list-style: none; padding: 0; margin: 0; }
-        .footer-col ul li { margin-bottom: 15px; }
-        .footer-col ul li a { color: var(--text-gray); font-size: 0.95rem; font-weight: 400; }
-        .footer-col ul li a:hover { color: white; padding-left: 5px; }
-        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.03); color: #475569; font-size: 0.85rem; font-weight: 300; }
-
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, #25D366, #128C7E); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 999; transition: 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.1) rotate(-5deg); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
-
-        @media (max-width: 992px) { 
-            .grid-2 { grid-template-columns: 1fr; gap: 40px; } 
-            .grid-4 { grid-template-columns: 1fr 1fr; }
-            .hero-section { padding: 140px 0 60px; text-align: center; } 
-            .hero-text h1 { font-size: 3.2rem; } 
-            .trust-badges { justify-content: center; }
-            .aneps-box { flex-direction: column; text-align: center; padding: 30px; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-            .simulator-wrapper { padding: 30px 20px; }
-        }
-        @media (max-width: 600px) { .grid-4 { grid-template-columns: 1fr; } }
-    </style>
+    <link rel="icon" href="../assets/img/brand/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/seguros.css">
+    <script src="../assets/js/home.js" defer></script>
+    <script src="../assets/js/seguros.js" defer></script>
 </head>
-<body>
-    <header>
-        <div class="container nav-content">
-            <a href="/" class="logo">Glid<span>.</span></a>
-            <a href="https://wa.me/557731420005" class="btn-header">Falar com Consultor</a>
+<body class="insurance-page">
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="/" aria-label="GLID — Página inicial">
+                <img class="brand-logo" src="../assets/img/brand/glid-logo-horizontal.png" width="680" height="253" alt="" decoding="async">
+            </a>
+
+            <nav class="desktop-nav" aria-label="Navegação principal">
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#comparacao">Como comparamos</a>
+                <a href="#coberturas">Coberturas</a>
+                <a href="#duvidas">Dúvidas</a>
+            </nav>
+
+            <a class="button button-small header-cta" href="#cotacao">Solicitar cotação</a>
+
+            <details class="mobile-menu">
+                <summary aria-label="Abrir menu"><span></span><span></span><span></span></summary>
+                <nav aria-label="Navegação móvel">
+                    <a href="#como-funciona">Como funciona</a>
+                    <a href="#comparacao">Como comparamos</a>
+                    <a href="#coberturas">Coberturas</a>
+                    <a href="#duvidas">Dúvidas</a>
+                    <a class="button button-small" href="#cotacao">Solicitar cotação</a>
+                </nav>
+            </details>
         </div>
     </header>
 
-    <section class="hero-section">
-        <div class="container grid-2">
-            <div class="hero-text">
-                <div class="hero-label">Blindagem Patrimonial</div>
-                <h1>A matemática a favor do seu <span class="highlight">patrimônio</span></h1>
-                <p>Tenha acesso direto às maiores seguradoras e operadoras do país. Nossa tecnologia de IA mapeia as melhores coberturas para o seu perfil, transformando a proteção em uma ferramenta estratégica para blindar sua família e seu patrimônio.</p>
-                <div class="trust-badges">
-                    <div class="trust-item"><i class="ph-fill ph-check-circle" style="color:var(--success); font-size:1.4rem;"></i> Cobertura Nacional</div>
-                    <div class="trust-item"><i class="ph-fill ph-buildings" style="color:var(--primary); font-size:1.4rem;"></i> Condições Especiais para MEI/CNPJ</div>
+    <main id="conteudo">
+        <section class="hero insurance-hero" aria-labelledby="hero-title">
+            <svg class="journey-line insurance-journey" viewBox="0 0 900 420" aria-hidden="true" focusable="false">
+                <path d="M28 330C174 330 148 114 316 114s128 194 300 194 122-210 252-210"/>
+                <circle cx="868" cy="98" r="6"/>
+            </svg>
+
+            <div class="container insurance-hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow"><span></span> Seguro Auto GLID</p>
+                    <h1 id="hero-title">Uma solicitação. Várias seguradoras. A <em>menor cotação retornada</em> em destaque.</h1>
+                    <p class="hero-description">Você informa os dados uma vez. A GLID consulta simultaneamente as opções habilitadas para o seu perfil e organiza as cotações por preço, cobertura e franquia para facilitar sua decisão.</p>
+
+                    <div class="hero-actions">
+                        <a class="button" href="#cotacao">Começar minha cotação</a>
+                        <a class="text-link" href="#como-funciona">Entender como funciona
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                        </a>
+                    </div>
+
+                    <ul class="trust-list" aria-label="Características da cotação">
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Uma única solicitação</li>
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Comparação transparente</li>
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Atendimento humano</li>
+                    </ul>
+
+                    <p class="legal-note">Menor prêmio total — o preço total do seguro — entre as cotações efetivamente retornadas para o perfil e as coberturas informados. Disponibilidade, valor e aceitação variam conforme os critérios de cada seguradora.</p>
+                </div>
+
+                <section class="quote-card" id="cotacao" aria-labelledby="quote-title">
+                    <header class="quote-heading">
+                        <p>Início do atendimento</p>
+                        <h2 id="quote-title">Prepare os dados da sua cotação</h2>
+                        <span>Em três passos, montamos a mensagem para você revisar e enviar à GLID pelo WhatsApp.</span>
+                    </header>
+
+                    <noscript>
+                        <p class="quote-noscript">Para usar o formulário, ative o JavaScript. Se preferir, <a href="https://wa.me/557731420005?text=Ol%C3%A1%21%20Quero%20solicitar%20uma%20cota%C3%A7%C3%A3o%20de%20Seguro%20Auto%20com%20a%20GLID.">inicie o atendimento pelo WhatsApp</a>.</p>
+                    </noscript>
+
+                    <form class="quote-form" id="auto-quote-form" novalidate>
+                        <ol class="quote-progress" aria-label="Progresso da solicitação">
+                            <li class="is-active" data-progress="1" aria-current="step"><span></span>Veículo</li>
+                            <li data-progress="2"><span></span>Uso</li>
+                            <li data-progress="3"><span></span>Contato</li>
+                        </ol>
+
+                        <fieldset class="quote-step" data-step="1">
+                            <legend class="sr-only">Dados iniciais do veículo</legend>
+                            <h3 tabindex="-1">É um seguro novo ou renovação?</h3>
+                            <p class="step-description">Essa informação ajuda a direcionar as perguntas seguintes.</p>
+
+                            <div class="quote-choice-grid quote-choice-grid-two" role="group" aria-label="Tipo de seguro" data-choice-group="modalidade" data-required-choice aria-describedby="modalidade-error">
+                                <button class="quote-option" type="button" data-value="Seguro novo" aria-pressed="false">
+                                    <span class="quote-option-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 17h22v8H5zM8 17l2-7h12l2 7M9 25v3M23 25v3"/><path class="icon-accent" d="M11 21h3M18 21h3"/></svg></span>
+                                    <span><strong>Seguro novo</strong><small>Primeira contratação ou veículo sem apólice vigente</small></span>
+                                </button>
+                                <button class="quote-option" type="button" data-value="Renovação" aria-pressed="false">
+                                    <span class="quote-option-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M25 10V5l-3 3a10 10 0 1 0 3 15"/><path class="icon-accent" d="M22 8a10 10 0 0 1 4 8"/></svg></span>
+                                    <span><strong>Renovação</strong><small>Você já tem ou teve uma apólice recente</small></span>
+                                </button>
+                                <input type="hidden" name="modalidade" value="">
+                            </div>
+                            <p class="quote-error" id="modalidade-error" role="alert" hidden>Escolha seguro novo ou renovação.</p>
+
+                            <div class="quote-field">
+                                <label for="vehicle-description">Qual é o veículo?</label>
+                                <input id="vehicle-description" name="veiculo" type="text" required maxlength="80" autocomplete="off" placeholder="Ex.: Onix LT 2023" aria-describedby="vehicle-help">
+                                <small id="vehicle-help">Informe marca, modelo e ano. Para 0 km, inclua essa informação.</small>
+                            </div>
+
+                            <div class="quote-field">
+                                <label for="vehicle-plate">Placa <span>(opcional)</span></label>
+                                <input id="vehicle-plate" name="placa" type="text" maxlength="7" autocomplete="off" autocapitalize="characters" placeholder="ABC1D23">
+                            </div>
+
+                            <button class="button quote-next" type="button" data-next>Continuar</button>
+                        </fieldset>
+
+                        <fieldset class="quote-step" data-step="2" hidden>
+                            <legend class="sr-only">Uso do veículo e preferência de cobertura</legend>
+                            <h3 tabindex="-1">Como o veículo é usado?</h3>
+                            <p class="step-description">Uso e local de pernoite influenciam a análise de risco.</p>
+
+                            <div class="quote-field">
+                                <label for="overnight-zip">CEP onde o veículo pernoita</label>
+                                <input id="overnight-zip" name="cep" type="text" inputmode="numeric" required maxlength="9" autocomplete="postal-code" pattern="[0-9]{5}-?[0-9]{3}" placeholder="00000-000">
+                            </div>
+
+                            <div class="quote-field quote-field-group">
+                                <span class="quote-label" id="usage-label">Uso principal</span>
+                                <div class="quote-choice-grid quote-choice-grid-three" role="group" aria-labelledby="usage-label" data-choice-group="uso" data-required-choice aria-describedby="uso-error">
+                                    <button class="quote-option quote-option-compact" type="button" data-value="Pessoal" aria-pressed="false"><strong>Pessoal</strong><small>Rotina e lazer</small></button>
+                                    <button class="quote-option quote-option-compact" type="button" data-value="Aplicativo" aria-pressed="false"><strong>Aplicativo</strong><small>Transporte ou entrega</small></button>
+                                    <button class="quote-option quote-option-compact" type="button" data-value="Comercial" aria-pressed="false"><strong>Comercial</strong><small>Atividade profissional</small></button>
+                                    <input type="hidden" name="uso" value="">
+                                </div>
+                                <p class="quote-error" id="uso-error" role="alert" hidden>Escolha o uso principal do veículo.</p>
+                            </div>
+
+                            <div class="quote-field" id="renewal-field" hidden>
+                                <label for="renewal-date">Vencimento da apólice <span>(opcional)</span></label>
+                                <input id="renewal-date" name="vencimento" type="date" disabled>
+                            </div>
+
+                            <div class="quote-actions">
+                                <button class="button button-quiet" type="button" data-back>Voltar</button>
+                                <button class="button" type="button" data-next>Continuar</button>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="quote-step" data-step="3" hidden>
+                            <legend class="sr-only">Dados para contato</legend>
+                            <h3 tabindex="-1">Como a GLID pode falar com você?</h3>
+                            <p class="step-description">Pedimos apenas os dados iniciais. Informações adicionais serão solicitadas durante o atendimento, quando necessárias.</p>
+
+                            <div class="quote-field-split">
+                                <div class="quote-field">
+                                    <label for="quote-name">Primeiro nome</label>
+                                    <input id="quote-name" name="nome" type="text" required maxlength="50" autocomplete="given-name" placeholder="Seu nome">
+                                </div>
+                                <div class="quote-field">
+                                    <label for="quote-phone">WhatsApp</label>
+                                    <input id="quote-phone" name="whatsapp" type="tel" inputmode="tel" required maxlength="15" autocomplete="tel" pattern="\(?[0-9]{2}\)?[ ]?[0-9]{4,5}-?[0-9]{4}" placeholder="(77) 99999-9999">
+                                </div>
+                            </div>
+
+                            <div class="quote-field-split">
+                                <div class="quote-field">
+                                    <label for="quote-email">E-mail <span>(opcional)</span></label>
+                                    <input id="quote-email" name="email" type="email" maxlength="100" autocomplete="email" placeholder="voce@exemplo.com">
+                                </div>
+                                <div class="quote-field">
+                                    <label for="contact-time">Melhor horário</label>
+                                    <select id="contact-time" name="horario" required>
+                                        <option value="">Selecione</option>
+                                        <option>Manhã</option>
+                                        <option>Tarde</option>
+                                        <option>Noite</option>
+                                        <option>Qualquer horário</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="privacy-note">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3M5 10h14v10H5z"/><path class="icon-accent" d="M12 14v2"/></svg>
+                                <p>Ao continuar, os dados inseridos serão transferidos ao WhatsApp para preencher a mensagem. Você poderá revisá-la antes de enviá-la à GLID. Na cotação, os dados necessários poderão ser processados pela tecnologia de multicálculo e pelas seguradoras participantes.</p>
+                            </div>
+
+                            <p class="quote-status" id="quote-status" aria-live="polite"></p>
+
+                            <div class="quote-actions">
+                                <button class="button button-quiet" type="button" data-back>Voltar</button>
+                                <button class="button" type="submit">Continuar no WhatsApp</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </section>
+            </div>
+        </section>
+
+        <section class="partner-section section-dark" aria-labelledby="partners-title">
+            <div class="container partner-grid">
+                <div class="partner-copy">
+                    <p class="eyebrow"><span></span> Catálogo de seguros</p>
+                    <h2 id="partners-title">Companhias e marcas do catálogo da GLID.</h2>
+                    <p>No Seguro Auto, a tecnologia de multicálculo consulta simultaneamente as opções habilitadas para o perfil. Nem todas as marcas abaixo oferecem ou retornam Auto individual; a participação varia conforme veículo, localidade, produto e critérios de aceitação.</p>
+                </div>
+                <div class="partner-catalog">
+                    <ul class="partner-list" aria-label="Principais companhias e marcas do catálogo de seguros da GLID">
+                        <li>HDI Seguros</li><li>Tokio Marine</li><li>Porto Seguro</li><li>MAPFRE</li><li>Suhai</li><li>Yelum</li><li>Bradesco Seguros</li><li>Itaú Seguro Auto</li><li>Aliro</li>
+                    </ul>
+                    <details class="partner-more">
+                        <summary>Ver outras companhias e marcas <span aria-hidden="true">+</span></summary>
+                        <ul class="partner-list" aria-label="Outras companhias e marcas do catálogo de seguros da GLID">
+                            <li>Darwin</li><li>AXA</li><li>Alfa Seguradora</li><li>Allianz</li><li>Sancor</li><li>Pottencial</li><li>Zurich</li><li>Pier</li><li>Justos</li>
+                        </ul>
+                    </details>
                 </div>
             </div>
+        </section>
 
-            <div class="simulator-wrapper">
-                <div class="step-screen active" id="step-1">
-                    <h3>O que vamos proteger hoje?</h3>
-                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px; font-weight:300;">Selecione a categoria desejada.</p>
-                    
-                    <div class="selection-card" onclick="selectCotacao('Plano de Saúde (CNPJ/MEI)'); nextStep(2)">
-                        <div class="icon-box"><i class="ph-bold ph-buildings"></i></div>
-                        <div>
-                            <div style="font-weight:700; color:white; font-size:1.1rem;">Plano de Saúde (Empresarial)</div>
-                            <div style="font-size:0.85rem; color:var(--success); font-weight:600;">Exclusivo CNPJ/MEI. Até 40% mais barato.</div>
-                        </div>
-                    </div>
-
-                    <div class="selection-card" onclick="selectCotacao('Plano Odontológico (CNPJ/MEI)'); nextStep(2)">
-                        <div class="icon-box"><i class="ph-bold ph-tooth"></i></div>
-                        <div>
-                            <div style="font-weight:700; color:white; font-size:1.1rem;">Plano Odontológico (Empresarial)</div>
-                            <div style="font-size:0.85rem; color:var(--text-gray);">Cuidado completo para sócios e funcionários.</div>
-                        </div>
-                    </div>
-
-                    <div class="selection-card" onclick="selectCotacao('Seguro Auto / Frota'); nextStep(2)">
-                        <div class="icon-box"><i class="ph-bold ph-car-profile"></i></div>
-                        <div>
-                            <div style="font-weight:700; color:white; font-size:1.1rem;">Seguro Automóvel</div>
-                            <div style="font-size:0.85rem; color:var(--text-gray);">Proteção contra colisão, roubo e terceiros.</div>
-                        </div>
-                    </div>
-
-                    <div class="selection-card" onclick="selectCotacao('Seguro de Vida'); nextStep(2)">
-                        <div class="icon-box"><i class="ph-bold ph-shield-check"></i></div>
-                        <div>
-                            <div style="font-weight:700; color:white; font-size:1.1rem;">Seguro de Vida</div>
-                            <div style="font-size:0.85rem; color:var(--text-gray);">Segurança vitalícia para quem você ama.</div>
-                        </div>
-                    </div>
+        <section class="insurance-process section-light" id="como-funciona" aria-labelledby="process-title">
+            <div class="container">
+                <div class="section-heading section-heading-dark">
+                    <p class="eyebrow"><span></span> Multicálculo, sem retrabalho</p>
+                    <h2 id="process-title">Você informa uma vez. A gente compara por você.</h2>
+                    <p>Em vez de repetir os mesmos dados em vários lugares, você inicia uma única solicitação e recebe as cotações retornadas de forma organizada.</p>
                 </div>
 
-                <div class="step-screen" id="step-2">
-                    <h3>Detalhes da Cotação</h3>
-                    <p style="font-size:0.95rem; color:var(--text-gray); margin-bottom:25px; font-weight:300;">Para buscar a melhor tabela, informe:</p>
-                    
-                    <label>Seu Estado (UF)</label>
-                    <select id="uf_cotacao">
-                        <option value="BA">Bahia (BA)</option>
-                        <option value="SP">São Paulo (SP)</option>
-                        <option value="MG">Minas Gerais (MG)</option>
-                        <option value="RJ">Rio de Janeiro (RJ)</option>
-                        <option value="Outro">Outro Estado</option>
-                    </select>
+                <ol class="insurance-process-list">
+                    <li><span class="step-number">01</span><h3>Conte sobre o veículo</h3><p>Modelo, ano, local de pernoite, uso e situação do seguro ajudam a definir o risco.</p></li>
+                    <li><span class="step-number">02</span><h3>Consulta simultânea</h3><p>A GLID utiliza tecnologia de multicálculo para consultar as opções habilitadas para o perfil.</p></li>
+                    <li><span class="step-number">03</span><h3>Cotações lado a lado</h3><p>Preço, cobertura, limites, franquia, assistência e forma de pagamento ficam claros.</p></li>
+                    <li><span class="step-number">04</span><h3>Escolha orientada</h3><p>Você decide com apoio humano, sem obrigação de contratar. O formulário não ativa cobertura.</p></li>
+                </ol>
+            </div>
+        </section>
 
-                    <label>Quantidade de Vidas (Pessoas)</label>
-                    <select id="vidas_cotacao">
-                        <option value="De 2 a 5 Vidas (MEI/PME)">De 2 a 5 Vidas (MEI / Pequena Empresa)</option>
-                        <option value="De 6 a 29 Vidas">De 6 a 29 Vidas</option>
-                        <option value="Acima de 30 Vidas">Acima de 30 Vidas (Corporativo)</option>
-                        <option value="Não se aplica">Não se aplica (Seguro Auto/Vida)</option>
-                    </select>
-
-                    <button class="btn-action" onclick="gerarCotacao()">Analisar Tabelas <i class="ph-bold ph-magnifying-glass"></i></button>
-                    <button class="btn-action btn-outline" onclick="nextStep(1)">Voltar</button>
+        <section class="insurance-comparison section-dark" id="comparacao" aria-labelledby="comparison-title">
+            <div class="container">
+                <div class="comparison-heading-grid">
+                    <div class="section-heading">
+                        <p class="eyebrow"><span></span> Comparação honesta</p>
+                        <h2 id="comparison-title">Menor preço, com as diferenças explicadas.</h2>
+                    </div>
+                    <p>A opção de menor prêmio total fica em destaque, mas a decisão não termina no preço. A GLID também mostra o que muda em coberturas, limites, franquia, assistência e pagamento.</p>
                 </div>
 
-                <div class="step-screen" id="step-result">
-                    <div class="result-display">
-                        <i class="ph-fill ph-check-circle" style="font-size:4.5rem; color:var(--success); margin-bottom:15px; filter: drop-shadow(0 0 20px rgba(16,185,129,0.4));"></i>
-                        <h3 style="margin-bottom:10px; font-size: 2rem;">Opções Localizadas!</h3>
-                        <p style="color:var(--text-gray); font-size:1rem; margin-bottom:20px; font-weight:300;">Como os valores variam pela operadora, faixa etária e perfil do bem, organizamos as melhores tabelas de mercado sob medida para você.</p>
-                        
-                        <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 20px; border-radius: 16px; font-size: 0.9rem; color: white; text-align: left; line-height: 1.5;">
-                            <i class="ph-bold ph-info" style="color:var(--primary); font-size:1.2rem; vertical-align:middle; margin-right:5px;"></i> <b>Atenção CNPJ:</b> Lembre de enviar o número do seu MEI/CNPJ para o nosso especialista aplicar a redução de tabela de até 40%.
-                        </div>
-                    </div>
-                    
-                    <a id="btn-whatsapp" href="#" class="btn-action" style="background: linear-gradient(135deg, #25D366, #128C7E);"><i class="ph-bold ph-whatsapp-logo" style="font-size: 1.4rem;"></i> Receber Tabelas no WhatsApp</a>
-                    <button class="btn-action btn-outline" onclick="location.reload()">Nova Cotação</button>
+                <div class="comparison-board">
+                    <article class="comparison-card comparison-card-primary">
+                        <span class="comparison-index">01 · Menor prêmio total</span>
+                        <h3>Mais econômica</h3>
+                        <p>Destaca o menor prêmio total entre as cotações recebidas para o perfil e as coberturas informados.</p>
+                        <ul><li>Valor total e parcelamento</li><li>Coberturas incluídas</li><li>Franquia aplicável</li><li>Limites e assistência</li></ul>
+                    </article>
+                    <article class="comparison-card">
+                        <span class="comparison-index">02 · Custo-benefício</span>
+                        <h3>Melhor equilíbrio</h3>
+                        <p>Ajuda a identificar quando uma diferença de preço pode trazer condições mais adequadas.</p>
+                        <ul><li>Diferenças relevantes</li><li>Serviços adicionais</li><li>Franquia comparada</li><li>Aderência à sua prioridade</li></ul>
+                    </article>
+                    <article class="comparison-card">
+                        <span class="comparison-index">03 · Mais cobertura</span>
+                        <h3>Proteção ampliada</h3>
+                        <p>Apresenta alternativas com coberturas ou serviços adicionais, quando houver retorno compatível.</p>
+                        <ul><li>Limites superiores</li><li>Coberturas adicionais</li><li>Assistência disponível</li><li>Impacto no preço</li></ul>
+                    </article>
+                </div>
+                <p class="comparison-note">As três leituras dependem da quantidade e das características das cotações efetivamente retornadas. A opção mais barata pode ter cobertura, limite ou franquia diferente.</p>
+            </div>
+        </section>
+
+        <section class="price-explainer section-light" aria-labelledby="price-title">
+            <div class="container price-grid">
+                <div class="price-copy">
+                    <p class="eyebrow"><span></span> Preço personalizado</p>
+                    <h2 id="price-title">Por que não mostramos um preço agora?</h2>
+                    <p>Porque um valor genérico criaria uma expectativa que pode não servir para você. Cada seguradora avalia o risco com seus próprios critérios antes de retornar uma cotação.</p>
+                    <a class="button price-button" href="#cotacao">Solicitar minha cotação</a>
+                </div>
+                <dl class="price-factors">
+                    <div><dt>Veículo</dt><dd>Modelo, ano, versão, valor e características de segurança.</dd></div>
+                    <div><dt>Perfil e uso</dt><dd>Condutores, finalidade, rotina de circulação e histórico informado.</dd></div>
+                    <div><dt>Localidade</dt><dd>CEP de pernoite e regiões em que o veículo circula.</dd></div>
+                    <div><dt>Proteção escolhida</dt><dd>Coberturas, limites, franquias, serviços e forma de pagamento.</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="coverage-section" id="coberturas" aria-labelledby="coverage-title">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow"><span></span> Possibilidades de proteção</p>
+                    <h2 id="coverage-title">O que pode entrar no seu Seguro Auto.</h2>
+                    <p>As coberturas e os serviços variam por produto e seguradora. A cotação mostra exatamente o que está incluído antes da contratação.</p>
+                </div>
+
+                <div class="coverage-grid">
+                    <article><span class="coverage-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 18h22v7H5zM8 18l2-7h12l2 7M9 25v3M23 25v3"/><path class="icon-accent" d="M11 21h3M18 21h3"/></svg></span><h3>Roubo e furto</h3><p>Indenização conforme as condições e os limites contratados.</p></article>
+                    <article><span class="coverage-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 19h20v7H6zM9 19l2-7h10l2 7M5 11l4 3M27 11l-4 3"/><path class="icon-accent" d="m13 8 3 4 3-4"/></svg></span><h3>Colisão e incêndio</h3><p>Proteção para danos ao veículo nas situações cobertas pela apólice.</p></article>
+                    <article><span class="coverage-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 7 8v7c0 6 3.8 10.4 9 13 5.2-2.6 9-7 9-13V8Z"/><path class="icon-accent" d="M11 16h10M16 11v10"/></svg></span><h3>Danos a terceiros</h3><p>Limites para danos materiais, corporais ou morais, conforme contratação.</p></article>
+                    <article><span class="coverage-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23h16M10 20a7 7 0 1 1 12 0"/><path class="icon-accent" d="m7 8 2 2M25 8l-2 2M16 4v3"/></svg></span><h3>Eventos naturais</h3><p>Possíveis coberturas para alagamento, granizo e outros eventos previstos.</p></article>
+                    <article><span class="coverage-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 7h16l2 18H6zM10 11h12M16 11v14"/><path class="icon-accent" d="m16 11-3 5 4 2-3 4"/></svg></span><h3>Vidros e faróis</h3><p>Serviços para itens específicos, com regras, limites e franquias próprios.</p></article>
+                    <article><span class="coverage-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/><path class="icon-accent" d="M8 25h6"/></svg></span><h3>Assistência 24 horas</h3><p>Guincho e outros serviços conforme o plano e a rede disponíveis.</p></article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="partners-section">
-        <div class="container" style="max-width: 100%;">
-            <p style="text-align:center; color:var(--text-gray); font-size:0.8rem; text-transform:uppercase; letter-spacing:3px; margin-bottom:40px; font-weight:700; opacity: 0.7;">Credenciado nas Maiores Seguradoras e Operadoras do Brasil</p>
-            <div style="width:100%; overflow:hidden;">
-                <div class="marquee-track">
-                    <div class="partner-logo"><img src="../assets/img/logos/bradesco.png" alt="Bradesco Seguros"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/caixa.png" alt="Caixa Seguradora"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/santander.png" alt="Santander"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/itau.png" alt="Itaú"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/mapfre.png" alt="Mapfre"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/bb.png" alt="BB Seguros"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/bradesco.png" alt="Bradesco Seguros"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/caixa.png" alt="Caixa Seguradora"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/santander.png" alt="Santander"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/itau.png" alt="Itaú"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/mapfre.png" alt="Mapfre"></div>
-                    <div class="partner-logo"><img src="../assets/img/logos/bb.png" alt="BB Seguros"></div>
+        <section class="other-insurance section-dark" aria-labelledby="other-title">
+            <div class="container other-grid">
+                <div class="other-copy">
+                    <p class="eyebrow"><span></span> Outras proteções</p>
+                    <h2 id="other-title">O automóvel é o carro-chefe. A GLID também orienta em outros seguros.</h2>
+                    <p>Se a sua necessidade não é Seguro Auto, escolha uma categoria e inicie um atendimento específico.</p>
+                </div>
+                <div class="other-list">
+                    <a href="https://wa.me/557731420005?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20seguros%20da%20GLID%20e%20quero%20orienta%C3%A7%C3%A3o%20sobre%20Seguro%20Moto."><span>Seguro Moto</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a href="https://wa.me/557731420005?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20seguros%20da%20GLID%20e%20quero%20orienta%C3%A7%C3%A3o%20sobre%20Seguro%20Residencial."><span>Seguro Residencial</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a href="https://wa.me/557731420005?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20seguros%20da%20GLID%20e%20quero%20orienta%C3%A7%C3%A3o%20sobre%20Seguro%20de%20Vida."><span>Seguro de Vida</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                    <a href="https://wa.me/557731420005?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20seguros%20da%20GLID%20e%20quero%20orienta%C3%A7%C3%A3o%20sobre%20Seguro%20Empresarial."><span>Seguro Empresarial</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="features-section">
+        <section class="faq section-light" id="duvidas" aria-labelledby="faq-title">
+            <div class="container faq-grid">
+                <div class="faq-intro">
+                    <p class="eyebrow"><span></span> Dúvidas frequentes</p>
+                    <h2 id="faq-title">Clareza antes de contratar.</h2>
+                    <p>Preço e cobertura só ficam definidos depois da análise e do retorno das seguradoras.</p>
+                </div>
+
+                <div class="faq-list">
+                    <details><summary>Por que o site não mostra um preço imediato?<span aria-hidden="true">+</span></summary><p>Porque o valor depende do veículo, dos condutores, do uso, do local de pernoite, das coberturas e dos critérios de cada seguradora. Uma estimativa genérica poderia não representar o seu caso.</p></details>
+                    <details><summary>A GLID consulta todas as companhias ao mesmo tempo?<span aria-hidden="true">+</span></summary><p>A GLID usa tecnologia de multicálculo para consultar simultaneamente as opções habilitadas para o perfil informado. Nem todas as companhias necessariamente retornam uma cotação, pois disponibilidade e aceitação variam.</p></details>
+                    <details><summary>O que significa “menor preço retornado”?<span aria-hidden="true">+</span></summary><p>A GLID destaca o menor prêmio total — o preço total do seguro — entre as cotações efetivamente retornadas para os dados e as coberturas informados. Isso não significa pesquisa de todo o mercado, e cotações com coberturas ou franquias diferentes não são equivalentes.</p></details>
+                    <details><summary>A opção mais barata é sempre a melhor?<span aria-hidden="true">+</span></summary><p>Não necessariamente. Uma cotação mais barata pode ter franquia maior, limites menores ou menos serviços. Por isso a comparação também considera cobertura, assistência e condições.</p></details>
+                    <details><summary>Posso cotar seguro novo, renovação, 0 km ou uso por aplicativo?<span aria-hidden="true">+</span></summary><p>Sim, você pode iniciar a solicitação para esses perfis. O retorno e as condições dependem dos produtos disponíveis e da aceitação de cada seguradora.</p></details>
+                    <details><summary>Enviar o formulário já ativa a cobertura?<span aria-hidden="true">+</span></summary><p>Não. O formulário não ativa cobertura. O início depende da confirmação da seguradora, conforme a proposta, a apólice ou eventual cobertura provisória.</p></details>
+                    <details><summary>Quais dados são necessários no início?<span aria-hidden="true">+</span></summary><p>Pedimos apenas informações básicas do veículo, uso, local de pernoite e contato. Outros dados podem ser necessários depois para a cotação formal, sempre de acordo com a finalidade do atendimento.</p></details>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section insurance-cta" aria-labelledby="final-cta-title">
+            <div class="container final-cta-grid">
+                <div>
+                    <p class="eyebrow eyebrow-on-teal"><span></span> Compare antes de escolher</p>
+                    <h2 id="final-cta-title">Uma solicitação pode abrir diferentes possibilidades.</h2>
+                    <p>Comece com os dados do veículo. A GLID organiza os retornos e ajuda você a entender o que muda entre as cotações.</p>
+                </div>
+                <div class="final-cta-action">
+                    <a class="button final-cta-button" href="#cotacao">Solicitar cotação de Auto</a>
+                    <span>Sem obrigação de contratar. O envio não ativa cobertura.</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
         <div class="container">
-            <h2 style="font-size:3rem; text-align:center; margin: 0 0 70px 0; letter-spacing: -1.5px; font-weight: 900;">Sua paz de espírito não tem preço.</h2>
-            <div class="grid-4">
-                <div class="feature-card">
-                    <div class="f-icon"><i class="ph-bold ph-buildings"></i></div>
-                    <h3 style="margin-top:0;">Vantagem CNPJ</h3>
-                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Empresas e MEIs pagam até <b>40% menos</b> em Planos de Saúde e Odonto em comparação às antigas tabelas de pessoa física.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="f-icon"><i class="ph-bold ph-first-aid"></i></div>
-                    <h3 style="margin-top:0;">Rede Credenciada</h3>
-                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Acesso aos melhores hospitais, laboratórios e especialistas do país. Cuide do seu bem maior sem depender de filas.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="f-icon"><i class="ph-bold ph-car-profile"></i></div>
-                    <h3 style="margin-top:0;">Cobertura Auto Total</h3>
-                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Não dirija com medo. Seguros que cobrem perda total, furto, danos a terceiros e assistência 24h em qualquer lugar.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="f-icon"><i class="ph-bold ph-video-camera"></i></div>
-                    <h3 style="margin-top:0;">Telemedicina</h3>
-                    <p style="color:var(--text-gray); margin-bottom:0; font-size:0.95rem;">Opções modernas que incluem pronto-atendimento médico na palma da sua mão através do celular, 24 horas por dia.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="comparison-section">
-        <div class="container">
-            <h2 style="font-size:3rem; margin: 0 0 50px 0; letter-spacing: -1.5px; font-weight: 900;">O Risco Calculado.</h2>
-            <div class="comp-box">
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; text-align:left;">
-                    <div style="padding:20px;">
-                        <div style="color:var(--danger); font-weight:800; margin-bottom:10px; text-transform:uppercase; font-size:0.85rem; letter-spacing: 1px;">Sem Proteção</div>
-                        <div style="font-size:0.9rem; color:var(--text-gray);">Emergências, acidentes ou doenças</div>
-                        <div style="font-size:2.5rem; font-weight:900; line-height:1.2; margin:10px 0; color: white;">Custo Incalculável</div>
-                        <div style="font-size:0.9rem; color:var(--text-gray);">Risco de dilapidação total do seu patrimônio para cobrir despesas médicas ou perdas materiais.</div>
-                    </div>
-                    <div style="padding:20px; border-left:1px solid rgba(255,255,255,0.05);">
-                        <div style="color:var(--success); font-weight:800; margin-bottom:10px; text-transform:uppercase; font-size:0.85rem; letter-spacing: 1px;">Com Proteção Glid</div>
-                        <div style="font-size:0.9rem; color:var(--text-gray);">Seguros e Planos de Saúde</div>
-                        <div style="font-size:2.5rem; font-weight:900; line-height:1.2; margin:10px 0; color:var(--success);">Parcela Fixa</div>
-                        <div style="font-size:0.9rem; color:var(--text-gray);">Previsibilidade financeira. Você paga uma pequena fração por mês e transfere o risco para a Operadora.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="aneps-section">
-        <div class="container">
-            <div class="aneps-box">
-                <img src="../assets/img/logos/aneps.png" alt="Selo de Certificação ANEPS">
-                <div class="aneps-text">
-                    <h4>Certificação e Segurança Regulada</h4>
-                    <p>A Glid opera sob rigorosa certificação <b>ANEPS</b>, garantindo que todas as nossas operações são auditadas e seguem as diretrizes do <b>Banco Central do Brasil</b> e órgãos como ANS e SUSEP.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="fat-footer">
-        <div class="container">
-            <div class="footer-grid">
+            <div class="footer-main">
                 <div class="footer-brand">
-                    <a href="/" class="logo">Glid<span>.</span></a>
-                    <p>Crédito e seguros com clareza.</p>
+                    <a class="brand" href="/" aria-label="GLID — Página inicial"><img class="brand-logo" src="../assets/img/brand/glid-logo-horizontal.png" width="680" height="253" alt="" loading="lazy" decoding="async"></a>
+                    <p>Crédito e seguros com clareza.</p><p class="campaign-line">Compare. Entenda. Escolha melhor.</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Crédito</h4>
-                    <ul>
-                        <li><a href="../consorcios/">Consórcios</a></li>
-                        <li><a href="../emprestimos/">Empréstimos</a></li>
-                        <li><a href="../#atendimento">Financiamentos</a></li>
-                    </ul>
+
+                <div class="footer-column">
+                    <h2>Soluções</h2>
+                    <a href="/consorcios/">Consórcios</a><a href="/emprestimos/">Empréstimos</a><a href="/#atendimento">Financiamentos</a><a href="/seguros/">Seguros</a><a href="/#atendimento">Planos de saúde</a>
                 </div>
-                <div class="footer-col">
-                    <h4>Proteção</h4>
-                    <ul>
-                        <li><a href="../#atendimento">Seguros</a></li>
-                        <li><a href="../#atendimento">Planos de Saúde</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>GLID</h4>
-                    <ul>
-                        <li><a href="../#como-funciona">Como funciona</a></li>
-                        <li><a href="../#atendimento">Comparar opções</a></li>
-                    </ul>
-                </div>
+
+                <div class="footer-column"><h2>GLID</h2><a href="/#como-funciona">Como funciona</a><a href="/#por-que-glid">Por que a GLID</a><a href="#duvidas">Dúvidas frequentes</a></div>
+
+                <div class="footer-column footer-contact"><h2>Atendimento</h2><a href="https://wa.me/557731420005">WhatsApp: (77) 3142-0005</a><a class="footer-button" href="#cotacao">Cotar Seguro Auto</a></div>
             </div>
-            <div class="footer-bottom">&copy; 2026 Glid Tecnologia Financeira Ltda. Correspondente Bancário.</div>
+
+            <div class="footer-disclosure"><p>A GLID atua na orientação e intermediação comercial. As cotações, a aceitação do risco, a emissão da apólice, as coberturas e a regulação de sinistros são de responsabilidade da seguradora identificada em cada opção. Disponibilidade, preço, limites e franquias variam conforme o perfil e os critérios de aceitação. O envio dos dados solicita uma cotação e não ativa cobertura. O registro do produto é automático e não representa aprovação ou recomendação por parte da Susep.</p></div>
+
+            <div class="footer-bottom"><p>&copy; 2026 GLID — Crédito e Seguros. Todos os direitos reservados.</p><a href="#conteudo">Voltar ao topo</a></div>
         </div>
     </footer>
 
-    <a href="https://wa.me/557731420005" class="whatsapp-float"><i class="ph-bold ph-whatsapp-logo"></i></a>
-
-    <script>
-        let cotacao = { produto: '' };
-        function selectCotacao(produtoNome) {
-            cotacao.produto = produtoNome;
-            document.querySelectorAll('.selection-card').forEach(e => e.classList.remove('selected'));
-            event.currentTarget.classList.add('selected');
-        }
-        function nextStep(n) {
-            if(n === 2 && !cotacao.produto) { alert("Selecione um produto primeiro!"); return; }
-            document.querySelectorAll('.step-screen').forEach(e => e.classList.remove('active'));
-            document.getElementById('step-'+n).classList.add('active');
-        }
-        function gerarCotacao() {
-            const uf = document.getElementById('uf_cotacao').value;
-            const vidas = document.getElementById('vidas_cotacao').value;
-            let wppText = `Olá! Vim pelo site da Glid e gostaria de uma Cotação Expressa.%0A🎯 *Produto:* ${cotacao.produto}%0A📍 *Região:* ${uf}%0A👥 *Perfil/Vidas:* ${vidas}%0AAguardo o contato com as tabelas de valores.`;
-            document.getElementById('btn-whatsapp').href = `https://wa.me/557731420005?text=${wppText}`;
-            nextStep('result');
-        }
-    </script>
+    <a class="whatsapp-float" href="https://wa.me/557731420005?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20Seguro%20Auto%20da%20GLID%20e%20quero%20tirar%20uma%20d%C3%BAvida." aria-label="Tirar uma dúvida sobre Seguro Auto pelo WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M9 8.5c.3 2.3 2.1 4.1 4.5 4.5M9.1 8.4l-1 1.7c1 2.5 3 4.5 5.5 5.5l1.7-1"/></svg><span>Tirar uma dúvida</span>
+    </a>
 </body>
 </html>
