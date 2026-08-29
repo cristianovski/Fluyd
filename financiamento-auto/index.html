@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financiamento de veículo com planejamento claro | GLID</title>
+    <meta name="description" content="Organize valor, entrada e prazo para financiar carro, moto ou utilitário e leve o cenário para uma análise personalizada com a GLID.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#071321">
+    <link rel="canonical" href="https://www.glid.com.br/financiamento-auto/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="GLID">
+    <meta property="og:title" content="Financiamento auto com mais clareza | GLID">
+    <meta property="og:description" content="Monte um planejamento inicial para seu próximo veículo, sem promessas antes da análise.">
+    <meta property="og:url" content="https://www.glid.com.br/financiamento-auto/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Financiamento auto com mais clareza | GLID">
+    <meta name="twitter:description" content="Organize valor, entrada e prazo antes de comparar as condições da proposta.">
+
+    <link rel="icon" href="../assets/img/brand/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/emprestimos.css">
+    <link rel="stylesheet" href="../assets/css/financiamentos.css">
+    <script src="../assets/js/home.js" defer></script>
+    <script src="../assets/js/financiamentos.js" defer></script>
+</head>
+<body class="finance-page auto-finance-page" data-financing-type="auto">
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="/" aria-label="GLID - Página inicial">
+                <img class="brand-logo" src="../assets/img/brand/glid-logo-horizontal.png" width="680" height="253" alt="" decoding="async">
+            </a>
+
+            <nav class="desktop-nav" aria-label="Navegação principal">
+                <a href="#planejador">Planejador</a>
+                <a href="#possibilidades">Possibilidades</a>
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#duvidas">Dúvidas</a>
+            </nav>
+
+            <a class="button button-small header-cta" href="#planejador">Montar planejamento</a>
+
+            <details class="mobile-menu">
+                <summary aria-label="Menu de navegação"><span></span><span></span><span></span></summary>
+                <nav aria-label="Navegação móvel">
+                    <a href="#planejador">Planejador</a>
+                    <a href="#possibilidades">Possibilidades</a>
+                    <a href="#como-funciona">Como funciona</a>
+                    <a href="#duvidas">Dúvidas</a>
+                    <a class="button button-small" href="#planejador">Montar planejamento</a>
+                </nav>
+            </details>
+        </div>
+    </header>
+
+    <main id="conteudo">
+        <section class="hero loan-hero finance-hero" aria-labelledby="hero-title">
+            <svg class="journey-line finance-journey" viewBox="0 0 900 420" aria-hidden="true" focusable="false">
+                <path d="M26 330C166 330 136 116 304 116s128 188 300 188 124-204 270-204"/>
+                <circle cx="874" cy="100" r="6"/>
+            </svg>
+
+            <div class="container loan-hero-grid">
+                <div class="hero-copy">
+                    <nav class="finance-breadcrumb" aria-label="Caminho de navegação"><a href="/financiamentos/">Financiamentos</a><span>/</span><span aria-current="page">Auto</span></nav>
+                    <p class="eyebrow"><span></span> Financiamento auto GLID</p>
+                    <h1 id="hero-title">Financie seu próximo veículo com <em>mais clareza.</em></h1>
+                    <p class="hero-description">Monte um cenário com o tipo de veículo, valor, entrada e prazo. Você verá o resumo antes de decidir se quer seguir para uma análise das opções disponíveis.</p>
+
+                    <div class="hero-actions">
+                        <a class="button" href="#planejador">Montar meu planejamento</a>
+                        <a class="text-link" href="#possibilidades">Entender as possibilidades
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                        </a>
+                    </div>
+
+                    <ul class="trust-list" aria-label="Características do planejador">
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Sem CPF ou documentos</li>
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Resultado antes do contato</li>
+                        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Planejamento para loja ou particular</li>
+                    </ul>
+
+                    <p class="legal-note">O planejamento não consulta score e não representa proposta, reserva de taxa ou garantia de aprovação.</p>
+                </div>
+
+                <section class="loan-simulator" id="planejador" aria-labelledby="planner-title">
+                    <header class="simulator-heading">
+                        <p>Planejamento inicial</p>
+                        <h2 id="planner-title">Organize seu cenário de compra</h2>
+                        <span>Sem taxa genérica: a parcela e o CET serão confirmados na proposta da instituição financeira.</span>
+                    </header>
+
+                    <ol class="simulator-progress" aria-label="Progresso do planejamento">
+                        <li class="is-active" data-progress="1" aria-current="step"><span></span>Veículo</li>
+                        <li data-progress="2"><span></span>Valores</li>
+                        <li data-progress="3"><span></span>Prazo</li>
+                    </ol>
+
+                    <noscript><p class="noscript-note">O planejador precisa de JavaScript para montar o resumo. Você ainda pode usar o botão de WhatsApp no fim da tela para solicitar orientação.</p></noscript>
+
+                    <form id="financing-planner" novalidate>
+                        <fieldset class="simulator-step" data-step="1">
+                            <legend class="sr-only">Informe o tipo de veículo e a forma de compra</legend>
+                            <h3 tabindex="-1">Qual veículo você pretende comprar?</h3>
+                            <p class="step-description">Esses dados ajudam a encaminhar a análise para a modalidade adequada.</p>
+
+                            <div class="planner-fields">
+                                <div class="planner-fields planner-fields-two">
+                                    <div class="planner-field">
+                                        <label for="vehicle-type">Tipo de veículo</label>
+                                        <select id="vehicle-type" name="tipo_bem" data-required-step="1" required>
+                                            <option value="">Selecione</option>
+                                            <option>Carro</option>
+                                            <option>Moto</option>
+                                            <option>Utilitário</option>
+                                        </select>
+                                    </div>
+                                    <div class="planner-field">
+                                        <label for="vehicle-condition">Condição</label>
+                                        <select id="vehicle-condition" name="condicao" data-required-step="1" required>
+                                            <option value="">Selecione</option>
+                                            <option>Novo</option>
+                                            <option>Usado</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="planner-field">
+                                    <label for="purchase-origin">Onde pretende comprar?</label>
+                                    <select id="purchase-origin" name="origem" data-required-step="1" required>
+                                        <option value="">Selecione</option>
+                                        <option>Loja ou concessionária</option>
+                                        <option>Diretamente de particular</option>
+                                        <option>Ainda estou pesquisando</option>
+                                    </select>
+                                    <small>Disponibilidade e documentação podem variar conforme a origem da compra.</small>
+                                </div>
+                            </div>
+
+                            <p class="sim-error" id="profile-error" role="alert" hidden>Preencha as informações do veículo para continuar.</p>
+                            <button class="button simulator-next" id="profile-next" type="button" disabled>Continuar</button>
+                        </fieldset>
+
+                        <fieldset class="simulator-step" data-step="2" hidden>
+                            <legend class="sr-only">Informe o valor do veículo e a entrada</legend>
+                            <h3 tabindex="-1">Qual é o seu cenário de valores?</h3>
+                            <p class="step-description">A entrada e o valor do bem serão submetidos às regras e à análise da instituição financeira.</p>
+
+                            <div class="planning-values">
+                                <div class="amount-selector finance-amount-selector">
+                                    <label for="asset-value">Valor aproximado do veículo</label>
+                                    <output id="asset-output" for="asset-value">R$ 80.000</output>
+                                    <div class="direct-value">
+                                        <label for="asset-value-manual">Digitar valor (R$)</label>
+                                        <input id="asset-value-manual" type="number" inputmode="numeric" min="10000" max="500000" step="1000" value="80000" data-range-input="asset-value">
+                                    </div>
+                                    <input class="finance-range" id="asset-value" name="valor_bem" type="range" min="10000" max="500000" step="1000" value="80000">
+                                    <div class="range-scale" aria-hidden="true"><span>R$ 10 mil</span><span>R$ 500 mil</span></div>
+                                </div>
+
+                                <div class="amount-selector finance-amount-selector">
+                                    <label for="down-payment">Entrada prevista</label>
+                                    <output id="down-output" for="down-payment">R$ 16.000</output>
+                                    <div class="direct-value">
+                                        <label for="down-payment-manual">Digitar entrada (R$)</label>
+                                        <input id="down-payment-manual" type="number" inputmode="numeric" min="0" max="499000" step="1000" value="16000" data-range-input="down-payment">
+                                    </div>
+                                    <input class="finance-range" id="down-payment" name="entrada" type="range" min="0" max="79000" step="1000" value="16000">
+                                    <div class="range-scale" aria-hidden="true"><span>Sem entrada definida</span><span>Até o limite do bem</span></div>
+                                </div>
+                            </div>
+
+                            <p class="planning-summary" id="values-summary" aria-live="polite"></p>
+                            <p class="range-disclaimer">Os extremos das réguas servem apenas para organizar o planejamento e não representam valores mínimos ou máximos oferecidos pelas instituições.</p>
+
+                            <div class="simulator-actions">
+                                <button class="button button-quiet" type="button" data-back="1">Voltar</button>
+                                <button class="button" id="values-next" type="button">Continuar</button>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="simulator-step" data-step="3" hidden>
+                            <legend class="sr-only">Escolha o prazo e informe quando pretende comprar</legend>
+                            <h3 tabindex="-1">Em quanto tempo gostaria de pagar?</h3>
+                            <p class="step-description">O prazo é apenas uma preferência de planejamento. A disponibilidade será confirmada na análise.</p>
+
+                            <div class="term-options" role="group" aria-label="Prazo do planejamento">
+                                <button class="term-option" type="button" data-term="12" aria-pressed="false"><strong>12</strong><span>meses</span></button>
+                                <button class="term-option" type="button" data-term="24" aria-pressed="false"><strong>24</strong><span>meses</span></button>
+                                <button class="term-option" type="button" data-term="36" aria-pressed="false"><strong>36</strong><span>meses</span></button>
+                                <button class="term-option" type="button" data-term="48" aria-pressed="false"><strong>48</strong><span>meses</span></button>
+                                <button class="term-option" type="button" data-term="60" aria-pressed="false"><strong>60</strong><span>meses</span></button>
+                            </div>
+                            <p class="range-disclaimer">Os prazos exibidos são referências da ferramenta, não uma promessa de disponibilidade. A instituição confirmará as opções aplicáveis ao veículo e ao perfil.</p>
+
+                            <div class="planner-field step-three-fields">
+                                <label for="purchase-timing">Quando pretende comprar?</label>
+                                <select id="purchase-timing" name="previsao" data-required-step="3" required>
+                                    <option value="">Selecione</option>
+                                    <option>Nos próximos 30 dias</option>
+                                    <option>Entre 1 e 3 meses</option>
+                                    <option>Entre 3 e 6 meses</option>
+                                    <option>Ainda estou pesquisando</option>
+                                </select>
+                            </div>
+
+                            <p class="sim-error" id="term-error" role="alert" hidden>Escolha um prazo para continuar.</p>
+                            <p class="sim-error" id="step-three-error" role="alert" hidden>Informe quando pretende comprar.</p>
+                            <div class="simulator-actions">
+                                <button class="button button-quiet" type="button" data-back="2">Voltar</button>
+                                <button class="button" id="planning-result-button" type="button" disabled>Ver meu planejamento</button>
+                            </div>
+                        </fieldset>
+
+                        <section class="simulator-result" id="planning-result" aria-live="polite" aria-labelledby="result-title" hidden>
+                            <div class="result-intro">
+                                <p>Seu planejamento inicial</p>
+                                <h3 id="result-title" tabindex="-1">Um resumo para começar a comparar propostas</h3>
+                            </div>
+
+                            <div class="result-profile" id="result-profile">-</div>
+                            <dl class="result-grid">
+                                <div class="result-primary">
+                                    <dt>Valor pretendido para financiamento</dt>
+                                    <dd id="result-financed">-</dd>
+                                </div>
+                                <div>
+                                    <dt>Valor do veículo</dt>
+                                    <dd id="result-asset">-</dd>
+                                </div>
+                                <div>
+                                    <dt>Entrada prevista</dt>
+                                    <dd id="result-entry">-</dd>
+                                </div>
+                                <div class="result-wide">
+                                    <dt>Prazo de planejamento</dt>
+                                    <dd id="result-term">-</dd>
+                                </div>
+                            </dl>
+
+                            <p class="result-context">A instituição financeira analisará seu perfil e o veículo para definir taxa, CET, entrada mínima, prazo, parcela e demais condições.</p>
+                            <p class="result-disclaimer"><strong>Planejamento inicial, sem garantia de aprovação.</strong> Este resultado não constitui proposta de crédito e não inclui juros, CET, seguros, tarifas ou demais despesas da operação.</p>
+
+                            <div class="result-lead">
+                                <h4>Quero continuar com o atendimento GLID</h4>
+                                <p>Informe somente o necessário para levar este cenário ao atendimento.</p>
+
+                                <div class="form-split">
+                                    <div class="form-row">
+                                        <label for="auto-name">Como podemos chamar você?</label>
+                                        <input id="auto-name" name="nome" type="text" autocomplete="given-name" maxlength="60" placeholder="Seu primeiro nome" required>
+                                    </div>
+                                    <div class="form-row">
+                                        <label for="auto-city">Cidade e estado</label>
+                                        <input id="auto-city" name="cidade" type="text" autocomplete="address-level2" maxlength="80" placeholder="Ex.: Vitória da Conquista, BA" required>
+                                    </div>
+                                </div>
+
+                                <button class="button result-submit" type="submit">Continuar no WhatsApp
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                </button>
+                                <p class="form-note">Ao continuar, nome, cidade e dados do planejamento serão usados para preencher uma mensagem no WhatsApp. Revise antes de enviar. Não informe CPF, documentos, senha, código de verificação ou dados bancários por esse canal.</p>
+                                <p class="secure-channel-note">A instituição financeira e a finalidade de eventual compartilhamento serão informadas antes do encaminhamento da proposta.</p>
+                            </div>
+
+                            <button class="restart-button" id="restart-planner" type="button">Montar outro planejamento</button>
+                        </section>
+                    </form>
+                </section>
+            </div>
+        </section>
+
+        <section class="finance-details section-light" id="possibilidades" aria-labelledby="possibilities-title">
+            <div class="container">
+                <div class="section-heading section-heading-dark">
+                    <p class="eyebrow"><span></span> Possibilidades</p>
+                    <h2 id="possibilities-title">O veículo muda. A análise também.</h2>
+                    <p>Idade, documentação, procedência e categoria do bem podem alterar as condições ou a disponibilidade da operação.</p>
+                </div>
+
+                <div class="finance-feature-grid">
+                    <article class="finance-feature-main">
+                        <span class="finance-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m7 18 2-7h14l2 7M5 18h22v7H5zM9 25v3M23 25v3"/><path class="icon-accent" d="M10 21h3M19 21h3"/></svg></span>
+                        <h3>Compra de veículo novo ou usado</h3>
+                        <p>O foco do planejador é organizar a aquisição do veículo, seja em loja, concessionária ou diretamente de particular.</p>
+                        <ul>
+                            <li>Carros, motos e utilitários</li>
+                            <li>Entrada conforme análise e modalidade</li>
+                            <li>Prazo sujeito à categoria e ao ano do bem</li>
+                        </ul>
+                        <a class="text-link" href="#planejador">Montar meu cenário
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                        </a>
+                    </article>
+
+                    <div class="finance-feature-list">
+                        <article><span class="finance-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="10"/><path d="M16 6v20M6 16h20"/><path class="icon-accent" d="M11 11l10 10"/></svg></span><h3>Motos</h3><p>Categoria, cilindrada, ano e documentação podem mudar as instituições e condições disponíveis.</p></article>
+                        <article><span class="finance-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 11h17v13H4zM21 15h5l3 4v5h-8zM9 24v3M25 24v3"/><path class="icon-accent" d="M8 15h7"/></svg></span><h3>Utilitários e pesados</h3><p>Uso do veículo, categoria e perfil do comprador podem exigir uma análise específica.</p></article>
+                        <article><span class="finance-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 9h22v16H5zM9 14h14M9 19h8"/><path class="icon-accent" d="m22 20 2 2 4-5"/></svg></span><h3>Documentação do bem</h3><p>Na continuidade, a instituição poderá solicitar documentos do cliente, do veículo e do vendedor em canal seguro.</p></article>
+                        <article><span class="finance-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 25h5c7 0 3-16 11-16h5M23 5l4 4-4 4M6 21v8"/><path class="icon-accent" d="M4 23h4v4H4z"/></svg></span><h3>Refinanciamento</h3><p>Se o objetivo é usar um veículo quitado como garantia, conheça as <a href="/emprestimos/#opcoes">opções de empréstimos</a>.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="finance-process section-dark" id="como-funciona" aria-labelledby="process-title">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow"><span></span> Como funciona</p>
+                    <h2 id="process-title">Seu cenário organiza uma análise mais objetiva.</h2>
+                    <p>O resultado prepara a conversa, mas não substitui a avaliação do cliente e do veículo.</p>
+                </div>
+
+                <ol class="loan-process-list">
+                    <li><span>01</span><h3>Você monta o planejamento</h3><p>Tipo de veículo, origem da compra, valor, entrada, prazo e momento da compra.</p></li>
+                    <li><span>02</span><h3>A GLID orienta o caminho</h3><p>O atendimento verifica alternativas disponíveis nas instituições parceiras.</p></li>
+                    <li><span>03</span><h3>A instituição formaliza a proposta</h3><p>Taxa, CET, entrada, prazo, parcela e total são apresentados antes da contratação.</p></li>
+                </ol>
+
+                <aside class="safety-panel" aria-labelledby="safety-title">
+                    <span class="safety-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4 7 8v7c0 6 3.8 10.4 9 13 5.2-2.6 9-7 9-13V8Z"/><path class="icon-accent" d="m11 16 3 3 7-8"/></svg></span>
+                    <div><p class="eyebrow"><span></span> Atenção a fraudes</p><h3 id="safety-title">Não pague para liberar o financiamento.</h3></div>
+                    <p>A GLID não solicita PIX, depósito antecipado, senha, código de verificação ou acesso bancário para aprovar ou liberar crédito. Documentos devem ser enviados apenas pelo canal seguro indicado na continuidade.</p>
+                </aside>
+
+                <aside class="correspondent-note" aria-labelledby="correspondent-title">
+                    <span class="safety-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 8h22v18H5zM5 13h22M10 18h7"/><path class="icon-accent" d="m21 21 2 2 5-6"/></svg></span>
+                    <h3 id="correspondent-title">A GLID recebe e encaminha propostas como correspondente bancário.</h3>
+                    <p>A instituição financeira será identificada antes da contratação e será responsável pela análise, aprovação e condições da operação.</p>
+                </aside>
+            </div>
+        </section>
+
+        <section class="faq section-light" id="duvidas" aria-labelledby="faq-title">
+            <div class="container faq-grid">
+                <div class="faq-intro">
+                    <p class="eyebrow"><span></span> Dúvidas frequentes</p>
+                    <h2 id="faq-title">Antes de escolher seu financiamento auto.</h2>
+                    <p>As regras variam conforme perfil, instituição e características do veículo.</p>
+                </div>
+
+                <div class="faq-list">
+                    <details><summary>Posso financiar veículo usado?<span aria-hidden="true">+</span></summary><p>Existem alternativas para veículos usados, mas o ano, a categoria, a documentação e a política da instituição podem limitar a disponibilidade, a entrada ou o prazo.</p></details>
+                    <details><summary>É possível comprar de particular?<span aria-hidden="true">+</span></summary><p>Algumas instituições aceitam operações entre pessoas físicas. A análise envolve o cliente, o veículo, o vendedor e a documentação da transferência.</p></details>
+                    <details><summary>A entrada é obrigatória?<span aria-hidden="true">+</span></summary><p>A necessidade e o valor da entrada dependem da análise, da instituição, do perfil e do bem. O planejador aceita uma intenção, mas não confirma entrada mínima ou financiamento integral.</p></details>
+                    <details><summary>Por que o planejador não mostra parcela?<span aria-hidden="true">+</span></summary><p>Sem conhecer a taxa, o CET e todos os custos aplicáveis ao seu caso, uma parcela genérica poderia ser enganosa. Esses valores serão apresentados na proposta da instituição financeira.</p></details>
+                    <details><summary>O veículo fica em garantia?<span aria-hidden="true">+</span></summary><p>Em operações comuns de financiamento, o veículo costuma ficar alienado à instituição até a quitação. A estrutura e as condições constarão do contrato.</p></details>
+                    <details><summary>Com quem o contrato é firmado?<span aria-hidden="true">+</span></summary><p>Com a instituição financeira responsável pela proposta. A GLID orienta e encaminha o atendimento, mas não define a aprovação nem as condições finais.</p></details>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section loan-cta" aria-labelledby="final-cta-title">
+            <div class="container final-cta-grid">
+                <div>
+                    <p class="eyebrow eyebrow-on-teal"><span></span> Comece com clareza</p>
+                    <h2 id="final-cta-title">Seu próximo veículo começa com um bom planejamento.</h2>
+                    <p>Organize o cenário e leve o resumo para uma análise personalizada.</p>
+                </div>
+                <div class="final-cta-action">
+                    <a class="button final-cta-button" href="#planejador">Montar meu planejamento</a>
+                    <span>Sem compromisso e sem consulta de score nesta etapa.</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a class="brand" href="/" aria-label="GLID - Página inicial"><img class="brand-logo" src="../assets/img/brand/glid-logo-horizontal.png" width="680" height="253" alt="" loading="lazy" decoding="async"></a>
+                    <p>Crédito e seguros com clareza.</p><p class="campaign-line">Compare. Entenda. Escolha melhor.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h2>Soluções</h2>
+                    <a href="/consorcios/">Consórcios</a><a href="/emprestimos/">Empréstimos</a><a href="/financiamentos/">Financiamentos</a><a href="/seguros/">Seguros</a><a href="/#atendimento">Planos de saúde</a>
+                </div>
+
+                <div class="footer-column"><h2>Financiamentos</h2><a href="/financiamento-auto/">Auto</a><a href="/financiamento-imobiliario/">Imobiliário</a><a href="#duvidas">Dúvidas frequentes</a></div>
+
+                <div class="footer-column footer-contact"><h2>Atendimento</h2><a href="https://wa.me/557731420005">WhatsApp: (77) 3142-0005</a><a class="footer-button" href="#planejador">Montar planejamento</a></div>
+            </div>
+
+            <div class="footer-disclosure"><p>A GLID atua como correspondente bancário na recepção e no encaminhamento de propostas. A aprovação, taxa de juros, CET, entrada, prazo e demais condições são definidos pela instituição financeira responsável após análise do cliente e do bem.</p></div>
+
+            <div class="footer-bottom"><p>&copy; 2026 GLID. Todos os direitos reservados.</p><a href="#conteudo">Voltar ao topo</a></div>
+        </div>
+    </footer>
+
+    <a class="whatsapp-float" id="finance-whatsapp-float" href="https://wa.me/557731420005?text=Ol%C3%A1%21%20Vim%20pela%20p%C3%A1gina%20de%20financiamento%20auto%20da%20GLID%20e%20quero%20tirar%20uma%20d%C3%BAvida." aria-label="Tirar uma dúvida sobre financiamento auto pelo WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M9 8.5c.3 2.3 2.1 4.1 4.5 4.5M9.1 8.4l-1 1.7c1 2.5 3 4.5 5.5 5.5l1.7-1"/></svg><span>Tirar uma dúvida</span>
+    </a>
+</body>
+</html>
