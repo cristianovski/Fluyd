@@ -740,8 +740,17 @@
 }
 
 @media (max-width: 640px) {
-    .insurance-hero-grid { gap: 40px; padding-block: 52px 68px; }
-    .insurance-hero .hero-actions { margin-top: 28px; }
+    .insurance-hero-grid { gap: 32px; padding-block: 40px 60px; }
+    .insurance-hero h1 {
+        font-size: clamp(2.05rem, 9vw, 2.45rem);
+        line-height: 1.07;
+        text-wrap: balance;
+    }
+    .insurance-hero h1 em::after { display: none; }
+    .insurance-hero .hero-description { font-size: 0.93rem; line-height: 1.52; }
+    .insurance-hero .hero-actions { margin-top: 24px; }
+    .insurance-hero .trust-list { display: none; }
+    .insurance-hero .legal-note { margin-top: 18px; line-height: 1.5; }
     .quote-card { padding: 24px 18px; border-radius: 16px 16px 16px 6px; }
     .quote-heading h2 { font-size: 1.35rem; }
     .quote-progress { margin-block: 23px 26px; }
