@@ -809,6 +809,7 @@
 .aneps-credential .eyebrow { margin-bottom: 9px; }
 .aneps-credential h3 { max-width: 820px; font-size: 1.12rem; line-height: 1.35; }
 .aneps-note { grid-column: 2; max-width: 920px; margin: -16px 0 0; color: var(--muted); font-size: 0.78rem; }
+.aneps-note a { color: var(--mint); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
 .loan-cta { padding-block: 84px; }
 .final-cta-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 70px; align-items: center; }

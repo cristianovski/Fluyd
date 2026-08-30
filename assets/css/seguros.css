@@ -370,6 +370,13 @@
     line-height: 1.5;
 }
 
+.privacy-note a {
+    color: var(--mint);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 .quote-status {
     min-height: 1.2em;
     margin: 10px 0 -7px;
