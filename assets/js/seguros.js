@@ -12,6 +12,15 @@
     const zipInput = form.querySelector("#overnight-zip");
     const phoneInput = form.querySelector("#quote-phone");
     const status = form.querySelector("#quote-status");
+    const query = new URLSearchParams(window.location.search);
+    const cleanAttribution = (value) => value?.replace(/[\r\n]/g, " ").slice(0, 80);
+    const attribution = [
+        cleanAttribution(query.get("utm_source")),
+        cleanAttribution(query.get("utm_medium")),
+        cleanAttribution(query.get("utm_campaign")),
+        cleanAttribution(query.get("utm_content")),
+        cleanAttribution(query.get("utm_term"))
+    ].filter(Boolean).join(" / ");
     let currentStep = 0;
 
     const setChoice = (button) => {
@@ -124,7 +133,9 @@
     });
 
     phoneInput?.addEventListener("input", () => {
-        const digits = phoneInput.value.replace(/\D/g, "").slice(0, 11);
+        let digits = phoneInput.value.replace(/\D/g, "").slice(0, 13);
+        if (digits.startsWith("55") && digits.length > 11) digits = digits.slice(2);
+        digits = digits.slice(0, 11);
         const area = digits.slice(0, 2);
         const first = digits.length > 10 ? digits.slice(2, 7) : digits.slice(2, 6);
         const last = digits.length > 10 ? digits.slice(7) : digits.slice(6);
@@ -163,6 +174,8 @@
             "",
             "Quero receber as cotações retornadas comparadas por preço, cobertura e franquia."
         );
+
+        if (attribution) messageLines.push("", `Origem da visita: ${attribution}`);
 
         if (status) status.textContent = "Abrindo o WhatsApp para você revisar e enviar a mensagem…";
         window.location.href = `https://wa.me/557731420005?text=${encodeURIComponent(messageLines.join("\n"))}`;

@@ -148,6 +148,7 @@
 
         const current = category.options[state.optionIndex];
         creditOutput.textContent = money.format(current.credit);
+        creditRange.setAttribute("aria-valuetext", money.format(current.credit));
         creditMin.textContent = money.format(category.options[0].credit);
         creditMax.textContent = money.format(category.options[lastIndex].credit);
     };

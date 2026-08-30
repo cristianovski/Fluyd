@@ -70,8 +70,8 @@
     bottom: -75px;
     z-index: -1;
     width: 235px;
-    aspect-ratio: 182 / 223;
-    background: url("../img/brand/glid-symbol-watermark.png") center / contain no-repeat;
+    aspect-ratio: 1 / 1;
+    background: url("../img/brand/glid-symbol-v11.png") center / contain no-repeat;
     opacity: 0.026;
     pointer-events: none;
 }
@@ -499,8 +499,8 @@
     right: 2%;
     bottom: -85px;
     width: min(30vw, 390px);
-    aspect-ratio: 182 / 223;
-    background: url("../img/brand/glid-symbol-watermark.png") center / contain no-repeat;
+    aspect-ratio: 1 / 1;
+    background: url("../img/brand/glid-symbol-v11.png") center / contain no-repeat;
     opacity: 0.024;
     pointer-events: none;
 }

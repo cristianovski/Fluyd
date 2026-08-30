@@ -2,6 +2,7 @@
     const productSelect = document.querySelector("#lead-product");
     const nameInput = document.querySelector("#lead-name");
     const leadForm = document.querySelector("#lead-router");
+    const leadSubmit = leadForm?.querySelector(".form-submit");
     const hero = document.querySelector(".hero");
     const whatsappFloat = document.querySelector(".whatsapp-float");
     const mobileViewport = window.matchMedia?.("(max-width: 900px)");
@@ -12,6 +13,8 @@
     if (productSelect && requestedProduct && availableProducts.includes(requestedProduct)) {
         productSelect.value = requestedProduct;
     }
+
+    if (leadSubmit) leadSubmit.disabled = false;
 
     document.querySelectorAll("[data-product]").forEach((link) => {
         link.addEventListener("click", () => {
@@ -40,7 +43,9 @@
         const attribution = [
             cleanAttribution(query.get("utm_source")),
             cleanAttribution(query.get("utm_medium")),
-            cleanAttribution(query.get("utm_campaign"))
+            cleanAttribution(query.get("utm_campaign")),
+            cleanAttribution(query.get("utm_content")),
+            cleanAttribution(query.get("utm_term"))
         ].filter(Boolean).join(" / ");
 
         const messageLines = [

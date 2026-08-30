@@ -68,8 +68,8 @@
     bottom: -72px;
     z-index: -1;
     width: 230px;
-    aspect-ratio: 182 / 223;
-    background: url("../img/brand/glid-symbol-watermark.png") center / contain no-repeat;
+    aspect-ratio: 1 / 1;
+    background: url("../img/brand/glid-symbol-v11.png") center / contain no-repeat;
     opacity: 0.028;
     pointer-events: none;
 }
@@ -111,8 +111,8 @@
 .simulator-progress li {
     display: grid;
     gap: 7px;
-    color: #71818f;
-    font-size: 0.65rem;
+    color: #9aa7b2;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -585,8 +585,8 @@
     right: 4%;
     bottom: -40px;
     width: min(30vw, 380px);
-    aspect-ratio: 182 / 223;
-    background: url("../img/brand/glid-symbol-watermark.png") center / contain no-repeat;
+    aspect-ratio: 1 / 1;
+    background: url("../img/brand/glid-symbol-v11.png") center / contain no-repeat;
     opacity: 0.025;
     pointer-events: none;
 }
@@ -842,13 +842,17 @@
     .final-cta-action span { text-align: left; }
 }
 
+@media (max-width: 720px) {
+    .comparison-scroll-note { display: block; }
+}
+
 @media (max-width: 640px) {
     .consortium-hero-grid { gap: 40px; padding-block: 52px 68px; }
     .consortium-hero .hero-actions { margin-top: 28px; }
     .simulator-card { padding: 24px 18px; border-radius: 16px 16px 16px 6px; }
     .simulator-heading h2 { font-size: 1.35rem; }
     .simulator-progress { margin-block: 23px 26px; }
-    .simulator-progress li { font-size: 0.58rem; }
+    .simulator-progress li { font-size: 0.65rem; }
     .category-grid { grid-template-columns: 1fr; }
     .category-grid .sim-option { min-height: 76px; align-items: center; flex-direction: row; }
     .sim-option { padding: 13px; }
@@ -865,7 +869,6 @@
     .technology-panel article { padding: 22px 18px; }
     .comparison-table th,
     .comparison-table td { padding: 18px 16px; }
-    .comparison-scroll-note { display: block; }
     .roles-panel { padding: 25px 20px; }
     .consortium-process-list,
     .fit-grid { grid-template-columns: 1fr; }

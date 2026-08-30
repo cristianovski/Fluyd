@@ -47,6 +47,7 @@
     const rateReferenceDate = document.querySelector("#rate-reference-date");
     const restartButton = document.querySelector("#restart-simulator");
     const whatsappFloat = document.querySelector("#loan-whatsapp-float");
+    const query = new URLSearchParams(window.location.search);
 
     const state = {
         profile: null,
@@ -71,6 +72,14 @@
     });
 
     const getProfile = () => SETTINGS.profiles[state.profile];
+    const cleanAttribution = (value) => value?.replace(/[\r\n]/g, " ").slice(0, 80);
+    const attribution = [
+        cleanAttribution(query.get("utm_source")),
+        cleanAttribution(query.get("utm_medium")),
+        cleanAttribution(query.get("utm_campaign")),
+        cleanAttribution(query.get("utm_content")),
+        cleanAttribution(query.get("utm_term"))
+    ].filter(Boolean).join(" / ");
 
     const setPressed = (buttons, activeButton) => {
         buttons.forEach((button) => {
@@ -233,6 +242,8 @@
                 ""
             );
         }
+
+        if (attribution) lines.push("", `Origem da visita: ${attribution}`);
 
         return lines.join("\n");
     };

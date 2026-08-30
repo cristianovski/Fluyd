@@ -28,6 +28,15 @@
     const profileError = document.querySelector("#profile-error");
     const stepThreeError = document.querySelector("#step-three-error");
     const whatsappFloat = document.querySelector("#finance-whatsapp-float");
+    const query = new URLSearchParams(window.location.search);
+    const cleanAttribution = (value) => value?.replace(/[\r\n]/g, " ").slice(0, 80);
+    const attribution = [
+        cleanAttribution(query.get("utm_source")),
+        cleanAttribution(query.get("utm_medium")),
+        cleanAttribution(query.get("utm_campaign")),
+        cleanAttribution(query.get("utm_content")),
+        cleanAttribution(query.get("utm_term"))
+    ].filter(Boolean).join(" / ");
 
     const wholeMoney = new Intl.NumberFormat("pt-BR", {
         style: "currency",
@@ -180,6 +189,8 @@
             "",
             "Entendo que este planejamento não é proposta nem garantia de aprovação. Taxa, CET, entrada, prazo, parcela e demais condições serão definidos pela instituição financeira após análise do cliente e do bem."
         );
+
+        if (attribution) lines.push("", `Origem da visita: ${attribution}`);
 
         return lines.join("\n");
     };

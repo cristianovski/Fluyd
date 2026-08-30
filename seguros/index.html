@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seguro Auto: compare cotações | GLID</title>
-    <meta name="description" content="Solicite sua cotação de Seguro Auto uma vez e compare as cotações retornadas por diferentes companhias, com preço, cobertura e franquia claros.">
+    <meta name="description" content="Solicite sua cotação de Seguro Auto uma vez e compare os retornos de diferentes companhias por preço, cobertura e franquia.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#071321">
     <link rel="canonical" href="https://www.glid.com.br/seguros/">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="pt_BR">
-    <meta property="og:site_name" content="GLID — Crédito e Seguros">
+    <meta property="og:site_name" content="GLID">
     <meta property="og:title" content="Seguro Auto com comparação transparente | GLID">
     <meta property="og:description" content="Uma solicitação, diferentes companhias e a menor cotação retornada em destaque — sem esconder diferenças de cobertura ou franquia.">
     <meta property="og:url" content="https://www.glid.com.br/seguros/">
@@ -19,7 +19,8 @@
     <meta name="twitter:title" content="Seguro Auto com comparação transparente | GLID">
     <meta name="twitter:description" content="Compare cotações de Seguro Auto por preço, cobertura e franquia com a orientação da GLID.">
 
-    <link rel="icon" href="../assets/img/brand/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../assets/img/brand/favicon-v11.png" type="image/png" sizes="200x200">
+    <link rel="apple-touch-icon" href="../assets/img/brand/apple-touch-icon-v11.png" sizes="180x180">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
@@ -34,7 +35,7 @@
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="/" aria-label="GLID — Página inicial">
-                <img class="brand-logo" src="../assets/img/brand/glid-logo-horizontal.png" width="680" height="253" alt="" decoding="async">
+                <img class="brand-logo" src="../assets/img/brand/glid-logo-horizontal-v11.png" width="200" height="75" alt="" decoding="async">
             </a>
 
             <nav class="desktop-nav" aria-label="Navegação principal">
@@ -126,13 +127,13 @@
 
                             <div class="quote-field">
                                 <label for="vehicle-description">Qual é o veículo?</label>
-                                <input id="vehicle-description" name="veiculo" type="text" required maxlength="80" autocomplete="off" placeholder="Ex.: Onix LT 2023" aria-describedby="vehicle-help">
+                                <input id="vehicle-description" name="veiculo" type="text" required minlength="3" maxlength="80" pattern=".*\S.*" autocomplete="off" placeholder="Ex.: Onix LT 2023" aria-describedby="vehicle-help">
                                 <small id="vehicle-help">Informe marca, modelo e ano. Para 0 km, inclua essa informação.</small>
                             </div>
 
                             <div class="quote-field">
                                 <label for="vehicle-plate">Placa <span>(opcional)</span></label>
-                                <input id="vehicle-plate" name="placa" type="text" maxlength="7" autocomplete="off" autocapitalize="characters" placeholder="ABC1D23">
+                                <input id="vehicle-plate" name="placa" type="text" maxlength="8" autocomplete="off" autocapitalize="characters" placeholder="ABC1D23">
                             </div>
 
                             <button class="button quote-next" type="button" data-next>Continuar</button>
@@ -178,11 +179,11 @@
                             <div class="quote-field-split">
                                 <div class="quote-field">
                                     <label for="quote-name">Primeiro nome</label>
-                                    <input id="quote-name" name="nome" type="text" required maxlength="50" autocomplete="given-name" placeholder="Seu nome">
+                                    <input id="quote-name" name="nome" type="text" required minlength="2" maxlength="50" pattern=".*\S.*" autocomplete="given-name" placeholder="Seu nome">
                                 </div>
                                 <div class="quote-field">
                                     <label for="quote-phone">WhatsApp</label>
-                                    <input id="quote-phone" name="whatsapp" type="tel" inputmode="tel" required maxlength="15" autocomplete="tel" pattern="\(?[0-9]{2}\)?[ ]?[0-9]{4,5}-?[0-9]{4}" placeholder="(77) 99999-9999">
+                                    <input id="quote-phone" name="whatsapp" type="tel" inputmode="tel" required maxlength="19" autocomplete="tel" pattern="\(?[0-9]{2}\)?[ ]?[0-9]{4,5}-?[0-9]{4}" placeholder="(77) 99999-9999">
                                 </div>
                             </div>
 
@@ -252,7 +253,7 @@
                 <ol class="insurance-process-list">
                     <li><span class="step-number">01</span><h3>Conte sobre o veículo</h3><p>Modelo, ano, local de pernoite, uso e situação do seguro ajudam a definir o risco.</p></li>
                     <li><span class="step-number">02</span><h3>Consulta simultânea</h3><p>A GLID utiliza tecnologia de multicálculo para consultar as opções habilitadas para o perfil.</p></li>
-                    <li><span class="step-number">03</span><h3>Cotações lado a lado</h3><p>Preço, cobertura, limites, franquia, assistência e forma de pagamento ficam claros.</p></li>
+                    <li><span class="step-number">03</span><h3>Cotações lado a lado</h3><p>Preço, cobertura, limites, franquia, assistência e pagamento são apresentados lado a lado.</p></li>
                     <li><span class="step-number">04</span><h3>Escolha orientada</h3><p>Você decide com apoio humano, sem obrigação de contratar. O formulário não ativa cobertura.</p></li>
                 </ol>
             </div>
@@ -348,7 +349,7 @@
             <div class="container faq-grid">
                 <div class="faq-intro">
                     <p class="eyebrow"><span></span> Dúvidas frequentes</p>
-                    <h2 id="faq-title">Clareza antes de contratar.</h2>
+                    <h2 id="faq-title">O que saber antes de contratar.</h2>
                     <p>Preço e cobertura só ficam definidos depois da análise e do retorno das seguradoras.</p>
                 </div>
 
@@ -383,13 +384,13 @@
         <div class="container">
             <div class="footer-main">
                 <div class="footer-brand">
-                    <a class="brand" href="/" aria-label="GLID — Página inicial"><img class="brand-logo" src="../assets/img/brand/glid-logo-horizontal.png" width="680" height="253" alt="" loading="lazy" decoding="async"></a>
-                    <p>Crédito e seguros com clareza.</p><p class="campaign-line">Compare. Entenda. Escolha melhor.</p>
+                    <a class="brand" href="/" aria-label="GLID — Página inicial"><img class="brand-logo" src="../assets/img/brand/glid-logo-horizontal-v11.png" width="200" height="75" alt="" loading="lazy" decoding="async"></a>
+                    <p>Soluções financeiras e proteção com transparência.</p><p class="campaign-line">Compare. Entenda. Escolha melhor.</p>
                 </div>
 
                 <div class="footer-column">
                     <h2>Soluções</h2>
-                    <a href="/consorcios/">Consórcios</a><a href="/emprestimos/">Empréstimos</a><a href="/financiamentos/">Financiamentos</a><a href="/seguros/">Seguros</a><a href="/#atendimento">Planos de saúde</a>
+                    <a href="/consorcios/">Consórcios</a><a href="/emprestimos/">Empréstimos</a><a href="/financiamentos/">Financiamentos</a><a href="/seguros/">Seguros</a><a href="/?produto=Planos%20de%20sa%C3%BAde#atendimento">Planos de saúde</a>
                 </div>
 
                 <div class="footer-column"><h2>GLID</h2><a href="/#como-funciona">Como funciona</a><a href="/#por-que-glid">Por que a GLID</a><a href="#duvidas">Dúvidas frequentes</a></div>
@@ -399,7 +400,7 @@
 
             <div class="footer-disclosure"><p>A GLID atua na orientação e intermediação comercial. As cotações, a aceitação do risco, a emissão da apólice, as coberturas e a regulação de sinistros são de responsabilidade da seguradora identificada em cada opção. Disponibilidade, preço, limites e franquias variam conforme o perfil e os critérios de aceitação. O envio dos dados solicita uma cotação e não ativa cobertura. O registro do produto é automático e não representa aprovação ou recomendação por parte da Susep.</p></div>
 
-            <div class="footer-bottom"><p>&copy; 2026 GLID — Crédito e Seguros. Todos os direitos reservados.</p><a href="#conteudo">Voltar ao topo</a></div>
+            <div class="footer-bottom"><p>&copy; 2026 GLID. Todos os direitos reservados.</p><a href="#conteudo">Voltar ao topo</a></div>
         </div>
     </footer>
 
