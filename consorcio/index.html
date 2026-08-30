@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="../assets/css/consorcios.css">
     <link rel="stylesheet" href="../assets/css/consorcio-lead.css">
     <script src="../assets/js/consortium-data.js" defer></script>
+    <script src="../assets/js/consortium-calculator.js" defer></script>
     <script src="../assets/js/consorcio-lead.js" defer></script>
 </head>
 <body class="consortium-page consortium-lead-page">
@@ -79,13 +80,13 @@
                     <header class="simulator-heading">
                         <p>Simulação e pré-análise</p>
                         <h2 id="simulator-title">Conte o que você pretende conquistar</h2>
-                        <span>São quatro etapas curtas. O resultado é uma referência, não uma proposta.</span>
+                        <span>São quatro etapas curtas. O resultado é uma projeção matemática, não uma proposta.</span>
                     </header>
 
                     <ol class="simulator-progress lead-progress" aria-label="Progresso da simulação">
                         <li class="is-active" data-progress="1" aria-current="step"><span></span>Objetivo</li>
                         <li data-progress="2"><span></span>Valores</li>
-                        <li data-progress="3"><span></span>Momento</li>
+                        <li data-progress="3"><span></span>Estratégia</li>
                         <li data-progress="4"><span></span>Resultado</li>
                     </ol>
 
@@ -127,27 +128,48 @@
                         </fieldset>
 
                         <fieldset class="simulator-step" data-step="2" hidden>
-                            <legend class="sr-only">Informe crédito e orçamento mensal</legend>
-                            <h3 tabindex="-1">Quais valores combinam com seu plano?</h3>
-                            <p class="step-description">Use o valor do bem e uma parcela mensal confortável como referência.</p>
+                            <legend class="sr-only">Defina crédito, parcela e prazo</legend>
+                            <h3 tabindex="-1">Como você prefere começar?</h3>
+                            <p class="step-description">Parta do valor da carta ou da parcela mensal que pretende reservar.</p>
 
-                            <div class="lead-values-grid">
-                                <div class="credit-selector">
-                                    <label for="lead-credit-range">Crédito desejado</label>
-                                    <output id="lead-credit-output" for="lead-credit-range">—</output>
-                                    <input class="lead-range" id="lead-credit-range" type="range" min="0" max="4" step="1" value="1">
-                                    <div class="range-scale" aria-hidden="true"><span id="lead-credit-min">—</span><span id="lead-credit-max">—</span></div>
+                            <div class="simulation-mode" role="group" aria-label="Forma de iniciar a simulação">
+                                <button class="mode-option is-selected" type="button" data-simulation-mode="credit" aria-pressed="true">
+                                    <strong>Definir a carta</strong>
+                                    <small>Já tenho um valor em mente</small>
+                                </button>
+                                <button class="mode-option" type="button" data-simulation-mode="installment" aria-pressed="false">
+                                    <strong>Partir da parcela</strong>
+                                    <small>Quero começar pelo orçamento</small>
+                                </button>
+                            </div>
+
+                            <div class="credit-selector lead-main-value">
+                                <label id="lead-value-label" for="lead-value-range">Crédito desejado</label>
+                                <output id="lead-value-output" for="lead-value-range">—</output>
+                                <input class="lead-range" id="lead-value-range" type="range" min="0" max="4" step="1" value="1">
+                                <div class="range-scale" aria-hidden="true"><span id="lead-value-min">—</span><span id="lead-value-max">—</span></div>
+                            </div>
+
+                            <div class="term-selector">
+                                <div>
+                                    <h4>Escolha o prazo</h4>
+                                    <p>O prazo altera a parcela e pode variar conforme o grupo disponível.</p>
                                 </div>
+                                <div class="term-grid" id="lead-term-options" role="group" aria-label="Prazo em meses"></div>
+                            </div>
 
-                                <div class="credit-selector">
-                                    <label for="lead-budget-range">Parcela que cabe no orçamento</label>
-                                    <output id="lead-budget-output" for="lead-budget-range">—</output>
-                                    <input class="lead-range" id="lead-budget-range" type="range" min="0" max="4" step="1" value="1">
-                                    <div class="range-scale" aria-hidden="true"><span id="lead-budget-min">—</span><span id="lead-budget-max">—</span></div>
+                            <div class="plan-preview" id="lead-plan-preview" role="status" aria-live="polite">
+                                <div>
+                                    <span>Carta estimada</span>
+                                    <strong id="lead-preview-credit">—</strong>
+                                </div>
+                                <div>
+                                    <span>Parcela inicial</span>
+                                    <strong id="lead-preview-installment">—</strong>
                                 </div>
                             </div>
 
-                            <p class="reference-note">A parcela indicada ajuda a avaliar aderência. Custos e condições dependem do plano confirmado pela administradora.</p>
+                            <p class="reference-note">Cálculo inicial com taxa de administração referencial de 18%. Não inclui fundo de reserva, seguro ou reajustes.</p>
 
                             <div class="simulator-actions">
                                 <button class="button button-quiet" type="button" data-back="1">Voltar</button>
@@ -156,9 +178,9 @@
                         </fieldset>
 
                         <fieldset class="simulator-step" data-step="3" hidden>
-                            <legend class="sr-only">Informe momento da compra e intenção de lance</legend>
-                            <h3 tabindex="-1">Quando você pretende realizar a compra?</h3>
-                            <p class="step-description">O tempo disponível é decisivo para saber se o consórcio combina com seu momento.</p>
+                            <legend class="sr-only">Informe o momento da compra e simule uma estratégia de lance</legend>
+                            <h3 tabindex="-1">Qual é o seu momento e sua estratégia?</h3>
+                            <p class="step-description">O tempo disponível e o lance ajudam a organizar cenários, sem garantir contemplação.</p>
 
                             <div class="option-list" role="group" aria-label="Momento da compra">
                                 <button class="sim-option moment-option" type="button" data-moment="urgente" aria-pressed="false">
@@ -178,27 +200,60 @@
                             </div>
 
                             <div class="lead-question-block">
-                                <h4>Você considera ofertar lance?</h4>
-                                <p>Não é necessário informar valores exatos nesta etapa.</p>
-                                <div class="bid-grid" role="group" aria-label="Intenção de lance">
-                                    <button class="sim-option bid-option" type="button" data-bid="nao" aria-pressed="false"><span><strong>Não neste momento</strong></span></button>
-                                    <button class="sim-option bid-option" type="button" data-bid="talvez" aria-pressed="false"><span><strong>Talvez mais adiante</strong></span></button>
-                                    <button class="sim-option bid-option" type="button" data-bid="ate-10" aria-pressed="false"><span><strong>Sim, até 10%</strong><small>Faixa aproximada do crédito</small></span></button>
-                                    <button class="sim-option bid-option" type="button" data-bid="acima-10" aria-pressed="false"><span><strong>Sim, acima de 10%</strong><small>Faixa aproximada do crédito</small></span></button>
+                                <h4>Qual lance você quer visualizar?</h4>
+                                <p>O percentual é calculado sobre o valor da carta e serve apenas para comparar cenários.</p>
+                                <div class="bid-grid bid-percent-grid" role="group" aria-label="Percentual de lance">
+                                    <button class="sim-option bid-option" type="button" data-bid-option="0" aria-pressed="false"><span><strong>Sem lance</strong><small>Não considerar nesta projeção</small></span></button>
+                                    <button class="sim-option bid-option" type="button" data-bid-option="30" aria-pressed="false"><span><strong>30%</strong><small>do valor da carta</small></span></button>
+                                    <button class="sim-option bid-option" type="button" data-bid-option="40" aria-pressed="false"><span><strong>40%</strong><small>do valor da carta</small></span></button>
+                                    <button class="sim-option bid-option" type="button" data-bid-option="50" aria-pressed="false"><span><strong>50%</strong><small>do valor da carta</small></span></button>
+                                    <button class="sim-option bid-option bid-custom-trigger" type="button" data-bid-option="custom" aria-pressed="false"><span><strong>Outro percentual</strong><small>Personalizar o lance</small></span></button>
+                                </div>
+
+                                <div class="custom-bid" id="lead-custom-bid" hidden>
+                                    <label for="lead-custom-bid-input">Percentual personalizado</label>
+                                    <div class="custom-bid-input">
+                                        <input id="lead-custom-bid-input" type="number" inputmode="numeric" min="1" max="80" step="1" value="35" disabled>
+                                        <span>%</span>
+                                        <output id="lead-custom-bid-amount" for="lead-custom-bid-input">—</output>
+                                    </div>
+                                    <p>Use um valor entre 1% e 80%. O lance vencedor depende das regras e dos recursos do grupo.</p>
                                 </div>
                             </div>
 
-                            <p class="sim-error" id="qualification-error" role="alert" hidden>Escolha o momento da compra e uma opção sobre lance.</p>
+                            <div class="lead-question-block bid-source-block" id="lead-bid-source-block" hidden>
+                                <h4>De onde viria o lance?</h4>
+                                <p>Isso altera o crédito que fica disponível para a compra.</p>
+                                <div class="bid-source-grid" role="group" aria-label="Origem do lance">
+                                    <button class="sim-option bid-source-option" type="button" data-bid-source="own" aria-pressed="false"><span><strong>Recursos próprios</strong><small>A carta permanece integral</small></span></button>
+                                    <button class="sim-option bid-source-option" type="button" data-bid-source="embedded" aria-pressed="false"><span><strong>Embutido</strong><small>Usa parte da própria carta</small></span></button>
+                                    <button class="sim-option bid-source-option" type="button" data-bid-source="mixed" aria-pressed="false"><span><strong>Misto</strong><small>Combina recursos e carta</small></span></button>
+                                    <button class="sim-option bid-source-option" id="lead-fgts-option" type="button" data-bid-source="fgts" aria-pressed="false" hidden><span><strong>FGTS</strong><small>Imóvel, sujeito às regras aplicáveis</small></span></button>
+                                </div>
+
+                                <div class="mixed-bid" id="lead-mixed-bid" hidden>
+                                    <div>
+                                        <label for="lead-embedded-range">Parte embutida na carta</label>
+                                        <output id="lead-embedded-output" for="lead-embedded-range">—</output>
+                                    </div>
+                                    <input class="lead-range" id="lead-embedded-range" type="range" min="1" max="20" step="1" value="20">
+                                    <p>O restante seria coberto com recursos próprios. O limite embutido real depende do grupo.</p>
+                                </div>
+
+                                <div class="source-warning" id="lead-source-warning" role="note" hidden></div>
+                            </div>
+
+                            <p class="sim-error" id="qualification-error" role="alert" hidden>Escolha o momento, o lance e, quando necessário, a origem dos recursos.</p>
                             <div class="simulator-actions">
                                 <button class="button button-quiet" type="button" data-back="2">Voltar</button>
                                 <button class="button" id="lead-result-button" type="button" disabled>Ver minha estimativa</button>
                             </div>
                         </fieldset>
 
-                        <section class="simulator-result lead-result" id="lead-simulator-result" aria-live="polite" aria-labelledby="result-title" hidden>
+                        <section class="simulator-result lead-result" id="lead-simulator-result" aria-labelledby="result-title" hidden>
                             <div class="result-intro">
-                                <p>Referência inicial</p>
-                                <h3 id="result-title" tabindex="-1">Um ponto de partida para sua análise</h3>
+                                <p>Projeção inicial</p>
+                                <h3 id="result-title" tabindex="-1">Veja como o lance poderia alterar seu plano</h3>
                             </div>
 
                             <div class="result-category" id="lead-result-category">—</div>
@@ -208,28 +263,64 @@
                                     <dd id="lead-result-credit">—</dd>
                                 </div>
                                 <div>
-                                    <dt>Prazo estimado</dt>
+                                    <dt>Prazo escolhido</dt>
                                     <dd id="lead-result-term">—</dd>
                                 </div>
                                 <div>
-                                    <dt>Parcela estimada</dt>
+                                    <dt>Parcela inicial estimada</dt>
                                     <dd id="lead-result-installment">—</dd>
                                 </div>
                                 <div>
-                                    <dt>Seu orçamento indicado</dt>
-                                    <dd id="lead-result-budget">—</dd>
+                                    <dt>Taxa de administração</dt>
+                                    <dd id="lead-result-fee">18% referencial</dd>
                                 </div>
                                 <div>
-                                    <dt>Intenção de lance</dt>
+                                    <dt>Lance simulado</dt>
                                     <dd id="lead-result-bid">—</dd>
                                 </div>
                             </dl>
 
                             <div class="result-context" id="lead-result-context"></div>
 
+                            <section class="bid-impact" id="lead-bid-impact" aria-labelledby="bid-impact-title" hidden>
+                                <div class="bid-impact-heading">
+                                    <div>
+                                        <p>Se o lance for contemplado</p>
+                                        <h4 id="bid-impact-title">Duas formas de visualizar o abatimento</h4>
+                                    </div>
+                                    <span id="lead-result-bid-source">—</span>
+                                </div>
+
+                                <div class="projection-grid">
+                                    <article>
+                                        <span>Se o contrato reduzir a parcela</span>
+                                        <strong id="lead-result-reduced-installment">—</strong>
+                                        <small id="lead-result-installment-saving">—</small>
+                                    </article>
+                                    <article>
+                                        <span>Se o contrato reduzir o prazo</span>
+                                        <strong id="lead-result-reduced-term">—</strong>
+                                        <small id="lead-result-term-saving">—</small>
+                                    </article>
+                                </div>
+
+                                <div class="available-credit" id="lead-available-credit" hidden>
+                                    <span>Crédito estimado disponível para a compra</span>
+                                    <strong id="lead-result-available-credit">—</strong>
+                                    <small id="lead-available-credit-note">—</small>
+                                </div>
+
+                                <p class="projection-note">Os dois cartões são alternativas matemáticas. A forma de abatimento e os limites do lance dependem do contrato e da administradora.</p>
+                            </section>
+
+                            <div class="no-bid-result" id="lead-no-bid-result" hidden>
+                                <strong>Você optou por não simular um lance.</strong>
+                                <span>A contemplação por sorteio continua sujeita às regras e à disponibilidade de recursos do grupo.</span>
+                            </div>
+
                             <div class="cost-note">
                                 <span aria-hidden="true">i</span>
-                                <p>A composição da prestação, incluindo taxa de administração e eventual fundo de reserva, seguro ou outros valores previstos, varia conforme o plano e será detalhada antes da adesão.</p>
+                                <p>O cálculo considera taxa de administração referencial de 18% sobre o crédito contratado. Fundo de reserva, seguro, reajustes e condições específicas não estão incluídos.</p>
                             </div>
 
                             <div class="reduced-note">
@@ -239,10 +330,10 @@
                                 <p><strong>Há planos específicos com parcela inicial reduzida.</strong> O período de redução e o valor posterior dependem do contrato. A condição será explicada no mesmo cenário antes da adesão.</p>
                             </div>
 
-                            <p class="result-disclaimer"><span id="lead-table-reference">Base de referência em atualização.</span> Simulação informativa, sujeita à disponibilidade de grupos e à confirmação das condições pela administradora. Crédito, parcelas e demais valores podem ser reajustados conforme o contrato.</p>
+                            <p class="result-disclaimer">Estimativa ilustrativa em valores atuais. Quando selecionado, o lance é considerado no início do plano e não garante contemplação. A forma de redução, os limites e os valores efetivos serão confirmados pelo consultor e pela administradora.</p>
 
                             <div class="result-lead">
-                                <h4>Leve este cenário para uma análise atual</h4>
+                                <h4>Valide esta simulação com um consultor</h4>
                                 <p>Informe apenas o necessário para iniciar o atendimento. Nenhum documento é solicitado agora.</p>
 
                                 <div class="form-split">

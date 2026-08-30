@@ -1,6 +1,7 @@
 (() => {
     const SCENARIOS = window.GLID_CONSORTIUM_SCENARIOS;
-    if (!SCENARIOS) return;
+    const CALCULATOR = window.GLID_CONSORTIUM_CALCULATOR;
+    if (!SCENARIOS || typeof CALCULATOR?.calculate !== "function") return;
 
     const form = document.querySelector("#consortium-simulator");
     if (!form) return;
@@ -68,6 +69,20 @@
 
     const getCategory = () => SCENARIOS.categories[state.category];
     const getOption = () => getCategory()?.options[state.optionIndex];
+    const getPaymentRange = (option) => {
+        const feePercent = SCENARIOS.assumptions.administrationFeePercent;
+        const shorterPlan = CALCULATOR.calculate({
+            credit: option.credit,
+            term: option.term[0],
+            feePercent
+        });
+        const longerPlan = CALCULATOR.calculate({
+            credit: option.credit,
+            term: option.term[1],
+            feePercent
+        });
+        return [longerPlan.initialInstallment, shorterPlan.initialInstallment];
+    };
 
     const setPressed = (buttons, activeButton) => {
         buttons.forEach((button) => {
@@ -143,13 +158,15 @@
     const buildMessage = ({ includeContact = false } = {}) => {
         const category = getCategory();
         const option = getOption();
+        const payment = getPaymentRange(option);
         const lines = [
             "Olá! Fiz uma simulação inicial de consórcio no site da GLID e quero confirmar as condições atuais.",
             "",
             `Categoria: ${category.label}`,
             `Crédito de referência: ${money.format(option.credit)}`,
             `Prazo estimado: ${option.term[0]} a ${option.term[1]} meses`,
-            `Parcela estimada: ${money.format(option.payment[0])} a ${money.format(option.payment[1])} por mês`,
+            `Parcela estimada: ${money.format(payment[0])} a ${money.format(payment[1])} por mês`,
+            `Taxa de administração referencial: ${SCENARIOS.assumptions.administrationFeePercent}%`,
             `Momento da compra: ${momentLabels[state.moment]}`,
             "",
             "Entendo que esta é uma estimativa e que contemplação, valores, prazos e disponibilidade não são garantidos."
@@ -172,11 +189,12 @@
         const category = getCategory();
         const option = getOption();
         if (!category || !option || !state.moment) return;
+        const payment = getPaymentRange(option);
 
         resultCategory.textContent = category.label;
         resultCredit.textContent = money.format(option.credit);
         resultTerm.textContent = `${option.term[0]} a ${option.term[1]} meses`;
-        resultInstallment.textContent = `${money.format(option.payment[0])} a ${money.format(option.payment[1])}`;
+        resultInstallment.textContent = `${money.format(payment[0])} a ${money.format(payment[1])}`;
 
         resultContext.classList.toggle("is-caution", state.moment === "urgente");
         if (state.moment === "urgente") {
