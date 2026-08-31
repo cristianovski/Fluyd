@@ -764,9 +764,9 @@
         if (event.target.closest("a")) emit("consortium_lead_financing_route");
     });
 
-    document.querySelectorAll('a[href="#faq-parcela-reduzida"]').forEach((link) => {
+    document.querySelectorAll('a[href="#faq-parcela-reduzida-valor"]').forEach((link) => {
         link.addEventListener("click", () => {
-            const faq = document.querySelector("#faq-parcela-reduzida");
+            const faq = document.querySelector("#faq-parcela-reduzida-valor");
             if (faq) {
                 faq.open = true;
                 window.requestAnimationFrame(() => faq.querySelector("summary")?.focus());
