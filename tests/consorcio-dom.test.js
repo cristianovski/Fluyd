@@ -6,6 +6,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const html = fs.readFileSync(path.join(root, "consorcio/index.html"), "utf8");
 const script = fs.readFileSync(path.join(root, "assets/js/consorcio-lead.js"), "utf8");
+const leadStyles = fs.readFileSync(path.join(root, "assets/css/consorcio-lead.css"), "utf8");
 
 test("todos os IDs consultados diretamente pelo simulador existem no HTML", () => {
     const ids = [...script.matchAll(/querySelector\("#([A-Za-z0-9_-]+)"\)/g)].map((match) => match[1]);
@@ -59,4 +60,13 @@ test("a combinação oculta a projeção posterior por regra de código", () => 
 test("a etapa três trata somente do momento", () => {
     assert.match(html, /data-progress="3"><span><\/span>Momento/);
     assert.match(html, /<h3 tabindex="-1">Qual é o seu momento\?<\/h3>/);
+});
+
+test("o CTA móvel deixa de aparecer quando o rodapé entra na tela", () => {
+    assert.match(script, /const footer = document\.querySelector\("\.lead-footer"\)/);
+    assert.match(script, /let footerVisible = false/);
+    assert.match(script, /!heroVisible && !simulatorVisible && !footerVisible/);
+    assert.match(script, /const footerObserver = new IntersectionObserver/);
+    assert.match(script, /footerObserver\.observe\(footer\)/);
+    assert.match(leadStyles, /\.lead-sticky-cta\.is-visible\s*\{[\s\S]*?display:\s*flex/);
 });

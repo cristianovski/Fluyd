@@ -1544,6 +1544,49 @@
         font-size: 0.58rem;
     }
 
+    .mode-option small,
+    .term-selector p,
+    .payment-plan-heading p,
+    .no-bid-result span,
+    .own-bid-field label,
+    .embedded-control label,
+    .embedded-toggle strong,
+    .bid-composition dt,
+    .bid-impact-heading > span,
+    .projection-grid article span,
+    .lead-result-grid dt {
+        font-size: 0.75rem;
+    }
+
+    .term-option small,
+    .plan-preview span,
+    .payment-plan-option span {
+        font-size: 0.7rem;
+    }
+
+    .lead-disclosure,
+    .payment-plan-option small,
+    .payment-plan-note,
+    .result-reduced-note,
+    .strategy-lab-heading > span,
+    .combination-note,
+    .own-bid-field > small,
+    .embedded-toggle small,
+    .embedded-control p,
+    .bid-composition small,
+    .bid-legal-note,
+    .bid-impact-heading p,
+    .projection-grid article small,
+    .available-credit small,
+    .projection-note,
+    .cost-note p,
+    .reference-note,
+    .result-disclaimer,
+    .form-note,
+    .footer-disclosure {
+        font-size: 0.78rem;
+    }
+
     .bid-grid {
         grid-template-columns: 1fr;
     }

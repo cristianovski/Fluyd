@@ -792,10 +792,13 @@
     if (stickyCta && "IntersectionObserver" in window) {
         const hero = document.querySelector(".lead-hero .hero-copy");
         const simulator = document.querySelector("#simulador");
+        const footer = document.querySelector(".lead-footer");
         let heroVisible = true;
         let simulatorVisible = true;
+        let footerVisible = false;
+        const shouldShowStickyCta = () => !heroVisible && !simulatorVisible && !footerVisible;
         const updateSticky = () => {
-            stickyCta.classList.toggle("is-visible", !heroVisible && !simulatorVisible);
+            stickyCta.classList.toggle("is-visible", shouldShowStickyCta());
         };
 
         const heroObserver = new IntersectionObserver(([entry]) => {
@@ -808,8 +811,14 @@
             updateSticky();
         }, { threshold: 0.08 });
 
+        const footerObserver = new IntersectionObserver(([entry]) => {
+            footerVisible = entry.isIntersecting;
+            updateSticky();
+        }, { rootMargin: "80px 0px 0px 0px", threshold: 0 });
+
         if (hero) heroObserver.observe(hero);
         if (simulator) simulatorObserver.observe(simulator);
+        if (footer) footerObserver.observe(footer);
     }
 
     const requestedCategory = query.get("categoria") || query.get("tipo");
