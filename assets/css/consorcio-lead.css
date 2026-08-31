@@ -728,6 +728,10 @@
     cursor: pointer;
 }
 
+.strategy-card > .strategy-toggle:first-child {
+    margin-top: 0;
+}
+
 .strategy-toggle:hover,
 .strategy-toggle[aria-pressed="true"] {
     border-color: rgba(101, 226, 192, 0.54);

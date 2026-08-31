@@ -366,7 +366,7 @@
         bidStrategy.classList.remove("is-active");
         bidToggle.setAttribute("aria-pressed", "false");
         bidToggle.setAttribute("aria-expanded", "false");
-        bidToggle.textContent = "Montar composição";
+        bidToggle.textContent = "Simular lance";
         bidContent.hidden = true;
         ownBidInput.value = "";
         ownBidInput.disabled = true;
@@ -497,7 +497,7 @@
         bidStrategy.classList.toggle("is-active", state.bidActive);
         bidToggle.setAttribute("aria-pressed", String(state.bidActive));
         bidToggle.setAttribute("aria-expanded", String(state.bidActive));
-        bidToggle.textContent = state.bidActive ? "Remover composição" : "Montar composição";
+        bidToggle.textContent = state.bidActive ? "Remover lance" : "Simular lance";
         bidContent.hidden = !state.bidActive;
         ownBidInput.disabled = !state.bidActive;
         ownBidInput.required = state.bidActive;
