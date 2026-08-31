@@ -16,6 +16,7 @@
 
     const categoryButtons = [...form.querySelectorAll("[data-category]")];
     const modeButtons = [...form.querySelectorAll("[data-simulation-mode]")];
+    const paymentPlanButtons = [...form.querySelectorAll("[data-payment-plan]")];
     const momentButtons = [...form.querySelectorAll("[data-moment]")];
     const stepPanels = [...form.querySelectorAll("[data-step]")];
     const progressItems = [...document.querySelectorAll("[data-progress]")];
@@ -29,7 +30,12 @@
     const valueMax = document.querySelector("#lead-value-max");
     const termOptions = document.querySelector("#lead-term-options");
     const previewCredit = document.querySelector("#lead-preview-credit");
+    const previewInstallmentLabel = document.querySelector("#lead-preview-installment-label");
     const previewInstallment = document.querySelector("#lead-preview-installment");
+    const standardOptionValue = document.querySelector("#lead-standard-option-value");
+    const reducedOptionValue = document.querySelector("#lead-reduced-option-value");
+    const reducedValueNote = document.querySelector("#lead-reduced-value-note");
+    const reducedValueWarning = document.querySelector("#lead-reduced-value-warning");
     const urgencyWarning = document.querySelector("#lead-urgency-warning");
     const categoryError = document.querySelector("#category-error");
     const qualificationError = document.querySelector("#qualification-error");
@@ -42,14 +48,10 @@
     const resultInstallment = document.querySelector("#lead-result-installment");
     const resultFee = document.querySelector("#lead-result-fee");
     const resultTotalPlan = document.querySelector("#lead-result-total-plan");
+    const resultAfterReduced = document.querySelector("#lead-result-after-reduced");
+    const resultReducedNote = document.querySelector("#lead-result-reduced-note");
+    const resultReducedWarning = document.querySelector("#lead-result-reduced-warning");
     const resultContext = document.querySelector("#lead-result-context");
-    const reducedStrategy = document.querySelector("#lead-reduced-strategy");
-    const reducedToggle = document.querySelector("#lead-reduced-toggle");
-    const reducedContent = document.querySelector("#lead-reduced-content");
-    const reducedStandard = document.querySelector("#lead-reduced-standard");
-    const reducedInitial = document.querySelector("#lead-reduced-initial");
-    const reducedEffective = document.querySelector("#lead-reduced-effective");
-    const reducedWarning = document.querySelector("#lead-reduced-warning");
     const bidStrategy = document.querySelector("#lead-bid-strategy");
     const bidToggle = document.querySelector("#lead-bid-toggle");
     const bidContent = document.querySelector("#lead-bid-content");
@@ -296,9 +298,27 @@
 
     const renderPlanPreview = () => {
         const plan = getBasePlan();
-        if (!plan) return;
+        const reducedPlan = getReducedPlan();
+        if (!plan || !reducedPlan) return;
+
+        const selectedInstallment = state.reducedPlan
+            ? reducedPlan.reducedInitialInstallment
+            : plan.initialInstallment;
+
         previewCredit.textContent = money.format(plan.credit);
-        previewInstallment.textContent = money.format(plan.initialInstallment) + " por mês";
+        previewInstallmentLabel.textContent = state.reducedPlan
+            ? "Parcela inicial reduzida"
+            : "Parcela integral";
+        previewInstallment.textContent = money.format(selectedInstallment) + " por mês";
+        standardOptionValue.textContent = money.format(plan.initialInstallment) + " por mês";
+        reducedOptionValue.textContent = money.format(reducedPlan.reducedInitialInstallment) + " por mês";
+        reducedValueNote.hidden = !state.reducedPlan;
+        reducedValueWarning.textContent = money.format(reducedPlan.deferredMonthlyAmount)
+            + " do fundo comum por mês ficam adiados nesta hipótese e serão redistribuídos conforme o grupo.";
+        setPressed(
+            paymentPlanButtons,
+            paymentPlanButtons.find((button) => button.dataset.paymentPlan === (state.reducedPlan ? "reduced" : "standard"))
+        );
     };
 
     const renderTermOptions = () => {
@@ -321,7 +341,7 @@
         const selected = values[state.valueIndex];
         const isCreditMode = state.mode === "credit";
         const selectedLabel = isCreditMode ? money.format(selected) : money.format(selected) + " por mês";
-        valueLabel.textContent = isCreditMode ? "Crédito desejado" : "Parcela mensal confortável";
+        valueLabel.textContent = isCreditMode ? "Crédito desejado" : "Parcela integral de referência";
         valueOutput.textContent = selectedLabel;
         valueRange.setAttribute("aria-valuetext", selectedLabel);
         valueMin.textContent = money.format(values[0]) + (isCreditMode ? "" : "/mês");
@@ -337,18 +357,12 @@
         document.title = copy.documentTitle;
     };
 
-    const resetExploration = () => {
-        state.reducedPlan = false;
+    const resetBidComposer = () => {
         state.bidActive = false;
         state.ownBidValue = 0;
         state.useEmbedded = false;
         state.embeddedPercent = SCENARIOS.assumptions.embeddedReferenceMaxPercent;
 
-        reducedStrategy.classList.remove("is-active");
-        reducedToggle.setAttribute("aria-pressed", "false");
-        reducedToggle.setAttribute("aria-expanded", "false");
-        reducedToggle.textContent = "Simular parcela reduzida";
-        reducedContent.hidden = true;
         bidStrategy.classList.remove("is-active");
         bidToggle.setAttribute("aria-pressed", "false");
         bidToggle.setAttribute("aria-expanded", "false");
@@ -375,7 +389,7 @@
         qualificationError.hidden = true;
         resultButton.disabled = true;
         setPressed(momentButtons, null);
-        resetExploration();
+        resetBidComposer();
     };
 
     const selectCategory = (categoryKey, button, track = true) => {
@@ -385,6 +399,7 @@
         state.mode = "credit";
         state.valueIndex = getCategory().defaultCreditIndex;
         state.term = getCategory().defaultTerm;
+        state.reducedPlan = false;
         setPressed(categoryButtons, button);
         setPressed(modeButtons, modeButtons.find((item) => item.dataset.simulationMode === "credit"));
         categoryNext.disabled = false;
@@ -404,7 +419,7 @@
             ? getCategory().defaultCreditIndex
             : getCategory().defaultInstallmentIndex;
         setPressed(modeButtons, button);
-        resetExploration();
+        resetBidComposer();
         renderValueSelector();
         emit("consortium_lead_mode_select");
     };
@@ -414,9 +429,19 @@
         if (!category?.terms.includes(term)) return;
         state.term = term;
         setPressed([...termOptions.querySelectorAll("[data-term]")], button);
-        resetExploration();
+        resetBidComposer();
         renderPlanPreview();
         emit("consortium_lead_term_select");
+    };
+
+    const selectPaymentPlan = (paymentPlan, button) => {
+        if (!["standard", "reduced"].includes(paymentPlan)) return;
+        state.reducedPlan = paymentPlan === "reduced";
+        setPressed(paymentPlanButtons, button);
+        renderPlanPreview();
+        emit("consortium_lead_payment_plan_select", {
+            consortium_payment_plan: paymentPlan
+        });
     };
 
     const selectMoment = (moment, button) => {
@@ -439,7 +464,7 @@
         }
 
         if (state.mode === "installment") {
-            parts.push("A carta foi estimada a partir do orçamento mensal de " + money.format(plan.selectedValue) + " e do prazo escolhido.");
+            parts.push("A carta foi estimada a partir da parcela integral de referência de " + money.format(plan.selectedValue) + " e do prazo escolhido.");
         } else {
             parts.push("A parcela foi estimada a partir da carta e do prazo escolhidos.");
         }
@@ -448,23 +473,10 @@
         resultContext.innerHTML = parts.join("<br>");
     };
 
-    const renderReducedStrategy = () => {
+    const renderSelectedPlan = () => {
         const plan = getBasePlan();
         const reducedPlan = getReducedPlan();
         if (!plan || !reducedPlan) return;
-
-        reducedStrategy.classList.toggle("is-active", state.reducedPlan);
-        reducedToggle.setAttribute("aria-pressed", String(state.reducedPlan));
-        reducedToggle.setAttribute("aria-expanded", String(state.reducedPlan));
-        reducedToggle.textContent = state.reducedPlan
-            ? "Voltar à parcela integral"
-            : "Simular parcela reduzida";
-        reducedContent.hidden = !state.reducedPlan;
-
-        reducedStandard.textContent = money.format(reducedPlan.standardInstallment) + " por mês";
-        reducedInitial.textContent = money.format(reducedPlan.reducedInitialInstallment) + " por mês";
-        reducedEffective.textContent = "Redução inicial matemática de " + percent.format(reducedPlan.effectiveReductionPercent) + "% no boleto estimado";
-        reducedWarning.textContent = money.format(reducedPlan.deferredMonthlyAmount) + " do fundo comum por mês ficam adiados nesta hipótese e serão redistribuídos conforme o grupo.";
 
         resultInstallmentLabel.textContent = state.reducedPlan
             ? "Parcela inicial reduzida estimada"
@@ -472,8 +484,10 @@
         resultInstallment.textContent = money.format(
             state.reducedPlan ? reducedPlan.reducedInitialInstallment : plan.initialInstallment
         ) + " por mês";
-
-        renderBidComposer();
+        resultAfterReduced.hidden = !state.reducedPlan;
+        resultReducedNote.hidden = !state.reducedPlan;
+        resultReducedWarning.textContent = money.format(reducedPlan.deferredMonthlyAmount)
+            + " do fundo comum por mês ficam adiados nesta hipótese. A diferença será redistribuída conforme o grupo.";
     };
 
     const renderBidComposer = (showError = false) => {
@@ -560,9 +574,9 @@
         resultTerm.textContent = plan.term + " meses";
         resultFee.textContent = plan.feePercent + "% adotados nesta estimativa";
         resultTotalPlan.textContent = money.format(plan.totalPlan);
-        resultTitle.textContent = "Veja seu plano e explore duas estratégias";
+        resultTitle.textContent = "Veja a estimativa do seu plano";
         buildResultContext(plan);
-        renderReducedStrategy();
+        renderSelectedPlan();
         renderBidComposer();
         showStep(4);
 
@@ -637,6 +651,10 @@
         button.addEventListener("click", () => selectMode(button.dataset.simulationMode, button));
     });
 
+    paymentPlanButtons.forEach((button) => {
+        button.addEventListener("click", () => selectPaymentPlan(button.dataset.paymentPlan, button));
+    });
+
     momentButtons.forEach((button) => {
         button.addEventListener("click", () => selectMoment(button.dataset.moment, button));
     });
@@ -658,7 +676,7 @@
 
     valueRange.addEventListener("input", () => {
         state.valueIndex = Number(valueRange.value);
-        resetExploration();
+        resetBidComposer();
         renderValueSelector();
     });
 
@@ -673,14 +691,6 @@
             return;
         }
         renderResult();
-    });
-
-    reducedToggle.addEventListener("click", () => {
-        state.reducedPlan = !state.reducedPlan;
-        renderReducedStrategy();
-        emit("consortium_lead_reduced_installment_toggle", {
-            consortium_reduced_plan: state.reducedPlan
-        });
     });
 
     bidToggle.addEventListener("click", () => {
@@ -743,8 +753,10 @@
         state.mode = "credit";
         state.valueIndex = 1;
         state.term = null;
+        state.reducedPlan = false;
         setPressed(categoryButtons, null);
         setPressed(modeButtons, modeButtons.find((item) => item.dataset.simulationMode === "credit"));
+        setPressed(paymentPlanButtons, paymentPlanButtons.find((item) => item.dataset.paymentPlan === "standard"));
         categoryNext.disabled = true;
         categoryError.hidden = true;
         termOptions.innerHTML = "";

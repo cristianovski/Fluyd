@@ -130,7 +130,7 @@
                         <fieldset class="simulator-step" data-step="2" hidden>
                             <legend class="sr-only">Defina crédito, parcela e prazo</legend>
                             <h3 tabindex="-1">Como você prefere começar?</h3>
-                            <p class="step-description">Parta do valor da carta ou da parcela mensal que pretende reservar.</p>
+                            <p class="step-description">Parta do valor da carta ou da parcela integral que pretende reservar.</p>
 
                             <div class="simulation-mode" role="group" aria-label="Forma de iniciar a simulação">
                                 <button class="mode-option is-selected" type="button" data-simulation-mode="credit" aria-pressed="true">
@@ -139,7 +139,7 @@
                                 </button>
                                 <button class="mode-option" type="button" data-simulation-mode="installment" aria-pressed="false">
                                     <strong>Partir da parcela</strong>
-                                    <small>Quero começar pelo orçamento</small>
+                                    <small>Quero começar pela parcela integral</small>
                                 </button>
                             </div>
 
@@ -164,12 +164,39 @@
                                     <strong id="lead-preview-credit">—</strong>
                                 </div>
                                 <div>
-                                    <span>Parcela inicial</span>
+                                    <span id="lead-preview-installment-label">Parcela integral</span>
                                     <strong id="lead-preview-installment">—</strong>
                                 </div>
                             </div>
 
-                            <p class="reference-note">Cálculo inicial com taxa de administração referencial de 18%. Não inclui fundo de reserva, seguro ou reajustes.</p>
+                            <section class="payment-plan-choice" aria-labelledby="payment-plan-title">
+                                <div class="payment-plan-heading">
+                                    <h4 id="payment-plan-title">Como deseja visualizar a parcela?</h4>
+                                    <p>Compare os dois valores usando a mesma carta e o mesmo prazo.</p>
+                                </div>
+
+                                <div class="payment-plan-grid" role="group" aria-label="Cenário de parcela">
+                                    <button class="payment-plan-option is-selected" type="button" data-payment-plan="standard" aria-pressed="true">
+                                        <span>Parcela integral</span>
+                                        <strong id="lead-standard-option-value">—</strong>
+                                        <small>Referência mensal do plano</small>
+                                    </button>
+                                    <button class="payment-plan-option" type="button" data-payment-plan="reduced" aria-pressed="false" aria-describedby="lead-reduced-plan-help">
+                                        <span>Parcela inicial reduzida</span>
+                                        <strong id="lead-reduced-option-value">—</strong>
+                                        <small id="lead-reduced-plan-help">Até a contemplação ou o marco previsto no regulamento; não é desconto</small>
+                                    </button>
+                                </div>
+
+                                <div class="payment-plan-note" id="lead-reduced-value-note" role="note" aria-live="polite" hidden>
+                                    <strong>Não é desconto.</strong>
+                                    <span id="lead-reduced-value-warning">Parte do pagamento é adiada e será redistribuída posteriormente.</span>
+                                    <span><b>Depois da contemplação:</b> valor a confirmar conforme o mês e o grupo.</span>
+                                    <a href="#faq-parcela-reduzida-valor">Entenda por que o valor posterior não aparece</a>
+                                </div>
+                            </section>
+
+                            <p class="reference-note">Estimativa com taxa de administração referencial de 18%. A hipótese reduzida considera 50% do fundo comum e a taxa integral. Não inclui fundo de reserva, seguro ou reajustes.</p>
 
                             <div class="simulator-actions">
                                 <button class="button button-quiet" type="button" data-back="1">Voltar</button>
@@ -201,7 +228,7 @@
 
                             <div class="strategy-preview-note" role="note">
                                 <strong>Na próxima etapa:</strong>
-                                <span>você poderá testar uma parcela inicial reduzida e montar um lance com recursos próprios e parte da carta.</span>
+                                <span>você verá o cenário de parcela escolhido e poderá, se desejar, montar um lance.</span>
                             </div>
 
                             <p class="sim-error" id="qualification-error" role="alert" hidden>Escolha o momento para continuar.</p>
@@ -214,7 +241,7 @@
                         <section class="simulator-result lead-result" id="lead-simulator-result" aria-labelledby="result-title" hidden>
                             <div class="result-intro">
                                 <p>Sua referência inicial</p>
-                                <h3 id="result-title" tabindex="-1">Veja seu plano e explore duas estratégias</h3>
+                                <h3 id="result-title" tabindex="-1">Veja a estimativa do seu plano</h3>
                             </div>
 
                             <div class="result-category" id="lead-result-category">—</div>
@@ -239,56 +266,30 @@
                                     <dt>Total nominal estimado</dt>
                                     <dd id="lead-result-total-plan">—</dd>
                                 </div>
+                                <div id="lead-result-after-reduced" hidden>
+                                    <dt>Depois da contemplação</dt>
+                                    <dd>A confirmar</dd>
+                                </div>
                             </dl>
+
+                            <div class="result-reduced-note" id="lead-result-reduced-note" role="note" hidden>
+                                <strong>Parcela inicial reduzida selecionada.</strong>
+                                <span id="lead-result-reduced-warning">A diferença adiada será redistribuída conforme o grupo.</span>
+                                <a href="#faq-parcela-reduzida-valor">Por que não mostramos o valor posterior?</a>
+                            </div>
 
                             <div class="result-context" id="lead-result-context"></div>
 
                             <section class="strategy-lab" aria-labelledby="strategy-lab-title">
                                 <div class="strategy-lab-heading">
-                                    <p>Explore possibilidades</p>
-                                    <h4 id="strategy-lab-title">Teste cada estratégia separadamente</h4>
-                                    <span>Você pode abrir as duas. Quando combinadas, o valor posterior será calculado pelo consultor.</span>
+                                    <p>Opcional</p>
+                                    <h4 id="strategy-lab-title">Quer montar um lance?</h4>
+                                    <span>Informe primeiro os recursos próprios. Se desejar, complemente com uma parte da carta.</span>
                                 </div>
 
                                 <div class="strategy-grid">
-                                    <article class="strategy-card" id="lead-reduced-strategy">
-                                        <div class="strategy-card-heading">
-                                            <span class="strategy-index">01</span>
-                                            <div>
-                                                <h5>Parcela inicial reduzida</h5>
-                                                <p>Veja quanto pagaria na fase inicial.</p>
-                                            </div>
-                                        </div>
-                                        <button class="strategy-toggle" id="lead-reduced-toggle" type="button" aria-pressed="false" aria-expanded="false" aria-controls="lead-reduced-content">Simular parcela reduzida</button>
-
-                                        <div class="strategy-content" id="lead-reduced-content" hidden>
-                                            <div class="reduced-projection-grid">
-                                                <div>
-                                                    <span>Parcela integral de referência</span>
-                                                    <strong id="lead-reduced-standard">—</strong>
-                                                </div>
-                                                <div class="is-highlighted">
-                                                    <span>Parcela inicial reduzida estimada</span>
-                                                    <strong id="lead-reduced-initial">—</strong>
-                                                    <small id="lead-reduced-effective">—</small>
-                                                </div>
-                                                <div>
-                                                    <span>Depois da contemplação</span>
-                                                    <strong>A confirmar</strong>
-                                                    <small>Depende do mês e do grupo</small>
-                                                </div>
-                                            </div>
-                                            <div class="strategy-warning" role="note">
-                                                <strong>Não é desconto.</strong>
-                                                <span id="lead-reduced-warning">Parte do pagamento é adiada e será redistribuída posteriormente.</span>
-                                            </div>
-                                            <a class="strategy-faq-link" href="#faq-parcela-reduzida-valor">Por que não mostramos o valor posterior?</a>
-                                        </div>
-                                    </article>
-
                                     <article class="strategy-card" id="lead-bid-strategy">
                                         <div class="strategy-card-heading">
-                                            <span class="strategy-index">02</span>
                                             <div>
                                                 <h5>Compor um lance</h5>
                                                 <p>Comece pelos recursos que você possui.</p>

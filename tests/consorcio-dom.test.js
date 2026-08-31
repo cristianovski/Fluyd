@@ -29,12 +29,26 @@ test("o lance embutido não aparece como modalidade isolada", () => {
     assert.match(html, /O embutido não aparece como lance isolado/);
 });
 
-test("a parcela reduzida informa o valor inicial e não promete valor posterior", () => {
-    assert.match(html, /Parcela inicial reduzida estimada/);
-    assert.match(html, /Depois da contemplação/);
-    assert.match(html, /A confirmar/);
+test("a parcela reduzida é escolhida na etapa de valores", () => {
+    assert.match(html, /data-payment-plan="standard"/);
+    assert.match(html, /data-payment-plan="reduced"/);
+    assert.match(html, /id="lead-standard-option-value"/);
+    assert.match(html, /id="lead-reduced-option-value"/);
+    assert.match(html, /Depois da contemplação:<\/b> valor a confirmar/);
     assert.match(html, /Não é desconto/);
     assert.match(html, /id="faq-parcela-reduzida"/);
+    assert.match(script, /const selectPaymentPlan =/);
+    assert.match(script, /state\.reducedPlan = paymentPlan === "reduced"/);
+});
+
+test("o resultado reflete a escolha e oferece somente o lance como opção adicional", () => {
+    assert.equal(html.includes('id="lead-reduced-strategy"'), false);
+    assert.match(html, /Veja a estimativa do seu plano/);
+    assert.match(html, /Quer montar um lance\?/);
+    assert.match(html, /id="lead-result-after-reduced"/);
+    assert.match(html, /id="lead-result-reduced-note"/);
+    assert.match(script, /resultAfterReduced\.hidden = !state\.reducedPlan/);
+    assert.match(script, /resultReducedNote\.hidden = !state\.reducedPlan/);
 });
 
 test("a combinação oculta a projeção posterior por regra de código", () => {
