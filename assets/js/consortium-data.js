@@ -4,8 +4,9 @@ window.GLID_CONSORTIUM_SCENARIOS = Object.freeze({
     reviewIntervalMonths: 6,
     assumptions: {
         administrationFeePercent: 18,
-        customBidMinPercent: 1,
-        customBidMaxPercent: 80
+        embeddedReferenceMaxPercent: 25,
+        totalBidMaxPercent: 80,
+        reducedCommonFundPaymentPercent: 50
     },
     categories: {
         automovel: {

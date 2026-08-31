@@ -4,7 +4,12 @@
     const form = document.querySelector("#lead-consortium-simulator");
     if (!form) return;
 
-    if (!SCENARIOS?.assumptions || !SCENARIOS?.categories || typeof CALCULATOR?.calculate !== "function") {
+    if (
+        !SCENARIOS?.assumptions
+        || !SCENARIOS?.categories
+        || typeof CALCULATOR?.calculate !== "function"
+        || typeof CALCULATOR?.calculateReducedPlan !== "function"
+    ) {
         form.innerHTML = '<div class="simulator-fallback" role="alert"><strong>O simulador está temporariamente indisponível.</strong><span>Você ainda pode solicitar uma análise diretamente com um consultor.</span><a class="button" href="https://wa.me/557731420005?text=Ol%C3%A1%21%20Quero%20simular%20um%20cons%C3%B3rcio%20com%20a%20GLID.">Falar com um consultor</a></div>';
         return;
     }
@@ -12,9 +17,6 @@
     const categoryButtons = [...form.querySelectorAll("[data-category]")];
     const modeButtons = [...form.querySelectorAll("[data-simulation-mode]")];
     const momentButtons = [...form.querySelectorAll("[data-moment]")];
-    const bidButtons = [...form.querySelectorAll("[data-bid-option]")];
-    const bidSourceButtons = [...form.querySelectorAll("[data-bid-source]")];
-    const mixedSourceOption = form.querySelector('[data-bid-source="mixed"]');
     const stepPanels = [...form.querySelectorAll("[data-step]")];
     const progressItems = [...document.querySelectorAll("[data-progress]")];
     const categoryNext = document.querySelector("#category-next");
@@ -31,34 +33,47 @@
     const urgencyWarning = document.querySelector("#lead-urgency-warning");
     const categoryError = document.querySelector("#category-error");
     const qualificationError = document.querySelector("#qualification-error");
-    const customBid = document.querySelector("#lead-custom-bid");
-    const customBidInput = document.querySelector("#lead-custom-bid-input");
-    const customBidAmount = document.querySelector("#lead-custom-bid-amount");
-    const bidSourceBlock = document.querySelector("#lead-bid-source-block");
-    const fgtsOption = document.querySelector("#lead-fgts-option");
-    const mixedBid = document.querySelector("#lead-mixed-bid");
-    const embeddedRange = document.querySelector("#lead-embedded-range");
-    const embeddedOutput = document.querySelector("#lead-embedded-output");
-    const sourceWarning = document.querySelector("#lead-source-warning");
     const resultPanel = document.querySelector("#lead-simulator-result");
     const resultTitle = document.querySelector("#result-title");
     const resultCategory = document.querySelector("#lead-result-category");
     const resultCredit = document.querySelector("#lead-result-credit");
     const resultTerm = document.querySelector("#lead-result-term");
+    const resultInstallmentLabel = document.querySelector("#lead-result-installment-label");
     const resultInstallment = document.querySelector("#lead-result-installment");
     const resultFee = document.querySelector("#lead-result-fee");
-    const resultBid = document.querySelector("#lead-result-bid");
+    const resultTotalPlan = document.querySelector("#lead-result-total-plan");
     const resultContext = document.querySelector("#lead-result-context");
+    const reducedStrategy = document.querySelector("#lead-reduced-strategy");
+    const reducedToggle = document.querySelector("#lead-reduced-toggle");
+    const reducedContent = document.querySelector("#lead-reduced-content");
+    const reducedStandard = document.querySelector("#lead-reduced-standard");
+    const reducedInitial = document.querySelector("#lead-reduced-initial");
+    const reducedEffective = document.querySelector("#lead-reduced-effective");
+    const reducedWarning = document.querySelector("#lead-reduced-warning");
+    const bidStrategy = document.querySelector("#lead-bid-strategy");
+    const bidToggle = document.querySelector("#lead-bid-toggle");
+    const bidContent = document.querySelector("#lead-bid-content");
+    const ownBidInput = document.querySelector("#lead-own-bid-input");
+    const ownBidHelp = document.querySelector("#lead-own-bid-help");
+    const ownBidError = document.querySelector("#lead-own-bid-error");
+    const useEmbedded = document.querySelector("#lead-use-embedded");
+    const embeddedControl = document.querySelector("#lead-embedded-control");
+    const embeddedRange = document.querySelector("#lead-embedded-range");
+    const embeddedOutput = document.querySelector("#lead-embedded-output");
+    const bidComposition = document.querySelector("#lead-bid-composition");
+    const compositionOwn = document.querySelector("#lead-composition-own");
+    const compositionEmbedded = document.querySelector("#lead-composition-embedded");
+    const compositionTotal = document.querySelector("#lead-composition-total");
+    const compositionPercent = document.querySelector("#lead-composition-percent");
+    const compositionCredit = document.querySelector("#lead-composition-credit");
+    const compositionCreditNote = document.querySelector("#lead-composition-credit-note");
     const bidImpact = document.querySelector("#lead-bid-impact");
-    const noBidResult = document.querySelector("#lead-no-bid-result");
     const resultBidSource = document.querySelector("#lead-result-bid-source");
     const resultReducedInstallment = document.querySelector("#lead-result-reduced-installment");
     const resultInstallmentSaving = document.querySelector("#lead-result-installment-saving");
     const resultReducedTerm = document.querySelector("#lead-result-reduced-term");
     const resultTermSaving = document.querySelector("#lead-result-term-saving");
-    const availableCredit = document.querySelector("#lead-available-credit");
-    const resultAvailableCredit = document.querySelector("#lead-result-available-credit");
-    const availableCreditNote = document.querySelector("#lead-available-credit-note");
+    const combinationNote = document.querySelector("#lead-combination-note");
     const restartButton = document.querySelector("#lead-restart-simulator");
     const heroTitle = document.querySelector("#hero-title");
     const heroDescription = document.querySelector("#hero-description");
@@ -71,10 +86,11 @@
         valueIndex: 1,
         term: null,
         moment: null,
-        bidOption: null,
-        bidPercent: 0,
-        bidSource: null,
-        embeddedPercent: 0
+        reducedPlan: false,
+        bidActive: false,
+        ownBidValue: 0,
+        useEmbedded: false,
+        embeddedPercent: SCENARIOS.assumptions.embeddedReferenceMaxPercent
     };
 
     const money = new Intl.NumberFormat("pt-BR", {
@@ -82,18 +98,12 @@
         currency: "BRL",
         maximumFractionDigits: 0
     });
+    const percent = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 });
 
     const momentLabels = {
         urgente: "O quanto antes",
         meses: "Nos próximos meses",
         flexivel: "Sem data definida"
-    };
-
-    const sourceLabels = {
-        own: "Recursos próprios",
-        embedded: "Lance embutido",
-        mixed: "Lance misto",
-        fgts: "FGTS"
     };
 
     const categoryAliases = {
@@ -134,6 +144,9 @@
         cleanAttribution(query.get("utm_term"))
     ].filter(Boolean).join(" / ");
 
+    const floorTo = (value, increment) => Math.floor(value / increment) * increment;
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+    const plural = (value, singular, pluralForm) => value === 1 ? singular : pluralForm;
     const getCategory = () => SCENARIOS.categories[state.category];
     const getModeValues = () => {
         const category = getCategory();
@@ -141,11 +154,7 @@
         return state.mode === "credit" ? category.credits : category.installments;
     };
 
-    const floorTo = (value, increment) => Math.floor(value / increment) * increment;
-    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-    const plural = (value, singular, pluralForm) => value === 1 ? singular : pluralForm;
-
-    const getPlan = () => {
+    const getBasePlan = () => {
         const category = getCategory();
         const values = getModeValues();
         const selectedValue = values[state.valueIndex];
@@ -156,30 +165,83 @@
         const credit = state.mode === "credit"
             ? selectedValue
             : floorTo(selectedValue * state.term / (1 + feeRate), category.creditRounding);
-        const bidPercent = Number(state.bidPercent) || 0;
-        const embeddedPercent = state.bidSource === "embedded"
-            ? bidPercent
-            : state.bidSource === "mixed"
-                ? clamp(Number(state.embeddedPercent) || 0, 0, bidPercent)
-                : 0;
         const projection = CALCULATOR.calculate({
             credit,
             term: state.term,
             feePercent,
+            bidPercent: 0,
+            embeddedPercent: 0
+        });
+
+        return { ...projection, category, selectedValue };
+    };
+
+    const getReducedPlan = () => {
+        const plan = getBasePlan();
+        if (!plan) return null;
+        return CALCULATOR.calculateReducedPlan({
+            credit: plan.credit,
+            term: plan.term,
+            feePercent: plan.feePercent,
+            commonFundPaymentPercent: SCENARIOS.assumptions.reducedCommonFundPaymentPercent
+        });
+    };
+
+    const getBidPlan = () => {
+        const plan = getBasePlan();
+        if (!plan) return null;
+
+        const embeddedPercent = state.useEmbedded
+            ? clamp(Number(state.embeddedPercent) || 0, 0, SCENARIOS.assumptions.embeddedReferenceMaxPercent)
+            : 0;
+        const embeddedValue = plan.credit * embeddedPercent / 100;
+        const totalBidLimit = plan.credit * SCENARIOS.assumptions.totalBidMaxPercent / 100;
+        const maximumOwnValue = Math.max(0, totalBidLimit - embeddedValue);
+        const ownBidValue = Number(state.ownBidValue) || 0;
+        const totalBidValue = ownBidValue + embeddedValue;
+        const valid = state.bidActive
+            && ownBidValue > 0
+            && ownBidValue <= maximumOwnValue
+            && totalBidValue <= totalBidLimit;
+
+        if (!valid) {
+            return {
+                valid: false,
+                basePlan: plan,
+                ownBidValue,
+                embeddedPercent,
+                embeddedValue,
+                totalBidValue,
+                totalBidLimit,
+                maximumOwnValue
+            };
+        }
+
+        const bidPercent = totalBidValue / plan.credit * 100;
+        const projection = CALCULATOR.calculate({
+            credit: plan.credit,
+            term: plan.term,
+            feePercent: plan.feePercent,
             bidPercent,
             embeddedPercent
         });
 
         return {
             ...projection,
-            category,
-            selectedValue
+            valid: true,
+            basePlan: plan,
+            ownBidValue,
+            totalBidValue,
+            totalBidLimit,
+            maximumOwnValue
         };
     };
 
     const emit = (eventName, extra = {}) => {
         if (!Array.isArray(window.dataLayer)) return;
-        const plan = getPlan();
+        const plan = getBasePlan();
+        const bidPlan = getBidPlan();
+        const reducedPlan = getReducedPlan();
         window.dataLayer.push({
             event: eventName,
             consortium_category: state.category || undefined,
@@ -187,9 +249,15 @@
             consortium_term: state.term || undefined,
             consortium_credit: plan ? Math.round(plan.credit) : undefined,
             consortium_moment: state.moment || undefined,
-            consortium_bid_percent: state.bidOption === null ? undefined : state.bidPercent,
-            consortium_bid_source: state.bidSource || undefined,
-            consortium_embedded_percent: plan?.embeddedPercent || undefined,
+            consortium_reduced_plan: state.reducedPlan,
+            consortium_reduced_initial_installment: state.reducedPlan && reducedPlan
+                ? Math.round(reducedPlan.reducedInitialInstallment)
+                : undefined,
+            consortium_bid_source: bidPlan?.valid
+                ? (bidPlan.embeddedValue > 0 ? "mixed" : "own")
+                : undefined,
+            consortium_bid_percent: bidPlan?.valid ? Number(bidPlan.bidPercent.toFixed(1)) : undefined,
+            consortium_embedded_percent: bidPlan?.valid ? bidPlan.embeddedPercent : undefined,
             ...extra
         });
     };
@@ -227,7 +295,7 @@
     };
 
     const renderPlanPreview = () => {
-        const plan = getPlan();
+        const plan = getBasePlan();
         if (!plan) return;
         previewCredit.textContent = money.format(plan.credit);
         previewInstallment.textContent = money.format(plan.initialInstallment) + " por mês";
@@ -237,7 +305,6 @@
         const category = getCategory();
         if (!category) return;
         if (!category.terms.includes(state.term)) state.term = category.defaultTerm;
-
         termOptions.innerHTML = category.terms.map((term) => (
             '<button class="term-option' + (term === state.term ? " is-selected" : "") + '" type="button" data-term="' + term + '" aria-pressed="' + String(term === state.term) + '"><strong>' + term + '</strong><small>meses</small></button>'
         )).join("");
@@ -270,35 +337,45 @@
         document.title = copy.documentTitle;
     };
 
-    const syncFgtsVisibility = () => {
-        fgtsOption.hidden = state.category !== "imovel";
-        if (state.category !== "imovel" && state.bidSource === "fgts") {
-            state.bidSource = null;
-            setPressed(bidSourceButtons, null);
-        }
+    const resetExploration = () => {
+        state.reducedPlan = false;
+        state.bidActive = false;
+        state.ownBidValue = 0;
+        state.useEmbedded = false;
+        state.embeddedPercent = SCENARIOS.assumptions.embeddedReferenceMaxPercent;
+
+        reducedStrategy.classList.remove("is-active");
+        reducedToggle.setAttribute("aria-pressed", "false");
+        reducedToggle.setAttribute("aria-expanded", "false");
+        reducedToggle.textContent = "Simular parcela reduzida";
+        reducedContent.hidden = true;
+        bidStrategy.classList.remove("is-active");
+        bidToggle.setAttribute("aria-pressed", "false");
+        bidToggle.setAttribute("aria-expanded", "false");
+        bidToggle.textContent = "Montar composição";
+        bidContent.hidden = true;
+        ownBidInput.value = "";
+        ownBidInput.disabled = true;
+        ownBidInput.required = false;
+        ownBidInput.removeAttribute("aria-invalid");
+        useEmbedded.checked = false;
+        useEmbedded.disabled = true;
+        embeddedRange.value = String(state.embeddedPercent);
+        embeddedRange.disabled = true;
+        embeddedControl.hidden = true;
+        ownBidError.hidden = true;
+        bidComposition.hidden = true;
+        bidImpact.hidden = true;
+        combinationNote.hidden = true;
     };
 
-    const resetStrategy = () => {
+    const resetQualification = () => {
         state.moment = null;
-        state.bidOption = null;
-        state.bidPercent = 0;
-        state.bidSource = null;
-        state.embeddedPercent = 0;
-        customBidInput.value = "35";
-        customBidInput.disabled = true;
-        customBidInput.removeAttribute("aria-invalid");
-        customBid.hidden = true;
-        bidSourceBlock.hidden = true;
-        mixedBid.hidden = true;
-        sourceWarning.hidden = true;
         urgencyWarning.hidden = true;
         qualificationError.hidden = true;
         resultButton.disabled = true;
         setPressed(momentButtons, null);
-        setPressed(bidButtons, null);
-        setPressed(bidSourceButtons, null);
-        mixedSourceOption.disabled = true;
-        syncFgtsVisibility();
+        resetExploration();
     };
 
     const selectCategory = (categoryKey, button, track = true) => {
@@ -312,7 +389,7 @@
         setPressed(modeButtons, modeButtons.find((item) => item.dataset.simulationMode === "credit"));
         categoryNext.disabled = false;
         categoryError.hidden = true;
-        resetStrategy();
+        resetQualification();
         renderTermOptions();
         renderValueSelector();
         personalizeHero(categoryKey);
@@ -327,9 +404,8 @@
             ? getCategory().defaultCreditIndex
             : getCategory().defaultInstallmentIndex;
         setPressed(modeButtons, button);
+        resetExploration();
         renderValueSelector();
-        if (state.bidOption === "custom") updateCustomBid();
-        if (state.bidSource === "mixed") syncMixedControl();
         emit("consortium_lead_mode_select");
     };
 
@@ -338,9 +414,8 @@
         if (!category?.terms.includes(term)) return;
         state.term = term;
         setPressed([...termOptions.querySelectorAll("[data-term]")], button);
+        resetExploration();
         renderPlanPreview();
-        if (state.bidOption === "custom") updateCustomBid();
-        if (state.bidSource === "mixed") syncMixedControl();
         emit("consortium_lead_term_select");
     };
 
@@ -348,133 +423,10 @@
         state.moment = moment;
         setPressed(momentButtons, button);
         urgencyWarning.hidden = moment !== "urgente";
-        updateQualificationButton();
+        resultButton.disabled = false;
+        qualificationError.hidden = true;
         if (moment === "urgente") emit("consortium_lead_urgency_warning");
     };
-
-    const customBidIsValid = () => {
-        const value = Number(customBidInput.value);
-        const min = SCENARIOS.assumptions.customBidMinPercent;
-        const max = SCENARIOS.assumptions.customBidMaxPercent;
-        return Number.isInteger(value) && value >= min && value <= max;
-    };
-
-    const updateCustomBid = () => {
-        const isValid = customBidIsValid();
-        const value = Number(customBidInput.value);
-        customBidInput.setAttribute("aria-invalid", String(!isValid));
-        state.bidPercent = isValid ? value : 0;
-        if (state.bidSource === "embedded") state.embeddedPercent = state.bidPercent;
-        syncSourceAvailability();
-        const plan = getPlan();
-        customBidAmount.textContent = isValid && plan ? money.format(plan.bidValue) : "Informe de 1% a 80%";
-        bidSourceBlock.hidden = !isValid;
-        if (!isValid) {
-            state.bidSource = null;
-            setPressed(bidSourceButtons, null);
-            mixedBid.hidden = true;
-            sourceWarning.hidden = true;
-        } else if (state.bidSource === "mixed") {
-            syncMixedControl();
-        } else {
-            renderSourceWarning();
-        }
-        updateQualificationButton();
-    };
-
-    const selectBid = (option, button) => {
-        state.bidOption = option;
-        setPressed(bidButtons, button);
-        customBid.hidden = option !== "custom";
-        customBidInput.disabled = option !== "custom";
-
-        if (option === "custom") {
-            updateCustomBid();
-        } else {
-            state.bidPercent = Number(option);
-            if (state.bidSource === "embedded") state.embeddedPercent = state.bidPercent;
-            syncSourceAvailability();
-            customBidInput.removeAttribute("aria-invalid");
-            bidSourceBlock.hidden = state.bidPercent === 0;
-            if (state.bidPercent === 0) {
-                state.bidSource = null;
-                state.embeddedPercent = 0;
-                setPressed(bidSourceButtons, null);
-                mixedBid.hidden = true;
-                sourceWarning.hidden = true;
-            } else if (state.bidSource === "mixed") {
-                syncMixedControl();
-            } else {
-                renderSourceWarning();
-            }
-        }
-
-        updateQualificationButton();
-        emit("consortium_lead_bid_select");
-    };
-
-    function syncSourceAvailability() {
-        const mixedUnavailable = state.bidPercent <= 1;
-        mixedSourceOption.disabled = mixedUnavailable;
-        if (mixedUnavailable && state.bidSource === "mixed") {
-            state.bidSource = null;
-            state.embeddedPercent = 0;
-            setPressed(bidSourceButtons, null);
-            mixedBid.hidden = true;
-            sourceWarning.hidden = true;
-        }
-    }
-
-    function syncMixedControl() {
-        const maximum = Math.max(1, Math.floor(state.bidPercent - 1));
-        embeddedRange.max = String(maximum);
-        if (!(state.embeddedPercent > 0 && state.embeddedPercent < state.bidPercent)) {
-            state.embeddedPercent = Math.min(20, Math.max(1, Math.floor(state.bidPercent / 2)), maximum);
-        }
-        embeddedRange.value = String(state.embeddedPercent);
-        const plan = getPlan();
-        embeddedOutput.textContent = state.embeddedPercent + "% · " + (plan ? money.format(plan.embeddedValue) : "—");
-        updateQualificationButton();
-    }
-
-    function renderSourceWarning() {
-        if (!state.bidSource) {
-            sourceWarning.hidden = true;
-            return;
-        }
-
-        const messages = {
-            own: "Com recursos próprios, o valor integral da carta permanece disponível para a compra.",
-            embedded: "No lance embutido, o valor usado é retirado da carta. Esta é apenas uma hipótese matemática e não indica que o grupo aceite todo o percentual selecionado.",
-            mixed: "No lance misto, somente a parte embutida reduz o crédito disponível. O limite real depende do grupo.",
-            fgts: "O uso do FGTS em consórcio imobiliário depende das regras aplicáveis e da análise do caso pelo consultor e pela administradora."
-        };
-        sourceWarning.textContent = messages[state.bidSource];
-        sourceWarning.hidden = false;
-    }
-
-    const selectBidSource = (source, button) => {
-        if (source === "fgts" && state.category !== "imovel") return;
-        state.bidSource = source;
-        state.embeddedPercent = source === "embedded" ? state.bidPercent : 0;
-        setPressed(bidSourceButtons, button);
-        mixedBid.hidden = source !== "mixed";
-        if (source === "mixed") syncMixedControl();
-        renderSourceWarning();
-        updateQualificationButton();
-        emit("consortium_lead_bid_source_select");
-    };
-
-    function updateQualificationButton() {
-        const hasBidChoice = state.bidOption !== null;
-        const validCustom = state.bidOption !== "custom" || customBidIsValid();
-        const sourceIsValid = state.bidPercent === 0 || Boolean(state.bidSource);
-        const mixedIsValid = state.bidSource !== "mixed"
-            || (state.embeddedPercent > 0 && state.embeddedPercent < state.bidPercent);
-        const isValid = Boolean(state.moment && hasBidChoice && validCustom && sourceIsValid && mixedIsValid);
-        resultButton.disabled = !isValid;
-        if (isValid) qualificationError.hidden = true;
-    }
 
     const buildResultContext = (plan) => {
         const parts = [];
@@ -487,7 +439,7 @@
         }
 
         if (state.mode === "installment") {
-            parts.push("A carta foi estimada a partir da parcela mensal de " + money.format(plan.selectedValue) + " e do prazo escolhido.");
+            parts.push("A carta foi estimada a partir do orçamento mensal de " + money.format(plan.selectedValue) + " e do prazo escolhido.");
         } else {
             parts.push("A parcela foi estimada a partir da carta e do prazo escolhidos.");
         }
@@ -496,63 +448,132 @@
         resultContext.innerHTML = parts.join("<br>");
     };
 
-    const getBidSourceLabel = (plan) => {
-        if (!state.bidSource) return "Sem origem informada";
-        if (state.bidSource === "mixed") {
-            return sourceLabels.mixed + " · " + plan.embeddedPercent + "% embutido";
+    const renderReducedStrategy = () => {
+        const plan = getBasePlan();
+        const reducedPlan = getReducedPlan();
+        if (!plan || !reducedPlan) return;
+
+        reducedStrategy.classList.toggle("is-active", state.reducedPlan);
+        reducedToggle.setAttribute("aria-pressed", String(state.reducedPlan));
+        reducedToggle.setAttribute("aria-expanded", String(state.reducedPlan));
+        reducedToggle.textContent = state.reducedPlan
+            ? "Voltar à parcela integral"
+            : "Simular parcela reduzida";
+        reducedContent.hidden = !state.reducedPlan;
+
+        reducedStandard.textContent = money.format(reducedPlan.standardInstallment) + " por mês";
+        reducedInitial.textContent = money.format(reducedPlan.reducedInitialInstallment) + " por mês";
+        reducedEffective.textContent = "Redução inicial matemática de " + percent.format(reducedPlan.effectiveReductionPercent) + "% no boleto estimado";
+        reducedWarning.textContent = money.format(reducedPlan.deferredMonthlyAmount) + " do fundo comum por mês ficam adiados nesta hipótese e serão redistribuídos conforme o grupo.";
+
+        resultInstallmentLabel.textContent = state.reducedPlan
+            ? "Parcela inicial reduzida estimada"
+            : "Parcela integral estimada";
+        resultInstallment.textContent = money.format(
+            state.reducedPlan ? reducedPlan.reducedInitialInstallment : plan.initialInstallment
+        ) + " por mês";
+
+        renderBidComposer();
+    };
+
+    const renderBidComposer = (showError = false) => {
+        const plan = getBasePlan();
+        if (!plan) return;
+
+        bidStrategy.classList.toggle("is-active", state.bidActive);
+        bidToggle.setAttribute("aria-pressed", String(state.bidActive));
+        bidToggle.setAttribute("aria-expanded", String(state.bidActive));
+        bidToggle.textContent = state.bidActive ? "Remover composição" : "Montar composição";
+        bidContent.hidden = !state.bidActive;
+        ownBidInput.disabled = !state.bidActive;
+        ownBidInput.required = state.bidActive;
+
+        if (!state.bidActive) {
+            ownBidInput.removeAttribute("aria-invalid");
+            ownBidError.hidden = true;
+            bidComposition.hidden = true;
+            bidImpact.hidden = true;
+            combinationNote.hidden = true;
+            return;
         }
-        return sourceLabels[state.bidSource];
+
+        let bidPlan = getBidPlan();
+        const ownHasPositiveValue = state.ownBidValue > 0;
+        if (!ownHasPositiveValue && state.useEmbedded) {
+            state.useEmbedded = false;
+            useEmbedded.checked = false;
+            bidPlan = getBidPlan();
+        }
+
+        useEmbedded.disabled = !ownHasPositiveValue;
+        embeddedRange.disabled = !state.useEmbedded || !ownHasPositiveValue;
+        embeddedControl.hidden = !state.useEmbedded || !ownHasPositiveValue;
+        embeddedRange.max = String(SCENARIOS.assumptions.embeddedReferenceMaxPercent);
+        embeddedRange.value = String(state.embeddedPercent);
+        embeddedOutput.textContent = state.embeddedPercent + "% · " + money.format(plan.credit * state.embeddedPercent / 100);
+        embeddedRange.setAttribute("aria-valuetext", state.embeddedPercent + "% da carta, " + money.format(plan.credit * state.embeddedPercent / 100));
+
+        const invalidOwnValue = ownBidInput.value !== "" && !bidPlan.valid;
+        ownBidInput.max = String(Math.floor(bidPlan.maximumOwnValue));
+        ownBidInput.setAttribute("aria-invalid", String(invalidOwnValue || (showError && !bidPlan.valid)));
+        ownBidError.hidden = !(invalidOwnValue || (showError && !bidPlan.valid));
+        ownBidHelp.textContent = "Nesta estimativa, os recursos próprios podem chegar a "
+            + money.format(bidPlan.maximumOwnValue)
+            + " para manter o lance total em até "
+            + SCENARIOS.assumptions.totalBidMaxPercent
+            + "% da carta.";
+
+        bidComposition.hidden = !bidPlan.valid;
+        bidImpact.hidden = !bidPlan.valid || state.reducedPlan;
+        combinationNote.hidden = !bidPlan.valid || !state.reducedPlan;
+
+        if (!bidPlan.valid) return;
+
+        compositionOwn.textContent = money.format(bidPlan.ownBidValue);
+        compositionEmbedded.textContent = bidPlan.embeddedValue > 0
+            ? money.format(bidPlan.embeddedValue)
+            : "Não utilizado";
+        compositionTotal.textContent = money.format(bidPlan.totalBidValue);
+        compositionPercent.textContent = percent.format(bidPlan.bidPercent) + "% da carta nesta estimativa";
+        compositionCredit.textContent = money.format(bidPlan.availableCredit);
+        compositionCreditNote.textContent = bidPlan.embeddedValue > 0
+            ? money.format(bidPlan.embeddedValue) + " da carta seriam destinados à composição do lance."
+            : "Com recursos próprios, a carta permanece integral para a compra.";
+
+        if (!state.reducedPlan) {
+            resultBidSource.textContent = bidPlan.embeddedValue > 0
+                ? "Recursos próprios + " + bidPlan.embeddedPercent + "% da carta"
+                : "Somente recursos próprios";
+            resultReducedInstallment.textContent = money.format(bidPlan.reducedInstallment) + " por mês";
+            resultInstallmentSaving.textContent = "Cerca de " + money.format(bidPlan.installmentSaving) + " a menos por mês";
+            resultReducedTerm.textContent = "Cerca de " + bidPlan.reducedTerm + " meses";
+            resultTermSaving.textContent = bidPlan.monthsSaved + " " + plural(bidPlan.monthsSaved, "mês", "meses") + " a menos";
+        }
     };
 
     const renderResult = () => {
-        const plan = getPlan();
-        if (!plan || !state.moment || state.bidOption === null) return;
+        const plan = getBasePlan();
+        if (!plan || !state.moment) return;
 
         resultCategory.textContent = plan.category.label + " · " + momentLabels[state.moment];
         resultCredit.textContent = money.format(plan.credit);
         resultTerm.textContent = plan.term + " meses";
-        resultInstallment.textContent = money.format(plan.initialInstallment) + " por mês";
-        resultFee.textContent = plan.feePercent + "% referencial";
-        resultBid.textContent = plan.bidPercent > 0
-            ? plan.bidPercent + "% · " + money.format(plan.bidValue)
-            : "Sem lance";
+        resultFee.textContent = plan.feePercent + "% adotados nesta estimativa";
+        resultTotalPlan.textContent = money.format(plan.totalPlan);
+        resultTitle.textContent = "Veja seu plano e explore duas estratégias";
         buildResultContext(plan);
-
-        const hasBid = plan.bidPercent > 0;
-        resultTitle.textContent = hasBid
-            ? "Veja como o lance poderia alterar seu plano"
-            : "Sua referência inicial de crédito, prazo e parcela";
-        bidImpact.hidden = !hasBid;
-        noBidResult.hidden = hasBid;
-
-        if (hasBid) {
-            resultBidSource.textContent = getBidSourceLabel(plan);
-            resultReducedInstallment.textContent = money.format(plan.reducedInstallment) + " por mês";
-            resultInstallmentSaving.textContent = "Redução estimada de " + money.format(plan.installmentSaving) + " por mês";
-            resultReducedTerm.textContent = "Cerca de " + plan.reducedTerm + " meses";
-            resultTermSaving.textContent = plan.monthsSaved + " " + plural(plan.monthsSaved, "mês", "meses") + " a menos";
-
-            const reducesAvailableCredit = plan.embeddedValue > 0;
-            availableCredit.hidden = !reducesAvailableCredit;
-            if (reducesAvailableCredit) {
-                resultAvailableCredit.textContent = money.format(plan.availableCredit);
-                availableCreditNote.textContent = money.format(plan.embeddedValue) + " da carta foram considerados nesta hipótese. A possibilidade e o limite real dependem do grupo.";
-            }
-        } else {
-            availableCredit.hidden = true;
-        }
-
+        renderReducedStrategy();
+        renderBidComposer();
         showStep(4);
-        emit("consortium_lead_result_view", {
-            consortium_reduced_installment: hasBid ? Math.round(plan.reducedInstallment) : undefined,
-            consortium_reduced_term: hasBid ? plan.reducedTerm : undefined,
-            consortium_available_credit: Math.round(plan.availableCredit)
-        });
+
+        emit("consortium_lead_result_view");
         if (state.moment !== "urgente") emit("consortium_lead_qualified_result");
     };
 
     const buildMessage = () => {
-        const plan = getPlan();
+        const plan = getBasePlan();
+        const reducedPlan = getReducedPlan();
+        const bidPlan = getBidPlan();
         const data = new FormData(form);
         const lines = [
             "Olá! Fiz uma simulação de consórcio na página da GLID e quero validar as possibilidades atuais com um consultor.",
@@ -562,29 +583,47 @@
             "Melhor período: " + data.get("periodo"),
             "",
             "Categoria: " + plan.category.label,
-            "Forma de simular: " + (state.mode === "credit" ? "pelo valor da carta" : "pela parcela mensal"),
+            "Forma de simular: " + (state.mode === "credit" ? "pelo valor da carta" : "pelo orçamento mensal"),
             "Crédito de referência: " + money.format(plan.credit),
             "Prazo escolhido: " + plan.term + " meses",
-            "Parcela inicial estimada: " + money.format(plan.initialInstallment) + " por mês",
-            "Taxa de administração referencial: " + plan.feePercent + "%",
-            "Momento da compra: " + momentLabels[state.moment],
-            "Lance simulado: " + (plan.bidPercent > 0 ? plan.bidPercent + "% (" + money.format(plan.bidValue) + ")" : "sem lance")
+            "Parcela integral estimada: " + money.format(plan.initialInstallment) + " por mês",
+            "Taxa de administração adotada na estimativa: " + plan.feePercent + "%",
+            "Momento da compra: " + momentLabels[state.moment]
         ];
 
-        if (plan.bidPercent > 0) {
+        if (state.reducedPlan && reducedPlan) {
             lines.push(
-                "Origem do lance: " + getBidSourceLabel(plan),
-                "Projeção mantendo o prazo: " + money.format(plan.reducedInstallment) + " por mês",
-                "Projeção mantendo a parcela: cerca de " + plan.reducedTerm + " meses"
+                "",
+                "Interesse: parcela inicial reduzida",
+                "Parcela inicial reduzida estimada: " + money.format(reducedPlan.reducedInitialInstallment) + " por mês",
+                "Hipótese do redutor: pagamento de " + reducedPlan.commonFundPaymentPercent + "% do fundo comum, com taxa administrativa integral",
+                "Valor após a contemplação: a confirmar conforme o mês, o saldo redistribuído e as regras do grupo"
             );
-            if (plan.embeddedValue > 0) {
-                lines.push("Crédito estimado disponível após a parte embutida: " + money.format(plan.availableCredit));
+        }
+
+        if (bidPlan?.valid) {
+            lines.push(
+                "",
+                "Composição de lance:",
+                "Recursos próprios: " + money.format(bidPlan.ownBidValue),
+                "Parte embutida da carta: " + money.format(bidPlan.embeddedValue),
+                "Lance total simulado: " + money.format(bidPlan.totalBidValue) + " (" + percent.format(bidPlan.bidPercent) + "% da carta)",
+                "Crédito estimado disponível para a compra: " + money.format(bidPlan.availableCredit)
+            );
+
+            if (state.reducedPlan) {
+                lines.push("Parcela posterior não projetada, pois depende do mês da contemplação, do saldo redistribuído e das regras do grupo.");
+            } else {
+                lines.push(
+                    "Projeção matemática mantendo o prazo: " + money.format(bidPlan.reducedInstallment) + " por mês",
+                    "Projeção matemática mantendo a parcela: cerca de " + bidPlan.reducedTerm + " meses"
+                );
             }
         }
 
         lines.push(
             "",
-            "Entendo que esta é uma estimativa ilustrativa, sem garantia de contemplação, e que valores, limites e forma de abatimento dependem do grupo, do contrato e da administradora."
+            "Entendo que esta é uma estimativa ilustrativa, sem garantia de contemplação, e que valores, limites, compatibilidade e forma de abatimento dependem do grupo, do contrato e da administradora."
         );
         if (attribution) lines.push("", "Origem da visita: " + attribution);
         return lines.join("\n");
@@ -600,14 +639,6 @@
 
     momentButtons.forEach((button) => {
         button.addEventListener("click", () => selectMoment(button.dataset.moment, button));
-    });
-
-    bidButtons.forEach((button) => {
-        button.addEventListener("click", () => selectBid(button.dataset.bidOption, button));
-    });
-
-    bidSourceButtons.forEach((button) => {
-        button.addEventListener("click", () => selectBidSource(button.dataset.bidSource, button));
     });
 
     termOptions.addEventListener("click", (event) => {
@@ -627,17 +658,8 @@
 
     valueRange.addEventListener("input", () => {
         state.valueIndex = Number(valueRange.value);
+        resetExploration();
         renderValueSelector();
-        if (state.bidOption === "custom") updateCustomBid();
-        if (state.bidSource === "mixed") syncMixedControl();
-    });
-
-    customBidInput.addEventListener("input", updateCustomBid);
-
-    embeddedRange.addEventListener("input", () => {
-        state.embeddedPercent = Number(embeddedRange.value);
-        syncMixedControl();
-        renderSourceWarning();
     });
 
     valuesNext.addEventListener("click", () => {
@@ -646,11 +668,56 @@
     });
 
     resultButton.addEventListener("click", () => {
-        if (resultButton.disabled) {
+        if (!state.moment) {
             qualificationError.hidden = false;
             return;
         }
         renderResult();
+    });
+
+    reducedToggle.addEventListener("click", () => {
+        state.reducedPlan = !state.reducedPlan;
+        renderReducedStrategy();
+        emit("consortium_lead_reduced_installment_toggle", {
+            consortium_reduced_plan: state.reducedPlan
+        });
+    });
+
+    bidToggle.addEventListener("click", () => {
+        state.bidActive = !state.bidActive;
+        renderBidComposer();
+        if (state.bidActive) window.requestAnimationFrame(() => ownBidInput.focus());
+        emit("consortium_lead_bid_composer_toggle", {
+            consortium_bid_composer_active: state.bidActive
+        });
+    });
+
+    ownBidInput.addEventListener("input", () => {
+        state.ownBidValue = Number(ownBidInput.value) || 0;
+        renderBidComposer();
+    });
+
+    ownBidInput.addEventListener("change", () => {
+        renderBidComposer(true);
+        const bidPlan = getBidPlan();
+        if (bidPlan?.valid) emit("consortium_lead_bid_composition_update");
+    });
+
+    useEmbedded.addEventListener("change", () => {
+        state.useEmbedded = useEmbedded.checked;
+        renderBidComposer();
+        const bidPlan = getBidPlan();
+        if (bidPlan?.valid) emit("consortium_lead_bid_composition_update");
+    });
+
+    embeddedRange.addEventListener("input", () => {
+        state.embeddedPercent = Number(embeddedRange.value);
+        renderBidComposer();
+    });
+
+    embeddedRange.addEventListener("change", () => {
+        const bidPlan = getBidPlan();
+        if (bidPlan?.valid) emit("consortium_lead_bid_composition_update");
     });
 
     form.querySelectorAll("[data-back]").forEach((button) => {
@@ -659,7 +726,13 @@
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
-        if (resultPanel.hidden || !form.reportValidity()) return;
+        if (resultPanel.hidden) return;
+        if (state.bidActive && !getBidPlan()?.valid) {
+            renderBidComposer(true);
+            ownBidInput.focus();
+            return;
+        }
+        if (!form.reportValidity()) return;
         emit("consortium_lead_whatsapp_intent");
         window.location.href = "https://wa.me/557731420005?text=" + encodeURIComponent(buildMessage());
     });
@@ -675,7 +748,7 @@
         categoryNext.disabled = true;
         categoryError.hidden = true;
         termOptions.innerHTML = "";
-        resetStrategy();
+        resetQualification();
         heroTitle.innerHTML = "Compare consórcios com base no seu <em>objetivo e orçamento.</em>";
         heroDescription.textContent = "Veja uma estimativa de crédito, prazo e parcela para automóvel, moto ou imóvel. Depois, receba uma análise humana das possibilidades disponíveis entre parceiros da GLID.";
         document.title = "Simule seu consórcio para carro, moto ou imóvel | GLID";
@@ -689,6 +762,17 @@
 
     resultContext.addEventListener("click", (event) => {
         if (event.target.closest("a")) emit("consortium_lead_financing_route");
+    });
+
+    document.querySelectorAll('a[href="#faq-parcela-reduzida"]').forEach((link) => {
+        link.addEventListener("click", () => {
+            const faq = document.querySelector("#faq-parcela-reduzida");
+            if (faq) {
+                faq.open = true;
+                window.requestAnimationFrame(() => faq.querySelector("summary")?.focus());
+            }
+            emit("consortium_lead_reduced_faq_open");
+        });
     });
 
     stickyCta?.addEventListener("click", () => emit("consortium_lead_sticky_cta"));

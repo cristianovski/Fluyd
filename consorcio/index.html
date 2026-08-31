@@ -86,7 +86,7 @@
                     <ol class="simulator-progress lead-progress" aria-label="Progresso da simulação">
                         <li class="is-active" data-progress="1" aria-current="step"><span></span>Objetivo</li>
                         <li data-progress="2"><span></span>Valores</li>
-                        <li data-progress="3"><span></span>Estratégia</li>
+                        <li data-progress="3"><span></span>Momento</li>
                         <li data-progress="4"><span></span>Resultado</li>
                     </ol>
 
@@ -178,9 +178,9 @@
                         </fieldset>
 
                         <fieldset class="simulator-step" data-step="3" hidden>
-                            <legend class="sr-only">Informe o momento da compra e simule uma estratégia de lance</legend>
-                            <h3 tabindex="-1">Qual é o seu momento e sua estratégia?</h3>
-                            <p class="step-description">O tempo disponível e o lance ajudam a organizar cenários, sem garantir contemplação.</p>
+                            <legend class="sr-only">Informe o momento em que pretende adquirir o bem</legend>
+                            <h3 tabindex="-1">Qual é o seu momento?</h3>
+                            <p class="step-description">Sua resposta ajuda a contextualizar a estimativa e a identificar quando outra modalidade pode ser mais compatível.</p>
 
                             <div class="option-list" role="group" aria-label="Momento da compra">
                                 <button class="sim-option moment-option" type="button" data-moment="urgente" aria-pressed="false">
@@ -199,51 +199,12 @@
                                 <p><strong>Atenção ao prazo.</strong> Se você depende de uma data certa, o financiamento pode ser mais compatível. O consórcio não garante quando ocorrerá a contemplação.</p>
                             </div>
 
-                            <div class="lead-question-block">
-                                <h4>Qual lance você quer visualizar?</h4>
-                                <p>O percentual é calculado sobre o valor da carta e serve apenas para comparar cenários.</p>
-                                <div class="bid-grid bid-percent-grid" role="group" aria-label="Percentual de lance">
-                                    <button class="sim-option bid-option" type="button" data-bid-option="0" aria-pressed="false"><span><strong>Sem lance</strong><small>Não considerar nesta projeção</small></span></button>
-                                    <button class="sim-option bid-option" type="button" data-bid-option="30" aria-pressed="false"><span><strong>30%</strong><small>do valor da carta</small></span></button>
-                                    <button class="sim-option bid-option" type="button" data-bid-option="40" aria-pressed="false"><span><strong>40%</strong><small>do valor da carta</small></span></button>
-                                    <button class="sim-option bid-option" type="button" data-bid-option="50" aria-pressed="false"><span><strong>50%</strong><small>do valor da carta</small></span></button>
-                                    <button class="sim-option bid-option bid-custom-trigger" type="button" data-bid-option="custom" aria-pressed="false"><span><strong>Outro percentual</strong><small>Personalizar o lance</small></span></button>
-                                </div>
-
-                                <div class="custom-bid" id="lead-custom-bid" hidden>
-                                    <label for="lead-custom-bid-input">Percentual personalizado</label>
-                                    <div class="custom-bid-input">
-                                        <input id="lead-custom-bid-input" type="number" inputmode="numeric" min="1" max="80" step="1" value="35" disabled>
-                                        <span>%</span>
-                                        <output id="lead-custom-bid-amount" for="lead-custom-bid-input">—</output>
-                                    </div>
-                                    <p>Use um valor entre 1% e 80%. O lance vencedor depende das regras e dos recursos do grupo.</p>
-                                </div>
+                            <div class="strategy-preview-note" role="note">
+                                <strong>Na próxima etapa:</strong>
+                                <span>você poderá testar uma parcela inicial reduzida e montar um lance com recursos próprios e parte da carta.</span>
                             </div>
 
-                            <div class="lead-question-block bid-source-block" id="lead-bid-source-block" hidden>
-                                <h4>De onde viria o lance?</h4>
-                                <p>Isso altera o crédito que fica disponível para a compra.</p>
-                                <div class="bid-source-grid" role="group" aria-label="Origem do lance">
-                                    <button class="sim-option bid-source-option" type="button" data-bid-source="own" aria-pressed="false"><span><strong>Recursos próprios</strong><small>A carta permanece integral</small></span></button>
-                                    <button class="sim-option bid-source-option" type="button" data-bid-source="embedded" aria-pressed="false"><span><strong>Embutido</strong><small>Usa parte da própria carta</small></span></button>
-                                    <button class="sim-option bid-source-option" type="button" data-bid-source="mixed" aria-pressed="false"><span><strong>Misto</strong><small>Combina recursos e carta</small></span></button>
-                                    <button class="sim-option bid-source-option" id="lead-fgts-option" type="button" data-bid-source="fgts" aria-pressed="false" hidden><span><strong>FGTS</strong><small>Imóvel, sujeito às regras aplicáveis</small></span></button>
-                                </div>
-
-                                <div class="mixed-bid" id="lead-mixed-bid" hidden>
-                                    <div>
-                                        <label for="lead-embedded-range">Parte embutida na carta</label>
-                                        <output id="lead-embedded-output" for="lead-embedded-range">—</output>
-                                    </div>
-                                    <input class="lead-range" id="lead-embedded-range" type="range" min="1" max="20" step="1" value="20">
-                                    <p>O restante seria coberto com recursos próprios. O limite embutido real depende do grupo.</p>
-                                </div>
-
-                                <div class="source-warning" id="lead-source-warning" role="note" hidden></div>
-                            </div>
-
-                            <p class="sim-error" id="qualification-error" role="alert" hidden>Escolha o momento, o lance e, quando necessário, a origem dos recursos.</p>
+                            <p class="sim-error" id="qualification-error" role="alert" hidden>Escolha o momento para continuar.</p>
                             <div class="simulator-actions">
                                 <button class="button button-quiet" type="button" data-back="2">Voltar</button>
                                 <button class="button" id="lead-result-button" type="button" disabled>Ver minha estimativa</button>
@@ -252,8 +213,8 @@
 
                         <section class="simulator-result lead-result" id="lead-simulator-result" aria-labelledby="result-title" hidden>
                             <div class="result-intro">
-                                <p>Projeção inicial</p>
-                                <h3 id="result-title" tabindex="-1">Veja como o lance poderia alterar seu plano</h3>
+                                <p>Sua referência inicial</p>
+                                <h3 id="result-title" tabindex="-1">Veja seu plano e explore duas estratégias</h3>
                             </div>
 
                             <div class="result-category" id="lead-result-category">—</div>
@@ -267,7 +228,7 @@
                                     <dd id="lead-result-term">—</dd>
                                 </div>
                                 <div>
-                                    <dt>Parcela inicial estimada</dt>
+                                    <dt id="lead-result-installment-label">Parcela integral estimada</dt>
                                     <dd id="lead-result-installment">—</dd>
                                 </div>
                                 <div>
@@ -275,62 +236,142 @@
                                     <dd id="lead-result-fee">18% referencial</dd>
                                 </div>
                                 <div>
-                                    <dt>Lance simulado</dt>
-                                    <dd id="lead-result-bid">—</dd>
+                                    <dt>Total nominal estimado</dt>
+                                    <dd id="lead-result-total-plan">—</dd>
                                 </div>
                             </dl>
 
                             <div class="result-context" id="lead-result-context"></div>
 
-                            <section class="bid-impact" id="lead-bid-impact" aria-labelledby="bid-impact-title" hidden>
-                                <div class="bid-impact-heading">
-                                    <div>
-                                        <p>Se o lance for contemplado</p>
-                                        <h4 id="bid-impact-title">Duas formas de visualizar o abatimento</h4>
-                                    </div>
-                                    <span id="lead-result-bid-source">—</span>
+                            <section class="strategy-lab" aria-labelledby="strategy-lab-title">
+                                <div class="strategy-lab-heading">
+                                    <p>Explore possibilidades</p>
+                                    <h4 id="strategy-lab-title">Teste cada estratégia separadamente</h4>
+                                    <span>Você pode abrir as duas. Quando combinadas, o valor posterior será calculado pelo consultor.</span>
                                 </div>
 
-                                <div class="projection-grid">
-                                    <article>
-                                        <span>Se o contrato reduzir a parcela</span>
-                                        <strong id="lead-result-reduced-installment">—</strong>
-                                        <small id="lead-result-installment-saving">—</small>
+                                <div class="strategy-grid">
+                                    <article class="strategy-card" id="lead-reduced-strategy">
+                                        <div class="strategy-card-heading">
+                                            <span class="strategy-index">01</span>
+                                            <div>
+                                                <h5>Parcela inicial reduzida</h5>
+                                                <p>Veja quanto pagaria na fase inicial.</p>
+                                            </div>
+                                        </div>
+                                        <button class="strategy-toggle" id="lead-reduced-toggle" type="button" aria-pressed="false" aria-expanded="false" aria-controls="lead-reduced-content">Simular parcela reduzida</button>
+
+                                        <div class="strategy-content" id="lead-reduced-content" hidden>
+                                            <div class="reduced-projection-grid">
+                                                <div>
+                                                    <span>Parcela integral de referência</span>
+                                                    <strong id="lead-reduced-standard">—</strong>
+                                                </div>
+                                                <div class="is-highlighted">
+                                                    <span>Parcela inicial reduzida estimada</span>
+                                                    <strong id="lead-reduced-initial">—</strong>
+                                                    <small id="lead-reduced-effective">—</small>
+                                                </div>
+                                                <div>
+                                                    <span>Depois da contemplação</span>
+                                                    <strong>A confirmar</strong>
+                                                    <small>Depende do mês e do grupo</small>
+                                                </div>
+                                            </div>
+                                            <div class="strategy-warning" role="note">
+                                                <strong>Não é desconto.</strong>
+                                                <span id="lead-reduced-warning">Parte do pagamento é adiada e será redistribuída posteriormente.</span>
+                                            </div>
+                                            <a class="strategy-faq-link" href="#faq-parcela-reduzida">Por que não mostramos o valor posterior?</a>
+                                        </div>
                                     </article>
-                                    <article>
-                                        <span>Se o contrato reduzir o prazo</span>
-                                        <strong id="lead-result-reduced-term">—</strong>
-                                        <small id="lead-result-term-saving">—</small>
+
+                                    <article class="strategy-card" id="lead-bid-strategy">
+                                        <div class="strategy-card-heading">
+                                            <span class="strategy-index">02</span>
+                                            <div>
+                                                <h5>Compor um lance</h5>
+                                                <p>Comece pelos recursos que você possui.</p>
+                                            </div>
+                                        </div>
+                                        <button class="strategy-toggle" id="lead-bid-toggle" type="button" aria-pressed="false" aria-expanded="false" aria-controls="lead-bid-content">Montar composição</button>
+
+                                        <div class="strategy-content" id="lead-bid-content" hidden>
+                                            <div class="own-bid-field">
+                                                <label for="lead-own-bid-input">Quanto você dispõe de recursos próprios?</label>
+                                                <div class="money-field">
+                                                    <span>R$</span>
+                                                    <input id="lead-own-bid-input" type="number" inputmode="numeric" min="1" step="100" placeholder="Ex.: 30000" aria-describedby="lead-own-bid-help lead-own-bid-error" disabled>
+                                                </div>
+                                                <small id="lead-own-bid-help">Informe um valor para calcular a composição. Nenhum percentual é tratado como lance vencedor.</small>
+                                            </div>
+
+                                            <label class="embedded-toggle" for="lead-use-embedded">
+                                                <input id="lead-use-embedded" type="checkbox" disabled>
+                                                <span>
+                                                    <strong>Complementar com parte da carta</strong>
+                                                    <small>O embutido não aparece como lance isolado.</small>
+                                                </span>
+                                            </label>
+
+                                            <div class="embedded-control" id="lead-embedded-control" hidden>
+                                                <div>
+                                                    <label for="lead-embedded-range">Parte embutida considerada</label>
+                                                    <output id="lead-embedded-output" for="lead-embedded-range">—</output>
+                                                </div>
+                                                <input class="lead-range" id="lead-embedded-range" type="range" min="1" max="25" step="1" value="25" disabled>
+                                                <p>Referência limitada a 25% da carta nesta ferramenta. O percentual aceito será confirmado conforme o grupo.</p>
+                                            </div>
+
+                                            <p class="sim-error" id="lead-own-bid-error" role="alert" hidden>Informe um valor próprio maior que zero e menor que o limite indicado.</p>
+
+                                            <dl class="bid-composition" id="lead-bid-composition" aria-live="polite" hidden>
+                                                <div><dt>Recursos próprios</dt><dd id="lead-composition-own">—</dd></div>
+                                                <div><dt>Parte embutida</dt><dd id="lead-composition-embedded">—</dd></div>
+                                                <div class="is-highlighted"><dt>Lance total simulado</dt><dd id="lead-composition-total">—</dd><small id="lead-composition-percent">—</small></div>
+                                                <div class="is-highlighted"><dt>Crédito líquido para compra</dt><dd id="lead-composition-credit">—</dd><small id="lead-composition-credit-note">—</small></div>
+                                            </dl>
+
+                                            <section class="bid-impact" id="lead-bid-impact" aria-labelledby="bid-impact-title" hidden>
+                                                <div class="bid-impact-heading">
+                                                    <div>
+                                                        <p>Se este lance for contemplado</p>
+                                                        <h5 id="bid-impact-title">Projeções matemáticas de abatimento</h5>
+                                                    </div>
+                                                    <span id="lead-result-bid-source">—</span>
+                                                </div>
+                                                <div class="projection-grid">
+                                                    <article>
+                                                        <span>Parcela estimada após o abatimento</span>
+                                                        <strong id="lead-result-reduced-installment">—</strong>
+                                                        <small id="lead-result-installment-saving">—</small>
+                                                    </article>
+                                                    <article>
+                                                        <span>Prazo estimado após o abatimento</span>
+                                                        <strong id="lead-result-reduced-term">—</strong>
+                                                        <small id="lead-result-term-saving">—</small>
+                                                    </article>
+                                                </div>
+                                                <p class="projection-note">Alternativas matemáticas em valores atuais. A forma de abatimento depende do contrato.</p>
+                                            </section>
+
+                                            <div class="combination-note" id="lead-combination-note" role="note" hidden>
+                                                <strong>Parcela reduzida + intenção de lance</strong>
+                                                <span>A composição foi registrada, mas a parcela posterior não é projetada porque depende do mês da contemplação e da recomposição do saldo.</span>
+                                            </div>
+
+                                            <p class="bid-legal-note">Esta composição não indica chance de contemplação nem representa um lance vencedor.</p>
+                                        </div>
                                     </article>
                                 </div>
-
-                                <div class="available-credit" id="lead-available-credit" hidden>
-                                    <span>Crédito estimado disponível para a compra</span>
-                                    <strong id="lead-result-available-credit">—</strong>
-                                    <small id="lead-available-credit-note">—</small>
-                                </div>
-
-                                <p class="projection-note">Os dois cartões são alternativas matemáticas. A forma de abatimento e os limites do lance dependem do contrato e da administradora.</p>
                             </section>
-
-                            <div class="no-bid-result" id="lead-no-bid-result" hidden>
-                                <strong>Você optou por não simular um lance.</strong>
-                                <span>A contemplação por sorteio continua sujeita às regras e à disponibilidade de recursos do grupo.</span>
-                            </div>
 
                             <div class="cost-note">
                                 <span aria-hidden="true">i</span>
                                 <p>O cálculo considera taxa de administração referencial de 18% sobre o crédito contratado. Fundo de reserva, seguro, reajustes e condições específicas não estão incluídos.</p>
                             </div>
 
-                            <div class="reduced-note">
-                                <span class="sim-option-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 32 32"><path d="M5 8h22v17H5zM5 13h22M9 19h7"/><path class="icon-accent" d="M21 20h6m-3-3 3 3-3 3"/></svg>
-                                </span>
-                                <p><strong>Há planos específicos com parcela inicial reduzida.</strong> O período de redução e o valor posterior dependem do contrato. A condição será explicada no mesmo cenário antes da adesão.</p>
-                            </div>
-
-                            <p class="result-disclaimer">Estimativa ilustrativa em valores atuais. Quando selecionado, o lance é considerado no início do plano e não garante contemplação. A forma de redução, os limites e os valores efetivos serão confirmados pelo consultor e pela administradora.</p>
+                            <p class="result-disclaimer">Estimativa ilustrativa em valores atuais. A taxa de 18%, o redutor e o lance são premissas matemáticas. Valores, limites, compatibilidade entre estratégias e condições efetivas serão confirmados pelo consultor e pela administradora.</p>
 
                             <div class="result-lead">
                                 <h4>Valide esta simulação com um consultor</h4>
@@ -388,7 +429,7 @@
                 </div>
 
                 <ol class="lead-benefit-grid">
-                    <li><span>01</span><h3>Você define o plano</h3><p>Objetivo, crédito, orçamento, prazo e intenção de lance chegam organizados ao atendimento.</p></li>
+                    <li><span>01</span><h3>Você define o plano</h3><p>Objetivo, crédito, orçamento, prazo e estratégias exploradas chegam organizados ao atendimento.</p></li>
                     <li><span>02</span><h3>A GLID avalia possibilidades</h3><p>Diferentes cenários disponíveis são analisados com apoio da tecnologia Turn2C.</p></li>
                     <li><span>03</span><h3>Um consultor confirma as condições</h3><p>Custos, reajustes, regras de contemplação e disponibilidade são explicados antes da decisão.</p></li>
                 </ol>
@@ -443,7 +484,11 @@
                     <details><summary>Quando poderei usar o crédito?<span aria-hidden="true">+</span></summary><p>Depois da contemplação por sorteio ou lance e do cumprimento das condições contratuais. Não há garantia de contemplação em uma data determinada.</p></details>
                     <details><summary>Consórcio tem juros?<span aria-hidden="true">+</span></summary><p>Consórcio não é operação de crédito e não cobra juros remuneratórios de financiamento. Há taxa de administração e podem existir fundo de reserva, seguro e outros valores previstos no contrato.</p></details>
                     <details><summary>A estimativa é uma proposta?<span aria-hidden="true">+</span></summary><p>Não. Ela é uma referência inicial. Crédito, prazo, prestação, custos, reajustes e disponibilidade serão confirmados antes da contratação.</p></details>
-                    <details><summary>Como funciona a parcela reduzida?<span aria-hidden="true">+</span></summary><p>Ela existe em planos específicos. O período de redução e a recomposição posterior da parcela ou do saldo seguem as regras do contrato.</p></details>
+                    <details id="faq-parcela-reduzida"><summary>Como funciona a parcela inicial reduzida?<span aria-hidden="true">+</span></summary><p>Em planos específicos, uma parte do pagamento mensal é adiada durante a fase inicial. A redução não é desconto: a diferença acumulada será redistribuída conforme o regulamento do grupo.</p></details>
+                    <details><summary>É realmente metade do boleto?<span aria-hidden="true">+</span></summary><p>Nem sempre. Há planos em que o redutor incide apenas sobre o fundo comum, enquanto taxa de administração, fundo de reserva e seguro permanecem integrais. O simulador informa a base adotada na estimativa.</p></details>
+                    <details><summary>Até quando dura a parcela inicial reduzida?<span aria-hidden="true">+</span></summary><p>Até a contemplação ou até o marco previsto no regulamento do grupo, o que ocorrer primeiro. O consultor confirmará essa condição antes da adesão.</p></details>
+                    <details><summary>Por que o valor posterior não aparece?<span aria-hidden="true">+</span></summary><p>O valor depende do mês da contemplação, da diferença acumulada, do prazo restante, dos reajustes e das regras do grupo. Informar hoje uma única parcela posterior produziria uma referência imprecisa.</p></details>
+                    <details><summary>Posso combinar parcela reduzida e lance?<span aria-hidden="true">+</span></summary><p>Alguns grupos permitem essa combinação. O simulador registra o interesse e mostra a composição do lance, mas deixa o cálculo posterior para o consultor porque as duas estratégias interagem no saldo.</p></details>
                     <details><summary>A tecnologia prevê a contemplação?<span aria-hidden="true">+</span></summary><p>Não. Ela ajuda a organizar e analisar cenários, sem garantir lance vencedor, resultado ou data de acesso ao crédito.</p></details>
                     <details><summary>Qual é o papel da GLID?<span aria-hidden="true">+</span></summary><p>A GLID atua na orientação e intermediação comercial. A administração do grupo e a contratação são realizadas pela administradora de consórcios responsável pelo plano, autorizada e supervisionada pelo Banco Central. Você pode <a href="https://www.bcb.gov.br/meubc/encontreinstituicao" target="_blank" rel="noopener noreferrer">consultar instituições no site do Banco Central</a>.</p></details>
                 </div>
