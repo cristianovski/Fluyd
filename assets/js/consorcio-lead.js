@@ -240,6 +240,8 @@
     };
 
     const emit = (eventName, extra = {}) => {
+        if (typeof window.hasGlidAnalyticsConsent !== "function"
+            || !window.hasGlidAnalyticsConsent()) return;
         if (!Array.isArray(window.dataLayer)) return;
         const plan = getBasePlan();
         const bidPlan = getBidPlan();
@@ -829,7 +831,13 @@
     }
 
     showStep(1, false);
-    emit("consortium_lead_page_view", {
+    const emitPageView = () => emit("consortium_lead_page_view", {
         consortium_requested_category: initialCategory || "geral"
     });
+
+    if (window.hasGlidAnalyticsConsent?.()) {
+        emitPageView();
+    } else {
+        window.addEventListener("glid:analytics-consent-granted", emitPageView, { once: true });
+    }
 })();

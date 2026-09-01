@@ -50,6 +50,8 @@
     };
 
     const emit = (eventName) => {
+        if (typeof window.hasGlidAnalyticsConsent !== "function"
+            || !window.hasGlidAnalyticsConsent()) return;
         if (!Array.isArray(window.dataLayer)) return;
         window.dataLayer.push({
             event: eventName,
