@@ -214,6 +214,8 @@ test("a escolha pode ser concedida, recusada e reaberta no rodapé", () => {
     assert.match(source, /aria-describedby/);
     assert.match(source, /labels\.slice\(index\)\.join\("\."\)/);
     assert.doesNotMatch(source, /querySelector\([^)]*(nome|telefone|cidade|whatsapp)/i);
+    assert.match(styles, /@media \(max-width: 680px\)[\s\S]*?max-height:\s*min\(44dvh, 320px\)/);
+    assert.match(styles, /@media \(max-width: 680px\)[\s\S]*?analytics-consent__actions[\s\S]*?grid-template-columns:\s*repeat\(2, minmax\(0, 1fr\)\)/);
 });
 
 test("a recusa apaga cookies no domínio GLID e a revogação recarrega sem GTM", () => {

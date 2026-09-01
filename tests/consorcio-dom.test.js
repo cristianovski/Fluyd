@@ -84,3 +84,29 @@ test("a categoria pré-selecionada registra o início ao avançar sem duplicar",
     assert.match(script, /state\.simulatorInteracted = false;[\s\S]*?state\.simulatorStarted = false;[\s\S]*?setPressed\(categoryButtons, null\)/);
     assert.match(script, /const handleAnalyticsConsentGranted = \(\) => \{[\s\S]*?if \(state\.simulatorInteracted\) trackSimulatorStart\(\)/);
 });
+
+test("a Turn2C é explicada como apoio à comparação sem prometer contemplação", () => {
+    assert.match(html, /A Turn2C amplia a análise antes de qualquer recomendação/);
+    assert.match(html, /Histórico de assembleias, comportamento de lances e regras do grupo/);
+    assert.match(html, /não garantem contemplação, lance vencedor ou acesso ao crédito/);
+    assert.match(html, /Bancos e administradoras/);
+    assert.match(html, /A GLID orienta e intermedeia; a administradora responde pelo grupo/);
+    assert.match(html, /Quais bancos e administradoras podem aparecer na análise/);
+});
+
+test("a atribuição preserva identificadores de Google e Meta sem enviá-los ao dataLayer", () => {
+    assert.match(script, /\{ key: "gclid", label: "Google Ads ID" \}/);
+    assert.match(script, /\{ key: "gbraid", label: "Google Ads gbraid" \}/);
+    assert.match(script, /\{ key: "wbraid", label: "Google Ads wbraid" \}/);
+    assert.match(script, /\{ key: "fbclid", label: "Meta Ads ID" \}/);
+    assert.match(script, /google_ads_click_id_present: Boolean/);
+    assert.match(script, /meta_ads_click_id_present: Boolean/);
+    assert.doesNotMatch(script, /google_ads_click_id:\s*campaignValues/);
+    assert.doesNotMatch(script, /meta_ads_click_id:\s*campaignValues/);
+});
+
+test("resultado compatível é sinal de planejamento e não lead qualificado", () => {
+    assert.match(script, /consortium_lead_planning_fit/);
+    assert.doesNotMatch(script, /consortium_lead_qualified_result/);
+    assert.match(script, /consortium_lead_whatsapp_intent/);
+});

@@ -1256,12 +1256,40 @@ button, input, select, summary, a { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 680px) {
     .analytics-consent {
         grid-template-columns: 1fr;
-        gap: 0.9rem;
-        padding: 1rem;
+        right: 10px;
+        bottom: max(10px, env(safe-area-inset-bottom));
+        left: 10px;
+        gap: 0.65rem;
+        width: auto;
+        max-height: min(44dvh, 320px);
+        padding: 0.8rem;
+        border-radius: 14px;
+    }
+
+    .analytics-consent__copy strong {
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+    }
+
+    .analytics-consent__copy p {
+        font-size: 0.78rem;
+        line-height: 1.42;
+    }
+
+    .analytics-consent__copy a {
+        margin-top: 0.3rem;
+        font-size: 0.74rem;
     }
 
     .analytics-consent__actions {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.45rem;
         min-width: 0;
+    }
+
+    .analytics-consent__actions button {
+        min-height: 40px;
+        padding: 0.55rem 0.65rem;
+        font-size: 0.75rem;
     }
 }

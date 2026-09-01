@@ -125,7 +125,7 @@
         banner.innerHTML = `
             <div class="analytics-consent__copy">
                 <strong id="analytics-consent-title">Métricas opcionais</strong>
-                <p id="analytics-consent-description">Com sua autorização, a GLID usa o Google Analytics para medir visitas e interações e melhorar o site. Os campos pessoais dos formulários não são enviados ao Google Analytics. Você pode mudar sua escolha a qualquer momento.</p>
+                <p id="analytics-consent-description">Com sua autorização, usamos o Google Analytics para entender visitas e melhorar o site. Dados pessoais dos formulários não são enviados ao Google Analytics. Você pode mudar esta escolha no rodapé.</p>
                 <a href="/privacidade/#privacy-third-parties">Como usamos métricas e cookies</a>
             </div>
             <div class="analytics-consent__actions">

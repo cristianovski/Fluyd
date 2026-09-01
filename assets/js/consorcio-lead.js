@@ -139,14 +139,30 @@
         }
     };
 
-    const cleanAttribution = (value) => value?.replace(/[\r\n]/g, " ").slice(0, 80);
-    const attribution = [
-        cleanAttribution(query.get("utm_source")),
-        cleanAttribution(query.get("utm_medium")),
-        cleanAttribution(query.get("utm_campaign")),
-        cleanAttribution(query.get("utm_content")),
-        cleanAttribution(query.get("utm_term"))
-    ].filter(Boolean).join(" / ");
+    const cleanAttribution = (value) => value?.replace(/[\r\n\t]/g, " ").trim().slice(0, 160);
+    const campaignParameters = [
+        { key: "utm_source", label: "utm_source" },
+        { key: "utm_medium", label: "utm_medium" },
+        { key: "utm_campaign", label: "utm_campaign" },
+        { key: "utm_content", label: "utm_content" },
+        { key: "utm_term", label: "utm_term" },
+        { key: "gclid", label: "Google Ads ID" },
+        { key: "gbraid", label: "Google Ads gbraid" },
+        { key: "wbraid", label: "Google Ads wbraid" },
+        { key: "fbclid", label: "Meta Ads ID" }
+    ];
+    const campaignValues = campaignParameters.reduce((values, parameter) => {
+        const value = cleanAttribution(query.get(parameter.key));
+        if (value) values[parameter.key] = value;
+        return values;
+    }, {});
+    const attribution = campaignParameters
+        .filter((parameter) => campaignValues[parameter.key])
+        .map((parameter) => parameter.label + ": " + campaignValues[parameter.key])
+        .join(" | ");
+    const adClickSource = campaignValues.gclid || campaignValues.gbraid || campaignValues.wbraid
+        ? "google_ads"
+        : (campaignValues.fbclid ? "meta_ads" : undefined);
 
     const floorTo = (value, increment) => Math.floor(value / increment) * increment;
     const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -264,6 +280,14 @@
                 : undefined,
             consortium_bid_percent: bidPlan?.valid ? Number(bidPlan.bidPercent.toFixed(1)) : undefined,
             consortium_embedded_percent: bidPlan?.valid ? bidPlan.embeddedPercent : undefined,
+            traffic_source: campaignValues.utm_source || undefined,
+            traffic_medium: campaignValues.utm_medium || undefined,
+            campaign_name: campaignValues.utm_campaign || undefined,
+            campaign_content: campaignValues.utm_content || undefined,
+            campaign_term: campaignValues.utm_term || undefined,
+            ad_click_source: adClickSource,
+            google_ads_click_id_present: Boolean(campaignValues.gclid || campaignValues.gbraid || campaignValues.wbraid),
+            meta_ads_click_id_present: Boolean(campaignValues.fbclid),
             ...extra
         });
         return true;
@@ -591,7 +615,7 @@
         showStep(4);
 
         emit("consortium_lead_result_view");
-        if (state.moment !== "urgente") emit("consortium_lead_qualified_result");
+        if (state.moment !== "urgente") emit("consortium_lead_planning_fit");
     };
 
     const buildMessage = () => {
@@ -754,7 +778,9 @@
             return;
         }
         if (!form.reportValidity()) return;
-        emit("consortium_lead_whatsapp_intent");
+        emit("consortium_lead_whatsapp_intent", {
+            consortium_planning_fit: state.moment !== "urgente"
+        });
         window.location.href = "https://wa.me/557731420005?text=" + encodeURIComponent(buildMessage());
     });
 
@@ -801,6 +827,9 @@
     });
 
     stickyCta?.addEventListener("click", () => emit("consortium_lead_sticky_cta"));
+    document.querySelector(".turn2c-analysis-cta")?.addEventListener("click", () => {
+        emit("consortium_lead_turn2c_cta");
+    });
 
     if (stickyCta && "IntersectionObserver" in window) {
         const hero = document.querySelector(".lead-hero .hero-copy");
