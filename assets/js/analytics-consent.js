@@ -3,6 +3,7 @@
 
     const STORAGE_KEY = "glid_analytics_consent";
     const GRANTED = "granted";
+    const PREFERENCES_HASH = "#preferencias-metricas";
     let banner = null;
     let restoreFocusTarget = null;
 
@@ -86,6 +87,17 @@
         restoreFocusTarget = null;
         if (focusTarget?.isConnected) focusTarget.focus({ preventScroll: true });
 
+        if (
+            window.location.hash === PREFERENCES_HASH
+            && typeof window.history?.replaceState === "function"
+        ) {
+            window.history.replaceState(
+                null,
+                "",
+                `${window.location.pathname}${window.location.search}`
+            );
+        }
+
         if (granted) {
             window.dispatchEvent(new CustomEvent("glid:analytics-consent-granted"));
         } else if (shouldReload) {
@@ -94,14 +106,17 @@
     };
 
     const showPreferences = (trigger = null) => {
-        if (banner) {
+        if (banner?.isConnected) {
             banner.querySelector("button")?.focus();
             return;
         }
 
+        banner = null;
+
         if (trigger && typeof trigger.focus === "function") restoreFocusTarget = trigger;
 
         banner = document.createElement("section");
+        banner.id = PREFERENCES_HASH.slice(1);
         banner.className = "analytics-consent";
         banner.setAttribute("role", "dialog");
         banner.setAttribute("aria-modal", "false");
@@ -128,22 +143,29 @@
     };
 
     const addPreferencesControl = () => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "analytics-preferences-link";
-        button.textContent = "Preferências de métricas";
-        button.addEventListener("click", (event) => showPreferences(event.currentTarget));
+        const link = document.createElement("a");
+        link.href = PREFERENCES_HASH;
+        link.className = "analytics-preferences-link";
+        link.textContent = "Preferências de métricas";
+        link.setAttribute("aria-controls", PREFERENCES_HASH.slice(1));
+        link.setAttribute("aria-haspopup", "dialog");
+        link.addEventListener("click", (event) => showPreferences(event.currentTarget));
 
         const legalNavigation = document.querySelector(".footer-legal");
         if (legalNavigation) {
-            legalNavigation.appendChild(button);
+            legalNavigation.appendChild(link);
             return;
         }
 
-        button.classList.add("analytics-preferences-link--floating");
-        document.body.appendChild(button);
+        link.classList.add("analytics-preferences-link--floating");
+        document.body.appendChild(link);
+    };
+
+    const showPreferencesFromHash = () => {
+        if (window.location.hash === PREFERENCES_HASH) showPreferences();
     };
 
     addPreferencesControl();
-    if (!readChoice()) showPreferences();
+    window.addEventListener("hashchange", showPreferencesFromHash);
+    if (!readChoice() || window.location.hash === PREFERENCES_HASH) showPreferences();
 })();

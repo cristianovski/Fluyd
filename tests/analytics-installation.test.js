@@ -21,13 +21,20 @@ const htmlFiles = [
 
 const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 
-const runConsentManager = ({ storedChoice = null, tagManagerLoaded = false } = {}) => {
+const runConsentManager = ({
+    storedChoice = null,
+    tagManagerLoaded = false,
+    locationHash = ""
+} = {}) => {
     const storage = new Map();
     if (storedChoice) storage.set("glid_analytics_consent", storedChoice);
 
     const createdSections = [];
     const createdButtons = [];
+    const createdLinks = [];
     const cookieWrites = [];
+    const windowListeners = {};
+    const replacedUrls = [];
     let reloads = 0;
 
     class MockElement {
@@ -77,6 +84,7 @@ const runConsentManager = ({ storedChoice = null, tagManagerLoaded = false } = {
             const element = new MockElement(tagName);
             if (tagName === "section") createdSections.push(element);
             if (tagName === "button") createdButtons.push(element);
+            if (tagName === "a") createdLinks.push(element);
             return element;
         },
         querySelector(selector) {
@@ -92,6 +100,9 @@ const runConsentManager = ({ storedChoice = null, tagManagerLoaded = false } = {
     const window = {
         __glidTagManagerLoaded: tagManagerLoaded,
         dataLayer: [],
+        addEventListener(type, listener) {
+            windowListeners[type] = listener;
+        },
         dispatchEvent() {},
         gtag() {},
         localStorage: {
@@ -100,7 +111,15 @@ const runConsentManager = ({ storedChoice = null, tagManagerLoaded = false } = {
         },
         location: {
             hostname: "www.glid.com.br",
+            hash: locationHash,
+            pathname: "/consorcio/",
+            search: "",
             reload: () => { reloads += 1; }
+        },
+        history: {
+            replaceState(_state, _title, url) {
+                replacedUrls.push(url);
+            }
         },
         loadGlidTagManager() {
             this.__glidTagManagerLoaded = true;
@@ -122,9 +141,12 @@ const runConsentManager = ({ storedChoice = null, tagManagerLoaded = false } = {
     return {
         cookieWrites,
         createdButtons,
+        createdLinks,
         createdSections,
         get reloads() { return reloads; },
+        replacedUrls,
         storage,
+        windowListeners,
         window
     };
 };
@@ -179,10 +201,14 @@ test("o carregador só injeta o contêiner depois da autorização", () => {
 
 test("a escolha pode ser concedida, recusada e reaberta no rodapé", () => {
     const source = read("assets/js/analytics-consent.js");
+    const styles = read("assets/css/home.css");
     assert.match(source, /glid_analytics_consent/);
     assert.match(source, /glid_analytics_consent_granted/);
     assert.match(source, /glid_analytics_consent_denied/);
     assert.match(source, /Preferências de métricas/);
+    assert.match(source, /document\.createElement\("a"\)/);
+    assert.match(source, /#preferencias-metricas/);
+    assert.match(styles, /\.analytics-preferences-link\s*{[^}]*min-height:\s*44px/s);
     assert.match(source, /removeAnalyticsCookies/);
     assert.match(source, /window\.location\.reload\(\)/);
     assert.match(source, /aria-describedby/);
@@ -204,14 +230,32 @@ test("a recusa apaga cookies no domínio GLID e a revogação recarrega sem GTM"
     assert.ok(firstVisit.cookieWrites.some((write) => write.includes("Domain=.glid.com.br")));
 
     const revocation = runConsentManager({ storedChoice: "granted", tagManagerLoaded: true });
-    const preferenceButton = revocation.createdButtons[0];
-    preferenceButton.listeners.click({ currentTarget: preferenceButton });
+    const preferenceLink = revocation.createdLinks[0];
+    assert.equal(preferenceLink.tagName, "a");
+    assert.equal(preferenceLink.href, "#preferencias-metricas");
+    assert.equal(preferenceLink["aria-haspopup"], "dialog");
+
+    preferenceLink.listeners.click({ currentTarget: preferenceLink });
+    revocation.window.location.hash = "#preferencias-metricas";
     const reopenedBanner = revocation.createdSections[0];
     reopenedBanner.listeners.click({ target: denyButton });
 
     assert.equal(revocation.window.__glidAnalyticsConsent, "denied");
     assert.equal(revocation.reloads, 1);
-    assert.equal(preferenceButton.focused, true);
+    assert.deepEqual(revocation.replacedUrls, ["/consorcio/"]);
+    assert.equal(preferenceLink.focused, true);
+});
+
+test("o endereço de preferências reabre o painel mesmo com escolha salva", () => {
+    const consent = runConsentManager({ storedChoice: "denied" });
+
+    assert.equal(consent.createdSections.length, 0);
+    consent.window.location.hash = "#preferencias-metricas";
+    consent.windowListeners.hashchange();
+
+    assert.equal(consent.createdSections.length, 1);
+    assert.equal(consent.createdSections[0].id, "preferencias-metricas");
+    assert.equal(typeof consent.windowListeners.hashchange, "function");
 });
 
 test("eventos do simulador não entram no dataLayer sem consentimento", () => {

@@ -1230,14 +1230,20 @@ button, input, select, summary, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .analytics-preferences-link {
-    padding: 0;
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.35rem 0;
     color: inherit;
     font: inherit;
-    background: none;
-    border: 0;
     cursor: pointer;
     text-decoration: underline;
+    text-decoration-thickness: 1px;
     text-underline-offset: 3px;
+    touch-action: manipulation;
+    white-space: nowrap;
 }
 
 .analytics-preferences-link--floating {
