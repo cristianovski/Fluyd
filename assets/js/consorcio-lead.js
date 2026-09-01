@@ -89,6 +89,8 @@
         term: null,
         moment: null,
         reducedPlan: false,
+        simulatorInteracted: false,
+        simulatorStarted: false,
         bidActive: false,
         ownBidValue: 0,
         useEmbedded: false,
@@ -241,8 +243,8 @@
 
     const emit = (eventName, extra = {}) => {
         if (typeof window.hasGlidAnalyticsConsent !== "function"
-            || !window.hasGlidAnalyticsConsent()) return;
-        if (!Array.isArray(window.dataLayer)) return;
+            || !window.hasGlidAnalyticsConsent()) return false;
+        if (!Array.isArray(window.dataLayer)) return false;
         const plan = getBasePlan();
         const bidPlan = getBidPlan();
         const reducedPlan = getReducedPlan();
@@ -264,6 +266,13 @@
             consortium_embedded_percent: bidPlan?.valid ? bidPlan.embeddedPercent : undefined,
             ...extra
         });
+        return true;
+    };
+
+    const trackSimulatorStart = () => {
+        state.simulatorInteracted = true;
+        if (state.simulatorStarted) return;
+        state.simulatorStarted = emit("consortium_lead_simulator_start");
     };
 
     const setPressed = (buttons, activeButton) => {
@@ -396,7 +405,6 @@
 
     const selectCategory = (categoryKey, button, track = true) => {
         if (!SCENARIOS.categories[categoryKey]) return;
-        const firstTrackedSelection = !state.category && track;
         state.category = categoryKey;
         state.mode = "credit";
         state.valueIndex = getCategory().defaultCreditIndex;
@@ -410,7 +418,7 @@
         renderTermOptions();
         renderValueSelector();
         personalizeHero(categoryKey);
-        if (firstTrackedSelection) emit("consortium_lead_simulator_start");
+        if (track) trackSimulatorStart();
         if (track) emit("consortium_lead_category_select");
     };
 
@@ -671,6 +679,7 @@
             categoryError.hidden = false;
             return;
         }
+        trackSimulatorStart();
         renderTermOptions();
         renderValueSelector();
         showStep(2);
@@ -756,6 +765,8 @@
         state.valueIndex = 1;
         state.term = null;
         state.reducedPlan = false;
+        state.simulatorInteracted = false;
+        state.simulatorStarted = false;
         setPressed(categoryButtons, null);
         setPressed(modeButtons, modeButtons.find((item) => item.dataset.simulationMode === "credit"));
         setPressed(paymentPlanButtons, paymentPlanButtons.find((item) => item.dataset.paymentPlan === "standard"));
@@ -834,10 +845,14 @@
     const emitPageView = () => emit("consortium_lead_page_view", {
         consortium_requested_category: initialCategory || "geral"
     });
+    const handleAnalyticsConsentGranted = () => {
+        emitPageView();
+        if (state.simulatorInteracted) trackSimulatorStart();
+    };
 
     if (window.hasGlidAnalyticsConsent?.()) {
         emitPageView();
     } else {
-        window.addEventListener("glid:analytics-consent-granted", emitPageView, { once: true });
+        window.addEventListener("glid:analytics-consent-granted", handleAnalyticsConsentGranted, { once: true });
     }
 })();

@@ -70,3 +70,17 @@ test("o CTA móvel deixa de aparecer quando o rodapé entra na tela", () => {
     assert.match(script, /footerObserver\.observe\(footer\)/);
     assert.match(leadStyles, /\.lead-sticky-cta\.is-visible\s*\{[\s\S]*?display:\s*flex/);
 });
+
+test("a categoria pré-selecionada registra o início ao avançar sem duplicar", () => {
+    assert.match(script, /simulatorInteracted: false/);
+    assert.match(script, /simulatorStarted: false/);
+    assert.match(script, /const trackSimulatorStart = \(\) =>/);
+    assert.match(script, /state\.simulatorInteracted = true/);
+    assert.match(script, /if \(state\.simulatorStarted\) return/);
+    assert.match(script, /state\.simulatorStarted = emit\("consortium_lead_simulator_start"\)/);
+    assert.match(script, /if \(track\) trackSimulatorStart\(\);[\s\S]*?if \(track\) emit\("consortium_lead_category_select"\)/);
+    assert.match(script, /categoryNext\.addEventListener\("click", \(\) => \{[\s\S]*?trackSimulatorStart\(\);[\s\S]*?showStep\(2\)/);
+    assert.match(script, /selectCategory\(initialCategory, initialButton, false\)/);
+    assert.match(script, /state\.simulatorInteracted = false;[\s\S]*?state\.simulatorStarted = false;[\s\S]*?setPressed\(categoryButtons, null\)/);
+    assert.match(script, /const handleAnalyticsConsentGranted = \(\) => \{[\s\S]*?if \(state\.simulatorInteracted\) trackSimulatorStart\(\)/);
+});

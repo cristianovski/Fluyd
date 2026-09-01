@@ -1211,16 +1211,10 @@ button, input, select, summary, a { -webkit-tap-highlight-color: transparent; }
     padding: 0.65rem 0.9rem;
     color: #f7fbfc;
     font: 600 0.8rem/1.2 "Inter", sans-serif;
-    background: transparent;
-    border: 1px solid rgba(247, 251, 252, 0.34);
+    background: rgba(247, 251, 252, 0.08);
+    border: 1px solid rgba(247, 251, 252, 0.46);
     border-radius: 999px;
     cursor: pointer;
-}
-
-.analytics-consent__actions .analytics-consent__accept {
-    color: #071321;
-    background: #50c6bb;
-    border-color: #50c6bb;
 }
 
 .analytics-consent__actions button:focus-visible,

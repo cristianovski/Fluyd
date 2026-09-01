@@ -271,8 +271,18 @@ test("eventos do simulador não entram no dataLayer sem consentimento", () => {
 
 test("o aviso de privacidade descreve GA4, consentimento e campos excluídos", () => {
     const privacy = read("privacidade/index.html");
+    const consentSource = read("assets/js/analytics-consent.js");
+    const styles = read("assets/css/home.css");
     assert.match(privacy, /Google Tag Manager e Google Analytics/);
     assert.match(privacy, /armazenamento analítico permanece desativado/);
     assert.match(privacy, /não envia ao Google os campos de nome, cidade, telefone/);
     assert.match(privacy, /glid_analytics_consent/);
+    assert.match(privacy, /validade padrão informada pelo Google é de dois anos/);
+    assert.match(privacy, /retenção de 14 meses/);
+    assert.match(privacy, /bloquear ou excluir cookies e dados do site/);
+    assert.match(consentSource, /\/privacidade\/#privacy-third-parties/);
+    assert.match(consentSource, /Recusar métricas/);
+    assert.match(consentSource, /não são enviados ao Google Analytics/);
+    assert.doesNotMatch(consentSource, /analytics-consent__accept/);
+    assert.doesNotMatch(styles, /\.analytics-consent__actions \.analytics-consent__accept/);
 });

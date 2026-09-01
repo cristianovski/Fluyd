@@ -125,12 +125,12 @@
         banner.innerHTML = `
             <div class="analytics-consent__copy">
                 <strong id="analytics-consent-title">Métricas opcionais</strong>
-                <p id="analytics-consent-description">A GLID usa métricas para entender o uso do site e melhorar o simulador. Elas só são ativadas com a sua escolha e não incluem os campos pessoais do formulário.</p>
-                <a href="/privacidade/">Ver Aviso de Privacidade</a>
+                <p id="analytics-consent-description">Com sua autorização, a GLID usa o Google Analytics para medir visitas e interações e melhorar o site. Os campos pessoais dos formulários não são enviados ao Google Analytics. Você pode mudar sua escolha a qualquer momento.</p>
+                <a href="/privacidade/#privacy-third-parties">Como usamos métricas e cookies</a>
             </div>
             <div class="analytics-consent__actions">
-                <button type="button" data-analytics-choice="denied">Continuar sem métricas</button>
-                <button class="analytics-consent__accept" type="button" data-analytics-choice="granted">Aceitar métricas</button>
+                <button type="button" data-analytics-choice="denied">Recusar métricas</button>
+                <button type="button" data-analytics-choice="granted">Aceitar métricas</button>
             </div>`;
 
         banner.addEventListener("click", (event) => {
